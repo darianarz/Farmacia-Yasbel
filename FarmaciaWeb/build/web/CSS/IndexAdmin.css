@@ -1,0 +1,205 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20/08/2024, 10:48:53 AM
+    Author     : SENA
+*/
+
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    background-color: #357c28; /* Verde oscuro */
+    color: #fff;
+    height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative; /* Posición relativa para el scroll del contenido */
+}
+
+.header {
+    border-bottom: 1px solid #2a5d1e; /* Verde más oscuro */
+    padding: 10px;
+    background-color: #357c28;
+    position: sticky; /* Fija la cabecera en la parte superior */
+    top: 0;
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+}
+
+.logo {
+    font-size: 1.5em;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.notification-btn {
+    color: #fff;
+}
+
+.menu-toggle {
+    color: #fff;
+}
+
+.search-form {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.search-icon {
+    margin-left: -30px;
+    margin-top: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.user-menu {
+    position: relative;
+}
+
+.user-btn {
+    color: #fff;
+}
+
+.user-menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+}
+
+.user-menu:hover .user-menu-content {
+    display: block;
+}
+
+.user-menu-item {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-menu-item:hover {
+    background-color: #94dd81; /* Verde claro */
+}
+
+.user-menu-label {
+    font-weight: bold;
+}
+
+.user-menu-separator {
+    border-top: 1px solid #ddd;
+    margin: 5px 0;
+}
+
+.collapsible {
+    margin-bottom: 20px;
+}
+
+.collapsible-trigger {
+    color: #fff;
+    text-decoration: none;
+    background-color: #357c28; /* Verde oscuro */
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.collapsible-content {
+    display: none;
+    margin-top: 10px;
+    overflow-y: auto; /* Permite el scroll dentro de la sección colapsable */
+    max-height: 400px; /* Ajusta según sea necesario */
+}
+
+.collapsible-link {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    background-color: #559d46; /* Verde medio */
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.collapsible-link:hover {
+    background-color: #357c28; /* Verde oscuro */
+}
+
+.submenu {
+    margin-top: 10px;
+}
+
+.table-container {
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #357c28; /* Verde oscuro */
+    color: #fff;
+}
+
+.table td {
+    background-color: #fff;
+}
+
+.table tr:nth-child(even) td {
+    background-color: #e9f5ec; /* Verde muy claro */
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.nav-link.active, .nav-link:hover {
+    background-color: #559d46; /* Verde medio */
+    text-decoration: none;
+}
+
+.nav-link svg {
+    margin-right: 10px;
+}
+
+.user-btn img {
+    border-radius: 50%;
+}
+
+.user-btn, .notification-btn, .menu-toggle {
+    color: #fff;
+}
+
+.user-menu-content {
+    background-color: #fff;
+}
