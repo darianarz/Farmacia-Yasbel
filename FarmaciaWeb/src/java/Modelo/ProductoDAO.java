@@ -311,4 +311,20 @@ public class ProductoDAO {
             System.out.println("Error al editar los productos " + e);
         }
     }
+    
+    public boolean eliminar(String id) {
+        try {
+            Conexcion = new Conectar();
+            Connection con = Conexcion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexcion con la base de datos");
+            }
+            pstm = con.prepareStatement("delete from tblproductos where ProCodigo = ?");
+            pstm.setString(1, id);
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error al eliminar el producto " + e);
+        }
+        return true;
+    }
 }

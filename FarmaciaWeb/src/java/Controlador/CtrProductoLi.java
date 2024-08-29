@@ -41,7 +41,7 @@ public class CtrProductoLi extends HttpServlet {
      */
     ProductoDAO pdao = new ProductoDAO();
     CategoriaDAO cdao = new CategoriaDAO();
-
+    List<Producto> list = pdao.listarT();
     List<Producto> productos = new ArrayList();
     List<CategoriaDAO> categoria = new ArrayList();
     List<Carrito> listacarrito = new ArrayList();
@@ -53,7 +53,7 @@ public class CtrProductoLi extends HttpServlet {
     int subtotal;
     int item;
     int totalpagar;
-    String nom, des, foto, idusu, fec, estado, idcliente;
+    String nom, des, foto, idusu, fec, estado, idcliente,id;
     int pre, sto, cat, mon, idcli;
     Date d = new Date();
 
@@ -64,6 +64,7 @@ public class CtrProductoLi extends HttpServlet {
         HttpSession sesion = request.getSession();
         productos = pdao.listarS();
         categoria = cdao.listar();
+        
         System.out.println("producto " + productos.get(0).getProFoto());
         Producto p = new Producto();
         request.setAttribute("contador", listacarrito.size());
@@ -287,6 +288,15 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "ag":
                 request.getRequestDispatcher("Vistas/AdminiatracionProductosAdm.jsp").forward(request, response);
+                break;
+                
+            case "eliminar":
+                id = request.getParameter("id");
+                System.out.println("id: "+id);
+                pdao.eliminar(id);
+                list = pdao.listarT();
+                request.setAttribute("prducto", list);
+                request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
                 break;
 
         }
