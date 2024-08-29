@@ -11,20 +11,10 @@ public final class WelcomeAdmin_jsp extends org.apache.jasper.runtime.HttpJspBas
 
   private static java.util.List<String> _jspx_dependants;
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
-
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
-  }
-
-  public void _jspInit() {
-    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-  }
-
-  public void _jspDestroy() {
-    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -58,10 +48,17 @@ public final class WelcomeAdmin_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Bienvenida Administrador</title>\n");
+      out.write("        <title>Index Admin</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n");
       out.write("        <link href=\"/FarmaciaWeb/CSS/IndexAdmin.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
       out.write("    </head>\n");
+      out.write("    ");
+
+        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+            response.sendRedirect("../Vistas/LogginPage.jsp");
+        }
+    
+      out.write("\n");
       out.write("    <body>\n");
       out.write("        <div class=\"container-fluid\">\n");
       out.write("            <div class=\"row\">\n");
@@ -84,6 +81,7 @@ public final class WelcomeAdmin_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                        </button>\n");
       out.write("                    </div>\n");
       out.write("                    <nav class=\"nav\">\n");
+      out.write("\n");
       out.write("                        <!-- Collapsible Section -->\n");
       out.write("                        <div class=\"collapsible\">\n");
       out.write("                            <button class=\"collapsible-trigger\">\n");
@@ -97,7 +95,8 @@ public final class WelcomeAdmin_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                                <a href=\"IndexAdmin.jsp\" class=\"collapsible-link submenu-btn\">Inventario</a>\n");
       out.write("                                <a href=\"GestionPedidoAdm.jsp\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\n");
       out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\n");
-      out.write("                                <a href=\"/FarmaciaWeb/CtrProductoLi?accion=Listaradm\" class=\"collapsible-link submenu-btn\">Gestión de Productos</a>\n");
+      out.write("                                <a href=\"/FarmaciaWeb/CtrProductoLi?accion=Listaradm\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\n");
+      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">..</a>\n");
       out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">PQR</a>\n");
       out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Productos Disponibles</a>\n");
       out.write("                            </div>\n");
@@ -112,7 +111,7 @@ public final class WelcomeAdmin_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                            <path d=\"m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9\"/>\n");
       out.write("                            <path d=\"M12 3v6\"/>\n");
       out.write("                            </svg>\n");
-      out.write("                            <span class=\"sr-only\">Inicio</span>\n");
+      out.write("                            <span class=\"sr-only\">Home</span>\n");
       out.write("                        </a>\n");
       out.write("                        <form class=\"search-form d-flex\">\n");
       out.write("                            <input type=\"search\" class=\"form-control\" placeholder=\"Buscar productos...\">\n");
@@ -134,57 +133,13 @@ public final class WelcomeAdmin_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                        </div>\n");
       out.write("                    </header>\n");
       out.write("                    <main class=\"main\">\n");
-      out.write("                        <div class=\"welcome-message\">\n");
-      out.write("                            <h1>¡Bienvenido, Administrador!</h1>\n");
-      out.write("                            <p class=\"lead\">Aquí puedes gestionar todos los aspectos de la farmacia de manera eficiente.</p>\n");
-      out.write("                        </div>\n");
-      out.write("                        <div class=\"stats-overview mb-4\">\n");
-      out.write("                            <div class=\"row\">\n");
-      out.write("                                <div class=\"col-md-4\">\n");
-      out.write("                                    <div class=\"card bg-primary text-white\">\n");
-      out.write("                                        <div class=\"card-body\">\n");
-      out.write("                                            <h5 class=\"card-title\">Productos Totales</h5>\n");
-      out.write("                                            <p class=\"card-text\">250</p>\n");
-      out.write("                                        </div>\n");
-      out.write("                                    </div>\n");
-      out.write("                                </div>\n");
-      out.write("                                <div class=\"col-md-4\">\n");
-      out.write("                                    <div class=\"card bg-success text-white\">\n");
-      out.write("                                        <div class=\"card-body\">\n");
-      out.write("                                            <h5 class=\"card-title\">Pedidos Procesados</h5>\n");
-      out.write("                                            <p class=\"card-text\">1,234</p>\n");
-      out.write("                                        </div>\n");
-      out.write("                                    </div>\n");
-      out.write("                                </div>\n");
-      out.write("                                <div class=\"col-md-4\">\n");
-      out.write("                                    <div class=\"card bg-warning text-white\">\n");
-      out.write("                                        <div class=\"card-body\">\n");
-      out.write("                                            <h5 class=\"card-title\">Clientes Registrados</h5>\n");
-      out.write("                                            <p class=\"card-text\">567</p>\n");
-      out.write("                                        </div>\n");
-      out.write("                                    </div>\n");
-      out.write("                                </div>\n");
-      out.write("                            </div>\n");
-      out.write("                        </div>\n");
-      out.write("                        <div class=\"table-container\">\n");
-      out.write("                            <h2>Productos Recientes</h2>\n");
-      out.write("                            <table class=\"table\">\n");
-      out.write("                                <thead>\n");
-      out.write("                                    <tr>\n");
-      out.write("                                        <th>Producto</th>\n");
-      out.write("                                        <th>Disponibilidad</th>\n");
-      out.write("                                        <th>Vendidos</th>\n");
-      out.write("                                        <th>Estado</th>\n");
-      out.write("                                    </tr>\n");
-      out.write("                                </thead>\n");
-      out.write("                                <tbody>\n");
-      out.write("                                    ");
-      if (_jspx_meth_c_forEach_0(_jspx_page_context))
-        return;
-      out.write(" \n");
-      out.write("                                </tbody>\n");
-      out.write("                            </table>\n");
-      out.write("                        </div>\n");
+      out.write("                        <h1 style=\"display: flex; text-align: center; justify-content: center; align-items: center; font-family: 'New York', serif; font-size: 60px;\">¡Bienvenido, Administrador!</h1>\n");
+      out.write("\n");
+      out.write("                        <br><br>\n");
+      out.write("                        <div style=\"display: flex; text-align: center; justify-content: center; align-items: center\">\n");
+      out.write("                            <img src=\"/FarmaciaWeb/Imagenes/lo-removebg-preview.png\" class=\"icon\" width=\"300px\" height=\"300px\"/>\n");
+      out.write("                        </div><br><br>\n");
+      out.write("                        <h1 style=\"display: flex; text-align: center; justify-content: center; align-items: center; font-family: 'New York', serif; font-size: 60px;\">Farmacia Yasbel</h1>\n");
       out.write("                    </main>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
@@ -196,6 +151,7 @@ public final class WelcomeAdmin_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("        <script src=\"/FarmaciaWeb/JS/IndexAdmin.js\" type=\"text/javascript\"></script>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
+      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -207,51 +163,5 @@ public final class WelcomeAdmin_jsp extends org.apache.jasper.runtime.HttpJspBas
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
-  }
-
-  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setVar("prod");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
-      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\n");
-          out.write("                                        <tr>\n");
-          out.write("                                            <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                            <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProStok()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                            <td>12</td>\n");
-          out.write("                                            <td>En stock</td>\n");
-          out.write("                                        </tr>\n");
-          out.write("                                    ");
-          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_forEach_0.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
-    }
-    return false;
   }
 }
