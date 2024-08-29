@@ -112,7 +112,7 @@
                             <table class="table table-bordered">
                                 <thead class="thead-light border">
                                     <tr table-success>
-                                        <th scope="col" class="text-center border" width="110"><a class="btn btn-success ml-2" data-bs-toggle="modal" data-bs-target="#agregarproducto" style="background: #74BD64"><i class="bi bi-database-fill-add"></i></a></th>
+                                        <th scope="col" class="text-center border" width="110"><a class="btn btn-success ml-2" href="CtrProductoLi?accion=ag" style="background: #74BD64"><i class="bi bi-database-fill-add"></i></a></th>
                                         <th scope="col" colspan="7" class="text-center border">PRODUCTOS DE LA FARMACIA</th>
                                     </tr>
                                     <tr>
@@ -147,19 +147,19 @@
                             </table>
                         </div>
 
-                    
-                           <!-- Moda1 -->
-                    <div class="modal fade" id="editarproducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Producto</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-sing" action="/AppWeb/CtrProducto?accion=actualizarpro" method="POST" >
-                                        <div class="form-row">
-                                               <div class="col-6">
+
+                        <!-- Moda1 -->
+                        <div class="modal fade" id="editarproducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Producto</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-sing" action="/AppWeb/CtrProducto?accion=actualizarpro" method="POST" >
+                                            <div class="form-row">
+                                                <div class="col-6">
                                                     <label>Nombre</label> 
                                                     <input type="text" class="form-control" name="txtnombre" placeholder="nombre" required="">
                                                 </div>  
@@ -183,7 +183,7 @@
                                                     <label>Descripcion</label> 
                                                     <input type="number" class="form-control" name="txtdescripcion" placeholder="descripcion" required="">
                                                 </div>
-                                                 <div class="col-6">
+                                                <div class="col-6">
                                                     <label>Fecha vencimiento</label> 
                                                     <input type="date" class="form-control" name="txtfechavencimiento" placeholder="fecha" required="">
                                                 </div>
@@ -201,8 +201,8 @@
                                                     <input type="hidden" class="form-control" name="cat" id="cat" value="${Productoe.getCategoria()}"> 
                                                     <script>
                                                         function actualizarInputOculto(selectElement) {
-                                                        var inputOculto = document.getElementById("cat");
-                                                        inputOculto.value = selectElement.value;
+                                                            var inputOculto = document.getElementById("cat");
+                                                            inputOculto.value = selectElement.value;
                                                         }
                                                     </script>
                                                 </div>
@@ -212,48 +212,47 @@
                                                     <input type="hidden" class="form-control" value="${Productoe.getFoto()}" name="foto2" id="foto2">
                                                     <script>
                                                         function actualizarInputOculto2(selectElement) {
-                                                        var inputOculto = document.getElementById("foto2");
-                                                         var filePath = selectElement.value;
-                                                         var fileName = filePath.split('\\').pop().split('/').pop(); // Esto obtiene el nombre del archivo
-                                                         inputOculto.value = "Imagenes/" + fileName;
-                                                        //inputOculto.value = "Imagenes/" + selectElement.value;
+                                                            var inputOculto = document.getElementById("foto2");
+                                                            var filePath = selectElement.value;
+                                                            var fileName = filePath.split('\\').pop().split('/').pop(); // Esto obtiene el nombre del archivo
+                                                            inputOculto.value = "Imagenes/" + fileName;
+                                                            //inputOculto.value = "Imagenes/" + selectElement.value;
                                                         }
                                                     </script>
-                                            </div>
-                                        </div>    
+                                                </div>
+                                            </div>    
 
                                             <center>
                                                 <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">Agregar <i class="bi bi-floppy"></i></button>
                                                 <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="#">Regrsar <i class="bi bi-box-arrow-left"></i></a>
                                             </center>
 
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                                </main>
-                            </div>
-                        </div>
-                    </div>
+                    </main>
+                </div>
+            </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>                        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>  
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../JS/IndexAdmin.js" type="text/javascript"></script>
         <script src="/AppWeb/JS/Funciones3.js" type="text/javascript"></script>
+        <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
         <script>
-                                                        $(document).ready(function () {
-
+        $(document).ready(function () {
             <c:if test="${editarPro}">
-                                                            $('#editarproducto').modal('show');
+        $('#editarproducto').modal('show');
             </c:if>
-
-                                                        });
+         });
         </script>
     </body>
 </html>

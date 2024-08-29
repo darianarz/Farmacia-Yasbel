@@ -12,7 +12,7 @@
         <title>Yasbel Drugs - Administración de Productos</title>
         <link href="/FarmaciaWeb/CSS/Gestion.css" rel="stylesheet" type="text/css"/>
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-         <link href="../CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
+         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-fluid">
@@ -98,48 +98,45 @@
                                         <input id="name" name="name" type="text" placeholder="Nombre del Producto">
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Descripción</label>
+                                        <label for="Proveedores">Proveedores</label>
+                                        <input id="name" name="Proveedor" type="text" placeholder="Nombre del Proveedor">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="marca">Marca</label>
+                                        <input id="name" name="marca" type="text" placeholder="marca del Proveedor">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Descripcion</label>
                                         <textarea id="description" name="description" placeholder="Descripción del Producto"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fechavencimiento">Fecha vencimiento</label>
+                                        <textarea id="fechavencimiento" name="fechavencimiento" placeholder="Fecha vencimiento"></textarea>
                                     </div>
                                     <select id="category" name="category">
                                         <option value="" disabled selected>Selecciona una categoría</option>
-                                        <option value="Categoria 1">Anti-pirectico</option>
-                                        <option value="Categoria 2">Desinflamatorio</option>
-                                        <option value="Categoria 3">Sales de Rehidratación</option>
-                                        <option value="Categoria 4">Anti-Diarreica</option>
-                                        <option value="Categoria 4">Sistema digestivo y Metabolico</option>
+                                        
                                     </select>
                                     <div class="form-group">
-                                        <label for="price" style="padding-top: 10px;">Stock</label>
-                                        <input id="price" name="price" type="number" placeholder="Cantidad">
+                                        <label for="stock" style="padding-top: 10px;">Stock</label>
+                                        <input id="stock" name="stock" type="number" placeholder="Cantidad">
                                     </div>      
                                     <div class="form-group">
-                                        <label for="price">Precio</label>
-                                        <input id="price" name="price" type="number" placeholder="Precio del Producto">
+                                        <label for="precio">Precio</label>
+                                        <input id="precio" name="precio" type="number" placeholder="Precio del Producto">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="descuento">Descuento</label>
+                                        <input id="descuento" name="descuento" type="number" placeholder="descuento del Producto">
+                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="imageUrl">URL de la Imagen</label>
                                         <input id="imageUrl" name="imageUrl" type="text" placeholder="URL de la Imagen">
                                     </div>
                                     <button class="button">Agregar Producto</button>
                                 </div>
-                                <div class="products-section">
-                                    <h2 class="subtitle">Productos Existentes</h2>
-                                    <div class="product-card">
-                                        <div class="card-header">
-                                            <h3 class="card-title">Panadol</h3>
-                                        </div>
-                                        <div class="card-content">
-                                            <img src="../Imagenes/panadol-20s.png" style="width: 250px; height: 250px;" alt="Panadol" class="product-image">
-                                            <p>Analgésico para el dolor de cabeza</p>
-                                            <div class="card-footer">
-                                                <span class="price">$5.999</span>
-                                                <button class="button small">Editar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Repeat similar blocks for other products -->
-                                </div>
+                               
                             </div>
                         </div> 
                     </main>
@@ -150,7 +147,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="../JS/IndexAdmin.js" type="text/javascript"></script>
+        <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
 
     </body>
 </html>

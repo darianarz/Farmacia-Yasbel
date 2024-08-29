@@ -285,6 +285,9 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("categorias", categoria);
                 request.getRequestDispatcher("Vistas/IndexAdmin.jsp").forward(request, response);
                 break;
+            case "ag":
+                request.getRequestDispatcher("Vistas/AdminiatracionProductosAdm.jsp").forward(request, response);
+                break;
 
         }
 
