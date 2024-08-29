@@ -98,8 +98,8 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <a href=\"#\" class=\"collapsible-link\">Droguería</a>\r\n");
       out.write("                            <a href=\"IndexAdmin.jsp\" class=\"collapsible-link submenu-btn\">Inventario</a>\r\n");
       out.write("                            <a href=\"GestionPedidoAdm.jsp\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\r\n");
-      out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\r\n");
-      out.write("                            <a href=\"/FarmaciaWeb/CtrProductoLi?accion=listaradm\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
+      out.write("                            <a href=\"/FarmaciaWeb/CtrUsuarioCre?accion=Listar\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\r\n");
+      out.write("                            <a href=\"/FarmaciaWeb/CtrProductoLi?accion=Listaradm\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">..</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">PQR</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">Productos Disponibles</a>\r\n");

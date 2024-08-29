@@ -49,7 +49,7 @@
                             <a href="#" class="collapsible-link">Droguería</a>
                             <a href="IndexAdmin.jsp" class="collapsible-link submenu-btn">Inventario</a>
                             <a href="GestionPedidoAdm.jsp" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
-                            <a href="#" class="collapsible-link submenu-btn">Gestión de Clientes</a>
+                            <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                             <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
                             <a href="#" class="collapsible-link submenu-btn">..</a>
                             <a href="#" class="collapsible-link submenu-btn">PQR</a>

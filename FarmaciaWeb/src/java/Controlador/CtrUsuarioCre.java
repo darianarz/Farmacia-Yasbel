@@ -98,7 +98,18 @@ public class CtrUsuarioCre extends HttpServlet {
                 request.setAttribute("usuarios", list);
                 request.getRequestDispatcher("/FarmaciaWeb/Vistas/HomePage.jsp").forward(request, response);
                 break;
-     
+             case "Listar":
+                request.setAttribute("usuarios", list);
+                request.getRequestDispatcher("/Vistas/ListarUsuariosAdm.jsp").forward(request, response);
+                break;
+            case "eliminar":
+                id = request.getParameter("id");
+                System.out.println("identificacion: "+id);
+                dao.eliminar(id);
+                list = dao.listarT();
+                request.setAttribute("usuarios", list);
+                request.getRequestDispatcher("Vistas/ListarUsuariosAdm.jsp").forward(request, response);
+                break;
         }
     }
 

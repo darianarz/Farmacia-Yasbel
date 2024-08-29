@@ -229,9 +229,7 @@
 
                                         </form>
                                     </div>
-                                    <div class="modal-footer">
-
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -245,8 +243,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>  
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../JS/IndexAdmin.js" type="text/javascript"></script>
-        <script src="/AppWeb/JS/Funciones3.js" type="text/javascript"></script>
-        <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
+        <script src="/FarmaciaWeb/JS/EliminarProducto.js" type="text/javascript"></script>
+        
         <script>
         $(document).ready(function () {
             <c:if test="${editarPro}">
