@@ -222,7 +222,7 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("productos", productos);
                 if (sesion.getAttribute("tipo") != null) {
                     if (sesion.getAttribute("tipo").equals("Administrador")) {
-                        request.getRequestDispatcher("Vistas/WelcomeAdmin.jsp").forward(request, response);
+                        request.getRequestDispatcher("Vistas/IndexAdmin.jsp").forward(request, response);
                     }
                 } else {
                     request.getRequestDispatcher("/FarmaciaWeb/CtrProductoLi?accion=home").forward(request, response);
