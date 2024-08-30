@@ -53,7 +53,7 @@ public class PQRDAO {
             }
         }
     }
-    public List<PQR> listar() {
+    public List<PQR> listarpqr() {
         List<PQR> pqrList = new ArrayList<>();
         try {
             Conexion = new Conectar();
@@ -61,7 +61,7 @@ public class PQRDAO {
             if (con != null) {
                 System.out.println("Se ha establecido una conexión con la base de datos");
             }
-            pstm = con.prepareStatement("SELECT * FROM tblPQR");
+            pstm = con.prepareStatement("SELECT * FROM tblpqr");
             ResultSet resul = pstm.executeQuery();
             while (resul.next()) {
                 PQR pqr = new PQR();
