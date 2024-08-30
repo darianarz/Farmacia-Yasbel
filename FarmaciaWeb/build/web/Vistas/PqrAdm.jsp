@@ -3,7 +3,7 @@
     Created on : 26/08/2024, 11:20:41 AM
     Author     : SENA
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -105,29 +105,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>123</td>
-                                            <td>2024-08-24</td>
-                                            <td>Juan Pérez</td>
-                                            <td>juan.perez@example.com</td>
-                                            <td>123456789</td>
-                                            <td>Pregunta</td>
-                                            <td>¿Cuáles son las especificaciones del producto X?</td>
-                                            <td>En proceso</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>456</td>
-                                            <td>2024-08-25</td>
-                                            <td>Ana Gómez</td>
-                                            <td>ana.gomez@example.com</td>
-                                            <td>987654321</td>
-                                            <td>Queja</td>
-                                            <td>El servicio al cliente no respondió a mi consulta.</td>
-                                            <td>Resuelto</td>
-                                        </tr>
-                                        
+                                        <c:forEach var="pqr" items="${pqr}">
+                                            <tr>
+                                                <td>${pqr.pqrCodigo()}</td>
+                                                <td>${pqr.tblUsuID()}</td>
+                                                <td>${pqr.pqrFecha()}</td>
+                                                <td>${pqr.pqrNombre()}</td>
+                                                <td>${pqr.pqrCorreo()}</td>
+                                                <td>${pqr.pqrTelefono()}</td>
+                                                <td>${pqr.pqrTipo()}</td>
+                                                <td>${pqr.pqrDescripcion()}</td>
+                                                <td>${pqr.pqrEstado()}</td>
+                                                <td class=" text-center border">
+                                                <input type="hidden" name="id" id="id" value="${pqr.pqrCodigo()}">
+                                                <a class="btn btn-danger" id="btneliminar" href="#"><i class="bi bi-trash-fill"></i></i></a>
+                                            </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -140,6 +134,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="../JS/IndexAdmin.js" type="text/javascript"></script>
+        <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
     </body>
 </html>

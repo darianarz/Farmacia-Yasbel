@@ -9,6 +9,7 @@ import Modelo.PQR;
 import Modelo.PQRDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -78,15 +79,14 @@ public class CtrPQR extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String nom, cor, tel, tip, des;
+        String nom, cor, tel, tip, des;
+        List<PQR> list = pqrdao.listarpqr();
+       
         String accion = request.getParameter("accion");
         System.out.println("accion: " + accion);
         
-        
             String usuarioID = (String) request.getSession().getAttribute("id");
-
                 if (usuarioID == null) {
-                    
                     request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                     return;
                 }
@@ -109,9 +109,18 @@ public class CtrPQR extends HttpServlet {
                 pqr.setPqrDescripcion(des);
                 
                 pqrdao.crearPQR(pqr);
-                request.setAttribute("mensaje", "Su PQR ha sido enviada con éxito.");
+                
                 request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                 break;
+                
+            case "listarPQR":
+ 
+                list = pqrdao.listarpqr();
+                request.setAttribute("pqr", list);
+                request.getRequestDispatcher("Vistas/PqrAdm.jsp").forward(request, response);
+                
+                break;
+                
         }
         
     }
