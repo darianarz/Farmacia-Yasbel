@@ -327,4 +327,8 @@ public class ProductoDAO {
         }
         return true;
     }
+
+    public List<Producto> List() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
