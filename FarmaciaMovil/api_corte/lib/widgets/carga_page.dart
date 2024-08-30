@@ -1,3 +1,5 @@
+// carga_page.dart
+import 'package:flutter/material.dart';
 
 class CargaPage extends StatelessWidget {
   const CargaPage({

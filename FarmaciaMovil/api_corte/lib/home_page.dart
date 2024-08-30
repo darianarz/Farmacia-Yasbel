@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
   }
 
     Future<List<Product>> getData(String token) async {
-      final url = Uri.https('75ab-179-19-183-211.ngrok-free.app', '/products');
+      final url = Uri.https('2546-179-19-194-71.ngrok-free.app', '/products');
       final response = await http.get(
         url,
         headers: {
