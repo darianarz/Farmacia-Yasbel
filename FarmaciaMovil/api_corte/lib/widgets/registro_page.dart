@@ -28,7 +28,7 @@ class _RegistroPageState extends State<RegistroPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('https://8e29-179-19-184-15.ngrok-free.app/users'),
+        Uri.parse('https://2546-179-19-194-71.ngrok-free.app/users'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
