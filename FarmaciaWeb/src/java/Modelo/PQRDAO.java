@@ -32,13 +32,14 @@ public class PQRDAO {
                 System.out.println("Conexión establecida con la base de datos");
             }
 
-            pstm = con.prepareStatement("INSERT INTO tblpqrs ( PQRTipo ,PQRNombre, PQRCorreo, PQRTelefono, PQRDescripcion) VALUES (?, ?, ?, ?, ?)");
+            pstm = con.prepareStatement("INSERT INTO tblpqrs ( tblUsuarios, PQRTipo ,PQRNombre, PQRCorreo, PQRTelefono, PQRDescripcion) VALUES (?, ?, ?, ?, ? ,?)");
 
-            pstm.setString(1, pqr.getPqrTipo());
-            pstm.setString(2, pqr.getPqrNombre());
-            pstm.setString(3, pqr.getPqrCorreo());
-            pstm.setString(4, pqr.getPqrTelefono());
-            pstm.setString(5, pqr.getPqrDescripcion());
+            pstm.setString(1, pqr.getTblUsuarios());
+            pstm.setString(2, pqr.getPqrTipo());
+            pstm.setString(3, pqr.getPqrNombre());
+            pstm.setString(4, pqr.getPqrCorreo());
+            pstm.setString(5, pqr.getPqrTelefono());
+            pstm.setString(6, pqr.getPqrDescripcion());
 
             pstm.executeUpdate();
         } catch (Exception e) {
@@ -64,7 +65,6 @@ public class PQRDAO {
                 pqr.setPqrFecha(resul.getString("PQRFecha"));
                 pqr.setPqrTipo(resul.getString("PQRTipo"));
                 pqr.setPqrEstado(resul.getString("PQREstado"));
-                pqr.setPqrDescripcion(resul.getString("PQRDireccion"));
                 pqr.setPqrNombre(resul.getString("PQRNombre"));
                 pqr.setPqrCorreo(resul.getString("PQRCorreo"));
                 pqr.setPqrTelefono(resul.getString("PQRTelefono"));

@@ -47,7 +47,7 @@
                 <div class="form sign_up">
                     <img src="../Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
                     <h3>Regístrate</h3>
-                    <form action="/FarmaciaWeb/CtrUsuarioCre?accion=nuevo" id="form_input" class="form_input2">
+                    <form action="/FarmaciaWeb/CtrUsuarioCre?accion=nuevo" id="form_input" class="form_input2" method="get">
                         <div class="grid-container">
                             <div class="type">
                                 <input type="text" placeholder="Número de identificación" name="id" id="id" class="id">
@@ -81,8 +81,6 @@
                                 <select class="form-control formulario_input" name="tipo" id="tipo">
                                     <option value="Administrador">Administrador</option> 
                                     <option value="Usuario">Usuario</option> 
-                                    <option value="Invitado">Invitado</option> 
-                                    <option value="Cliente">Cliente</option> 
                                 </select>
                             </div>
                         </div>

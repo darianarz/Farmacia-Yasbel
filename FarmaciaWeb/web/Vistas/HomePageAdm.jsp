@@ -19,13 +19,14 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/scripts.js" type="text/javascript"></script>
     </head>
-     <%
+    <%
         if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
             response.sendRedirect("../Vistas/LogginPage.jsp");
         }
+
     %>
     <body>
-       <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <a class="navbar-brand" href="/FarmaciaWeb/CtrProductoLi?accion=home">
                 <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" class="icon" width="60px" height="60px"/>
                 Farmacia yasbel
@@ -39,7 +40,7 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search" name="busqueda">
                     <button class="btn-search my-2 my-sm-0" type="submit">
                         <div class="original">BUSCAR</div>
-                        
+
                     </button>
                 </form>
 
@@ -62,7 +63,7 @@
                         <a class="nav-link nav-text-white" href="CtrProductoLi?accion=Carrito">
                             <i class="bi bi-cart-check-fill"></i> Carrito
                             (<label style="color: darkorange">${contador}</label>)
-                            
+
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -102,7 +103,7 @@
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">${prod.getProNombre()}</h5>
                                     <p class="card-text">${prod.getProDescripcion()}</p>
-                                    
+
                                     <div class="mt-auto">
                                         <a href="/FarmaciaWeb/CtrProductoLi?accion=comprar&id=${prod.getProCodigo()}" class="btn btn-secondary ml-2">Carrito</a>
                                         <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-primary">Agregar al carrito</a>
@@ -185,6 +186,7 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <input type="hidden" name="id" id="id" value="${usuario.getUsuid()}">
                         <label for="description"> Descripción de la solicitud</label>
                         <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
                     </div>
@@ -201,5 +203,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 crossorigin="anonymous"></script>
-    </body>
+</body>
 </html>

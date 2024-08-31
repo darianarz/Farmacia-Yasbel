@@ -10,21 +10,21 @@ package Modelo;
  * @author HOME
  */
 public class PQR {
+
     private String pqrCodigo;
     private String tblUsuarios;
     private String pqrFecha;
     private String pqrNombre;
     private String pqrCorreo;
     private String pqrTelefono;
-    private String  pqrTipo;
+    private String pqrTipo;
     private String pqrDescripcion;
-    private String pqrDireccion;
     private String PqrEstado;
 
     public PQR() {
     }
 
-    public PQR(String pqrCodigo, String tblUsuarios, String pqrFecha, String pqrNombre, String pqrCorreo, String pqrTelefono, String pqrTipo, String pqrDescripcion, String pqrDireccion, String PqrEstado) {
+    public PQR(String pqrCodigo, String tblUsuarios, String pqrFecha, String pqrNombre, String pqrCorreo, String pqrTelefono, String pqrTipo, String pqrDescripcion, String PqrEstado) {
         this.pqrCodigo = pqrCodigo;
         this.tblUsuarios = tblUsuarios;
         this.pqrFecha = pqrFecha;
@@ -33,7 +33,6 @@ public class PQR {
         this.pqrTelefono = pqrTelefono;
         this.pqrTipo = pqrTipo;
         this.pqrDescripcion = pqrDescripcion;
-        this.pqrDireccion = pqrDireccion;
         this.PqrEstado = PqrEstado;
     }
 
@@ -101,14 +100,6 @@ public class PQR {
         this.pqrDescripcion = pqrDescripcion;
     }
 
-    public String getPqrDireccion() {
-        return pqrDireccion;
-    }
-
-    public void setPqrDireccion(String pqrDireccion) {
-        this.pqrDireccion = pqrDireccion;
-    }
-
     public String getPqrEstado() {
         return PqrEstado;
     }
@@ -117,6 +108,4 @@ public class PQR {
         this.PqrEstado = PqrEstado;
     }
 
-    
-    
 }
