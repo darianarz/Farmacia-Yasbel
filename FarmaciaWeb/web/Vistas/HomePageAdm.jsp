@@ -165,19 +165,19 @@
                 <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR" method="post" >
                     <div class="form-group">
                         <label for="name"> Nombre</label>
-                        <input id="name" name="nombre" type="text" placeholder="Ingrese su nombre">
+                        <input id="name" name="nombre" class="nombre" type="text" placeholder="Ingrese su nombre">
                     </div>
                     <div class="form-group">
                         <label for="email"> Correo electrónico</label>
-                        <input id="email" name="correo" type="email" placeholder="Ingrese su correo">
+                        <input id="email" name="correo" type="email"  class="email" placeholder="Ingrese su correo">
                     </div>
                     <div class="form-group">
                         <label for="phone"> Teléfono</label>
-                        <input id="phone" name="telefono" type="text" placeholder="Ingrese su teléfono">
+                        <input id="telefono" class="telefono" name="telefono" type="text" placeholder="Ingrese su teléfono">
                     </div>
                     <div class="form-group">
                         <label for="type"> Tipo de solicitud</label>
-                        <select id="type" name="tipo">
+                        <select id="type" name="tipo" class="tipo">
                             <option value="" disabled selected>Seleccione una opción</option>
                             <option value="petition">Petición</option>
                             <option value="complaint">Queja</option>
@@ -186,7 +186,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description"> Descripción de la solicitud</label>
-                        <textarea id="description" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
+                        <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
                     </div>
                     <button type="submit" name="accion" value="CrearPQR" class="button"> Enviar</button>
                 </form>

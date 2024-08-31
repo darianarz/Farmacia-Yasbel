@@ -51,6 +51,7 @@ public class CtrPQR extends HttpServlet {
 
         switch (accion) {
             case "CrearPQR":
+                System.out.println("crear pqr");
                 nom = request.getParameter("nombre");
                 cor = request.getParameter("correo");
                 tel = request.getParameter("telefono");
@@ -58,7 +59,7 @@ public class CtrPQR extends HttpServlet {
                 des = request.getParameter("descripcion");
 
                 PQR pqr = new PQR();
-                pqr.setTblUsuID(usuarioID);
+                pqr.setTblUsuarios(usuarioID);
                 pqr.setPqrNombre(nom);
                 pqr.setPqrCorreo(cor);
                 pqr.setPqrTelefono(tel);
@@ -66,8 +67,8 @@ public class CtrPQR extends HttpServlet {
                 pqr.setPqrDescripcion(des);
 
                 pqrdao.crearPQR(pqr);
-
-                request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                request.setAttribute("pqr", list);
+                request.getRequestDispatcher("/FarmaciaWeb/CtrProductoLi?accion=home").forward(request, response);
                 break;
 
             case "listarPQR":
@@ -108,6 +109,42 @@ public class CtrPQR extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String nom, cor, tel, tip, des;
+        List<PQR> list = pqrdao.listarT();
+
+        String accion = request.getParameter("accion");
+        System.out.println("accion: " + accion);
+
+        String usuarioID = (String) request.getSession().getAttribute("id");
+        if (usuarioID == null) {
+            request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+            return;
+        }
+
+        switch (accion) {
+            case "CrearPQR":
+                System.out.println("crear pqr");
+                nom = request.getParameter("nombre");
+                cor = request.getParameter("correo");
+                tel = request.getParameter("telefono");
+                tip = request.getParameter("tipo");
+                des = request.getParameter("descripcion");
+
+                PQR pqr = new PQR();
+                pqr.setTblUsuarios(usuarioID);
+                pqr.setPqrNombre(nom);
+                pqr.setPqrCorreo(cor);
+                pqr.setPqrTelefono(tel);
+                pqr.setPqrTipo(tip);
+                pqr.setPqrDescripcion(des);
+
+                pqrdao.crearPQR(pqr);
+
+                request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
+                break;
+
+       
+        }
 
     }
 

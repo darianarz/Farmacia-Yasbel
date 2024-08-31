@@ -70,12 +70,13 @@ public class CtrUsuarioCre extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Usuario> list = dao.listarT();
-        HttpSession sesion = request.getSession();
+        
         String id, nom, ape, dir, tel, cor, usu, pas, tip;
         String accion = request.getParameter("accion");
         System.out.println("accion: " + accion);
         switch (accion) {
             case "nuevo":
+                /*
                 id = request.getParameter("id");
                 System.out.println("identificacion: " + id);
                 nom = request.getParameter("nombre");
@@ -101,16 +102,34 @@ public class CtrUsuarioCre extends HttpServlet {
                 dao.crear(us);
                 list = dao.listarT();
                 request.setAttribute("usuarios", list);
-                request.getRequestDispatcher("/Vistas/HomePage.jsp").forward(request, response);
-               
-                if (sesion.getAttribute("tipo").equals("Usuario")) {
-                    request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
-                } if (sesion.getAttribute("tipo").equals("Administrador")) {
-                    request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
-                }
-                if (sesion.getAttribute("tipo").equals("Usuario")) {
-                    request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
-                }
+                request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                break;
+                */
+                id = request.getParameter("id");
+                nom = request.getParameter("nombre");
+                ape = request.getParameter("apellido");
+                dir = request.getParameter("direccion");
+                tel = request.getParameter("telefono");
+                cor = request.getParameter("correo");
+                usu = request.getParameter("usuario");
+                pas = request.getParameter("contrasena");
+                tip = request.getParameter("tipo");
+                
+                us.setUsuid(id);
+                us.setUsunombre(nom);
+                us.setUsuapellido(ape);
+                us.setUsudireccion(dir);
+                us.setUsutelefono(tel);
+                us.setUsucorreo(cor);
+                us.setUsuusuario(usu);
+                String contrasenaencriptada = encriptarcontrasena(pas);
+                us.setUsucontrasena(contrasenaencriptada);
+                us.setUsutipo(tip);
+                
+                dao.crear(us);
+                list = dao.listarT();
+                request.setAttribute("usuarios", list);
+                request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                 break;
             case "Listar":
                 request.setAttribute("usuarios", list);
