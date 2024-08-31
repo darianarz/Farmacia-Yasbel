@@ -57,7 +57,7 @@ public class CtrProductoLi extends HttpServlet {
     int subtotal;
     int item;
     int totalpagar;
-    String nom, des, foto, idusu, fec, estado, idcliente,id;
+    String nom, des, foto, idusu, fec, estado, idcliente, id;
     int pre, sto, cat, mon, idcli;
     Date d = new Date();
 
@@ -69,7 +69,7 @@ public class CtrProductoLi extends HttpServlet {
         productos = pdao.listarS();
         categoria = cdao.listar();
         pedidos = pedao.listarT();
-        
+
         System.out.println("producto " + productos.get(0).getProFoto());
         Producto p = new Producto();
         request.setAttribute("contador", listacarrito.size());
@@ -226,7 +226,7 @@ public class CtrProductoLi extends HttpServlet {
             case "admi":
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
-                 request.getRequestDispatcher("Vistas/WelcomeAdmin.jsp").forward(request, response);
+                request.getRequestDispatcher("Vistas/WelcomeAdmin.jsp").forward(request, response);
                 break;
             case "Listaradm":
                 request.setAttribute("productos", productos);
@@ -288,18 +288,41 @@ public class CtrProductoLi extends HttpServlet {
             case "ag":
                 request.getRequestDispatcher("Vistas/AdminiatracionProductosAdm.jsp").forward(request, response);
                 break;
-                
+
             case "eliminar":
                 id = request.getParameter("id");
-                System.out.println("id: "+id);
+                System.out.println("id: " + id);
                 pdao.eliminar(id);
                 list = pdao.listarT();
                 request.setAttribute("prducto", list);
                 request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
                 break;
             case "gestion":
-                 request.setAttribute("pedidos", pedidos);
-                 request.getRequestDispatcher("Vistas/GestionPedidoAdm.jsp").forward(request, response);
+                request.setAttribute("pedidos", pedidos);
+                request.getRequestDispatcher("Vistas/GestionPedidoAdm.jsp").forward(request, response);
+                break;
+            case "ActualizarCantidad":
+                System.out.println("entro actualizar cantidad ");
+                int idpro = Integer.parseInt(request.getParameter("idp"));
+                System.out.println("idpro = " + request.getParameter("idp"));
+                int can = Integer.parseInt(request.getParameter("Cantidad"));
+                System.out.println("entro actualizar cantidad cantidad = " + can);
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    if (idpro == listacarrito.get(i).getIdproducto()) {
+                        listacarrito.get(i).setCantidad(can);
+                        int st = listacarrito.get(i).getPreciocompra() * can;
+                        listacarrito.get(i).setSubtotal(st);
+                    }
+                }
+                break;
+
+            case "Delete":
+                int idproducto = Integer.parseInt(request.getParameter("idp"));
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    if (idproducto == listacarrito.get(i).getIdproducto()) {
+                        listacarrito.remove(i);
+                    }
+                }
                 break;
 
         }

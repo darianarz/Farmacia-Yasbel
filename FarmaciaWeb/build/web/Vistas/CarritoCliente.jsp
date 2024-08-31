@@ -130,7 +130,7 @@
                     </div>
                     <div class="summary-details">
                         <div class="summary-item">
-                            <p>Subtotal:</p>
+                            <p>Subtotal: ${totalpagar}</p>
                             <p></p>
                         </div>
                         <div class="summary-item">
@@ -144,7 +144,7 @@
                     </div>
                     <div class="summary-actions">
                         <button class="continue-shopping-btn">Seguir Comprando</button>
-                        <button class="checkout-btn">Proceder al Pago</button>
+                        <button class="checkout-btn" href="/FarmaciaWeb/CtrProductoLi?accion=pedido&idusu=${usuario.getId()}&totalp=${totalpagar}" id="btngen" onclick="ejecutarTarea()>Proceder al Pago</button>
                     </div>
                 </div>
             </div>
