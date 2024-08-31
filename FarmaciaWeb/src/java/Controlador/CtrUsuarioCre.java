@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -21,8 +22,10 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author SENA
  */
 public class CtrUsuarioCre extends HttpServlet {
+
     UsuarioDAO dao = new UsuarioDAO();
     Usuario us = new Usuario();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,7 +43,7 @@ public class CtrUsuarioCre extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CtrUsuarioCre</title>");            
+            out.println("<title>Servlet CtrUsuarioCre</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CtrUsuarioCre at " + request.getContextPath() + "</h1>");
@@ -48,10 +51,11 @@ public class CtrUsuarioCre extends HttpServlet {
             out.println("</html>");
         }
     }
-     public static String encriptarcontrasena(String password){
+
+    public static String encriptarcontrasena(String password) {
         String passwordencriptado = BCrypt.hashpw(password, BCrypt.gensalt());
         return passwordencriptado;
-        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -66,13 +70,14 @@ public class CtrUsuarioCre extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Usuario> list = dao.listarT();
+        HttpSession sesion = request.getSession();
         String id, nom, ape, dir, tel, cor, usu, pas, tip;
         String accion = request.getParameter("accion");
-        System.out.println("accion: "+accion);
-        switch (accion){
+        System.out.println("accion: " + accion);
+        switch (accion) {
             case "nuevo":
                 id = request.getParameter("id");
-                System.out.println("identificacion: "+id);
+                System.out.println("identificacion: " + id);
                 nom = request.getParameter("nombre");
                 ape = request.getParameter("apellido");
                 dir = request.getParameter("direccion");
@@ -81,7 +86,7 @@ public class CtrUsuarioCre extends HttpServlet {
                 usu = request.getParameter("usuario");
                 pas = request.getParameter("contrasena");
                 tip = request.getParameter("tipo");
-                
+
                 us.setUsuid(id);
                 us.setUsutipo(tip);
                 us.setUsuusuario(usu);
@@ -92,19 +97,28 @@ public class CtrUsuarioCre extends HttpServlet {
                 us.setUsucontrasena(contrasenaencriptada);
                 us.setUsutelefono(tel);
                 us.setUsudireccion(dir);
-                
+
                 dao.crear(us);
                 list = dao.listarT();
                 request.setAttribute("usuarios", list);
-                request.getRequestDispatcher("/FarmaciaWeb/Vistas/HomePage.jsp").forward(request, response);
+                request.getRequestDispatcher("/Vistas/HomePage.jsp").forward(request, response);
+               
+                if (sesion.getAttribute("tipo").equals("Usuario")) {
+                    request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
+                } if (sesion.getAttribute("tipo").equals("Administrador")) {
+                    request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
+                }
+                if (sesion.getAttribute("tipo").equals("Usuario")) {
+                    request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
+                }
                 break;
-             case "Listar":
+            case "Listar":
                 request.setAttribute("usuarios", list);
                 request.getRequestDispatcher("/Vistas/ListarUsuariosAdm.jsp").forward(request, response);
                 break;
             case "eliminar":
                 id = request.getParameter("id");
-                System.out.println("identificacion: "+id);
+                System.out.println("identificacion: " + id);
                 dao.eliminar(id);
                 list = dao.listarT();
                 request.setAttribute("usuarios", list);

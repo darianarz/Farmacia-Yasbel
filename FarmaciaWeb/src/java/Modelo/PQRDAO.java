@@ -29,7 +29,7 @@ public class PQRDAO {
                 System.out.println("Conexión establecida con la base de datos");
             }
 
-            pstm = con.prepareStatement("INSERT INTO tblpqr (tblUsuID, PQRFecha, PQRNombre, PQRCorreo, PQRtelefono, PQRTipo, PQRDescripcion, PQREstado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            pstm = con.prepareStatement("INSERT INTO tblpqrs (tblUsuID, PQRFecha, PQRNombre, PQRCorreo, PQRtelefono, PQRTipo, PQRDescripcion, PQREstado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
            
             pstm.setString(1, pqr.getTblUsuID()); 
             pstm.setTimestamp(2, new Timestamp(new Date().getTime())); 
@@ -53,7 +53,7 @@ public class PQRDAO {
             }
         }
     }
-    public List<PQR> listarpqr() {
+    public List<PQR> listarT() {
         List<PQR> pqrList = new ArrayList<>();
         try {
             Conexion = new Conectar();
@@ -61,19 +61,16 @@ public class PQRDAO {
             if (con != null) {
                 System.out.println("Se ha establecido una conexión con la base de datos");
             }
-            pstm = con.prepareStatement("SELECT * FROM tblpqr");
+            pstm = con.prepareStatement("select * from tblpqrs");
             ResultSet resul = pstm.executeQuery();
             while (resul.next()) {
                 PQR pqr = new PQR();
                 pqr.setPqrCodigo(resul.getString("PQRCodigo"));
-                pqr.setTblUsuID(resul.getString("tblUsuID"));
+                pqr.setTblUsuID(resul.getString("tblUsuarios"));
                 pqr.setPqrFecha(resul.getString("PQRFecha"));
-                pqr.setPqrNombre(resul.getString("PQRNombre"));
-                pqr.setPqrCorreo(resul.getString("PQRCorreo"));
-                pqr.setPqrTelefono(resul.getString("PQRtelefono"));
                 pqr.setPqrTipo(resul.getString("PQRTipo"));
-                pqr.setPqrDescripcion(resul.getString("PQRDescripcion"));
                 pqr.setPqrEstado(resul.getString("PQREstado"));
+                pqr.setPqrDescripcion(resul.getString("PQRDireccion"));
                 pqrList.add(pqr);
             }
         } catch (Exception e) {

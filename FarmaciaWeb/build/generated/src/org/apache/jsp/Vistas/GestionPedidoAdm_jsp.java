@@ -11,10 +11,20 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -41,164 +51,126 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<html>\r\n");
-      out.write("    <head>\r\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("        <title>Gestión de Pedidos</title>\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css\">\r\n");
-      out.write("        <link href=\"/FarmaciaWeb/CSS/GestionPedidoAdm.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
-      out.write("    </head>\r\n");
-      out.write("    <body>\r\n");
-      out.write("           <div class=\"container\">\r\n");
-      out.write("    <div class=\"header\">\r\n");
-      out.write("      <h1>Pedidos de Farmacia</h1>\r\n");
-      out.write("      <button class=\"button primary\">Nuevo Pedido</button>\r\n");
-      out.write("    </div>\r\n");
-      out.write("    <div class=\"table-container\">\r\n");
-      out.write("      <table>\r\n");
-      out.write("        <thead>\r\n");
-      out.write("          <tr>\r\n");
-      out.write("            <th>Estado</th>\r\n");
-      out.write("            <th>Cliente</th>\r\n");
-      out.write("            <th>Productos</th>\r\n");
-      out.write("            <th>Total</th>\r\n");
-      out.write("            <th>Acciones</th>\r\n");
-      out.write("          </tr>\r\n");
-      out.write("        </thead>\r\n");
-      out.write("        <tbody>\r\n");
-      out.write("          <tr>\r\n");
-      out.write("            <td><span class=\"badge pending\">Pendiente</span></td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div class=\"font-medium\">Juan Pérez</div>\r\n");
-      out.write("              <div class=\"text-muted\">Calle Principal 123, Bogotá</div>\r\n");
-      out.write("              <div class=\"text-muted\">+57 123 456 789</div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div>Paracetamol x 2</div>\r\n");
-      out.write("              <div>Ibuprofeno x 1</div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td>$50.00</td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div class=\"actions\">\r\n");
-      out.write("                <button class=\"button icon success\">\r\n");
-      out.write("                  <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
-      out.write("                    <path d=\"M20 6 9 17l-5-5\"></path>\r\n");
-      out.write("                  </svg>\r\n");
-      out.write("                  <span class=\"sr-only\">Marcar como Pagado</span>\r\n");
-      out.write("                </button>\r\n");
-      out.write("                <button class=\"button icon info\">\r\n");
-      out.write("                  <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
-      out.write("                    <path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\"></path>\r\n");
-      out.write("                    <path d=\"M15 18H9\"></path>\r\n");
-      out.write("                    <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\"></path>\r\n");
-      out.write("                    <circle cx=\"17\" cy=\"18\" r=\"2\"></circle>\r\n");
-      out.write("                    <circle cx=\"7\" cy=\"18\" r=\"2\"></circle>\r\n");
-      out.write("                  </svg>\r\n");
-      out.write("                  <span class=\"sr-only\">Marcar como Listo para Enviar</span>\r\n");
-      out.write("                </button>\r\n");
-      out.write("              </div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("          </tr>\r\n");
-      out.write("          <tr>\r\n");
-      out.write("            <td><span class=\"badge pending\">Pendiente</span></td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div class=\"font-medium\">María Gómez</div>\r\n");
-      out.write("              <div class=\"text-muted\">Avenida Central 456, Medellín</div>\r\n");
-      out.write("              <div class=\"text-muted\">+57 987 654 321</div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div>Amoxicilina x 3</div>\r\n");
-      out.write("              <div>Vitamina C x 1</div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td>$75.00</td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div class=\"actions\">\r\n");
-      out.write("                <button class=\"button icon success\">\r\n");
-      out.write("                  <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
-      out.write("                    <path d=\"M20 6 9 17l-5-5\"></path>\r\n");
-      out.write("                  </svg>\r\n");
-      out.write("                  <span class=\"sr-only\">Marcar como Pagado</span>\r\n");
-      out.write("                </button>\r\n");
-      out.write("                <button class=\"button icon info\">\r\n");
-      out.write("                  <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
-      out.write("                    <path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\"></path>\r\n");
-      out.write("                    <path d=\"M15 18H9\"></path>\r\n");
-      out.write("                    <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\"></path>\r\n");
-      out.write("                    <circle cx=\"17\" cy=\"18\" r=\"2\"></circle>\r\n");
-      out.write("                    <circle cx=\"7\" cy=\"18\" r=\"2\"></circle>\r\n");
-      out.write("                  </svg>\r\n");
-      out.write("                  <span class=\"sr-only\">Marcar como Listo para Enviar</span>\r\n");
-      out.write("                </button>\r\n");
-      out.write("              </div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("          </tr>\r\n");
-      out.write("          <tr>\r\n");
-      out.write("            <td><span class=\"badge paid\">Pagado por Nequi</span></td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div class=\"font-medium\">Carlos Rodríguez</div>\r\n");
-      out.write("              <div class=\"text-muted\">Calle 67 #89-12, Cali</div>\r\n");
-      out.write("              <div class=\"text-muted\">+57 456 789 012</div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div>Aspirina x 1</div>\r\n");
-      out.write("              <div>Loratadina x 2</div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td>$35.00</td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div class=\"actions\">\r\n");
-      out.write("                <button class=\"button icon info\">\r\n");
-      out.write("                  <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
-      out.write("                    <path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\"></path>\r\n");
-      out.write("                    <path d=\"M15 18H9\"></path>\r\n");
-      out.write("                    <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\"></path>\r\n");
-      out.write("                    <circle cx=\"17\" cy=\"18\" r=\"2\"></circle>\r\n");
-      out.write("                    <circle cx=\"7\" cy=\"18\" r=\"2\"></circle>\r\n");
-      out.write("                  </svg>\r\n");
-      out.write("                  <span class=\"sr-only\">Marcar como Listo para Enviar</span>\r\n");
-      out.write("                </button>\r\n");
-      out.write("              </div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("          </tr>\r\n");
-      out.write("          <tr>\r\n");
-      out.write("            <td><span class=\"badge paid\">Pagado por Contraentrega</span></td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div class=\"font-medium\">Ana Martínez</div>\r\n");
-      out.write("              <div class=\"text-muted\">Carrera 45 #78-90, Barranquilla</div>\r\n");
-      out.write("              <div class=\"text-muted\">+57 789 012 345</div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div>Omeprazol x 1</div>\r\n");
-      out.write("              <div>Acetaminofén x 2</div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td>$45.00</td>\r\n");
-      out.write("            <td>\r\n");
-      out.write("              <div class=\"actions\">\r\n");
-      out.write("                <button class=\"button icon info\">\r\n");
-      out.write("                  <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
-      out.write("                    <path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\"></path>\r\n");
-      out.write("                    <path d=\"M15 18H9\"></path>\r\n");
-      out.write("                    <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\"></path>\r\n");
-      out.write("                    <circle cx=\"17\" cy=\"18\" r=\"2\"></circle>\r\n");
-      out.write("                    <circle cx=\"7\" cy=\"18\" r=\"2\"></circle>\r\n");
-      out.write("                  </svg>\r\n");
-      out.write("                  <span class=\"sr-only\">Marcar como Listo para Enviar</span>\r\n");
-      out.write("                </button>\r\n");
-      out.write("              </div>\r\n");
-      out.write("            </td>\r\n");
-      out.write("          </tr>\r\n");
-      out.write("        </tbody>\r\n");
-      out.write("      </table>\r\n");
-      out.write("    </div>\r\n");
-      out.write("  </div>\r\n");
-      out.write("\r\n");
-      out.write("  <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js\"></script>\r\n");
-      out.write("   \r\n");
-      out.write("    </body>\r\n");
-      out.write("</html>\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <title>Gestión de Pedidos</title>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n");
+      out.write("        <link href=\"/FarmaciaWeb/CSS/IndexAdmin.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
+      out.write("        <link href=\"/FarmaciaWeb/CSS/GestionPedidoAdm.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
+      out.write("\n");
+      out.write("    </head>\n");
+      out.write("    <body>\n");
+      out.write("        <div class=\"container-fluid\">\n");
+      out.write("            <div class=\"row\">\n");
+      out.write("                <div class=\"col-md-3 sidebar\">\n");
+      out.write("                    <div class=\"header d-flex justify-content-between align-items-center mb-3\">\n");
+      out.write("                        <a href=\"#\" class=\"logo d-flex align-items-center text-light\">\n");
+      out.write("                            <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n");
+      out.write("                            <path d=\"M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z\"/>\n");
+      out.write("                            <path d=\"m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9\"/>\n");
+      out.write("                            <path d=\"M12 3v6\"/>\n");
+      out.write("                            </svg>\n");
+      out.write("                            Farmacia Yasbel\n");
+      out.write("                        </a>\n");
+      out.write("                        <button class=\"notification-btn btn btn-link text-light\">\n");
+      out.write("                            <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n");
+      out.write("                            <path d=\"M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9\"/>\n");
+      out.write("                            <path d=\"M10.3 21a1.94 1.94 0 0 0 3.4 0\"/>\n");
+      out.write("                            </svg>\n");
+      out.write("                            <span class=\"sr-only\">Toggle notifications</span>\n");
+      out.write("                        </button>\n");
+      out.write("                    </div>\n");
+      out.write("                   \n");
+      out.write("                        <div class=\"collapsible\">\n");
+      out.write("                            <button class=\"collapsible-trigger\">\n");
+      out.write("                                Gestión de Productos\n");
+      out.write("                                <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n");
+      out.write("                                <path d=\"m9 18 6-6-6-6\"/>\n");
+      out.write("                                </svg>\n");
+      out.write("                            </button>\n");
+      out.write("                            <div class=\"collapsible-content\">\n");
+      out.write("                                <a href=\"#\" class=\"collapsible-link\">Droguería</a>\n");
+      out.write("                                <a href=\"IndexAdmin.jsp\" class=\"collapsible-link submenu-btn\">Inventario</a>\n");
+      out.write("                                <a href=\"GestionPedidoAdm.jsp\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\n");
+      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\n");
+      out.write("                                <a href=\"ListarProductoAdm.jsp\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\n");
+      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">..</a>\n");
+      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">PQR</a>\n");
+      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Productos Disponibles</a>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                    </nav>\n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"col-md-9 main-content\">\n");
+      out.write("                    <header class=\"header d-flex justify-content-between align-items-center mb-3\">\n");
+      out.write("                        <a href=\"#\" class=\"menu-toggle btn btn-link\">\n");
+      out.write("                            <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n");
+      out.write("                            <path d=\"M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z\"/>\n");
+      out.write("                            <path d=\"m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9\"/>\n");
+      out.write("                            <path d=\"M12 3v6\"/>\n");
+      out.write("                            </svg>\n");
+      out.write("                            <span class=\"sr-only\">Home</span>\n");
+      out.write("                        </a>\n");
+      out.write("                        <form class=\"search-form d-flex\">\n");
+      out.write("                            <input type=\"search\" class=\"form-control\" placeholder=\"Buscar productos...\">\n");
+      out.write("                            <svg class=\"icon search-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n");
+      out.write("                            <circle cx=\"11\" cy=\"11\" r=\"8\"/>\n");
+      out.write("                            <path d=\"m21 21-4.3-4.3\"/>\n");
+      out.write("                            </svg>\n");
+      out.write("                        </form>\n");
+      out.write("                        <div class=\"user-menu\">\n");
+      out.write("                            <button class=\"user-btn btn btn-link\">\n");
+      out.write("                                <img src=\"/placeholder.svg\" width=\"32\" height=\"32\" alt=\"Avatar\" class=\"avatar\">\n");
+      out.write("                                <span class=\"sr-only\">Toggle user menu</span>\n");
+      out.write("                            </button>\n");
+      out.write("                            <div class=\"user-menu-content\">\n");
+      out.write("                                <div class=\"user-menu-label\">Mi Cuenta</div>\n");
+      out.write("                                <div class=\"user-menu-separator\"></div>\n");
+      out.write("                                <a href=\"#\" class=\"user-menu-item\">Configuración</a>\n");
+      out.write("                                <a href=\"#\" class=\"user-menu-item\">Soporte</a>\n");
+      out.write("                                <div class=\"user-menu-separator\"></div>\n");
+      out.write("                                <a href=\"#\" class=\"user-menu-item\">Cerrar sesión</a>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                    </header>\n");
+      out.write("                    <main class=\"main\">\n");
+      out.write("                        <h1>Panel de Administración</h1>\n");
+      out.write("                        <div class=\"container\">\n");
+      out.write("                            <div class=\"table-container\">\n");
+      out.write("                                <table>\n");
+      out.write("                                    <thead>\n");
+      out.write("                                        <tr>\n");
+      out.write("                                            <th>Estado</th>\n");
+      out.write("                                            <th>Cliente</th>\n");
+      out.write("                                            <th>Productos</th>\n");
+      out.write("                                            <th>Total</th>\n");
+      out.write("                                            <th>Acciones</th>\n");
+      out.write("                                        </tr>\n");
+      out.write("                                    </thead>\n");
+      out.write("                                    <tbody>\n");
+      out.write("                                        ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                                    </tbody>\n");
+      out.write("                                </table>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                    </main>\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("        <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js\"></script>\n");
+      out.write("        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n");
+      out.write("        <script src=\"/FarmaciaWeb/JS/IndexAdmin.js\" type=\"text/javascript\"></script>\n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -210,5 +182,82 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setVar("ped");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pedidos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                                            <tr>\n");
+          out.write("                                                <td><span class=\"badge pending\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ped.getPedEstado()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</span></td>\n");
+          out.write("                                                <td>\n");
+          out.write("                                                    <div class=\"font-medium\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ped.getTblUsuarios()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\n");
+          out.write("                                                    <div class=\"text-muted\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ped.getPedDireccion()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\n");
+          out.write("                                                   \n");
+          out.write("                                                </td>\n");
+          out.write("                                                <td>\n");
+          out.write("                                                    <div>Paracetamol x 2</div>\n");
+          out.write("                                                    <div>Ibuprofeno x 1</div>\n");
+          out.write("                                                </td>\n");
+          out.write("                                                <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ped.getPedTotal()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\n");
+          out.write("                                                <td>\n");
+          out.write("                                                    <div class=\"actions\">\n");
+          out.write("                                                        <button class=\"button icon success\">\n");
+          out.write("                                                            <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n");
+          out.write("                                                            <path d=\"M20 6 9 17l-5-5\"></path>\n");
+          out.write("                                                            </svg>\n");
+          out.write("                                                            <span class=\"sr-only\">Marcar como Pagado</span>\n");
+          out.write("                                                        </button>\n");
+          out.write("                                                        <button class=\"button icon info\">\n");
+          out.write("                                                            <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n");
+          out.write("                                                            <path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\"></path>\n");
+          out.write("                                                            <path d=\"M15 18H9\"></path>\n");
+          out.write("                                                            <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\"></path>\n");
+          out.write("                                                            <circle cx=\"17\" cy=\"18\" r=\"2\"></circle>\n");
+          out.write("                                                            <circle cx=\"7\" cy=\"18\" r=\"2\"></circle>\n");
+          out.write("                                                            </svg>\n");
+          out.write("                                                            <span class=\"sr-only\">Marcar como Listo para Enviar</span>\n");
+          out.write("                                                        </button>\n");
+          out.write("                                                    </div>\n");
+          out.write("                                                </td>\n");
+          out.write("                                            </tr>\n");
+          out.write("                                        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
   }
 }

@@ -9,6 +9,8 @@ import Modelo.Carrito;
 import Modelo.CategoriaDAO;
 import Modelo.PQR;
 import Modelo.PQRDAO;
+import Modelo.Pedidos;
+import Modelo.PedidosDAO;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
 import Modelo.Usuario;
@@ -41,10 +43,12 @@ public class CtrProductoLi extends HttpServlet {
      */
     ProductoDAO pdao = new ProductoDAO();
     CategoriaDAO cdao = new CategoriaDAO();
+    PedidosDAO pedao = new PedidosDAO();
     List<Producto> list = pdao.listarT();
     List<Producto> productos = new ArrayList();
     List<CategoriaDAO> categoria = new ArrayList();
     List<Carrito> listacarrito = new ArrayList();
+    List<Pedidos> pedidos = new ArrayList();
     Usuario us;
 
     int cantidad;
@@ -64,6 +68,7 @@ public class CtrProductoLi extends HttpServlet {
         HttpSession sesion = request.getSession();
         productos = pdao.listarS();
         categoria = cdao.listar();
+        pedidos = pedao.listarT();
         
         System.out.println("producto " + productos.get(0).getProFoto());
         Producto p = new Producto();
@@ -221,13 +226,7 @@ public class CtrProductoLi extends HttpServlet {
             case "admi":
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
-                if (sesion.getAttribute("tipo") != null) {
-                    if (sesion.getAttribute("tipo").equals("Administrador")) {
-                        request.getRequestDispatcher("Vistas/IndexAdmin.jsp").forward(request, response);
-                    }
-                } else {
-                    request.getRequestDispatcher("/FarmaciaWeb/CtrProductoLi?accion=home").forward(request, response);
-                }
+                 request.getRequestDispatcher("Vistas/WelcomeAdmin.jsp").forward(request, response);
                 break;
             case "Listaradm":
                 request.setAttribute("productos", productos);
@@ -297,6 +296,10 @@ public class CtrProductoLi extends HttpServlet {
                 list = pdao.listarT();
                 request.setAttribute("prducto", list);
                 request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
+                break;
+            case "gestion":
+                 request.setAttribute("pedidos", pedidos);
+                 request.getRequestDispatcher("Vistas/GestionPedidoAdm.jsp").forward(request, response);
                 break;
 
         }
