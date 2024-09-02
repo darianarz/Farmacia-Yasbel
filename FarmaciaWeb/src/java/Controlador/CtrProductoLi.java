@@ -279,11 +279,11 @@ public class CtrProductoLi extends HttpServlet {
                 pdao.crear(p);
                 request.getRequestDispatcher("CtrProductoLi?accion=listar").forward(request, response);
                 break;
-            case "listar":
+            case "inventario":
                 productos = pdao.listarT();
                 request.setAttribute("producto", productos);
                 request.setAttribute("categorias", categoria);
-                request.getRequestDispatcher("Vistas/IndexAdmin.jsp").forward(request, response);
+                request.getRequestDispatcher("Vistas/InventarioAdm.jsp").forward(request, response);
                 break;
             case "ag":
                 request.getRequestDispatcher("Vistas/AdminiatracionProductosAdm.jsp").forward(request, response);
@@ -324,7 +324,7 @@ public class CtrProductoLi extends HttpServlet {
                     }
                 }
                 break;
-
+       
         }
 
     }
