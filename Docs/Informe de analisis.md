@@ -181,31 +181,30 @@ Administrador: se asegura del correcto funcionamiento y gestión de la plataform
 
 ### **Modelo Entidad Relación**
 
-![Diagrama MER]()
+![Diagrama MER](Diagramas/MER.jpg)
 
 ### **Diagramas de casos de uso**
 
-![Casos de Uso]()
-![Caso de uso Gestion de usuario]()
-![Caso de uso Inicio de sesion]()
-![Caso de uso Gestion de productos]()
-![Caso de uso Gestion carro de compras]()
-![Caso de uso Gestion de inventario]()
-![Caso de usoPQR]()
-![Caso de uso gestion de proveedores]()
+![Caso de uso](<Diagramas/CDUFamacia Yasbel.jpg>)
+![Caso de uso Gestion de usuario](Diagramas/CDUGestionUsuario.jpg)
+![Caso de uso Inicio de sesion](Diagramas/CDUInicioSesion.jpg)
+![Caso de uso Gestion de productos](Diagramas/CDUGestionProducto.jpg)
+![Caso de uso Gestion carro de compras](Diagramas/CDUCarritoCompra.jpg)
+![Caso de uso Gestion de inventario](Diagramas/CDUGestionInventario.jpg)
+![Caso de usoPQR](Diagramas/CDUGestionPQR.jpg)
+![Caso de uso gestion de proveedores](Diagramas/CDUGestionProveedor.jpg)
 
 <br>
 <br>
 <br>
 <br>
-
 
 |                | CASO DE USO                                                                                                                                                       | GESTION DE USUARIO |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
 | Descripcion    | Este es el sistema dedicado únicamente para el inicio de sesión del cliente, mostrando ese detalle, los pasos que se necesitan para un correcto inicio de sesión. |
-| Precondicion   | El cliente debe estar regristrado en la base de datos antes de iniciar sesión.                                                                                    |  3     U
+| Precondicion   | El cliente debe estar regristrado en la base de datos antes de iniciar sesión.                                                                                    | 3 U                |
 | Secuencion     | PASO                                                                                                                                                              | Acción             |
-| ---            | 1. El cliente ingresa el usuario y contraseña                                                                                                                      |
+| ---            | 1. El cliente ingresa el usuario y contraseña                                                                                                                     |
 | ---            | 2. El sistema valida los datos.                                                                                                                                   |
 | ---            | 3. Si los datos son incorrectos el sistema le da otra oportunidad al cliente para volver a escribir los datos.                                                    |
 | ---            | 4. Una vez validado los datos el cliente ingresa a la pagina web.                                                                                                 |
@@ -213,14 +212,10 @@ Administrador: se asegura del correcto funcionamiento y gestión de la plataform
 | Excepciones    | PASO                                                                                                                                                              | Acción             |
 | ---            | 1. Si el cliente no esta registrado o el correo electrónico ya ha sido previamente registrado por otro cliente, no se puede iniciar sesión.                       |
 
-
-
-
 <br>
 <br>
 <br>
 <br>
-
 
 |                | CASO DE USO                                                                                              | GESTION DE PRODUCTOS |
 | -------------- | -------------------------------------------------------------------------------------------------------- | -------------------- |
@@ -250,13 +245,10 @@ Administrador: se asegura del correcto funcionamiento y gestión de la plataform
 | Excepciones    | PASO                                                                                             | Acción             |
 | ---            | 1. Si el cliente no selecciona los productos el sistema no los ingresa al carrito.               |
 
-
-
 <br>
 <br>
 <br>
 <br>
-
 
 |                | CASO DE USO                                                                                                              | PQR    |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------ | ------ |
@@ -285,26 +277,24 @@ Administrador: se asegura del correcto funcionamiento y gestión de la plataform
 | Excepciones    | PASO                                                                                                                                                           | Acción                |
 | ---            | 1. Para que el sistema actualice la base de datos el administrador debe darle las instrucciones sobre qué productos específicamente proporcionó al inventario. |
 
-
 <br>
 <br>
 <br>
 <br>
-                              
 
 ### **Diagramas de actividades**
 
 ### **Gestión de usuario**
 
-![Gestion de usuario]( )
+![Gestion de usuario]()
 
 ### **Inicio de sesión**
 
-![Inicio de sesion]( )
+![Inicio de sesion]()
 
 ### **Gestión de productos**
 
-![Gestion de Productos]( )
+![Gestion de Productos]()
 
 ### **Gestión de pedidos**
 
@@ -316,12 +306,12 @@ Administrador: se asegura del correcto funcionamiento y gestión de la plataform
 
 ### **Gestión de inventario**
 
-![Gestion de inventario]( )
+![Gestion de inventario]()
 
 ### **Gestión de proveedores**
 
-![Gestion de Proveedores](  )
+![Gestion de Proveedores]()
 
 ### **Diagramas de clases (UML)**
 
-![Diagrama de Clases ]( )
+![Diagrama de Clases ]()
