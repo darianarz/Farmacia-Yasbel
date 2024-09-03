@@ -108,7 +108,7 @@
                                         <c:forEach var="pqr" items="${pqr}">
                                             <tr>
                                                 <td>${pqr.getPqrCodigo()}</td>
-                                                <td>${pqr.getTblUsuarios()}</td>
+                                                <td>${pqr.getTblUsuID()}</td>
                                                 <td>${pqr.getPqrFecha()}</td>
                                                 <td>${pqr.getPqrNombre()}</td>
                                                 <td>${pqr.getPqrCorreo()}</td>
