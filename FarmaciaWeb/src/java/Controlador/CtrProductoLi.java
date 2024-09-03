@@ -281,7 +281,7 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "inventario":
                 productos = pdao.listarT();
-                request.setAttribute("producto", productos);
+                request.setAttribute("productos", productos);
                 request.setAttribute("categorias", categoria);
                 request.getRequestDispatcher("Vistas/InventarioAdm.jsp").forward(request, response);
                 break;

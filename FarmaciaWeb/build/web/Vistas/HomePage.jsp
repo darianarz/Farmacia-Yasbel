@@ -161,7 +161,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR" method="post" >
+                <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR" >
                     <div class="form-group">
                         <label for="name"> Nombre</label>
                         <input id="name" name="nombre" type="text" placeholder="Ingrese su nombre">
@@ -178,9 +178,9 @@
                         <label for="type"> Tipo de solicitud</label>
                         <select id="type" name="tipo">
                             <option value="" disabled selected>Seleccione una opción</option>
-                            <option value="petition">Petición</option>
-                            <option value="complaint">Queja</option>
-                            <option value="claim">Reclamo</option>
+                             <option value="peticion">Petición</option>
+                            <option value="queja">Queja</option>
+                            <option value="consulta">Consulta</option>
                         </select>
                     </div>
                     <div class="form-group">

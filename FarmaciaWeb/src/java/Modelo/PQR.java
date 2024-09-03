@@ -10,23 +10,22 @@ package Modelo;
  * @author HOME
  */
 public class PQR {
-
     private String pqrCodigo;
-    private String tblUsuarios;
+    private String tblUsuID;
     private String pqrFecha;
     private String pqrNombre;
     private String pqrCorreo;
     private String pqrTelefono;
-    private String pqrTipo;
+    private String  pqrTipo;
     private String pqrDescripcion;
     private String PqrEstado;
 
     public PQR() {
     }
 
-    public PQR(String pqrCodigo, String tblUsuarios, String pqrFecha, String pqrNombre, String pqrCorreo, String pqrTelefono, String pqrTipo, String pqrDescripcion, String PqrEstado) {
+    public PQR(String pqrCodigo, String tblUsuID, String pqrFecha, String pqrNombre, String pqrCorreo, String pqrTelefono, String pqrTipo, String pqrDescripcion, String PqrEstado) {
         this.pqrCodigo = pqrCodigo;
-        this.tblUsuarios = tblUsuarios;
+        this.tblUsuID = tblUsuID;
         this.pqrFecha = pqrFecha;
         this.pqrNombre = pqrNombre;
         this.pqrCorreo = pqrCorreo;
@@ -44,12 +43,12 @@ public class PQR {
         this.pqrCodigo = pqrCodigo;
     }
 
-    public String getTblUsuarios() {
-        return tblUsuarios;
+    public String getTblUsuID() {
+        return tblUsuID;
     }
 
-    public void setTblUsuarios(String tblUsuarios) {
-        this.tblUsuarios = tblUsuarios;
+    public void setTblUsuID(String tblUsuID) {
+        this.tblUsuID = tblUsuID;
     }
 
     public String getPqrFecha() {
@@ -108,4 +107,5 @@ public class PQR {
         this.PqrEstado = PqrEstado;
     }
 
+    
 }

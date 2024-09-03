@@ -11,6 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index Admin</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link href="/FarmaciaWeb/CSS/PQRAdmin.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/PQR.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
@@ -108,7 +110,7 @@
                                         <c:forEach var="pqr" items="${pqr}">
                                             <tr>
                                                 <td>${pqr.getPqrCodigo()}</td>
-                                                <td>${pqr.getTblUsuarios()}</td>
+                                                <td>${pqr.getTblUsuID()}</td>
                                                 <td>${pqr.getPqrFecha()}</td>
                                                 <td>${pqr.getPqrNombre()}</td>
                                                 <td>${pqr.getPqrCorreo()}</td>
@@ -119,6 +121,7 @@
                                                 <td class=" text-center border">
                                                     <input type="hidden" name="id" id="id" value="${pqr.getPqrCodigo()}">
                                                     <a class="btn btn-danger" id="btneliminar" href="#"><i class="bi bi-trash-fill"></i></a>
+                                                    <a class="btn" style="background-color: #74BD64" id="btnresponder" href="#"><i class="bi bi-envelope-check"></i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -135,5 +138,6 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>  
     </body>
 </html>
