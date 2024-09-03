@@ -286,31 +286,31 @@ Administrador: se asegura del correcto funcionamiento y gestión de la plataform
 
 ### **Gestión de usuario**
 
-![Gestion de usuario]()
+![Gestion de usuario](Diagramas/GestUsuarios.jpg)
 
 ### **Inicio de sesión**
 
-![Inicio de sesion]()
+![Inicio de sesion](Diagramas/GestInicdSesion.jpg)
 
 ### **Gestión de productos**
 
-![Gestion de Productos]()
+![Gestion de Productos](Diagramas/GestProductos.jpg)
 
 ### **Gestión de pedidos**
 
-![Gestion de pedidos]()
+![Gestion de pedidos](Diagramas/GestPedidos.jpg)
 
 ### **PQR**
 
-![PQR]()
+![PQR](Diagramas/GestPQR.jpg)
 
 ### **Gestión de inventario**
 
-![Gestion de inventario]()
+![Gestion de inventario](Diagramas/GestInventario.jpg)
 
 ### **Gestión de proveedores**
 
-![Gestion de Proveedores]()
+![Gestion de Proveedores](Diagramas/GestProveedores.jpg)
 
 ### **Diagramas de clases (UML)**
 
