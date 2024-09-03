@@ -11,15 +11,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Yasbel Drugs - Administración de Productos</title>
         <link href="/FarmaciaWeb/CSS/Gestion.css" rel="stylesheet" type="text/css"/>
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 sidebar">
                     <div class="header d-flex justify-content-between align-items-center mb-3">
-                        <a href="#" class="logo d-flex align-items-center text-light">
+                        <a href="/FarmaciaWeb/CtrProductoLi?accion=home" class="logo d-flex align-items-center text-light">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
                             <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
@@ -45,16 +45,13 @@
                                 <path d="m9 18 6-6-6-6"/>
                                 </svg>
                             </button>
-                             <div class="collapsible-content">
-                                <a href="#" class="collapsible-link">Droguería</a>
-                                <a href="IndexAdmin.jsp" class="collapsible-link submenu-btn">Inventario</a>
-                                <a href="GestionPedidoAdm.jsp" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
-                                <a href="#" class="collapsible-link submenu-btn">Gestión de Clientes</a>
-                                <a href="ListarProductoAdm.jsp" class="collapsible-link submenu-btn">Gestion de Productos</a>
-                                <a href="#" class="collapsible-link submenu-btn">..</a>
-                                <a href="#" class="collapsible-link submenu-btn">PQR</a>
-                                <a href="#" class="collapsible-link submenu-btn">Productos Disponibles</a>
-                           </div>
+                            <div class="collapsible-content">
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
+                                <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
+                                <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
+                            </div>
                         </div>
                     </nav>
                 </div>
@@ -77,13 +74,13 @@
                         </form>
                         <div class="user-menu">
                             <button class="user-btn btn btn-link">
-                                <img src="/placeholder.svg" width="32" height="32" alt="Avatar" class="avatar">
+                                <i class="bi bi-people-fill"></i>
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">
-                                <div class="user-menu-label">Mi Cuenta</div>
-                                <div class="user-menu-separator"></div>
-                                <a href="#" class="user-menu-item">Cerrar sesión</a>
+                                <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                                <a class="dropdown-item " >${usuario.getUsutipo()}</a>
+                                <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
                             </div>
                         </div>
                     </header>
@@ -115,7 +112,7 @@
                                     </div>
                                     <select id="category" name="category">
                                         <option value="" disabled selected>Selecciona una categoría</option>
-                                        
+
                                     </select>
                                     <div class="form-group">
                                         <label for="stock" style="padding-top: 10px;">Stock</label>
@@ -129,14 +126,14 @@
                                         <label for="descuento">Descuento</label>
                                         <input id="descuento" name="descuento" type="number" placeholder="descuento del Producto">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="imageUrl">URL de la Imagen</label>
                                         <input id="imageUrl" name="imageUrl" type="text" placeholder="URL de la Imagen">
                                     </div>
                                     <button class="button">Agregar Producto</button>
                                 </div>
-                               
+
                             </div>
                         </div> 
                     </main>

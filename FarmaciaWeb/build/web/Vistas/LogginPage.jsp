@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
 
     <head>
@@ -14,7 +16,7 @@
         if (request.getParameter("fallo") != null) {
             int i = Integer.parseInt(request.getParameter("fallo"));
             if (i == 0) {
-                Mensaje = "usuario y/o contraseña incorrecta";
+                Mensaje = "usuario y/o contraseÃ±a incorrecta";
             }
         }
     %>
@@ -24,17 +26,17 @@
                 <div class="form sign_in">
                     
                     <img src="../Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
-                    <h3>Iniciar sesión</h3>
+                    <h3>Iniciar sesiÃ³n</h3>
 
                     <form action="/FarmaciaWeb/CtrValidarInfo" id="form_input" method="post">
                         <div class="type">
                             <input type="text" placeholder="Correo Electronico" id="email" name="txtusu">
                         </div>
                         <div class="type">
-                            <input type="password" placeholder="Contraseña" id="password" name="txtpass">
+                            <input type="password" placeholder="ContraseÃ±a" id="password" name="txtpass">
                         </div>
                         <div class="forgot">
-                            <span>¿Olvidó su contraseña?</span>
+                            <span>Â¿OlvidÃ³ su contraseÃ±a?</span>
                         </div>
                         
                         <input type="submit" name="accion" value="Ingresar" class="btn bkg">
@@ -44,11 +46,11 @@
 
                 <div class="form sign_up">
                     <img src="../Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
-                    <h3>Regístrate</h3>
-                    <form action="/FarmaciaWeb/CtrUsuarioCre?accion=nuevo" id="form_input" class="form_input2">
+                    <h3>RegÃ­strate</h3>
+                    <form action="/FarmaciaWeb/CtrUsuarioCre?accion=nuevo" id="form_input" class="form_input2" method="get">
                         <div class="grid-container">
                             <div class="type">
-                                <input type="text" placeholder="Número de identificación" name="id" id="id" class="id">
+                                <input type="text" placeholder="NÃºmero de identificaciÃ³n" name="id" id="id" class="id">
                             </div>
                             <div class="type">
                                 <input type="text" placeholder="Nombre" id="nombre" class="nombre" name="nombre">
@@ -57,10 +59,10 @@
                                 <input type="text" placeholder="Apellido" name="apellido" id="apellido" class="apellido">
                             </div>
                             <div class="type">
-                                <input  type="text" placeholder="Dirección" id="direccion" class="direccion" name="direccion">
+                                <input  type="text" placeholder="DirecciÃ³n" id="direccion" class="direccion" name="direccion">
                             </div>
                             <div class="type">
-                                <input type="number" placeholder="Teléfono" id="telefono" class="telefono" name="telefono">
+                                <input type="number" placeholder="TelÃ©fono" id="telefono" class="telefono" name="telefono">
                             </div>
                             <div class="type">
                                 <input type="email" placeholder="Correo" id="email" class="email" name="email">
@@ -70,7 +72,7 @@
                             </div>
                             
                             <div class="type">
-                                <input type="password" placeholder="Contraseña" id="contrasena" class="contrasena" name="contrasena">
+                                <input type="password" placeholder="ContraseÃ±a" id="contrasena" class="contrasena" name="contrasena">
                             </div>
                             
                             <div class="col formulario_grupo" id="grupo_tipo">
@@ -79,8 +81,6 @@
                                 <select class="form-control formulario_input" name="tipo" id="tipo">
                                     <option value="Administrador">Administrador</option> 
                                     <option value="Usuario">Usuario</option> 
-                                    <option value="Invitado">Invitado</option> 
-                                    <option value="Cliente">Cliente</option> 
                                 </select>
                             </div>
                         </div>
@@ -98,22 +98,22 @@
             <div class="overlay">
                 <div class="page page_signIn">
                     <img src="../Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
-                    <h3>¡Bienvenido!</h3>
-                    <p>Para continuar con nosotros, inicie sesión con sus datos personales.</p>
-                    <button class="btn btnSign-in">Regístrate <i class="bi bi-arrow-right"></i></button>
+                    <h3>Â¡Bienvenido!</h3>
+                    <p>Para continuar con nosotros, inicie sesiÃ³n con sus datos personales.</p>
+                    <button class="btn btnSign-in">RegÃ­strate <i class="bi bi-arrow-right"></i></button>
                 </div>
 
                 <div class="page page_signUp">
                     <img src="../Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
-                    <h3>¡Bienvenido!</h3>
+                    <h3>Â¡Bienvenido!</h3>
                     <p>Ingresa tus datos personales</p>
-                    <button class="btn btnSign-up"><i class="bi bi-arrow-left"></i> Iniciar sesión</button>
+                    <button class="btn btnSign-up"><i class="bi bi-arrow-left"></i> Iniciar sesiÃ³n</button>
                 </div>
             </div>
         </div>
 
-        <script src="../JS/LoginPage.js" type="text/javascript"></script>
-        <script src="../JS/ValidarDatos.js" type="text/javascript"></script>
+        <script src="/FarmaciaWeb/JS/LoginPage.js" type="text/javascript"></script>
+        <script src="/FarmaciaWeb/JS/ValidarDatos.js" type="text/javascript"></script>
     </body>
     
 

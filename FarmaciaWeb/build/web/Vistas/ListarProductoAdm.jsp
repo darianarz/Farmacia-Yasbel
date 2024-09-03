@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md-3 sidebar">
                     <div class="header d-flex justify-content-between align-items-center mb-3">
-                        <a href="#" class="logo d-flex align-items-center text-light">
+                        <a href="/FarmaciaWeb/CtrProductoLi?accion=home" class="logo d-flex align-items-center text-light">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
                             <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
@@ -52,14 +52,11 @@
                                 </svg>
                             </button>
                             <div class="collapsible-content">
-                                <a href="#" class="collapsible-link">Droguería</a>
-                                <a href="IndexAdmin.jsp" class="collapsible-link submenu-btn">Inventario</a>
-                                <a href="GestionPedidoAdm.jsp" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
-                                <a href="#" class="collapsible-link submenu-btn">Gestión de Clientes</a>
-                                <a href="ListarProductoAdm.jsp" class="collapsible-link submenu-btn">Gestion de Productos</a>
-                                <a href="#" class="collapsible-link submenu-btn">..</a>
-                                <a href="#" class="collapsible-link submenu-btn">PQR</a>
-                                <a href="#" class="collapsible-link submenu-btn">Productos Disponibles</a>
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
+                                <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
+                                <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
                             </div>
                         </div>
                     </nav>
@@ -87,9 +84,9 @@
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">
-                                <div class="user-menu-label">Mi Cuenta</div>
-                                <div class="user-menu-separator"></div>
-                                <a href="#" class="user-menu-item">Cerrar sesión</a>
+                                <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                                <a class="dropdown-item " >${usuario.getUsutipo()}</a>
+                                <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
 
                             </div>
                         </div>
@@ -229,7 +226,7 @@
 
                                         </form>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -242,15 +239,15 @@
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>                        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>  
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="../JS/IndexAdmin.js" type="text/javascript"></script>
+        <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
         <script src="/FarmaciaWeb/JS/EliminarProducto.js" type="text/javascript"></script>
-        
+
         <script>
-        $(document).ready(function () {
+                                                        $(document).ready(function () {
             <c:if test="${editarPro}">
-        $('#editarproducto').modal('show');
+                                                            $('#editarproducto').modal('show');
             </c:if>
-         });
+                                                        });
         </script>
     </body>
 </html>

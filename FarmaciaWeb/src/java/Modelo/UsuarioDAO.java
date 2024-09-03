@@ -131,6 +131,7 @@ public class UsuarioDAO {
             pstm.setString(8, us.getUsutelefono());
             pstm.setString(9, us.getUsudireccion());
             pstm.executeUpdate();
+            System.out.println("usuario creado");
         } catch (Exception e) {
             System.out.println("Error al crear usuarios " + e);
         }

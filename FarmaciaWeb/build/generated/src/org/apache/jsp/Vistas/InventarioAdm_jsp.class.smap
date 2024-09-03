@@ -1,10 +1,10 @@
 SMAP
-IndexAdmin_jsp.java
+InventarioAdm_jsp.java
 JSP
 *S JSP
 *F
-+ 0 IndexAdmin.jsp
-Vistas/IndexAdmin.jsp
++ 0 InventarioAdm.jsp
+Vistas/InventarioAdm.jsp
 *L
 5,77:54
 82,2:131,3

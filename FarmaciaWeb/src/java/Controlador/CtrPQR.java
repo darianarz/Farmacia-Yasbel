@@ -34,23 +34,50 @@ public class CtrPQR extends HttpServlet {
      */
     PQRDAO pqrdao = new PQRDAO();
     PQR pqr;
-     
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CtrUsuarioCre</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CtrUsuarioCre at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String nom, cor, tel, tip, des , usid;
+        
+        List<PQR> list = pqrdao.listarT();
+
+        String accion = request.getParameter("accion");
+        System.out.println("accion: " + accion);
+        
+        switch (accion) {
+            case "CrearPQR":
+                System.out.println("crear pqr");
+                nom = request.getParameter("nombre");
+                cor = request.getParameter("correo");
+                tel = request.getParameter("telefono");
+                tip = request.getParameter("tipo");
+                des = request.getParameter("descripcion");
+                usid = request.getParameter("id");
+
+                PQR pqr = new PQR();
+
+                pqr.setTblUsuarios(usid);
+                pqr.setPqrNombre(nom);
+                pqr.setPqrCorreo(cor);
+                pqr.setPqrTelefono(tel);
+                pqr.setPqrTipo(tip);
+                pqr.setPqrDescripcion(des);
+
+                pqrdao.crearPQR(pqr);
+
+                request.getRequestDispatcher("/FarmaciaWeb/CtrProductoLi?accion=home").forward(request, response);
+                break;
+
+            case "listarPQR":
+
+                list = pqrdao.listarT();
+                request.setAttribute("pqr", list);
+                request.getRequestDispatcher("Vistas/PqrAdm.jsp").forward(request, response);
+
+                break;
+
         }
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -79,50 +106,37 @@ public class CtrPQR extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nom, cor, tel, tip, des;
-        List<PQR> list = pqrdao.listarpqr();
-       
+        String nom, cor, tel, tip, des , usid;
+        List<PQR> list = pqrdao.listarT();
+
         String accion = request.getParameter("accion");
         System.out.println("accion: " + accion);
-        
-            String usuarioID = (String) request.getSession().getAttribute("id");
-                if (usuarioID == null) {
-                    request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
-                    return;
-                }
-                
+  
         switch (accion) {
             case "CrearPQR":
+                System.out.println("crear pqr");
                 nom = request.getParameter("nombre");
                 cor = request.getParameter("correo");
                 tel = request.getParameter("telefono");
                 tip = request.getParameter("tipo");
                 des = request.getParameter("descripcion");
-                
-                
+                usid = request.getParameter("id");
+               
                 PQR pqr = new PQR();
-                pqr.setTblUsuID(usuarioID);
+                
+                pqr.setTblUsuarios(usid);
                 pqr.setPqrNombre(nom);
                 pqr.setPqrCorreo(cor);
                 pqr.setPqrTelefono(tel);
                 pqr.setPqrTipo(tip);
                 pqr.setPqrDescripcion(des);
-                
+
                 pqrdao.crearPQR(pqr);
-                
-                request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                request.getRequestDispatcher("CtrProductoLi?accion=home").forward(request, response);
                 break;
-                
-            case "listarPQR":
- 
-                list = pqrdao.listarpqr();
-                request.setAttribute("pqr", list);
-                request.getRequestDispatcher("Vistas/PqrAdm.jsp").forward(request, response);
-                
-                break;
-                
+
         }
-        
+
     }
 
     /**
