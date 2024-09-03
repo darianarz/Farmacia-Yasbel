@@ -87,7 +87,7 @@ public class CtrProductoLi extends HttpServlet {
                         System.out.println("entro en administador");
                         request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
                     } else {
-                        if (sesion.getAttribute("tipo").equals("Cliente")) {
+                        if (sesion.getAttribute("tipo").equals("Usuario")) {
                             request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                         }
                     }
@@ -172,17 +172,17 @@ public class CtrProductoLi extends HttpServlet {
                 request.getRequestDispatcher("CtrProductoLi?accion=home").forward(request, response);
                 break;
             case "Carrito":
+                request.setAttribute("categorias", categoria);
+                System.out.println("categoria " + categoria.size());
                 totalpagar = 0;
                 for (int i = 0; i < listacarrito.size(); i++) {
                     totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
                 }
                 request.setAttribute("totalpagar", totalpagar);
                 request.setAttribute("carrito", listacarrito);
-                if (sesion.getAttribute("tipo").equals("Administrador")) {
+                if (sesion.getAttribute("tipo").equals("Usuario")) {
                     request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
-                } else if (sesion.getAttribute("tipo").equals("Cliente")) {
-                    request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
-                }
+                } 
                 break;
             case "Comprar":
                 totalpagar = 0;

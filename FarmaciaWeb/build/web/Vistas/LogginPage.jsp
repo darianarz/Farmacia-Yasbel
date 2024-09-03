@@ -19,6 +19,12 @@
                 Mensaje = "usuario y/o contraseña incorrecta";
             }
         }
+        if (request.getParameter("mensaje") != null) {
+            int i = Integer.parseInt(request.getParameter("mensaje"));
+            if (i == 0) {
+                Mensaje = "usuario creado , por favor inisie sesion";
+            }
+        }
     %>
     <body>
         <div class="container">
