@@ -118,7 +118,7 @@
                     </div>
                     <div class="summary-item d-flex justify-content-between">
                         <p>Envío:</p>
-                        <p>$2.99</p>
+                        <p>$0.00</p>
                     </div>
                     <div class="summary-total d-flex justify-content-between">
                         <p>Total:</p>
@@ -127,7 +127,7 @@
                 </div>
                 <div class="summary-actions mt-4 d-flex justify-content-between">
                     <button class="continue-shopping-btn">Seguir Comprando</button>
-                    <button class="checkout-btn">Proceder al Pago</button>
+                    <a class="btn btn-danger btn-block" href="/AppWeb/CtrProducto?accion=pedido&idusu=${usuario.getId()}&totalp=${totalpagar}" id="btngen" onclick="ejecutarTarea()">Generar Pedido</a>
                 </div>
             </div>
         </div>
@@ -168,8 +168,8 @@
                                 <input type="hidden" name="id" id="id" value="${usuario.getUsuid()}">
                                 <label for="description"> Descripción de la solicitud</label>
                                 <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
+                            
                             </div>
-                            <button type="submit" name="accion" value="CrearPQR" class="button"> Enviar</button>
                         </form>
                     </div>
                     <div class="modal-footer" id="modal">
@@ -182,5 +182,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+    <script>
+        function ejecutarTarea() {
+            document.getElementById("MensajeEspera").style.display = "block";
+            $('#reloj').modal('show');
+        }
+    </script>
 </body>
 </html>

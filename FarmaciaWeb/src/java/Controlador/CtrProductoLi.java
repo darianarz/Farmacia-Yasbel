@@ -17,9 +17,11 @@ import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -324,6 +326,66 @@ public class CtrProductoLi extends HttpServlet {
                     }
                 }
                 break;
+              case "pedido":
+                if (listacarrito.size() > 0) {
+                    
+                    idusu = request.getParameter("idusu");
+                    System.out.println("usuario " + idusu);
+                    int idpago = 1;
+                    fec = DateFormat.getDateInstance().format(d);
+                    mon = Integer.parseInt(request.getParameter("totalp"));
+                    estado = "En Proceso";
+                    ped.setIdcliente(idusu);
+                    ped.setFecha(fec);
+                    ped.setMonto(mon);
+                    ped.setEstado(estado);
+                    ped.setIdpago(idpago);
+                    peddao.crear(ped);
+                    int idpe = peddao.listarId();
+                    System.out.println("idpedido: " + idpe);
+                    for (int i = 0; i < listacarrito.size(); i++) {
+                        Detalle_Pedido dped = new Detalle_Pedido();
+                        dped.setIdpedido(idpe);
+                        dped.setIdproducto(listacarrito.get(i).getIdproducto());
+                        dped.setNombre(listacarrito.get(i).getNombre());
+                        dped.setCantidad(listacarrito.get(i).getCantidad());
+                        dped.setPrecio(listacarrito.get(i).getPreciocompra());
+                        dpdao.crear(dped);
+                    }
+                   Properties propiedad = new Properties();
+                   propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+                   propiedad.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+                   propiedad.setProperty("mail.smtp.starttls.enable", "true");
+                   propiedad.setProperty("mail.smtp.port", "587");
+                   propiedad.setProperty("mail.smtp.auth", "true");
+                   
+                   Session session1 = Session.getDefaultInstance(propiedad);
+                   String correoenvio= "zarro1978@gmail.com";
+                   String contrasena = "fhgklxoesgnpfkvf";
+                   String destinatario = sesion.getAttribute("correo").toString();
+                   String Asunto = "Pedido Generado";
+                   String Mensaje = "Estimado cliente "+ sesion.getAttribute("User").toString() + "\n\n Su pedido ha sido gerenerado satisfactoriamente," + "\n\n Datos de su pedido: " + "\n\nNumero Pedido: "+idpe+"\nFecha: "+fec+"\nValor: "+mon+"\nEstado: "+estado;
+                   
+                   MimeMessage mail = new MimeMessage(session1);
+                   
+                   try{
+                       mail.setFrom(new InternetAddress(correoenvio));
+                       mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+                       mail.setSubject(Asunto);
+                       mail.setText(Mensaje);
+                       //mail.setContent(Mensaje, "text/html");
+                       
+                       Transport transporte = session1.getTransport("smtp");
+                       transporte.connect(correoenvio, contrasena);
+                       transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                       transporte.close();
+                   }catch(Exception e){
+                       System.out.println("Error al enviar el correo: "+e);
+                   }
+                }
+                listacarrito.removeAll(listacarrito);
+                request.getRequestDispatcher("CtrProducto?accion=Carrito").forward(request, response);
+               break;
        
         }
 

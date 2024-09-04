@@ -13,7 +13,6 @@ public class Pedidos {
 
     private int pedCodigo;
     private int tblUsuarios;
-    private String PedDireccion;
     private String PedFormaDePago;
     private String PedFecha;
     private double pedTotal;
@@ -22,10 +21,9 @@ public class Pedidos {
     public Pedidos() {
     }
 
-    public Pedidos(int pedCodigo, int tblUsuarios, String PedDireccion, String PedFormaDePago, String PedFecha, double pedTotal, String PedEstado) {
+    public Pedidos(int pedCodigo, int tblUsuarios, String PedFormaDePago, String PedFecha, double pedTotal, String PedEstado) {
         this.pedCodigo = pedCodigo;
         this.tblUsuarios = tblUsuarios;
-        this.PedDireccion = PedDireccion;
         this.PedFormaDePago = PedFormaDePago;
         this.PedFecha = PedFecha;
         this.pedTotal = pedTotal;
@@ -46,14 +44,6 @@ public class Pedidos {
 
     public void setTblUsuarios(int tblUsuarios) {
         this.tblUsuarios = tblUsuarios;
-    }
-
-    public String getPedDireccion() {
-        return PedDireccion;
-    }
-
-    public void setPedDireccion(String PedDireccion) {
-        this.PedDireccion = PedDireccion;
     }
 
     public String getPedFormaDePago() {

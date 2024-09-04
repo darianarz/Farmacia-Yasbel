@@ -38,7 +38,6 @@ public class PedidosDAO {
                 Pedidos ped = new Pedidos();
                 ped.setPedCodigo(resul.getInt("PedCodigo"));
                 ped.setTblUsuarios(resul.getInt("tblUsuarios"));
-                ped.setPedDireccion(resul.getString("PedDireccion"));
                 ped.setPedFormaDePago(resul.getString("PedFormaDePago"));
                 ped.setPedFecha(resul.getString("PedFecha"));
                 ped.setPedTotal(resul.getDouble("PedTotal"));
