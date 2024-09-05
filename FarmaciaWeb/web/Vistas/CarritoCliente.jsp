@@ -55,7 +55,6 @@
                             <a class="dropdown-item " >${usuario.getUsunombre()}</a>
                             <a class="dropdown-item " >${usuario.getUsutipo()}</a>
                             <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
-                            <a class="dropdown-item text-warnig" href="/FarmaciaWeb/CtrProductoLi?accion=admi">Gestion Administrador</a>
                             <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
 
                         </div>
@@ -91,44 +90,48 @@
         <div class="container mt-5">
             <h1 class="main-title text-center">Tu Carrito</h1>
             <div class="product-container d-flex flex-wrap justify-content-start">
-                <c:forEach var="car" items="${carrito}">
-                    <div class="product-card d-flex flex-column align-items-center p-3 m-2">
-                        <img src="${car.getFoto()}" alt="Producto" class="product-img mb-3">
-                        <h3 class="product-name">${car.getNombre()}</h3>
-                        <p class="product-price">${car.getPreciocompra()}</p>
-                        <p class="product-description">${car.getDescripcion()}</p>
-                        <p class="product-quantity">Cantidad: ${car.getCantidad()}</p>
-                        <input type="hidden" id="idp" value="${car.getIdproducto()}">
-                        <div class="d-flex justify-content-between align-items-center mt-3 w-100">
-                            <button class="quantity-btn">-</button>
-                            <span>${car.getCantidad()}</span>
-                            <button class="quantity-btn">+</button>
-                        </div>
-                        <button class="remove-btn mt-3">Eliminar</button>
-                    </div>
-                </c:forEach>
+                <table class="table table-hover">
+
+                    <tbody>
+                        <c:forEach var="car" items="${carrito}">
+                            <tr>
+                                <td>${car.getItem()}</td>
+                                <td>${car.getNombre()}<img src="${car.getFoto()}" width="100" height="100"></td>
+                                <td>${car.getDescripcion()}</td>
+                                <td>${car.getPreciocompra()}</td>
+                                <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
+                                    <input type="number" id="cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1">
+                                </td>
+                                <td>${car.getSubtotal()}</td>
+                                <td><input type="hidden" id="idp" value="${car.getIdproducto()}">
+                                    <a class="btn btn-outline-danger" href="#" id="btndelete"><i class="bi bi-trash"></i></a>
+
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table> 
             </div>
 
-            <div class="summary-card mt-5 p-4">
-                <h2 class="summary-title">Resumen del Pedido</h2>
-                <div class="summary-details mt-3">
-                    <div class="summary-item d-flex justify-content-between">
-                        <p>Subtotal:</p>
-                        <p>$${subtotal}</p>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Generar Compra</h3>
                     </div>
-                    <div class="summary-item d-flex justify-content-between">
-                        <p>Envío:</p>
-                        <p>$0.00</p>
+                    <div class="card-body">
+                        <label>Subtotal:</label>
+                        <input type="text" value="" readonly="" class="form-control">
+                        <label>Descuento:</label>
+                        <input type="text" value="$0.00" readonly="" class="form-control">
+                        <label>Total:</label>
+                        <input type="text" value="" readonly="" class="form-control">
                     </div>
-                    <div class="summary-total d-flex justify-content-between">
-                        <p>Total:</p>
-                        <p>$${total}</p>
+                    <div class="card-footer">
+                        <a class="btn btn-outline-info btn-block" href="#" id="btnpay"><i class="bi bi-wallet2"></i> Realizar Pago</a>
+                        <a class="btn btn-danger btn-block" href="/FarmaciWeb/CtrProductoLi?accion=pedido&idusu=${usuario.getUsuid()}&totalp=${totalpagar}" id="btngen" onclick="ejecutarTarea()">Generar Pedido</a>
+
                     </div>
-                </div>
-                <div class="summary-actions mt-4 d-flex justify-content-between">
-                    <button class="continue-shopping-btn">Seguir Comprando</button>
-                    <a class="btn btn-danger btn-block" href="/AppWeb/CtrProducto?accion=pedido&idusu=${usuario.getId()}&totalp=${totalpagar}" id="btngen" onclick="ejecutarTarea()">Generar Pedido</a>
-                </div>
+                </div> 
             </div>
         </div>
 
@@ -168,7 +171,7 @@
                                 <input type="hidden" name="id" id="id" value="${usuario.getUsuid()}">
                                 <label for="description"> Descripción de la solicitud</label>
                                 <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
-                            
+
                             </div>
                         </form>
                     </div>
@@ -182,11 +185,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+    <script src="/FarmaciaWeb/JS/EliminarProducto.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>                       
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        function ejecutarTarea() {
-            document.getElementById("MensajeEspera").style.display = "block";
-            $('#reloj').modal('show');
-        }
+                            function ejecutarTarea() {
+                                document.getElementById("MensajeEspera").style.display = "block";
+                                $('#reloj').modal('show');
+                            }
     </script>
 </body>
 </html>

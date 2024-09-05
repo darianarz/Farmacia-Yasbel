@@ -77,7 +77,6 @@ public class Pedidos {
     public void setPedEstado(String PedEstado) {
         this.PedEstado = PedEstado;
     }
-    
-    
 
+    
 }

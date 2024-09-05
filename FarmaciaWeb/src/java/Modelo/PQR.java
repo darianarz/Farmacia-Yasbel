@@ -16,7 +16,7 @@ public class PQR {
     private String pqrNombre;
     private String pqrCorreo;
     private String pqrTelefono;
-    private String  pqrTipo;
+    private String pqrTipo;
     private String pqrDescripcion;
     private String PqrEstado;
 

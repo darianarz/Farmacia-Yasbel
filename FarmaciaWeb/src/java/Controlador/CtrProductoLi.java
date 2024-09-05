@@ -7,6 +7,8 @@ package Controlador;
 
 import Modelo.Carrito;
 import Modelo.CategoriaDAO;
+import Modelo.DetallePedido;
+import Modelo.DetallePedidoDAO;
 import Modelo.PQR;
 import Modelo.PQRDAO;
 import Modelo.Pedidos;
@@ -52,14 +54,21 @@ public class CtrProductoLi extends HttpServlet {
     List<Carrito> listacarrito = new ArrayList();
     List<Pedidos> pedidos = new ArrayList();
     Usuario us;
+    List<Pedidos> listapedido = new ArrayList();
+    List<DetallePedido> listadetped = new ArrayList();
+    Pedidos ped = new Pedidos();
+    DetallePedidoDAO dpdao = new DetallePedidoDAO();
+    PedidosDAO peddao = new PedidosDAO();
+    UsuarioDAO usudao = new UsuarioDAO();
+    Carrito car;
 
     int cantidad;
-    Carrito car;
+
     int idp;
     int subtotal;
     int item;
-    int totalpagar;
-    String nom, des, foto, idusu, fec, estado, idcliente, id;
+    int totalpagar, idusu;
+    String nom, des, foto, fec, estado, idcliente, id;
     int pre, sto, cat, mon, idcli;
     Date d = new Date();
 
@@ -184,7 +193,7 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("carrito", listacarrito);
                 if (sesion.getAttribute("tipo").equals("Usuario")) {
                     request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
-                } 
+                }
                 break;
             case "Comprar":
                 totalpagar = 0;
@@ -292,7 +301,7 @@ public class CtrProductoLi extends HttpServlet {
                 break;
 
             case "eliminar":
-                id = request.getParameter("id");
+                String id = request.getParameter("idp"); // Cambia 
                 System.out.println("id: " + id);
                 pdao.eliminar(id);
                 list = pdao.listarT();
@@ -326,72 +335,42 @@ public class CtrProductoLi extends HttpServlet {
                     }
                 }
                 break;
-              case "pedido":
+
+            case "pedido":
                 if (listacarrito.size() > 0) {
-                    
-                    idusu = request.getParameter("idusu");
+
+                    idusu = Integer.parseInt(request.getParameter("idusu"));
                     System.out.println("usuario " + idusu);
-                    int idpago = 1;
                     fec = DateFormat.getDateInstance().format(d);
                     mon = Integer.parseInt(request.getParameter("totalp"));
                     estado = "En Proceso";
-                    ped.setIdcliente(idusu);
-                    ped.setFecha(fec);
-                    ped.setMonto(mon);
-                    ped.setEstado(estado);
-                    ped.setIdpago(idpago);
+                    ped.setTblUsuarios(idusu);
+                    ped.setPedFecha(fec);
+                    ped.setPedTotal(mon);
+                    ped.setPedEstado(estado);
                     peddao.crear(ped);
-                    int idpe = peddao.listarId();
+                    int idpe = peddao.listarMx();
                     System.out.println("idpedido: " + idpe);
                     for (int i = 0; i < listacarrito.size(); i++) {
-                        Detalle_Pedido dped = new Detalle_Pedido();
-                        dped.setIdpedido(idpe);
-                        dped.setIdproducto(listacarrito.get(i).getIdproducto());
-                        dped.setNombre(listacarrito.get(i).getNombre());
-                        dped.setCantidad(listacarrito.get(i).getCantidad());
-                        dped.setPrecio(listacarrito.get(i).getPreciocompra());
+                        DetallePedido dped = new DetallePedido();
+                        dped.setTblPedido(idpe);
+                        dped.setTblProducto(listacarrito.get(i).getIdproducto());
+                        dped.setDpdNombreProducto(listacarrito.get(i).getNombre());
+                        dped.setDpdCantidad(listacarrito.get(i).getCantidad());
+                        dped.setDpdPrecioTotal(listacarrito.get(i).getPreciocompra());
                         dpdao.crear(dped);
                     }
-                   Properties propiedad = new Properties();
-                   propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
-                   propiedad.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
-                   propiedad.setProperty("mail.smtp.starttls.enable", "true");
-                   propiedad.setProperty("mail.smtp.port", "587");
-                   propiedad.setProperty("mail.smtp.auth", "true");
-                   
-                   Session session1 = Session.getDefaultInstance(propiedad);
-                   String correoenvio= "zarro1978@gmail.com";
-                   String contrasena = "fhgklxoesgnpfkvf";
-                   String destinatario = sesion.getAttribute("correo").toString();
-                   String Asunto = "Pedido Generado";
-                   String Mensaje = "Estimado cliente "+ sesion.getAttribute("User").toString() + "\n\n Su pedido ha sido gerenerado satisfactoriamente," + "\n\n Datos de su pedido: " + "\n\nNumero Pedido: "+idpe+"\nFecha: "+fec+"\nValor: "+mon+"\nEstado: "+estado;
-                   
-                   MimeMessage mail = new MimeMessage(session1);
-                   
-                   try{
-                       mail.setFrom(new InternetAddress(correoenvio));
-                       mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
-                       mail.setSubject(Asunto);
-                       mail.setText(Mensaje);
-                       //mail.setContent(Mensaje, "text/html");
-                       
-                       Transport transporte = session1.getTransport("smtp");
-                       transporte.connect(correoenvio, contrasena);
-                       transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
-                       transporte.close();
-                   }catch(Exception e){
-                       System.out.println("Error al enviar el correo: "+e);
-                   }
+
+                    listacarrito.removeAll(listacarrito);
+                    request.getRequestDispatcher("CtrProductoLi?accion=Carrito").forward(request, response);
+                    break;
+
                 }
-                listacarrito.removeAll(listacarrito);
-                request.getRequestDispatcher("CtrProducto?accion=Carrito").forward(request, response);
-               break;
-       
+
         }
-
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
