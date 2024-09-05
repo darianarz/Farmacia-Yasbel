@@ -104,7 +104,7 @@
                                 </td>
                                 <td>${car.getSubtotal()}</td>
                                 <td><input type="hidden" id="idp" value="${car.getIdproducto()}">
-                                    <a class="btn btn-outline-danger" href="#" id="btndelete"><i class="bi bi-trash"></i></a>
+                                    <a class="btn btn-outline-danger" href="#" id=""><i class="bi bi-trash"></i></a>
 
                                 </td>
                             </tr>
