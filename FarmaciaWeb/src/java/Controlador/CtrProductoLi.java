@@ -7,6 +7,8 @@ package Controlador;
 
 import Modelo.Carrito;
 import Modelo.CategoriaDAO;
+import Modelo.DetallePedido;
+import Modelo.DetallePedidoDAO;
 import Modelo.PQR;
 import Modelo.PQRDAO;
 import Modelo.Pedidos;
@@ -17,9 +19,11 @@ import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,14 +54,21 @@ public class CtrProductoLi extends HttpServlet {
     List<Carrito> listacarrito = new ArrayList();
     List<Pedidos> pedidos = new ArrayList();
     Usuario us;
+    List<Pedidos> listapedido = new ArrayList();
+    List<DetallePedido> listadetped = new ArrayList();
+    Pedidos ped = new Pedidos();
+    DetallePedidoDAO dpdao = new DetallePedidoDAO();
+    PedidosDAO peddao = new PedidosDAO();
+    UsuarioDAO usudao = new UsuarioDAO();
+    Carrito car;
 
     int cantidad;
-    Carrito car;
+
     int idp;
     int subtotal;
     int item;
-    int totalpagar;
-    String nom, des, foto, idusu, fec, estado, idcliente, id;
+    int totalpagar, idusu;
+    String nom, des, foto, fec, estado, idcliente, id;
     int pre, sto, cat, mon, idcli;
     Date d = new Date();
 
@@ -87,7 +98,7 @@ public class CtrProductoLi extends HttpServlet {
                         System.out.println("entro en administador");
                         request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
                     } else {
-                        if (sesion.getAttribute("tipo").equals("Cliente")) {
+                        if (sesion.getAttribute("tipo").equals("Usuario")) {
                             request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                         }
                     }
@@ -172,15 +183,15 @@ public class CtrProductoLi extends HttpServlet {
                 request.getRequestDispatcher("CtrProductoLi?accion=home").forward(request, response);
                 break;
             case "Carrito":
+                request.setAttribute("categorias", categoria);
+                System.out.println("categoria " + categoria.size());
                 totalpagar = 0;
                 for (int i = 0; i < listacarrito.size(); i++) {
                     totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
                 }
                 request.setAttribute("totalpagar", totalpagar);
                 request.setAttribute("carrito", listacarrito);
-                if (sesion.getAttribute("tipo").equals("Administrador")) {
-                    request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
-                } else if (sesion.getAttribute("tipo").equals("Cliente")) {
+                if (sesion.getAttribute("tipo").equals("Usuario")) {
                     request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
                 }
                 break;
@@ -244,21 +255,27 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "actualizarpro":
                 int idprodu = Integer.parseInt(request.getParameter("txtid"));
-                String nompro = request.getParameter("txtnombre");
                 int prepro = Integer.parseInt(request.getParameter("txtprecio"));
+                String descu = request.getParameter("txtdescuento");
+                String marcapro = request.getParameter("txtmarca");
+                String nompro = request.getParameter("txtnombre");
+                String fotpro = request.getParameter("foto2");
                 String despro = request.getParameter("txtdescripcion");
+                String fecha = request.getParameter("txtfechavencimiento");
                 int stopro = Integer.parseInt(request.getParameter("txtstock"));
                 int catpro = Integer.parseInt(request.getParameter("cat"));
-                String fotpro = request.getParameter("foto2");
                 p.setProCodigo(idprodu);
                 p.setProPrecio(prepro);
+                p.setProDescuento(descu);
+                p.setProMarca(marcapro);
                 p.setProNombre(nompro);
                 p.setProFoto(fotpro);
                 p.setProDescripcion(despro);
+                p.setProFechaVencimiento(fecha);
                 p.setProStok(stopro);
                 p.setTblCategoria(catpro);
                 pdao.editar(p);
-                request.getRequestDispatcher("CtrProducto?accion=listar").forward(request, response);
+                request.getRequestDispatcher("CtrProductoLi?accion=listar").forward(request, response);
                 break;
             case "Agregar":
                 System.out.println("entro Agregar AppWeb");
@@ -290,7 +307,7 @@ public class CtrProductoLi extends HttpServlet {
                 break;
 
             case "eliminar":
-                id = request.getParameter("id");
+                String id = request.getParameter("idp"); // Cambia 
                 System.out.println("id: " + id);
                 pdao.eliminar(id);
                 list = pdao.listarT();
@@ -324,12 +341,42 @@ public class CtrProductoLi extends HttpServlet {
                     }
                 }
                 break;
-       
+
+            case "pedido":
+                if (listacarrito.size() > 0) {
+
+                    idusu = Integer.parseInt(request.getParameter("idusu"));
+                    System.out.println("usuario " + idusu);
+                    fec = DateFormat.getDateInstance().format(d);
+                    mon = Integer.parseInt(request.getParameter("totalp"));
+                    estado = "En Proceso";
+                    ped.setTblUsuarios(idusu);
+                    ped.setPedFecha(fec);
+                    ped.setPedTotal(mon);
+                    ped.setPedEstado(estado);
+                    peddao.crear(ped);
+                    int idpe = peddao.listarMx();
+                    System.out.println("idpedido: " + idpe);
+                    for (int i = 0; i < listacarrito.size(); i++) {
+                        DetallePedido dped = new DetallePedido();
+                        dped.setTblPedido(idpe);
+                        dped.setTblProducto(listacarrito.get(i).getIdproducto());
+                        dped.setDpdNombreProducto(listacarrito.get(i).getNombre());
+                        dped.setDpdCantidad(listacarrito.get(i).getCantidad());
+                        dped.setDpdPrecioTotal(listacarrito.get(i).getPreciocompra());
+                        dpdao.crear(dped);
+                    }
+
+                    listacarrito.removeAll(listacarrito);
+                    request.getRequestDispatcher("CtrProductoLi?accion=Carrito").forward(request, response);
+                    break;
+
+                }
+
         }
-
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *

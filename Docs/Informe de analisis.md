@@ -69,9 +69,7 @@ Con este proyecto se espera una mejora en las ventas de la farmacia, dicho siste
 
 ### **8. Características de Usuario**
 
-El sistema cuenta con tres tipos de usuario
-
-Empleado: se encargará de la administración del sistema.
+El sistema cuenta con dos tipos de usuario
 
 Cliente: realizara compras y consultas.
 

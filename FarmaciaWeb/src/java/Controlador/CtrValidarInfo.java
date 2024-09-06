@@ -108,8 +108,8 @@ public class CtrValidarInfo extends HttpServlet {
                     if (us.getUsutipo().equals("Administrador")) {
                         response.sendRedirect("/FarmaciaWeb/CtrProductoLi?accion=home");
                     }
-                    if (us.getUsutipo().equals("Cliente")) {
-                        response.sendRedirect("/FarmaciaWeb/Vistas/HomePage.jsp");
+                    if (us.getUsutipo().equals("Usuario")) {
+                        response.sendRedirect("/FarmaciaWeb/CtrProductoLi?accion=home");
                     }
                 }
             }else{

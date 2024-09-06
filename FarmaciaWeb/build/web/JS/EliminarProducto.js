@@ -9,7 +9,6 @@
 $(document).ready(function () {
     $("tr #btndelete").click(function () {
         var idp = $(this).parent().find("#idp").val();
-        //alert("idp="+idp);
         swal({
             title: "Esta seguro que lo desea eliminar?",
             text: "Una vez eliminado, podra seguir comprando más productos!",
@@ -24,7 +23,8 @@ $(document).ready(function () {
                             icon: "success"
                         }).then((willDelete) => {
                             if (willDelete) {
-                                parent.location.href = "CtrProductoLi?accion=Carrito";
+                                console.log("elimino");
+                                parent.location.href = "CtrProductoLi?accion=Listaradm";
                             }
                         });
                     } else {
@@ -36,16 +36,16 @@ $(document).ready(function () {
     function eliminar(idp) {
         var url = "CtrProductoLi?accion=eliminar";
         $.ajax({
-            type: 'post',
+            type: 'POST',
             url: url,
-            data: "idp=" + idp,
+            data: {idp: idp},
             success: function (data, textStatus, jqXHR) {
-
+                console.log("Producto eliminado");
             }
         });
     }
 
-$("tr #cantidad").click(function (){
+    $("tr #cantidad").click(function () {
         //alert ("Entro en Cantidad!");
         var idp = $(this).parent().find("#idpro").val();
         var Cantidad = $(this).parent().find("#cantidad").val();
@@ -53,10 +53,10 @@ $("tr #cantidad").click(function (){
         $.ajax({
             type: 'POST',
             url: url,
-            data: "idp=" + idp +"&Cantidad=" + Cantidad,
-            success: function (data, textStatus, jqXHR){
+            data: "idp=" + idp + "&Cantidad=" + Cantidad,
+            success: function (data, textStatus, jqXHR) {
                 //alert ("Entro en Cantidad!");
-                location.href="CtrProductoLi?accion=Carrito";
+                location.href = "CtrProductoLi?accion=Carrito";
             }
         });
     });

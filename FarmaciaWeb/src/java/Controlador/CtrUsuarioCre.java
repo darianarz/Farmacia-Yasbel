@@ -102,7 +102,7 @@ public class CtrUsuarioCre extends HttpServlet {
                 dao.crear(us);
                 list = dao.listarT();
                 request.setAttribute("usuarios", list);
-                request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                request.getRequestDispatcher("Vistas/LogginPage.jsp?mensaje=0").forward(request, response);
                 break;
             case "Listar":
                 request.setAttribute("usuarios", list);

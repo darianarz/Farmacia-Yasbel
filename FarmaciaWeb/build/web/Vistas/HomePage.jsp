@@ -4,15 +4,12 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Farma-online</title>
-
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- Bootstrap Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-        <!-- Custom CSS -->
+
         <link href="/FarmaciaWeb/CSS/PQR.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/style.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -44,16 +41,17 @@
                 </form>
 
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bi bi-person"></i> Mi Cuenta
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="#"><i class="bi bi-person"></i></a>
-                            <a class="dropdown-item">${usuario.getUsunombre()}</a>
-                            <a class="dropdown-item">${usuario.getUsutipo()}</a>
-                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
-                            <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesión</a>
+                            <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                            <a class="dropdown-item " >${usuario.getUsutipo()}</a>
+                            <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
+                            <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+
                         </div>
                     </li>
                     <li class="nav-item">
@@ -146,54 +144,56 @@
         </footer>
 
         <!-- Modal -->
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-4 shadow-lg">
-                    <div class="modal-header border-0">
-                        <h1 class="modal-title fs-4" id="exampleModalLabel">Sistema de PQR</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Sistema de PQR</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR"  >
+                    <div class="form-group">
+                        <label for="name"> Nombre</label>
+                        <input id="name" name="nombre" class="nombre" type="text" placeholder="Ingrese su nombre">
                     </div>
-                    <div class="modal-body">
-                        <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR" method="post">
-                            <div class="form-group mb-3">
-                                <label for="name" class="form-label">Nombre</label>
-                                <input id="name" name="nombre" type="text" class="form-control custom-input" placeholder="Ingrese su nombre" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="email" class="form-label">Correo electrónico</label>
-                                <input id="email" name="correo" type="email" class="form-control custom-input" placeholder="Ingrese su correo" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="phone" class="form-label">Teléfono</label>
-                                <input id="phone" name="telefono" type="text" class="form-control custom-input" placeholder="Ingrese su teléfono" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="type" class="form-label">Tipo de solicitud</label>
-                                <select id="type" name="tipo" class="form-select custom-select" required>
-                                    <option value="" disabled selected>Seleccione una opción</option>
-                                    <option value="1">Queja</option>
-                                    <option value="2">Sugerencia</option>
-                                    <option value="3">Reclamo</option>
-                                </select>
-                            </div>
-                            <div class="form-group mb-4">
-                                <label for="description" class="form-label">Descripción</label>
-                                <textarea id="description" name="descripcion" class="form-control custom-textarea" rows="4" placeholder="Ingrese su mensaje" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary custom-btn">Enviar</button>
-                        </form>
+                    <div class="form-group">
+                        <label for="email"> Correo electrónico</label>
+                        <input id="email" name="correo" type="email"  class="email" placeholder="Ingrese su correo">
                     </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <div class="form-group">
+                        <label for="phone"> Teléfono</label>
+                        <input id="telefono" class="telefono" name="telefono" type="text" placeholder="Ingrese su teléfono">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="type"> Tipo de solicitud</label>
+                        <select id="type" name="tipo" class="tipo">
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="peticion">Petición</option>
+                            <option value="queja">Queja</option>
+                            <option value="consulta">Consulta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="id" id="id" value="${usuario.getUsuid()}">
+                        <label for="description"> Descripción de la solicitud</label>
+                        <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
+                    </div>
+                    <button type="submit" name="accion" value="CrearPQR" class="button"> Enviar</button>
+                </form>
+            </div>
+            <div class="modal-footer" id="modal">
+                <p>Si el problema persiste, llame a la linea +123-456-789</p>
             </div>
         </div>
-
+    </div>
+</div>
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+crossorigin="anonymous"></script>
     </body>
 </html>
