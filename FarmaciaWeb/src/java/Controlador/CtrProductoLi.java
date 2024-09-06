@@ -255,21 +255,27 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "actualizarpro":
                 int idprodu = Integer.parseInt(request.getParameter("txtid"));
-                String nompro = request.getParameter("txtnombre");
                 int prepro = Integer.parseInt(request.getParameter("txtprecio"));
+                String descu = request.getParameter("txtdescuento");
+                String marcapro = request.getParameter("txtmarca");
+                String nompro = request.getParameter("txtnombre");
+                String fotpro = request.getParameter("foto2");
                 String despro = request.getParameter("txtdescripcion");
+                String fecha = request.getParameter("txtfechavencimiento");
                 int stopro = Integer.parseInt(request.getParameter("txtstock"));
                 int catpro = Integer.parseInt(request.getParameter("cat"));
-                String fotpro = request.getParameter("foto2");
                 p.setProCodigo(idprodu);
                 p.setProPrecio(prepro);
+                p.setProDescuento(descu);
+                p.setProMarca(marcapro);
                 p.setProNombre(nompro);
                 p.setProFoto(fotpro);
                 p.setProDescripcion(despro);
+                p.setProFechaVencimiento(fecha);
                 p.setProStok(stopro);
                 p.setTblCategoria(catpro);
                 pdao.editar(p);
-                request.getRequestDispatcher("CtrProducto?accion=listar").forward(request, response);
+                request.getRequestDispatcher("CtrProductoLi?accion=listar").forward(request, response);
                 break;
             case "Agregar":
                 System.out.println("entro Agregar AppWeb");

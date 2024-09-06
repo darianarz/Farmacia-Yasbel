@@ -134,7 +134,8 @@
                                             <td class="border">${prod.getProStok()}</td>
                                             <td class="border">${prod.getTblCategoria()}</td>
                                             <td scope="col" class ="text-center border">
-                                                <input type="hidden" name="id" id="id" value="${prod.getProCodigo()}">
+                                                <input type="hidden" name="idp" id="idp" value="${prod.getProCodigo()}">
+
                                                 <a class="btn btn-warning" href="/FarmaciaWeb/CtrProductoLi?accion=EditarPro&idpro=${prod.getProCodigo()}" data-bs-toggle="modal" data-bs-target="#editarproducto"><i class="bi bi-pencil-fill"></i></a>
                                                 <a class="btn btn-danger" id="btndelete" href="#"><i class="bi bi-trash-fill"></i></a>
                                             </td>
@@ -154,7 +155,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="form-sing" action="/AppWeb/CtrProducto?accion=actualizarpro" method="POST" >
+                                        <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpro" method="POST" >
                                             <div class="form-row">
                                                 <div class="col-6">
                                                     <label>Nombre</label> 
@@ -192,7 +193,7 @@
                                                     <label>Categoria</label> 
                                                     <select class="form-control" name="categoria" onchange="actualizarInputOculto(this)">
                                                         <c:forEach var="cat" items="${categorias}">
-                                                            <option value="${cat.getId()}">${cat.getNombre()}</option>
+                                                            <option value="${cat.getCatCodigo()}">${cat.getCatNombre()}</option>
                                                         </c:forEach>
                                                     </select>
                                                     <input type="hidden" class="form-control" name="cat" id="cat" value="${Productoe.getCategoria()}"> 
@@ -244,9 +245,11 @@
 
         <script>
                                                         $(document).ready(function () {
+
             <c:if test="${editarPro}">
                                                             $('#editarproducto').modal('show');
             </c:if>
+
                                                         });
         </script>
     </body>

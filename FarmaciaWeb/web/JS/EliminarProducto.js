@@ -24,7 +24,7 @@ $(document).ready(function () {
                         }).then((willDelete) => {
                             if (willDelete) {
                                 console.log("elimino");
-                                parent.location.href = "CtrProductoLi?accion=Carrito";
+                                parent.location.href = "CtrProductoLi?accion=Listaradm";
                             }
                         });
                     } else {
