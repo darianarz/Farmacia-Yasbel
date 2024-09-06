@@ -5,7 +5,7 @@
 <html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Farma-online</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -41,7 +41,7 @@
                 </form>
 
                 <ul class="navbar-nav">
-                      <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bi bi-person"></i> Mi Cuenta
                         </a>
@@ -75,16 +75,90 @@
                 </ul>
             </div>
         </nav>
-
-        <!-- Offer Banner -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-content">
+                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/farmacia-la-botica.jpg" alt="First slide">
+                        <div class="mini-images">
+                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/farmacia-la-botica.jpg" alt="Mini First slide">
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="promo-banner">
+                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-content">
+                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Second slide">
+                        <div class="mini-images">
+                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Mini Second slide">
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="promo-banner">
+                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-content">
+                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Third slide">
+                        <div class="mini-images">
+                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Mini Third slide">
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="promo-banner">
+                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <br>
+        <br>
         <div class="offer-banner">
-            <p class="offer-text">Ofertas con el <span class="discount">30%</span> de descuento</p>
-            <p class="offer-note">¡No te lo pierdas!</p>
+            <p class="offer-text">Ofertas de <span class="discount">30%</span> en la Farmacia Yasbel</p>
+            <div class="offer-cards">
+                <div class="offer-card">
+                    <p class="card-title">Medicamentos</p>
+                    <p class="card-items"> ítems</p>
+                    <a href="#">Ver Todo</a>
+                </div>
+                <div class="offer-card">
+                    <p class="card-title">Suplementos</p>
+                    <p class="card-items">ítems</p>
+                    <a href="#">Ver Todo</a>
+                </div>
+                <div class="offer-card">
+                    <p class="card-title">Cuidado Personal</p>
+                    <p class="card-items">ítems</p>
+                    <a href="#">Ver Todo</a>
+                </div>
+                <div class="offer-card">
+                    <p class="card-title">Productos para Bebes</p>
+                    <p class="card-items"> ítems</p>
+                    <a href="#">Ver Todo</a>
+                </div>
+            </div>
             <div class="rotating-light"></div>
         </div>
-
-
-
+        <br>            
         <!-- Products Section -->
         <section id="productos" class="product-container">
             <div class="container">
@@ -144,56 +218,56 @@
         </footer>
 
         <!-- Modal -->
-       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Sistema de PQR</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR"  >
-                    <div class="form-group">
-                        <label for="name"> Nombre</label>
-                        <input id="name" name="nombre" class="nombre" type="text" placeholder="Ingrese su nombre">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sistema de PQR</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="form-group">
-                        <label for="email"> Correo electrónico</label>
-                        <input id="email" name="correo" type="email"  class="email" placeholder="Ingrese su correo">
+                    <div class="modal-body">
+                        <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR"  >
+                            <div class="form-group">
+                                <label for="name"> Nombre</label>
+                                <input id="name" name="nombre" class="nombre" type="text" placeholder="Ingrese su nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="email"> Correo electrónico</label>
+                                <input id="email" name="correo" type="email"  class="email" placeholder="Ingrese su correo">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"> Teléfono</label>
+                                <input id="telefono" class="telefono" name="telefono" type="text" placeholder="Ingrese su teléfono">
+                            </div>
+                            <div class="form-group">
+                                <label for="type"> Tipo de solicitud</label>
+                                <select id="type" name="tipo" class="tipo">
+                                    <option value="" disabled selected>Seleccione una opción</option>
+                                    <option value="peticion">Petición</option>
+                                    <option value="queja">Queja</option>
+                                    <option value="consulta">Consulta</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="id" id="id" value="${usuario.getUsuid()}">
+                                <label for="description"> Descripción de la solicitud</label>
+                                <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
+                            </div>
+                            <button type="submit" name="accion" value="CrearPQR" class="button"> Enviar</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="phone"> Teléfono</label>
-                        <input id="telefono" class="telefono" name="telefono" type="text" placeholder="Ingrese su teléfono">
+                    <div class="modal-footer" id="modal">
+                        <p>Si el problema persiste, llame a la linea +123-456-789</p>
                     </div>
-                    <div class="form-group">
-                        <label for="type"> Tipo de solicitud</label>
-                        <select id="type" name="tipo" class="tipo">
-                            <option value="" disabled selected>Seleccione una opción</option>
-                            <option value="peticion">Petición</option>
-                            <option value="queja">Queja</option>
-                            <option value="consulta">Consulta</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="hidden" name="id" id="id" value="${usuario.getUsuid()}">
-                        <label for="description"> Descripción de la solicitud</label>
-                        <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
-                    </div>
-                    <button type="submit" name="accion" value="CrearPQR" class="button"> Enviar</button>
-                </form>
-            </div>
-            <div class="modal-footer" id="modal">
-                <p>Si el problema persiste, llame a la linea +123-456-789</p>
+                </div>
             </div>
         </div>
-    </div>
-</div>
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-crossorigin="anonymous"></script>
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     </body>
 </html>
