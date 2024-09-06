@@ -9,6 +9,7 @@ import Modelo.PQR;
 import Modelo.PQRDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,17 +35,19 @@ public class CtrPQR extends HttpServlet {
      */
     PQRDAO pqrdao = new PQRDAO();
     PQR pqr = new PQR();
+    int idpqr;
+    List<PQR> listapqr = new ArrayList();
+    List<PQR> listpqr = pqrdao.listarpqr();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String nom, cor, tel, tip, des;
-        List<PQR> list = pqrdao.listarpqr();
-       
+        String nom, cor, tel, tip, des;
+
         String accion = request.getParameter("accion");
         System.out.println("accion: " + accion);
-        
-            String usuarioID = (String) request.getSession().getAttribute("id");
-               
+
+        String usuarioID = (String) request.getSession().getAttribute("id");
+        request.setAttribute("contador", listapqr.size());
         switch (accion) {
             case "CrearPQR":
                 nom = request.getParameter("nombre");
@@ -52,8 +55,7 @@ public class CtrPQR extends HttpServlet {
                 tel = request.getParameter("telefono");
                 tip = request.getParameter("tipo");
                 des = request.getParameter("descripcion");
-                
-                
+
                 PQR pqr = new PQR();
                 pqr.setTblUsuID(usuarioID);
                 pqr.setPqrNombre(nom);
@@ -61,20 +63,27 @@ public class CtrPQR extends HttpServlet {
                 pqr.setPqrTelefono(tel);
                 pqr.setPqrTipo(tip);
                 pqr.setPqrDescripcion(des);
-                
+
                 pqrdao.crearPQR(pqr);
-                list = pqrdao.listarpqr();
-                request.getRequestDispatcher("/Vistas/HomePageAdm.jsp").forward(request, response);
+                listpqr = pqrdao.listarpqr();
+                request.getRequestDispatcher("CtrProductoLi?accion=home").forward(request, response);
                 break;
-                
+
             case "listarPQR":
-                request.setAttribute("pqr", list);
+                request.setAttribute("pqr", listpqr);
                 request.getRequestDispatcher("/Vistas/PqrAdm.jsp").forward(request, response);
-                
+
                 break;
-                
+            case "eliminarPQR":
+                String id = request.getParameter("idp");
+                System.out.println("eliminar: " + id);
+                pqrdao.eliminarPQR(id);
+                listpqr = pqrdao.listarpqr();
+                request.setAttribute("pqr", listpqr);
+                request.getRequestDispatcher("/Vistas/PqrAdm.jsp").forward(request, response);
+                break;
+
         }
-        
 
     }
 
@@ -104,8 +113,7 @@ public class CtrPQR extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-
+        processRequest(request, response);
     }
 
     /**

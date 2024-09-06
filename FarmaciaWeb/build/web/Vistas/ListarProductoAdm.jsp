@@ -135,7 +135,6 @@
                                             <td class="border">${prod.getTblCategoria()}</td>
                                             <td scope="col" class ="text-center border">
                                                 <input type="hidden" name="idp" id="idp" value="${prod.getProCodigo()}">
-
                                                 <a class="btn btn-warning" href="/FarmaciaWeb/CtrProductoLi?accion=EditarPro&idpro=${prod.getProCodigo()}" data-bs-toggle="modal" data-bs-target="#editarproducto"><i class="bi bi-pencil-fill"></i></a>
                                                 <a class="btn btn-danger" id="btndelete" href="#"><i class="bi bi-trash-fill"></i></a>
                                             </td>

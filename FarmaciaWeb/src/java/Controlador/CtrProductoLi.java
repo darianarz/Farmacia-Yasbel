@@ -307,7 +307,7 @@ public class CtrProductoLi extends HttpServlet {
                 break;
 
             case "eliminar":
-                String id = request.getParameter("idp"); // Cambia 
+                String id = request.getParameter("idp"); 
                 System.out.println("id: " + id);
                 pdao.eliminar(id);
                 list = pdao.listarT();

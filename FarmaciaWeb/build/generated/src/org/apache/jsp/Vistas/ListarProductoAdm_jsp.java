@@ -80,7 +80,7 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("            <div class=\"row\">\r\n");
       out.write("                <div class=\"col-md-3 sidebar\">\r\n");
       out.write("                    <div class=\"header d-flex justify-content-between align-items-center mb-3\">\r\n");
-      out.write("                        <a href=\"#\" class=\"logo d-flex align-items-center text-light\">\r\n");
+      out.write("                        <a href=\"/FarmaciaWeb/CtrProductoLi?accion=home\" class=\"logo d-flex align-items-center text-light\">\r\n");
       out.write("                            <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
       out.write("                            <path d=\"M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z\"/>\r\n");
       out.write("                            <path d=\"m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9\"/>\r\n");
@@ -106,14 +106,11 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                </svg>\r\n");
       out.write("                            </button>\r\n");
       out.write("                            <div class=\"collapsible-content\">\r\n");
-      out.write("                                <a href=\"#\" class=\"collapsible-link\">Droguería</a>\r\n");
-      out.write("                                <a href=\"IndexAdmin.jsp\" class=\"collapsible-link submenu-btn\">Inventario</a>\r\n");
-      out.write("                                <a href=\"GestionPedidoAdm.jsp\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\r\n");
-      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\r\n");
-      out.write("                                <a href=\"ListarProductoAdm.jsp\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
-      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">..</a>\r\n");
-      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">PQR</a>\r\n");
-      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Productos Disponibles</a>\r\n");
+      out.write("                                <a href=\"/FarmaciaWeb/CtrProductoLi?accion=inventario\" class=\"collapsible-link submenu-btn\">Inventario</a>\r\n");
+      out.write("                                <a href=\"/FarmaciaWeb/CtrProductoLi?accion=gestion\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\r\n");
+      out.write("                                <a href=\"/FarmaciaWeb/CtrUsuarioCre?accion=Listar\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\r\n");
+      out.write("                                <a href=\"/FarmaciaWeb/CtrProductoLi?accion=Listaradm\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
+      out.write("                                <a href=\"/FarmaciaWeb/CtrPQR?accion=listarPQR\" class=\"collapsible-link submenu-btn\">PQR</a>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </nav>\r\n");
@@ -141,9 +138,13 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                <span class=\"sr-only\">Toggle user menu</span>\r\n");
       out.write("                            </button>\r\n");
       out.write("                            <div class=\"user-menu-content\">\r\n");
-      out.write("                                <div class=\"user-menu-label\">Mi Cuenta</div>\r\n");
-      out.write("                                <div class=\"user-menu-separator\"></div>\r\n");
-      out.write("                                <a href=\"#\" class=\"user-menu-item\">Cerrar sesión</a>\r\n");
+      out.write("                                <a class=\"dropdown-item \" >");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getUsunombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</a>\r\n");
+      out.write("                                <a class=\"dropdown-item \" >");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getUsutipo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</a>\r\n");
+      out.write("                                <a class=\"dropdown-item text-danger\" href=\"/FarmaciaWeb/CtrProductoLi?accion=salir\">Cerrar Sesion</a>\r\n");
       out.write("\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
@@ -199,7 +200,7 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                    <div class=\"modal-body\">\r\n");
-      out.write("                                        <form class=\"form-sing\" action=\"/AppWeb/CtrProducto?accion=actualizarpro\" method=\"POST\" >\r\n");
+      out.write("                                        <form class=\"form-sing\" action=\"/FarmaciaWeb/CtrProductoLi?accion=actualizarpro\" method=\"POST\" >\r\n");
       out.write("                                            <div class=\"form-row\">\r\n");
       out.write("                                                <div class=\"col-6\">\r\n");
       out.write("                                                    <label>Nombre</label> \r\n");
@@ -271,14 +272,12 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\r\n");
       out.write("                                            <center>\r\n");
       out.write("                                                <button type=\"submit\" class=\"btn btn-primary mt-4 mb-2 formulario_btn\" name=\"btnagregar\" value=\"Agregar\">Agregar <i class=\"bi bi-floppy\"></i></button>\r\n");
-      out.write("                                                <a class=\"btn btn-danger formulario_btn mt-4 mb-2\" name=\"regresar\" href=\"#\">Regrsar <i class=\"bi bi-box-arrow-left\"></i></a>\r\n");
+      out.write("                                                <a class=\"btn btn-danger formulario_btn mt-4 mb-2\" name=\"regresar\" href=\"#\">Regresar <i class=\"bi bi-box-arrow-left\"></i></a>\r\n");
       out.write("                                            </center>\r\n");
       out.write("\r\n");
       out.write("                                        </form>\r\n");
       out.write("                                    </div>\r\n");
-      out.write("                                    <div class=\"modal-footer\">\r\n");
       out.write("\r\n");
-      out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
@@ -291,16 +290,18 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <script src=\"https://code.jquery.com/jquery-3.3.1.js\"></script>                        \r\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\"></script>  \r\n");
       out.write("        <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>\r\n");
-      out.write("        <script src=\"../JS/IndexAdmin.js\" type=\"text/javascript\"></script>\r\n");
-      out.write("        <script src=\"/AppWeb/JS/Funciones3.js\" type=\"text/javascript\"></script>\r\n");
       out.write("        <script src=\"/FarmaciaWeb/JS/IndexAdmin.js\" type=\"text/javascript\"></script>\r\n");
+      out.write("        <script src=\"/FarmaciaWeb/JS/EliminarProducto.js\" type=\"text/javascript\"></script>\r\n");
+      out.write("\r\n");
       out.write("        <script>\r\n");
-      out.write("        $(document).ready(function () {\r\n");
+      out.write("                                                        $(document).ready(function () {\r\n");
+      out.write("\r\n");
       out.write("            ");
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("         });\r\n");
+      out.write("\r\n");
+      out.write("                                                        });\r\n");
       out.write("        </script>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
@@ -356,13 +357,14 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getTblCategoria()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
           out.write("                                            <td scope=\"col\" class =\"text-center border\">\r\n");
-          out.write("                                                <input type=\"hidden\" name=\"id\" id=\"id\" value=\"");
+          out.write("                                                <input type=\"hidden\" name=\"idp\" id=\"idp\" value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\r\n");
+          out.write("\r\n");
           out.write("                                                <a class=\"btn btn-warning\" href=\"/FarmaciaWeb/CtrProductoLi?accion=EditarPro&idpro=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\" data-bs-toggle=\"modal\" data-bs-target=\"#editarproducto\"><i class=\"bi bi-pencil-fill\"></i></a>\r\n");
-          out.write("                                                <a class=\"btn btn-danger\" id=\"btneliminar\" href=\"#\"><i class=\"bi bi-trash-fill\"></i></a>\r\n");
+          out.write("                                                <a class=\"btn btn-danger\" id=\"btndelete\" href=\"#\"><i class=\"bi bi-trash-fill\"></i></a>\r\n");
           out.write("                                            </td>\r\n");
           out.write("                                        </tr>\r\n");
           out.write("                                    ");
@@ -402,10 +404,10 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
         do {
           out.write("\r\n");
           out.write("                                                            <option value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getCatCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getCatNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</option>\r\n");
           out.write("                                                        ");
           int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
@@ -440,7 +442,7 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
     if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("        $('#editarproducto').modal('show');\r\n");
+        out.write("                                                            $('#editarproducto').modal('show');\r\n");
         out.write("            ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
