@@ -60,7 +60,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-text-white" href="CtrProductoLi?accion=Carrito">
+                        <a class="nav-link nav-text-white" href="/FarmaciaWeb/CtrProductoLi?accion=Carrito">
                             <i class="bi bi-cart-check-fill"></i> Carrito
                             (<label style="color: darkorange">${contador}</label>)
 
@@ -78,7 +78,6 @@
 
                             </c:forEach>
                         </ul>
-
                     </li>
                 </ul>
             </div>
@@ -87,11 +86,85 @@
         <br>
         <br>
         <br>
-
-        <div class="offer-banner">
-            <p class="offer-text">Ofertas con el 30% de descuento</p>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-content">
+                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/farmacia-la-botica.jpg" alt="First slide">
+                        <div class="mini-images">
+                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/farmacia-la-botica.jpg" alt="Mini First slide">
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="promo-banner">
+                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-content">
+                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Second slide">
+                        <div class="mini-images">
+                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Mini Second slide">
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="promo-banner">
+                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-content">
+                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Third slide">
+                        <div class="mini-images">
+                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Mini Third slide">
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="promo-banner">
+                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-
+        <br>
+        <br>
+        <div class="offer-banner">
+            <p class="offer-text">Ofertas de <span class="discount">30%</span> en la Farmacia Yasbel</p>
+            <div class="offer-cards">
+                <div class="offer-card">
+                    <p class="card-title">Medicamentos</p>
+                    <p class="card-items"> ítems</p>
+                    <a href="#">Ver Todo</a>
+                </div>
+                <div class="offer-card">
+                    <p class="card-title">Suplementos</p>
+                    <p class="card-items">ítems</p>
+                    <a href="#">Ver Todo</a>
+                </div>
+                <div class="offer-card">
+                    <p class="card-title">Cuidado Personal</p>
+                    <p class="card-items">ítems</p>
+                    <a href="#">Ver Todo</a>
+                </div>
+                <div class="offer-card">
+                    <p class="card-title">Productos para Bebes</p>
+                    <p class="card-items"> ítems</p>
+                    <a href="#">Ver Todo</a>
+                </div>
+            </div>
+            <div class="rotating-light"></div>
+        </div>
         <br>
         <section id="productos" class="product-container">
             <div class="container">
@@ -114,9 +187,6 @@
                     </c:forEach>
                 </div>
             </div>
-
-
-
         </section>
     </main>
     <div class="row-expand-lg py-4" id="footer" >
@@ -203,5 +273,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 crossorigin="anonymous"></script>
+<script src="/FarmaciaWeb/JS/carrucel_home.js" type="text/javascript"></script>
 </body>
 </html>

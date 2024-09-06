@@ -211,3 +211,41 @@ body {
     padding: 20px;
     flex-grow: 1; 
 }
+/* Estilo del banner promocional */
+.promo-banner {
+  background-color: #ffdb00;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.promo-banner strong {
+  font-size: 24px;
+}
+
+/* Ajustes de tamaño del carrusel */
+.carousel-item img {
+  max-height: 300px; /* Ajuste para hacer el carrusel más pequeño */
+  object-fit: cover;
+}
+
+/* Miniaturas debajo del carrusel */
+.carousel-thumbnails img {
+  width: 100px;  /* Ajuste para las miniaturas */
+  height: auto;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 5px;
+  transition: transform 0.3s ease;
+}
+
+.carousel-thumbnails img:hover {
+  transform: scale(1.1);
+}
