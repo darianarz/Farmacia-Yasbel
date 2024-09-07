@@ -129,7 +129,7 @@ class DatosPage extends StatelessWidget {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.green[500],
+                          backgroundColor: Colors.green[500],
                           padding: EdgeInsets.symmetric(horizontal: 16),
                         ),
                         child: Text('Agregar al carrito'),
