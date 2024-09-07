@@ -33,29 +33,34 @@ public class PQRDAO {
             }
 
             pstm = con.prepareStatement("INSERT INTO tblpqr (tblUsuID, PQRFecha, PQRNombre, PQRCorreo, PQRtelefono, PQRTipo, PQRDescripcion, PQREstado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-           
-            pstm.setString(1, pqr.getTblUsuID()); 
-            pstm.setTimestamp(2, new Timestamp(new Date().getTime())); 
-            pstm.setString(3, pqr.getPqrNombre()); 
-            pstm.setString(4, pqr.getPqrCorreo()); 
-            pstm.setString(5, pqr.getPqrTelefono()); 
+
+            pstm.setString(1, pqr.getTblUsuID());
+            pstm.setTimestamp(2, new Timestamp(new Date().getTime()));
+            pstm.setString(3, pqr.getPqrNombre());
+            pstm.setString(4, pqr.getPqrCorreo());
+            pstm.setString(5, pqr.getPqrTelefono());
             pstm.setString(6, pqr.getPqrTipo());
-            pstm.setString(7, pqr.getPqrDescripcion()); 
-            pstm.setString(8, "Pendiente"); 
+            pstm.setString(7, pqr.getPqrDescripcion());
+            pstm.setString(8, "Pendiente");
 
             pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al crear la PQR: " + e);
         } finally {
-            
+
             try {
-                if (pstm != null) pstm.close();
-                if (con != null) con.close();
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
             } catch (Exception e) {
                 System.out.println("Error al cerrar los recursos: " + e);
             }
         }
     }
+
     public List<PQR> listarpqr() {
         List<PQR> pqrList = new ArrayList<>();
         try {
@@ -83,6 +88,34 @@ public class PQRDAO {
             System.out.println("Error al listar las PQR: " + e);
         }
         return pqrList;
+    }
+
+    public boolean eliminarPQR(String id) {
+        try {
+            Conexion = new Conectar();
+            con = Conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexión con la base de datos");
+            }
+            pstm = con.prepareStatement("DELETE FROM tblpqr WHERE PQRCodigo = ?");
+            pstm.setString(1, id);
+            pstm.executeUpdate();
+            return true; // Devuelve verdadero si la operación es exitosa
+        } catch (Exception e) {
+            System.out.println("Error al eliminar la PQR: " + e);
+            return false; // Devuelve falso si ocurre un error
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error al cerrar los recursos: " + e);
+            }
+        }
     }
 
 }

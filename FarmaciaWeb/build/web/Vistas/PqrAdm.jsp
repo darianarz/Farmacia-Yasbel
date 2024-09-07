@@ -11,11 +11,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index Admin</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
         <link href="/FarmaciaWeb/CSS/PQRAdmin.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/PQR.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -23,18 +25,11 @@
                 <div class="col-md-3 sidebar">
                     <div class="header d-flex justify-content-between align-items-center mb-3">
                         <a href="/FarmaciaWeb/CtrProductoLi?accion=home" class="logo d-flex align-items-center text-light">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
-                            <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
-                            <path d="M12 3v6"/>
-                            </svg>
+                            <i class="bi bi-box"></i>
                             Farmacia Yasbel
                         </a>
                         <button class="notification-btn btn btn-link text-light">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
-                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
-                            </svg>
+                            <i class="bi bi-bell" style="font-size: 24px; color: white;"></i>
                             <span class="sr-only">Toggle notifications</span>
                         </button>
                     </div>
@@ -43,9 +38,8 @@
                         <div class="collapsible">
                             <button class="collapsible-trigger">
                                 Gestión de Productos
-                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="m9 18 6-6-6-6"/>
-                                </svg>
+                                <i class="bi bi-chevron-right" style="font-size: 24px; color: white;"></i>
+
                             </button>
                             <div class="collapsible-content">
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
@@ -60,11 +54,9 @@
                 <div class="col-md-9 main-content">
                     <header class="header d-flex justify-content-between align-items-center mb-3">
                         <a href="#" class="menu-toggle btn btn-link">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
-                            <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
-                            <path d="M12 3v6"/>
-                            </svg>
+                            <!-- Usando el icono de Bootstrap -->
+                            <i class="bi bi-house" style="font-size: 24px; color: white;"></i>
+
                             <span class="sr-only">Home</span>
                         </a>
                         <form class="search-form d-flex">
@@ -76,7 +68,7 @@
                         </form>
                         <div class="user-menu">
                             <button class="user-btn btn btn-link">
-                                <img src="/placeholder.svg" width="32" height="32" alt="Avatar" class="avatar">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">
@@ -118,13 +110,14 @@
                                                 <td>${pqr.getPqrTipo()}</td>
                                                 <td>${pqr.getPqrDescripcion()}</td>
                                                 <td>${pqr.getPqrEstado()}</td>
-                                                <td class=" text-center border">
-                                                    <input type="hidden" name="id" id="id" value="${pqr.getPqrCodigo()}">
-                                                    <a class="btn btn-danger" id="btneliminar" href="#"><i class="bi bi-trash-fill"></i></a>
-                                                    <a class="btn" style="background-color: #74BD64" id="btnresponder" href="#"><i class="bi bi-envelope-check"></i></a>
+                                                <td class="text-center border">
+                                                    <input type="hidden" class="idpqr" value="${pqr.getPqrCodigo()}">
+                                                    <a class="btn btn-danger btneliminarpqr" href="#"><i class="bi bi-trash-fill"></i></a>
+                                                    <a class="btn" style="background-color: #74BD64" class="btnresponder" href="#"><i class="bi bi-envelope-check"></i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -134,10 +127,13 @@
             </div>
         </div>
         <!-- Bootstrap JS, Popper.js, and jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <!-- SweetAlert CDN -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>  
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>  
+        <script src="/FarmaciaWeb/JS/EliminarPQR.js" type="text/javascript"></script>
     </body>
 </html>
