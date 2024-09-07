@@ -1,6 +1,6 @@
 <%-- 
-    Document   : HomePageAdm
-    Created on : 28/08/2024, 07:58:08 AM
+    Document   : ListarProducto
+    Created on : 14/08/2024, 07:55:01 AM
     Author     : SENA
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,191 +9,199 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Carrito</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-        <link href="/FarmaciaWeb/CSS/PQR.css" rel="stylesheet" type="text/css"/>
-        <link href="/FarmaciaWeb/CSS/style.css" rel="stylesheet" type="text/css"/>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="/FarmaciaWeb/JS/scripts.js" type="text/javascript"></script>
-        <link href="/FarmaciaWeb/CSS/carritocliente.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <title>Listar Productos</title>
+        <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
     </head>
     <%
-        /*  if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
-            response.sendRedirect("../Vistas/LogginPage.jsp");
+        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+            response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
         }
-         */
     %>
+
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-            <a class="navbar-brand" href="/FarmaciaWeb/CtrProductoLi?accion=home">
-                <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" class="icon" width="60px" height="60px"/>
-                Farmacia yasbel
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <form class="form-inline my-2 my-lg-0 mr-auto" action="/FarmaciaWeb/CtrProductoLi?accion=buscar" method="post">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search" name="busqueda">
-                    <button class="btn-search my-2 my-sm-0" type="submit">
-                        <div class="original">BUSCAR</div>
-
-                    </button>
-                </form>
-
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-person"></i> Mi Cuenta
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 sidebar">
+                    <div class="header d-flex justify-content-between align-items-center mb-3">
+                        <a href="/FarmaciaWeb/CtrProductoLi?accion=home" class="logo d-flex align-items-center text-light">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
+                            <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
+                            <path d="M12 3v6"/>
+                            </svg>
+                            Farmacia Yasbel
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-center" href="#"><i class="bi bi-person"></i></a>
-                            <a class="dropdown-item " >${usuario.getUsunombre()}</a>
-                            <a class="dropdown-item " >${usuario.getUsutipo()}</a>
-                            <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
-                            <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+                        <button class="notification-btn btn btn-link text-light">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+                            </svg>
+                            <span class="sr-only">Toggle notifications</span>
+                        </button>
+                    </div>
+                    <nav class="nav">
 
+                        <div class="collapsible">
+                            <button class="collapsible-trigger">
+                                Gestión de Productos
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m9 18 6-6-6-6"/>
+                                </svg>
+                            </button>
+                            <div class="collapsible-content">
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
+                                <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
+                                <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
+                            </div>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text-white" href="CtrProductoLi?accion=Carrito">
-                            <i class="bi bi-cart-check-fill"></i> Carrito
-                            (<label style="color: darkorange">${contador}</label>)
-
+                    </nav>
+                </div>
+                <div class="col-md-9 main-content">
+                    <header class="header d-flex justify-content-between align-items-center mb-3">
+                        <a href="#" class="menu-toggle btn btn-link">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
+                            <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
+                            <path d="M12 3v6"/>
+                            </svg>
+                            <span class="sr-only">Home</span>
                         </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-bookmark"></i> Comprar por categorías
-                        </a>
-
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <c:forEach var="c" items="${categorias}">
-                                <input type="hidden" value="${c.getCatCodigo()}" name="catid" id="catid">
-                                <li><a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${c.getCatCodigo()}" ><i class="bi bi-bookmarks"></i> ${c.getCatNombre()}</a></li>
-
-                            </c:forEach>
-                        </ul>
-
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="container mt-5">
-            <h1 class="main-title text-center">Tu Carrito</h1>
-            <div class="product-container d-flex flex-wrap justify-content-start">
-                <table class="table table-hover">
-
-                    <tbody>
-                        <c:forEach var="car" items="${carrito}">
-                            <tr>
-                                <td>${car.getItem()}</td>
-                                <td>${car.getNombre()}<img src="${car.getFoto()}" width="100" height="100"></td>
-                                <td>${car.getDescripcion()}</td>
-                                <td>${car.getPreciocompra()}</td>
-                                <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
-                                    <input type="number" id="cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1">
-                                </td>
-                                <td>${car.getSubtotal()}</td>
-                                <td><input type="hidden" id="idp" value="${car.getIdproducto()}">
-                                    <a class="btn btn-outline-danger" href="#" id=""><i class="bi bi-trash"></i></a>
-
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table> 
-            </div>
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Generar Compra</h3>
-                    </div>
-                    <div class="card-body">
-                        <label>Subtotal:</label>
-                        <input type="text" value="" readonly="" class="form-control">
-                        <label>Descuento:</label>
-                        <input type="text" value="$0.00" readonly="" class="form-control">
-                        <label>Total:</label>
-                        <input type="text" value="" readonly="" class="form-control">
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-outline-info btn-block" href="#" id="btnpay"><i class="bi bi-wallet2"></i> Realizar Pago</a>
-                        <a class="btn btn-danger btn-block" href="/FarmaciWeb/CtrProductoLi?accion=pedido&idusu=${usuario.getUsuid()}&totalp=${totalpagar}" id="btngen" onclick="ejecutarTarea()">Generar Pedido</a>
-
-                    </div>
-                </div> 
-            </div>
-        </div>
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel" >Sistema de PQR</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  ><i class="bi bi-x-lg"></i></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR" method="POST" >
-                            <div class="form-group">
-                                <label for="name"> Nombre</label>
-                                <input id="name" name="nombre" class="nombre" type="text" placeholder="Ingrese su nombre">
-                            </div>
-                            <div class="form-group">
-                                <label for="email"> Correo electrónico</label>
-                                <input id="email" name="correo" type="email"  class="email" placeholder="Ingrese su correo">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone"> Teléfono</label>
-                                <input id="telefono" class="telefono" name="telefono" type="text" placeholder="Ingrese su teléfono">
-                            </div>
-                            <div class="form-group">
-                                <label for="type"> Tipo de solicitud</label>
-                                <select id="type" name="tipo" class="tipo">
-                                    <option value="" disabled selected>Seleccione una opción</option>
-                                    <option value="peticion">Petición</option>
-                                    <option value="queja">Queja</option>
-                                    <option value="consulta">Consulta</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" name="id" id="id" value="${usuario.getUsuid()}">
-                                <label for="description"> Descripción de la solicitud</label>
-                                <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
-
-                            </div>
+                        <form class="search-form d-flex">
+                            <input type="search" class="form-control" placeholder="Buscar productos...">
+                            <svg class="icon search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.3-4.3"/>
+                            </svg>
                         </form>
-                    </div>
-                    <div class="modal-footer" id="modal">
-                        <p>Si el problema persiste, llame a la linea +123-456-789</p>
-                    </div>
+                        <div class="user-menu">
+                            <button class="user-btn btn btn-link">
+                                <img src="/placeholder.svg" width="32" height="32" alt="Avatar" class="avatar">
+                                <span class="sr-only">Toggle user menu</span>
+                            </button>
+                            <div class="user-menu-content">
+                                <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                                <a class="dropdown-item " >${usuario.getUsutipo()}</a>
+                                <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+
+                            </div>
+                        </div>
+                    </header>
+                 
+                        <!-- Moda1 -->
+                        <div class="modal fade" id="editarproducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Producto</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpro" method="POST" >
+
+                                            <div class="form-row">
+                                                <div class="col-6">
+                                                    <label>Nombre</label> 
+                                                    <input type="hidden" class="form-control" name="txtid" id="txtid" value="${Productoe.getProCodigo()}"> 
+                                                    <input type="text" class="form-control" name="txtnombre" placeholder="nombre" required="" value="${Productoe.getProNombre()}">
+                                                </div>  
+                                                <div class="col-6">
+                                                    <label>Proovedores</label> 
+                                                    <select class="form-control" name="proovedores">
+                                                        <c:forEach var="prod" items="${proveedores}">
+                                                            <option value="${prod.getId()}">${prod.getNombre()}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                                <input type="hidden" class="form-control" name="prov" id="prov" value="${Productoe.getTblProverdores()}"> 
+                                                <div class="col-6">
+                                                    <label>Precio</label> 
+                                                    <input type="number" class="form-control" name="txtprecio" placeholder="precio" required="" value="${Productoe.getProPrecio()}">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Descuento</label> 
+                                                    <input type="number" class="form-control" name="txtdescuento" placeholder="descuento" required="" value="${Productoe.getProDescuento()}">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Marca</label> 
+                                                    <input type="text" class="form-control" name="txtmarca" placeholder="marca" required="" value="${Productoe.getProMarca()}">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Descripcion</label> 
+                                                    <input type="number" class="form-control" name="txtdescripcion" placeholder="descripcion" required="" value="${Productoe.getProDescripcion()}">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Fecha vencimiento</label> 
+                                                    <input type="date" class="form-control" name="txtfechavencimiento" placeholder="fecha" required="" value="${Productoe.getProFechaVencimiento()}">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Stock</label> 
+                                                    <input type="number" class="form-control" name="txtstock" placeholder="stock" required="" value="${Productoe.getProStok()}"> 
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Categoria</label> 
+                                                    <select class="form-control" name="categoria" onchange="actualizarInputOculto(this)" value="${Productoe.getTblCategoria()}">
+                                                        <c:forEach var="cat" items="${categorias}">
+                                                            <option value="${cat.getCatCodigo()}">${cat.getCatNombre()}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    <input type="hidden" class="form-control" name="cat" id="cat" value="${Productoe.getCategoria()}"> 
+                                                    <script>
+                                                        function actualizarInputOculto(selectElement) {
+                                                            var inputOculto = document.getElementById("cat");
+                                                            inputOculto.value = selectElement.value;
+                                                        }
+                                                    </script>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Imagen</label> 
+                                                    <input type="file" class="form-control" name="foto" id="foto" onchange="actualizarInputOculto2(this)">
+                                                    <input type="hidden" class="form-control" value="${Productoe.getProFoto()}" name="foto2" id="foto2">
+                                                    <script>
+                                                        function actualizarInputOculto2(selectElement) {
+                                                            var inputOculto = document.getElementById("foto2");
+                                                            var filePath = selectElement.value;
+                                                            var fileName = filePath.split('\\').pop().split('/').pop(); // Esto obtiene el nombre del archivo
+                                                            inputOculto.value = "Imagenes/" + fileName;
+                                                            //inputOculto.value = "Imagenes/" + selectElement.value;
+                                                        }
+                                                    </script>
+                                                </div>
+                                            </div>    
+
+                                            <center>
+                                                <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">Agregar <i class="bi bi-floppy"></i></button>
+                                                <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="#">Regresar <i class="bi bi-box-arrow-left"></i></a>
+                                            </center>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </main>
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>                        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>  
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
+        <script src="/FarmaciaWeb/JS/EliminarProducto.js" type="text/javascript"></script>
+
+        <script>
+                                                        $(document).ready(function () {
+            <c:if test="${editarPro}">
+                                                            $('#editarproducto').modal('show');
+            </c:if>
+                                                        });
+        </script>
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-    <script src="/FarmaciaWeb/JS/EliminarProducto.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>                       
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-                            function ejecutarTarea() {
-                                document.getElementById("MensajeEspera").style.display = "block";
-                                $('#reloj').modal('show');
-                            }
-    </script>
-</body>
 </html>
