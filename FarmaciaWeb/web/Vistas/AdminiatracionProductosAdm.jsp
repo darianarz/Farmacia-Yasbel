@@ -3,7 +3,7 @@
     Created on : 20/08/2024, 10:39:58 AM
     Author     : SENA
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -89,49 +89,60 @@
                             <h1 class="title">Yasbel Drugs - Administración de Productos</h1>
                             <div class="grid">
                                 <div class="form-section">
+                                    <form  action="/FarmaciaWeb/CtrProductoLi?accion=Agregar" method="post">
                                     <h2 class="subtitle">Agregar Nuevo Producto</h2>
                                     <div class="form-group">
                                         <label for="name">Nombre</label>
-                                        <input id="name" name="name" type="text" placeholder="Nombre del Producto">
+                                        <input id="txtnombre" name="txtnombre" type="text" placeholder="Nombre del Producto">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="Proveedores">Proveedores</label>
-                                        <input id="name" name="Proveedor" type="text" placeholder="Nombre del Proveedor">
+                                    <div class="col-6">
+                                        <label>Categoria</label> 
+                                        <select class="form-control" name="categoria">
+                                            <c:forEach var="cat" items="${categorias}">
+                                                <option value="${cat.getCatCodigo()}">${cat.getCatNombre()}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="marca">Marca</label>
-                                        <input id="name" name="marca" type="text" placeholder="marca del Proveedor">
+                                        <input id="txtmarca" name="txtmarca" type="text" placeholder="marca del Proveedor">
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Descripcion</label>
-                                        <textarea id="description" name="description" placeholder="Descripción del Producto"></textarea>
+                                        <textarea id="txtdescripcion" name="txtdescripcion" placeholder="Descripción del Producto"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="fechavencimiento">Fecha vencimiento</label>
-                                        <textarea id="fechavencimiento" name="fechavencimiento" placeholder="Fecha vencimiento"></textarea>
+                                        <input id="txtfechavencimiento" name="txtfechavencimiento" type="date" placeholder="Fecha vencimiento"></input>
                                     </div>
-                                    <select id="category" name="category">
-                                        <option value="" disabled selected>Selecciona una categoría</option>
-
-                                    </select>
+                                    <div class="col-6">
+                                        <label>Proovedores</label> 
+                                        <select class="form-control" name="proovedores">
+                                            <c:forEach var="prod" items="${proveedores}">
+                                                <option value="${prod.getId()}">${prod.getNombre()}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="stock" style="padding-top: 10px;">Stock</label>
-                                        <input id="stock" name="stock" type="number" placeholder="Cantidad">
+                                        <input id="txtstock" name="txtstock" type="number" placeholder="Cantidad">
                                     </div>      
                                     <div class="form-group">
                                         <label for="precio">Precio</label>
-                                        <input id="precio" name="precio" type="number" placeholder="Precio del Producto">
+                                        <input id="txtprecio" name="txtprecio" type="number" placeholder="Precio del Producto">
                                     </div>
                                     <div class="form-group">
                                         <label for="descuento">Descuento</label>
-                                        <input id="descuento" name="descuento" type="number" placeholder="descuento del Producto">
+                                        <input id="txtdescuento" name="txtdescuento" type="number" placeholder="descuento del Producto">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="imageUrl">URL de la Imagen</label>
-                                        <input id="imageUrl" name="imageUrl" type="text" placeholder="URL de la Imagen">
+                                        <input id="foto" name="foto" type="file" placeholder="URL de la Imagen">
                                     </div>
-                                    <button class="button">Agregar Producto</button>
+                                    <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">Agregar <i class="bi bi-floppy"></i></button>
+                                    <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="#">Regrsar <i class="bi bi-box-arrow-left"></i></a>
+                                    </form>   
                                 </div>
 
                             </div>

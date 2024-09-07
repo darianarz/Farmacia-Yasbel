@@ -7,6 +7,7 @@ package Modelo;
 
 import Configuracion.Conectar;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class ProductoDAO {
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
                 prod.setProDescripcion(resul.getString(8));
-                prod.setProFechaVencimiento(resul.getString(9));
+                prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
                 prod.setTblCategoria(resul.getInt(11));
                 producto.add(prod);
@@ -78,7 +79,7 @@ public class ProductoDAO {
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
                 prod.setProDescripcion(resul.getString(8));
-                prod.setProFechaVencimiento(resul.getString(9));
+                prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
                 prod.setTblCategoria(resul.getInt(11));
                 producto.add(prod);
@@ -113,7 +114,7 @@ public class ProductoDAO {
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
                 prod.setProDescripcion(resul.getString(8));
-                prod.setProFechaVencimiento(resul.getString(9));
+                prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
                 prod.setTblCategoria(resul.getInt(11));
                 producto.add(prod);
@@ -147,7 +148,7 @@ public class ProductoDAO {
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
                 prod.setProDescripcion(resul.getString(8));
-                prod.setProFechaVencimiento(resul.getString(9));
+                prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
                 prod.setTblCategoria(resul.getInt(11));
             }
@@ -180,7 +181,7 @@ public class ProductoDAO {
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
                 prod.setProDescripcion(resul.getString(8));
-                prod.setProFechaVencimiento(resul.getString(9));
+                prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
                 prod.setTblCategoria(resul.getInt(11));
 
@@ -214,7 +215,7 @@ public class ProductoDAO {
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
                 prod.setProDescripcion(resul.getString(8));
-                prod.setProFechaVencimiento(resul.getString(9));
+                prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
                 prod.setTblCategoria(resul.getInt(11));
                 producto.add(prod);
@@ -250,7 +251,7 @@ public class ProductoDAO {
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
                 prod.setProDescripcion(resul.getString(8));
-                prod.setProFechaVencimiento(resul.getString(9));
+                prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
                 prod.setTblCategoria(resul.getInt(11));
                 producto.add(prod);
@@ -270,16 +271,17 @@ public class ProductoDAO {
                 System.out.println("Se ha establecido una conexcion con la base de datos");
 
             }
-            pstm = con.prepareStatement("insert into tblproductos (ProPrecio, ProDescuento, ProMarca, ProNombre, ProFoto, ProDescripcion, ProFechaVencimineto, ProStock, tblcategorias) Value(?,?,?,?,?,?,?,?,?)");
+            pstm = con.prepareStatement("insert into tblproductos (ProPrecio, ProDescuento, ProMarca, ProNombre, ProFoto, ProDescripcion, ProFechaVencimiento, ProStock, tblcategorias , tblProveedores) Value(?,?,?,?,?,?,?,?,? , ?)");
             pstm.setInt(1, pro.getProPrecio());
             pstm.setString(2, pro.getProDescuento());
             pstm.setString(3, pro.getProMarca());
             pstm.setString(4, pro.getProNombre());
             pstm.setString(5, pro.getProFoto());
             pstm.setString(6, pro.getProDescripcion());
-            pstm.setString(7, pro.getProFechaVencimiento());
+            pstm.setDate(7, (Date) pro.getProFechaVencimiento());
             pstm.setInt(8, pro.getProStok());
             pstm.setInt(9, pro.getTblCategoria());
+            pstm.setInt(10, pro.getTblProverdores());
             pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al crear los productos" + e);
@@ -294,7 +296,7 @@ public class ProductoDAO {
                 System.out.println("Se ha establecido una conexcion con la base de datos");
 
             }
-            pstm = con.prepareStatement("update tblproductos set ProPrecio = ? , ProDescuento = ? , ProMarca = ? , ProNombre = ? , ProFoto = ? , ProDescripcion = ? , ProFechaVencimineto = ? , ProStock = ? , tblcategorias = ? where ProCodigo = ?");
+            pstm = con.prepareStatement("update tblproductos set ProPrecio = ? , ProDescuento = ? , ProMarca = ? , ProNombre = ? , ProFoto = ? , ProDescripcion = ? , ProFechaVencimiento = ? , ProStock = ? , tblcategorias = ? where ProCodigo = ?");
 
             pstm.setInt(1, pro.getProPrecio());
             pstm.setString(2, pro.getProDescuento());
@@ -302,7 +304,7 @@ public class ProductoDAO {
             pstm.setString(4, pro.getProNombre());
             pstm.setString(5, pro.getProFoto());
             pstm.setString(6, pro.getProDescripcion());
-            pstm.setString(7, pro.getProFechaVencimiento());
+            pstm.setDate(7, (Date) pro.getProFechaVencimiento());
             pstm.setInt(8, pro.getProStok());
             pstm.setInt(9, pro.getTblCategoria());
             

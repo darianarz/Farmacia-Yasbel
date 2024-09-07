@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author SENA
@@ -19,14 +21,14 @@ public class Producto {
     private String proNombre;
     private String proFoto;
     private String proDescripcion;
-    private String proFechaVencimiento;
+    private Date proFechaVencimiento;
     private int proStok;
     private int tblCategoria;
 
     public Producto() {
     }
 
-    public Producto(int proCodigo, int tblProverdores, int proPrecio, String proDescuento, String proMarca, String proNombre, String proFoto, String proDescripcion, String proFechaVencimiento, int proStok, int tblCategoria) {
+    public Producto(int proCodigo, int tblProverdores, int proPrecio, String proDescuento, String proMarca, String proNombre, String proFoto, String proDescripcion, Date proFechaVencimiento, int proStok, int tblCategoria) {
         this.proCodigo = proCodigo;
         this.tblProverdores = tblProverdores;
         this.proPrecio = proPrecio;
@@ -104,11 +106,11 @@ public class Producto {
         this.proDescripcion = proDescripcion;
     }
 
-    public String getProFechaVencimiento() {
+    public Date getProFechaVencimiento() {
         return proFechaVencimiento;
     }
 
-    public void setProFechaVencimiento(String proFechaVencimiento) {
+    public void setProFechaVencimiento(Date proFechaVencimiento) {
         this.proFechaVencimiento = proFechaVencimiento;
     }
 
@@ -128,5 +130,4 @@ public class Producto {
         this.tblCategoria = tblCategoria;
     }
 
-    
 }

@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Carrito;
+import Modelo.Categoria;
 import Modelo.CategoriaDAO;
 import Modelo.DetallePedido;
 import Modelo.DetallePedidoDAO;
@@ -15,15 +16,21 @@ import Modelo.Pedidos;
 import Modelo.PedidosDAO;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
+import Modelo.Proveedores;
+import Modelo.ProveedoresDAO;
 import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,24 +63,31 @@ public class CtrProductoLi extends HttpServlet {
     Usuario us;
     List<Pedidos> listapedido = new ArrayList();
     List<DetallePedido> listadetped = new ArrayList();
+    List<Proveedores> proveedores = new ArrayList();
+    Proveedores prove = new Proveedores();
+    ProveedoresDAO prodDao = new ProveedoresDAO();
     Pedidos ped = new Pedidos();
     DetallePedidoDAO dpdao = new DetallePedidoDAO();
     PedidosDAO peddao = new PedidosDAO();
     UsuarioDAO usudao = new UsuarioDAO();
     Carrito car;
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+    List<Categoria> listaCategorias = new ArrayList();
+    Categoria categ = new Categoria();
 
     int cantidad;
-
+    Date fechavencimiento;
     int idp;
     int subtotal;
     int item;
     int totalpagar, idusu;
-    String nom, des, foto, fec, estado, idcliente, id;
-    int pre, sto, cat, mon, idcli;
+    String nom, des, foto, fec, estado, idcliente, id, marca, descuent, fechaven;
+
+    int pre, sto, cat, mon, idcli, provee;
     Date d = new Date();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         String accion = request.getParameter("accion");
         System.out.println("accion= " + accion);
         HttpSession sesion = request.getSession();
@@ -271,7 +285,7 @@ public class CtrProductoLi extends HttpServlet {
                 p.setProNombre(nompro);
                 p.setProFoto(fotpro);
                 p.setProDescripcion(despro);
-                p.setProFechaVencimiento(fecha);
+                //p.setProFechaVencimiento(fecha);
                 p.setProStok(stopro);
                 p.setTblCategoria(catpro);
                 pdao.editar(p);
@@ -282,19 +296,34 @@ public class CtrProductoLi extends HttpServlet {
                 nom = request.getParameter("txtnombre");
                 System.out.println("nombre producto: " + nom);
                 des = request.getParameter("txtdescripcion");
+                marca = request.getParameter("txtmarca");
+                fechaven = request.getParameter("txtfechavencimiento");
+                fechavencimiento = formatoFecha.parse(fechaven);
+                java.sql.Date fechaVencimientoSql = new java.sql.Date(fechavencimiento.getTime());
                 pre = Integer.parseInt(request.getParameter("txtprecio"));
                 sto = Integer.parseInt(request.getParameter("txtstock"));
+                descuent = request.getParameter("txtdescuento");
                 cat = Integer.parseInt(request.getParameter("categoria"));
+                provee = Integer.parseInt(request.getParameter("proovedores"));
                 System.out.println("categoria producto: " + cat);
-                foto = "Imagenes/" + request.getParameter("foto");
-                p.setProNombre(nom);
-                p.setProDescripcion(des);
+                foto = "Imagenes/" + request.getParameter("categoria") + "/" + request.getParameter("foto");
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    if (i == cat) {
+                        System.out.println("cattt" + categ.getCatNombre());
+                    }
+                }
                 p.setProPrecio(pre);
+                p.setProDescuento(descuent);
+                p.setProMarca(marca);
+                p.setProNombre(nom);
+                p.setProFoto(foto);
+                p.setProDescripcion(des);
+                p.setTblProverdores(provee);
+                p.setProFechaVencimiento(fechaVencimientoSql);
                 p.setProStok(sto);
                 p.setTblCategoria(cat);
-                p.setProFoto(foto);
                 pdao.crear(p);
-                request.getRequestDispatcher("CtrProductoLi?accion=listar").forward(request, response);
+                request.getRequestDispatcher("CtrProductoLi?accion=Listaradm").forward(request, response);
                 break;
             case "inventario":
                 productos = pdao.listarT();
@@ -303,11 +332,17 @@ public class CtrProductoLi extends HttpServlet {
                 request.getRequestDispatcher("Vistas/InventarioAdm.jsp").forward(request, response);
                 break;
             case "ag":
+                productos = pdao.listarT();
+                proveedores = prodDao.listarT();
+                request.setAttribute("productos", productos);
+                request.setAttribute("categorias", categoria);
+                request.setAttribute("proveedores", proveedores);
+                System.out.println("proveedores : " + proveedores);
                 request.getRequestDispatcher("Vistas/AdminiatracionProductosAdm.jsp").forward(request, response);
                 break;
 
             case "eliminar":
-                String id = request.getParameter("idp"); 
+                String id = request.getParameter("idp");
                 System.out.println("id: " + id);
                 pdao.eliminar(id);
                 list = pdao.listarT();
@@ -388,7 +423,11 @@ public class CtrProductoLi extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(CtrProductoLi.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -402,7 +441,11 @@ public class CtrProductoLi extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(CtrProductoLi.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

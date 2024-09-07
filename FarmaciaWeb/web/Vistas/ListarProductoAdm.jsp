@@ -155,6 +155,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpro" method="POST" >
+                                            
                                             <div class="form-row">
                                                 <div class="col-6">
                                                     <label>Nombre</label> 
