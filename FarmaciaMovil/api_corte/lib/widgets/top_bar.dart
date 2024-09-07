@@ -5,29 +5,9 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       child: Container(
-        height: 300.0, // Ajusta la altura para acomodar el nuevo elemento
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: CustomPaint(
-                painter: CurvePainter(),
-              ),
-            ),
-            Positioned(
-              top: 20.0, // Ajusta la posición vertical del contenedor circular
-              left: MediaQuery.of(context).size.width * 0.4 - 32, // Centra el contenedor horizontalmente
-              child: Container(
-                width: 150.0, // Ajusta el tamaño del contenedor circular
-                height: 150.0,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF74BD64), // Color verde claro
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ],
-        ),
+        height: 300.0,
       ),
+      painter: CurvePainter(),
     );
   }
 }
@@ -46,7 +26,7 @@ class CurvePainter extends CustomPainter {
     path.quadraticBezierTo(size.width * 0.60, size.height * 0.85, size.width * 0.65, size.height * 0.65);
     path.quadraticBezierTo(size.width * 0.70, size.height * 0.90, size.width, 0);
     path.close();
-    paint.color = const Color(0xFFB4FD9F); // Color verde oscuro para el primer fondo
+    paint.color = Colors.teal[300]!;
     canvas.drawPath(path, paint);
 
     // Segundo fondo
@@ -59,7 +39,7 @@ class CurvePainter extends CustomPainter {
     path.quadraticBezierTo(size.width * 0.85, size.height * 0.93, size.width, size.height * 0.60);
     path.lineTo(size.width, 0);
     path.close();
-    paint.color = const Color(0xFF94DD81); // Otro tono de verde
+    paint.color = Colors.teal[400]!;
     canvas.drawPath(path, paint);
 
     // Tercer fondo
@@ -71,7 +51,7 @@ class CurvePainter extends CustomPainter {
     path.quadraticBezierTo(size.width * 0.75, size.height * 0.85, size.width, size.height * 0.60);
     path.lineTo(size.width, 0);
     path.close();
-    paint.color = const Color(0xFF559D46); // Verde claro
+    paint.color = Colors.teal[500]!;
     canvas.drawPath(path, paint);
   }
 

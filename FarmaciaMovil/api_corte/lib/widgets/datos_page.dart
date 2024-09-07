@@ -1,147 +1,158 @@
-import 'package:api_corte/carrito/carrito_page.dart';
-import 'package:api_corte/widgets/user_provider.dart';
+import 'package:api_corte/widgets/detalle_producto.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:api_corte/carrito/carrito_model.dart';
-import 'package:api_corte/models/product.dart';
-import 'package:api_corte/widgets/product_page.dart';
+import 'user_provider.dart';
 
+class DatosPage extends StatefulWidget {
+  final List<dynamic> products;
 
-class DatosPage extends StatelessWidget {
-  final List<Product> products;
+  DatosPage({required this.products});
 
-  const DatosPage({Key? key, required this.products}) : super(key: key);
+  @override
+  _DatosPageState createState() => _DatosPageState();
+}
 
-  void _showLogoutModal(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
+class _DatosPageState extends State<DatosPage> {
+  late List<dynamic> _products;
+  bool _isLoading = false;
+  final TextEditingController _searchController = TextEditingController();
 
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Cerrar Sesión'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text('Usuario: ${userProvider.username ?? 'No logueado'}'),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Cierra el modal
-              },
-              child: Text('Cancelar'),
-            ),
-            TextButton(
-              onPressed: () {
-                userProvider.logout(); // Llama al método logout
-                Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
-              },
-              child: Text('Cerrar Sesión'),
-            ),
-          ],
-        );
-      },
-    );
+  @override
+  void initState() {
+    super.initState();
+    _products = widget.products;
+  }
+
+  void _searchProducts(String query) {
+    setState(() {
+      _products = widget.products.where((product) {
+        final name = product['nombre'].toLowerCase();
+        final search = query.toLowerCase();
+        return name.contains(search);
+      }).toList();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Productos'),
+        title: Text('Products'),
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CarritoPage(),
-                ),
-              );
+              Navigator.pushNamed(context, '/cart');
             },
           ),
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              _showLogoutModal(context);
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == 'logout') {
+                userProvider.logout();
+                Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+              } else if (value == 'profile') {
+                // Navigate to user profile or session details
+              }
             },
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 'profile',
+                child: Text(userProvider.username ?? 'Profile'),
+              ),
+              PopupMenuItem(
+                value: 'logout',
+                child: Text('Logout'),
+              ),
+            ],
           ),
         ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(60.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _searchController,
+              onChanged: _searchProducts,
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
-      body: ListView.builder(
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          final product = products[index];
-          return Card(
-            margin: EdgeInsets.all(10),
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.nombre,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Precio: \$${product.precio}',
-                    style: TextStyle(fontSize: 16, color: Colors.blue[900]),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    product.descripcion,
-                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+      body: _isLoading
+          ? Center(child: CircularProgressIndicator())
+          : GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 10.0,
+              ),
+              itemCount: _products.length,
+              itemBuilder: (context, index) {
+                final product = _products[index];
+                return Card(
+                  elevation: 5.0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductPage(product: product),
-                            ),
-                          );
-                        },
-                        child: Text('Más especificaciones'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Provider.of<CarritoModel>(context, listen: false).addProduct(product);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('${product.nombre} añadido al carrito'),
-                              duration: Duration(seconds: 2),
-                              backgroundColor: Colors.green,
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green[500],
-                          padding: EdgeInsets.symmetric(horizontal: 16),
+                      Expanded(
+                        child: Image.network(
+                          product['foto'],
+                          fit: BoxFit.cover,
+                          width: double.infinity,
                         ),
-                        child: Text('Agregar al carrito'),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          product['nombre'],
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          'Price: \$${product['precio']}',
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.add_shopping_cart),
+                              onPressed: () {
+                                // Add to cart logic
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.info),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetalleProducto(product: product),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
-          );
-        },
-      ),
     );
   }
 }

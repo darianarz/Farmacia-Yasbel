@@ -32,19 +32,19 @@ class CarritoPage extends StatelessWidget {
                       );
                     },
                     title: Text(
-                      product.nombre,
+                      product.name,
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Precio: \$${product.precio}',
+                          'Precio: \$${product.price}',
                           style: TextStyle(fontSize: 16, color: Colors.blue[900]),
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Descripción: ${product.descripcion}',
+                          'Descripción: ${product.description}',
                           style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                         ),
                       ],
@@ -71,7 +71,7 @@ class CarritoPage extends StatelessWidget {
                             Provider.of<CarritoModel>(context, listen: false).removeProduct(product);
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('${product.nombre} se ha eliminado del carrito'),
+                                content: Text('${product.name} se ha eliminado del carrito'),
                                 duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
                                 behavior: SnackBarBehavior.floating,
