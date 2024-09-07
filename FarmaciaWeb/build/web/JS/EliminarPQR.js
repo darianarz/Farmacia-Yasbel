@@ -12,8 +12,8 @@ $(document).ready(function () {
     var idp = $(this).parent().find(".idpqr").val();
     console.log("ID PQR:", idp);
         swal({
-            title: "¿Esta seguro que lo desea eliminar?",
-            text: "Una vez eliminado, podra seguir comprando más productos!",
+            title: "¿Esta seguro que lo desea eliminar La PQR?",
+            text: "Una vez eliminado, podra seguir Gestionando las PQR",
             icon: "warning",
             buttons: true,
             dangerMode: true
@@ -21,7 +21,7 @@ $(document).ready(function () {
                 .then((willDelete) => {
                     if (willDelete) {
                         eliminar(idp);
-                        swal("Poof! El articulo ha sido eliminado!", {
+                        swal("Poof! La PQR ha sido eliminada", {
                             icon: "success"
                         }).then((willDelete) => {
                             if (willDelete) {
@@ -30,7 +30,7 @@ $(document).ready(function () {
                             }
                         });
                     } else {
-                        swal("Articulo no eliminado!");
+                        swal("la PQR no ha eliminado!");
                     }
                 });
     });
