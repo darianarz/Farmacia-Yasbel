@@ -113,7 +113,9 @@
                                                 <td class="text-center border">
                                                     <input type="hidden" class="idpqr" value="${pqr.getPqrCodigo()}">
                                                     <a class="btn btn-danger btneliminarpqr" href="#"><i class="bi bi-trash-fill"></i></a>
-                                                    <a class="btn" style="background-color: #74BD64" class="btnresponder" href="#"><i class="bi bi-envelope-check"></i></a>
+                                                    <a class="btn" style="background-color: #74BD64" href="CtrPQR?accion=Estado&idp=${pqr.pqrCodigo}">
+                                                        <i class="bi bi-envelope-check"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -128,6 +130,7 @@
         </div>
         <!-- Bootstrap JS, Popper.js, and jQuery -->
         <!-- SweetAlert CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>  
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
