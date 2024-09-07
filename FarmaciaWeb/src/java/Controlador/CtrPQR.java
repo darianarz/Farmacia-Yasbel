@@ -75,12 +75,25 @@ public class CtrPQR extends HttpServlet {
 
                 break;
             case "eliminarPQR":
-                String id = request.getParameter("idp");
+               String id = request.getParameter("idp");
                 System.out.println("eliminar: " + id);
                 pqrdao.eliminarPQR(id);
                 listpqr = pqrdao.listarpqr();
                 request.setAttribute("pqr", listpqr);
                 request.getRequestDispatcher("/Vistas/PqrAdm.jsp").forward(request, response);
+                break;
+            
+
+            case "Estado":
+                String idActu = request.getParameter("idp");
+                System.out.println("Actualizar estado de PQR: " + idActu);
+                boolean actualizado = pqrdao.estadoPQR(idActu, "Contestada");
+
+                if (actualizado) {
+                    listpqr = pqrdao.listarpqr();
+                    request.setAttribute("pqr", listpqr);
+                    request.getRequestDispatcher("CtrPQR?accion=listarPQR").forward(request, response);
+                }
                 break;
 
         }

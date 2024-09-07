@@ -100,10 +100,10 @@ public class PQRDAO {
             pstm = con.prepareStatement("DELETE FROM tblpqr WHERE PQRCodigo = ?");
             pstm.setString(1, id);
             pstm.executeUpdate();
-            return true; // Devuelve verdadero si la operación es exitosa
+            return true; 
         } catch (Exception e) {
             System.out.println("Error al eliminar la PQR: " + e);
-            return false; // Devuelve falso si ocurre un error
+            return false; 
         } finally {
             try {
                 if (pstm != null) {
@@ -117,5 +117,25 @@ public class PQRDAO {
             }
         }
     }
+    
+    public boolean estadoPQR(String id, String nuevoEstado) {
+        try {
+            Conexion = new Conectar();
+            con = Conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexión con la base de datos");
+            }
+            pstm = con.prepareStatement("UPDATE tblpqr SET PQREstado = ? WHERE PQRCodigo = ?");
+             pstm.setString(1, nuevoEstado); 
+             pstm.setString(2, id); 
+            pstm.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el estado de la PQR: " + e);
+            return false;
+        } 
+        
+    }
+
 
 }

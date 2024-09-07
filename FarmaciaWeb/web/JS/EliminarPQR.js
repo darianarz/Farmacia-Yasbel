@@ -6,46 +6,65 @@
 
 
 $(document).ready(function () {
-    $("tr .btneliminarpqr").click(function () {
+   
+    $("tr .btneliminarpqr").click(function (event) {
         event.preventDefault();
         
-    var idp = $(this).parent().find(".idpqr").val();
-    console.log("ID PQR:", idp);
-        swal({
-            title: "¿Esta seguro que lo desea eliminar La PQR?",
-            text: "Una vez eliminado, podra seguir Gestionando las PQR",
+        var idp = $(this).parent().find(".idpqr").val(); 
+        console.log("ID PQR:", idp);
+        
+       
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "Una vez eliminada, podrás seguir gestionando las PQR.",
             icon: "warning",
-            buttons: true,
-            dangerMode: true
-        })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        eliminar(idp);
-                        swal("Poof! La PQR ha sido eliminada", {
-                            icon: "success"
-                        }).then((willDelete) => {
-                            if (willDelete) {
-                                console.log("elimino");
-                                parent.location.href = "CtrPQR?accion=listarPQR";
-                            }
-                        });
-                    } else {
-                        swal("la PQR no ha eliminado!");
+            showCancelButton: true,
+            confirmButtonColor: "#559D46", 
+            cancelButtonColor: "#94DD81",  
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+            customClass: {
+                popup: 'animated fadeInDown faster' 
+           }     
+        }).then((result) => {
+            if (result.isConfirmed) {
+                eliminar(idp); 
+                Swal.fire({
+                    title: "¡Eliminada!",
+                    text: "La PQR ha sido eliminada exitosamente.",
+                    icon: "success",
+                    confirmButtonColor: "#74BD64",  
+                    customClass: {
+                        popup: 'animated fadeOutUp faster'  
                     }
+                }).then(() => {
+                    console.log("PQR eliminada con éxito");
+                    parent.location.href = "CtrPQR?accion=listarPQR"; 
                 });
+            } else {
+                Swal.fire({
+                    title: "Cancelado",
+                    text: "La PQR no se ha eliminado.",
+                    icon: "error",
+                    confirmButtonColor: "#B4FD9F"  
+                });
+            }
+        });
     });
 
+   
     function eliminar(idp) {
-        var url = "CtrPQR?accion=eliminarPQR";
+        var url = "CtrPQR?accion=eliminarPQR"; 
         $.ajax({
             type: 'POST',
             url: url,
-            data: {idp: idp},
+            data: { idp: idp }, 
             success: function (data, textStatus, jqXHR) {
-                console.log("PQR eliminado");
+                console.log("PQR eliminada correctamente");
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("Error al eliminar la PQR:", errorThrown); 
             }
         });
     }
 });
-
-

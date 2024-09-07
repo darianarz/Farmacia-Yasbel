@@ -145,7 +145,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  ><i class="bi bi-x-lg"></i></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR"  >
+                        <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR" method="POST" >
                             <div class="form-group">
                                 <label for="name"> Nombre</label>
                                 <input id="name" name="nombre" class="nombre" type="text" placeholder="Ingrese su nombre">
