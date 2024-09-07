@@ -296,7 +296,7 @@ public class ProductoDAO {
                 System.out.println("Se ha establecido una conexcion con la base de datos");
 
             }
-            pstm = con.prepareStatement("update tblproductos set ProPrecio = ? , ProDescuento = ? , ProMarca = ? , ProNombre = ? , ProFoto = ? , ProDescripcion = ? , ProFechaVencimiento = ? , ProStock = ? , tblcategorias = ? where ProCodigo = ?");
+            pstm = con.prepareStatement("update tblproductos set ProPrecio = ? , ProDescuento = ? , ProMarca = ? , ProNombre = ? , ProFoto = ? , ProDescripcion = ? , ProFechaVencimiento = ? , ProStock = ? , tblcategorias = ? , tblProveedores = ?   where ProCodigo = ?");
 
             pstm.setInt(1, pro.getProPrecio());
             pstm.setString(2, pro.getProDescuento());
@@ -307,6 +307,8 @@ public class ProductoDAO {
             pstm.setDate(7, (Date) pro.getProFechaVencimiento());
             pstm.setInt(8, pro.getProStok());
             pstm.setInt(9, pro.getTblCategoria());
+            pstm.setInt(10, pro.getTblProverdores());
+            pstm.setInt(11, pro.getProCodigo());
             
             pstm.executeUpdate();
         } catch (Exception e) {

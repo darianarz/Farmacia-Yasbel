@@ -97,12 +97,13 @@
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <form class="form-inline mt-4" action="/FarmaciaWeb/CtrProductoLi?accion=buscarn">
-                                        <div class="form-group mx-sm-3 mb-2">
-                                            <input type="text" class="form-control" name="txtbuscar" placeholder="digite nombre">
-                                        </div>
-                                        <button type="submit" class="btn btn-success mb-2" name="accion" value="buscarn"><i class="bi bi-search"></i> Buscar</button>
+                                    <form class="form-inline my-2 my-lg-0 mr-auto" action="/FarmaciaWeb/CtrProductoLi?accion=buscarn" method="post">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search" name="busqueda">
+                                        <button class="btn-search my-2 my-sm-0" type="submit">
+                                            <div class="original">BUSCAR</div>
+                                        </button>
                                     </form>
+
                                 </div>
                             </div>
                             <table class="table table-bordered">
@@ -134,7 +135,7 @@
                                             <td class="border">${prod.getTblCategoria()}</td>
                                             <td scope="col" class ="text-center border">
                                                 <input type="hidden" name="idp" id="idp" value="${prod.getProCodigo()}">
-                                                <a class="btn btn-warning" href="/FarmaciaWeb/CtrProductoLi?accion=EditarPro&idpro=${prod.getProCodigo()}" data-bs-toggle="modal" data-bs-target="#editarproducto"><i class="bi bi-pencil-fill"></i></a>
+                                                <a class="btn btn-warning" href="/FarmaciaWeb/CtrProductoLi?accion=EditarPro&idpro=${prod.getProCodigo()}"><i class="bi bi-pencil-fill"></i></a>
                                                 <a class="btn btn-danger" id="btndelete" href="#"><i class="bi bi-trash-fill"></i></a>
                                             </td>
                                         </tr>
@@ -158,39 +159,45 @@
                                             <div class="form-row">
                                                 <div class="col-6">
                                                     <label>Nombre</label> 
-                                                    <input type="text" class="form-control" name="txtnombre" placeholder="nombre" required="">
+                                                    <input type="hidden" class="form-control" name="txtid" id="txtid" value="${Productoe.getProCodigo()}"> 
+                                                    <input type="text" class="form-control" name="txtnombre" placeholder="nombre" required="" value="${Productoe.getProNombre()}">
                                                 </div>  
                                                 <div class="col-6">
-                                                    <label>Proveedores</label> 
-                                                    <input type="text" class="form-control" name="txtproveedore" placeholder="proveedores" required="">
+                                                    <label>Proovedores</label> 
+                                                    <select class="form-control" name="proovedores">
+                                                        <c:forEach var="prod" items="${proveedores}">
+                                                            <option value="${prod.getId()}">${prod.getNombre()}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
+                                                <input type="hidden" class="form-control" name="prov" id="prov" value="${Productoe.getTblProverdores()}"> 
                                                 <div class="col-6">
                                                     <label>Precio</label> 
-                                                    <input type="number" class="form-control" name="txtprecio" placeholder="precio" required="">
+                                                    <input type="number" class="form-control" name="txtprecio" placeholder="precio" required="" value="${Productoe.getProPrecio()}">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>Descuento</label> 
-                                                    <input type="number" class="form-control" name="txtdescuento" placeholder="descuento" required="">
+                                                    <input type="number" class="form-control" name="txtdescuento" placeholder="descuento" required="" value="${Productoe.getProDescuento()}">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>Marca</label> 
-                                                    <input type="text" class="form-control" name="txtmarca" placeholder="marca" required="">
+                                                    <input type="text" class="form-control" name="txtmarca" placeholder="marca" required="" value="${Productoe.getProMarca()}">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>Descripcion</label> 
-                                                    <input type="number" class="form-control" name="txtdescripcion" placeholder="descripcion" required="">
+                                                    <input type="number" class="form-control" name="txtdescripcion" placeholder="descripcion" required="" value="${Productoe.getProDescripcion()}">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>Fecha vencimiento</label> 
-                                                    <input type="date" class="form-control" name="txtfechavencimiento" placeholder="fecha" required="">
+                                                    <input type="date" class="form-control" name="txtfechavencimiento" placeholder="fecha" required="" value="${Productoe.getProFechaVencimiento()}">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>Stock</label> 
-                                                    <input type="number" class="form-control" name="txtstock" placeholder="stock" required="">
+                                                    <input type="number" class="form-control" name="txtstock" placeholder="stock" required="" value="${Productoe.getProStok()}"> 
                                                 </div>
                                                 <div class="col-6">
                                                     <label>Categoria</label> 
-                                                    <select class="form-control" name="categoria" onchange="actualizarInputOculto(this)">
+                                                    <select class="form-control" name="categoria" onchange="actualizarInputOculto(this)" value="${Productoe.getTblCategoria()}">
                                                         <c:forEach var="cat" items="${categorias}">
                                                             <option value="${cat.getCatCodigo()}">${cat.getCatNombre()}</option>
                                                         </c:forEach>
@@ -206,7 +213,7 @@
                                                 <div class="col-6">
                                                     <label>Imagen</label> 
                                                     <input type="file" class="form-control" name="foto" id="foto" onchange="actualizarInputOculto2(this)">
-                                                    <input type="hidden" class="form-control" value="${Productoe.getFoto()}" name="foto2" id="foto2">
+                                                    <input type="hidden" class="form-control" value="${Productoe.getProFoto()}" name="foto2" id="foto2">
                                                     <script>
                                                         function actualizarInputOculto2(selectElement) {
                                                             var inputOculto = document.getElementById("foto2");
@@ -244,11 +251,9 @@
 
         <script>
                                                         $(document).ready(function () {
-
             <c:if test="${editarPro}">
                                                             $('#editarproducto').modal('show');
             </c:if>
-
                                                         });
         </script>
     </body>

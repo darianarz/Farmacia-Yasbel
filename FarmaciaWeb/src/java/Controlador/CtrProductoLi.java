@@ -137,21 +137,28 @@ public class CtrProductoLi extends HttpServlet {
                 productos = pdao.buscarN(nombre);
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
-                if (sesion.getAttribute("tipo").equals("Administrador")) {
+                request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                /*if (sesion.getAttribute("tipo").equals("Administrador")) {
                     request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                 }
                 if (request.getParameter("busqueda") == null) {
                     response.sendRedirect("/FarmaciaWeb/Vistas/HomePage.jsp?busqued=0");
-                }
+                }*/
                 break;
             case "buscarn":
-                nombre = request.getParameter("txtbuscar");
+                nombre = request.getParameter("busqueda");
                 System.out.println("nombre: "+nombre);
-                productos = pdao.listarN(nombre);
-                request.setAttribute("producto", productos);
+                productos = pdao.buscarN(nombre);
                 request.setAttribute("categorias", categoria);
+                request.setAttribute("producto", productos);
                 System.out.println("prodductos" + productos);
-                request.getRequestDispatcher("/Vistas/ListarProductoAdm.jsp").forward(request, response);
+                request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
+               /* if (sesion.getAttribute("tipo").equals("Administrador")) {
+                    request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
+                }
+               if (request.getParameter("busqueda") == null) {
+                    response.sendRedirect("/FarmaciaWeb/Vistas/HomePage.jsp?busqued=0");
+                }*/
                 break;
             case "salir":
 
@@ -268,37 +275,44 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "EditarPro":
                 int idp = Integer.parseInt(request.getParameter("idpro"));
+                System.out.println("id producto" + idp);
                 p = pdao.listaridp(idp);
                 request.setAttribute("Productoe", p);
                 request.setAttribute("editarPro", true);
                 productos = pdao.listarT();
+                proveedores = prodDao.listarT();
                 request.setAttribute("producto", productos);
                 request.setAttribute("categorias", categoria);
-                request.getRequestDispatcher("/Vistas/ListarProductosAdm.jsp").forward(request, response);
+                request.setAttribute("proveedores", proveedores);
+                request.getRequestDispatcher("/Vistas/EditarProductoAdm.jsp").forward(request, response);
                 break;
             case "actualizarpro":
                 int idprodu = Integer.parseInt(request.getParameter("txtid"));
+                String nompro = request.getParameter("txtnombre");
+                int pro = Integer.parseInt(request.getParameter("prov"));
                 int prepro = Integer.parseInt(request.getParameter("txtprecio"));
                 String descu = request.getParameter("txtdescuento");
                 String marcapro = request.getParameter("txtmarca");
-                String nompro = request.getParameter("txtnombre");
-                String fotpro = request.getParameter("foto2");
                 String despro = request.getParameter("txtdescripcion");
                 String fecha = request.getParameter("txtfechavencimiento");
+                fechavencimiento = formatoFecha.parse(fecha);
+                java.sql.Date fechaVencimiento = new java.sql.Date(fechavencimiento.getTime());
                 int stopro = Integer.parseInt(request.getParameter("txtstock"));
                 int catpro = Integer.parseInt(request.getParameter("cat"));
-                p.setProCodigo(idprodu);
+                String fotpro = request.getParameter("foto2");
+                p.setProNombre(nompro);
+                p.setTblProverdores(pro);
                 p.setProPrecio(prepro);
                 p.setProDescuento(descu);
                 p.setProMarca(marcapro);
-                p.setProNombre(nompro);
-                p.setProFoto(fotpro);
                 p.setProDescripcion(despro);
-                //p.setProFechaVencimiento(fecha);
+                p.setProFechaVencimiento(fechaVencimiento);
                 p.setProStok(stopro);
                 p.setTblCategoria(catpro);
+                p.setProFoto(fotpro);
+                p.setProCodigo(idprodu);
                 pdao.editar(p);
-                request.getRequestDispatcher("CtrProductoLi?accion=listar").forward(request, response);
+                request.getRequestDispatcher("CtrProductoLi?accion=Listaradm").forward(request, response);
                 break;
             case "Agregar":
                 System.out.println("entro Agregar AppWeb");
