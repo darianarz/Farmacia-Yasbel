@@ -144,6 +144,15 @@ public class CtrProductoLi extends HttpServlet {
                     response.sendRedirect("/FarmaciaWeb/Vistas/HomePage.jsp?busqued=0");
                 }
                 break;
+            case "buscarn":
+                nombre = request.getParameter("txtbuscar");
+                System.out.println("nombre: "+nombre);
+                productos = pdao.listarN(nombre);
+                request.setAttribute("producto", productos);
+                request.setAttribute("categorias", categoria);
+                System.out.println("prodductos" + productos);
+                request.getRequestDispatcher("/Vistas/ListarProductoAdm.jsp").forward(request, response);
+                break;
             case "salir":
 
                 sesion.invalidate();
@@ -306,12 +315,8 @@ public class CtrProductoLi extends HttpServlet {
                 cat = Integer.parseInt(request.getParameter("categoria"));
                 provee = Integer.parseInt(request.getParameter("proovedores"));
                 System.out.println("categoria producto: " + cat);
-                foto = "Imagenes/" + request.getParameter("categoria") + "/" + request.getParameter("foto");
-                for (int i = 0; i < listacarrito.size(); i++) {
-                    if (i == cat) {
-                        System.out.println("cattt" + categ.getCatNombre());
-                    }
-                }
+                foto = "Imagenes/" + request.getParameter("foto");
+               
                 p.setProPrecio(pre);
                 p.setProDescuento(descuent);
                 p.setProMarca(marca);
@@ -405,6 +410,7 @@ public class CtrProductoLi extends HttpServlet {
                     listacarrito.removeAll(listacarrito);
                     request.getRequestDispatcher("CtrProductoLi?accion=Carrito").forward(request, response);
                     break;
+                
 
                 }
 

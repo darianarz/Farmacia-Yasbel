@@ -97,12 +97,11 @@
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <form class="form-inline mt-4" action="/AppWeb/CtrProducto?accion=buscarn">
+                                    <form class="form-inline mt-4" action="/FarmaciaWeb/CtrProductoLi?accion=buscarn">
                                         <div class="form-group mx-sm-3 mb-2">
-                                            <button type="submit" class="btn btn-secondary mb-2" name="accion" value="buscarn" style="background: #74BD64"><i class="bi bi-search"></i> Buscar</button>
-                                            <input type="text" class="form-control" name="txtbuscar" placeholder="nombre del producto">
-
+                                            <input type="text" class="form-control" name="txtbuscar" placeholder="digite nombre">
                                         </div>
+                                        <button type="submit" class="btn btn-success mb-2" name="accion" value="buscarn"><i class="bi bi-search"></i> Buscar</button>
                                     </form>
                                 </div>
                             </div>
@@ -155,7 +154,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpro" method="POST" >
-                                            
+
                                             <div class="form-row">
                                                 <div class="col-6">
                                                     <label>Nombre</label> 
