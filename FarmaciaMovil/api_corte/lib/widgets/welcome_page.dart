@@ -127,17 +127,17 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            bottom: 16.0,
-            right: 16.0,
-            child: FloatingActionButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/home');
-              },
-              backgroundColor: const Color(0xFF74BD64), // Color verde del botón
-              child: Icon(Icons.home),
-            ),
-          ),
+          //Positioned(
+            //bottom: 16.0,
+            //right: 16.0,
+            //child: FloatingActionButton(
+              //onPressed: () {
+                //Navigator.pushNamed(context, '/home');
+              //},
+              //backgroundColor: const Color(0xFF74BD64), // Color verde del botón
+              //child: Icon(Icons.home),
+            //),
+          //),
         ],
       ),
     );
