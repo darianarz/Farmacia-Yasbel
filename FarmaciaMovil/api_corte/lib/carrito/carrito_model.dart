@@ -31,7 +31,7 @@ class CarritoModel extends ChangeNotifier {
       _carrito.remove(product);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('${product.nombre} se ha eliminado del carrito'),
+          content: Text('${product.name} se ha eliminado del carrito'),
           duration: Duration(seconds: 2),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
@@ -50,7 +50,7 @@ class CarritoModel extends ChangeNotifier {
   double getTotal() {
     double total = 0;
     _carrito.forEach((product, quantity) {
-      total += product.precio * quantity;
+      total += product.price * quantity;
     });
     return total;
   }

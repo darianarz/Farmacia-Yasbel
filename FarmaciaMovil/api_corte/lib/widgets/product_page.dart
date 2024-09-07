@@ -22,16 +22,16 @@ class ProductPage extends StatelessWidget {
             
             SizedBox(height: 20),
             Text(
-              product.nombre,
+              product.name,
               
             ),
             SizedBox(height: 10),
-            Text('Precio: \$${product.precio.toString()}',
+            Text('Precio: \$${product.price.toString()}',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
             Text('Descripción:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
-            Text(product.descripcion, style: TextStyle(fontSize: 16)),
+            Text(product.description, style: TextStyle(fontSize: 16)),
             SizedBox(height: 10),
 
           ],

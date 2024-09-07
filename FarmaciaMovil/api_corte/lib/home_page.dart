@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
             if (snapshot.hasError) {
               return const ErrorPage();
             } else if (snapshot.hasData) {
-              return DatosPage(products: snapshot.data!);
+              return DatosPage(products: snapshot.data!); 
             }
           }
           return const CargaPage();
@@ -30,21 +30,20 @@ class HomePage extends StatelessWidget {
     );
   }
 
-    Future<List<Product>> getData(String token) async {
-      final url = Uri.https('2546-179-19-194-71.ngrok-free.app', '/products');
-      final response = await http.get(
-        url,
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-      );
+  Future<List<Product>> getData(String token) async {
+    final url = Uri.https('8ad9-38-188-225-50.ngrok-free.app', '/products');
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
 
-      if (response.statusCode == 200) {
-        final List jsonData = jsonDecode(response.body);
-        return jsonData.map((item) => Product.fromJson(item)).toList();
-      } else {
-        throw 'Error en la petición: ${response.statusCode}';
-      }
+    if (response.statusCode == 200) {
+      final List jsonData = jsonDecode(response.body);
+      return jsonData.map((item) => Product.fromJson(item)).toList();
+    } else {
+      throw 'Error en la petición: ${response.statusCode}';
+    }
   }
 }
-
