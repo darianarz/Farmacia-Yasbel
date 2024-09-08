@@ -83,7 +83,7 @@
                             </svg>
                         </form>
                         <div class="user-menu">
-                             <button class="user-btn btn btn-link">
+                            <button class="user-btn btn btn-link">
                                 <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
@@ -140,11 +140,12 @@
                                             <td class="border">${prov.getTelefono()}</td>
                                             <td class="border">${prov.getContacto()}</td>
                                             <td scope="col" class ="text-center border">
-                                                <input type="hidden" name="idprov" id="idprov" value="${prov.getId()}">
+                                                <input type="hidden" name="idprov" class="idprov" id="idprov" value="${prov.getId()}">
                                                 <a class="btn btn-warning" href="/FarmaciaWeb/CtrProveedores?accion=editarvedore&idprov=${prov.getId()}">
                                                     <i class="bi bi-pencil-fill"></i>
-                                                </a>
-                                                <a class="btn btn-danger" id="btndelete" href="#"><i class="bi bi-trash-fill"></i></a>
+                                                </a> </br> </br>
+                                                <a class="btn btn-danger btndelete" id="btndelete" href="#"><i class="bi bi-trash-fill"></i></a>
+
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -155,8 +156,8 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal para agregar un nuevo proveedor -->
+        
+                                  <!-- Modal para agregar un nuevo proveedor -->
         <div class="modal fade" id="agregarProveedorModal" tabindex="-1" role="dialog" aria-labelledby="agregarProveedorModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -202,18 +203,15 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        
-        <script src="/FarmaciaWeb/JS/Gestion.js"></script>
-        
-        <script src="/FarmaciaWeb/JS/EliminarProveedores.js" type="text/javascript"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="/FarmaciaWeb/JS/EliminarProveedor.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>                        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>  
-         <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
-        
+        <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
 
     </body>
 </html>

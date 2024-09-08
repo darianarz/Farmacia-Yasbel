@@ -78,15 +78,15 @@ public class ProveedoresDAO {
         return proList;
     }
     
-    public boolean eliminar(String id) {
+    public boolean eliminarPro(int id) {
         try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
             if (con != null) {
                 System.out.println("Se ha establecido una conexcion con la base de datos");
             }
-            pstm = con.prepareStatement("delete from tblproveedores where ProCodigo = ?");
-            pstm.setString(1, id);
+            pstm = con.prepareStatement("delete from tblproveedores where ID = ?");
+            pstm.setInt(1, id);
             pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al eliminar el proveedor" + e);

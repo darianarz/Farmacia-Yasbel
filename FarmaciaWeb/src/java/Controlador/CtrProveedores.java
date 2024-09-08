@@ -78,11 +78,13 @@ public class CtrProveedores extends HttpServlet {
 
                 response.sendRedirect("CtrProveedores?accion=listarProveedores");
                 break;
-            case "eliminar":
-                String idp = request.getParameter("idp");
-                provdao.eliminar(idp);
+            case "eliminarPro":
+               int idpr = Integer.parseInt(request.getParameter("idprov"));
+               System.out.println("eliminar: " + idpr); 
+               provdao.eliminarPro(idpr);
                 listprov = provdao.listarT();
-                response.sendRedirect("CtrProveedores?accion=listarProveedores");
+                request.setAttribute("proveedores", listprov);
+                request.getRequestDispatcher("Vistas/ListarProveedoresAdm.jsp").forward(request, response);
                 break;
             case "buscarn":
                 nombre = request.getParameter("busqueda");
@@ -106,7 +108,7 @@ public class CtrProveedores extends HttpServlet {
                 request.getRequestDispatcher("/Vistas/EditarProveedores.jsp").forward(request, response);
                 break;
             case "actualizarpro":
-                // Recibir los parámetros desde el formulario
+               
                 int idprodu = Integer.parseInt(request.getParameter("id"));
                 String nompro = request.getParameter("nombre");
                 String dire = request.getParameter("direccion");
