@@ -455,7 +455,9 @@ public class CtrProductoLi extends HttpServlet {
                         dpdao.crear(dped);
                     }*/
 
-                    //listacarrito.removeAll(listacarrito);
+                    listacarrito.removeAll(listacarrito);
+                    pedidos = peddao.listarT();
+                    request.setAttribute("pedido", pedidos);
                     request.getRequestDispatcher("Vistas/HistorialPedido.jsp").forward(request, response);
                     break;
 
