@@ -23,7 +23,6 @@ public class ProductoDAO {
     PreparedStatement pstm;
     Conectar Conexcion;
     ResultSet resul;
-    
 
     public List listarS() {
         List<Producto> producto = new ArrayList();
@@ -139,7 +138,7 @@ public class ProductoDAO {
             pstm.setInt(1, id);
             resul = pstm.executeQuery();
             while (resul.next()) {
-                
+
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
@@ -172,7 +171,7 @@ public class ProductoDAO {
             pstm.setInt(1, idp);
             resul = pstm.executeQuery();
             while (resul.next()) {
-                
+
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
@@ -227,16 +226,17 @@ public class ProductoDAO {
         return producto;
     }
 
-    public List buscarN(String nombre) {
-        List<Producto> producto = new ArrayList();
+    public List<Producto> buscarN(String nombre) {
+        List<Producto> productos = new ArrayList<>();
         try {
             Conexcion = new Conectar();
             Connection con = Conexcion.crearconexion();
             if (con != null) {
-                System.out.println("Se ha establecido una conexcion con la base de datos");
-
+                System.out.println("Se ha establecido una conexión con la base de datos");
             }
-            nombre = "%" + nombre + "%";
+            nombre = "%" + nombre + "%";  // Agregar el comodín para la búsqueda
+            System.out.println("Consulta SQL: select * from tblproductos where ProStock > 0 and ProNombre like " + nombre);
+
             pstm = con.prepareStatement("select * from tblproductos where ProStock > 0 and ProNombre like ?");
             pstm.setString(1, nombre);
             resul = pstm.executeQuery();
@@ -254,13 +254,18 @@ public class ProductoDAO {
                 prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
                 prod.setTblCategoria(resul.getInt(11));
-                producto.add(prod);
+                productos.add(prod);
+            }
+
+            System.out.println("Productos obtenidos: " + productos.size());
+            for (Producto p : productos) {
+                System.out.println("Producto encontrado: " + p.getProNombre());
             }
 
         } catch (Exception e) {
-            System.out.println("Error al buscarN los productos" + e);
+            System.out.println("Error al buscar los productos: " + e);
         }
-        return producto;
+        return productos;
     }
 
     public void crear(Producto pro) {
@@ -309,13 +314,13 @@ public class ProductoDAO {
             pstm.setInt(9, pro.getTblCategoria());
             pstm.setInt(10, pro.getTblProverdores());
             pstm.setInt(11, pro.getProCodigo());
-            
+
             pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al editar los productos " + e);
         }
     }
-    
+
     public boolean eliminar(String id) {
         try {
             Conexcion = new Conectar();

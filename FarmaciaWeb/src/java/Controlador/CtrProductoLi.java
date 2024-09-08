@@ -147,13 +147,13 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "buscarn":
                 nombre = request.getParameter("busqueda");
-                System.out.println("nombre: "+nombre);
+                System.out.println("nombre: " + nombre);
                 productos = pdao.buscarN(nombre);
                 request.setAttribute("categorias", categoria);
-                request.setAttribute("producto", productos);
+                request.setAttribute("productos", productos);
                 System.out.println("prodductos" + productos);
                 request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
-               /* if (sesion.getAttribute("tipo").equals("Administrador")) {
+                /* if (sesion.getAttribute("tipo").equals("Administrador")) {
                     request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
                 }
                if (request.getParameter("busqueda") == null) {
@@ -299,7 +299,10 @@ public class CtrProductoLi extends HttpServlet {
                 java.sql.Date fechaVencimiento = new java.sql.Date(fechavencimiento.getTime());
                 int stopro = Integer.parseInt(request.getParameter("txtstock"));
                 int catpro = Integer.parseInt(request.getParameter("cat"));
-                String fotpro = request.getParameter("foto2");
+                String categorinombre2 = request.getParameter("catNombre");
+                System.out.println("nomrbed e la caaaa : "  +categorinombre2);
+                String fotpro = "Imagenes/" + categorinombre2 + "/" + request.getParameter("foto");
+                System.out.println("direccion de la imagen:  " + fotpro);
                 p.setProNombre(nompro);
                 p.setTblProverdores(pro);
                 p.setProPrecio(prepro);
@@ -327,10 +330,12 @@ public class CtrProductoLi extends HttpServlet {
                 sto = Integer.parseInt(request.getParameter("txtstock"));
                 descuent = request.getParameter("txtdescuento");
                 cat = Integer.parseInt(request.getParameter("categoria"));
+                String categorinombre = request.getParameter("categoriaNombre");
+                System.out.println("nombre de la categoria" + categorinombre);
                 provee = Integer.parseInt(request.getParameter("proovedores"));
-                System.out.println("categoria producto: " + cat);
-                foto = "Imagenes/" + request.getParameter("foto");
-               
+                foto = "Imagenes/" + categorinombre + "/" + request.getParameter("foto");
+                System.out.println("direccion imagen" + foto);
+
                 p.setProPrecio(pre);
                 p.setProDescuento(descuent);
                 p.setProMarca(marca);
@@ -424,7 +429,6 @@ public class CtrProductoLi extends HttpServlet {
                     listacarrito.removeAll(listacarrito);
                     request.getRequestDispatcher("CtrProductoLi?accion=Carrito").forward(request, response);
                     break;
-                
 
                 }
 

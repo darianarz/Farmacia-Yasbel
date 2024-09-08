@@ -127,18 +127,37 @@
                             </div>
                             <div class="col-6">
                                 <label>Categoria</label> 
-                                <select class="form-control" name="categoria" onchange="actualizarInputOculto(this)" value="${Productoe.getTblCategoria()}">
+                                <select class="form-control" name="categoria" id="categoriaSelect" onchange="actualizarInputsOcultos(this)" value="${Productoe.getTblCategoria()}">
                                     <c:forEach var="cat" items="${categorias}">
-                                        <option value="${cat.getCatCodigo()}">${cat.getCatNombre()}</option>
+                                        <option value="${cat.getCatCodigo()}" data-nombre="${cat.getCatNombre()}">${cat.getCatNombre()}</option>
                                     </c:forEach>
-                                
                                 </select>
-                                    <input type="hidden" class="form-control" name="cat" id="cat" value="${Productoe.getTblCategoria()}"> 
+
+                                <!-- Campo oculto para el código de la categoría -->
+                                <input type="hidden" class="form-control" name="cat" id="cat" value="${Productoe.getTblCategoria()}"> 
+
+                                <!-- Campo oculto para el nombre de la categoría -->
+                                <input type="hidden" class="form-control" name="catNombre" id="catNombre">
+
                                 <script>
-                                    function actualizarInputOculto(selectElement) {
-                                        var inputOculto = document.getElementById("cat");
-                                        inputOculto.value = selectElement.value;
+                                    // Función para actualizar tanto el código como el nombre de la categoría
+                                    function actualizarInputsOcultos(selectElement) {
+                                        var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+                                        // Actualizar el valor del código de la categoría
+                                        var inputOcultoCodigo = document.getElementById("cat");
+                                        inputOcultoCodigo.value = selectElement.value;
+
+                                        // Actualizar el valor del nombre de la categoría
+                                        var inputOcultoNombre = document.getElementById("catNombre");
+                                        inputOcultoNombre.value = selectedOption.getAttribute("data-nombre");
                                     }
+
+                                    // Inicializar los valores cuando se cargue la página
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        var selectElement = document.getElementById("categoriaSelect");
+                                        actualizarInputsOcultos(selectElement); // Actualiza con la categoría cargada
+                                    });
                                 </script>
                             </div>
                             <div class="col-6">
@@ -159,7 +178,7 @@
 
                         <center>
                             <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">Agregar <i class="bi bi-floppy"></i></button>
-                            <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="#">Regresar <i class="bi bi-box-arrow-left"></i></a>
+                            <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm">Regresar <i class="bi bi-box-arrow-left"></i></a>
                         </center>
 
                     </form>
