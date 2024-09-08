@@ -85,101 +85,40 @@
                             </div>
                         </div>
                     </header>
-                    <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpro" method="POST" >
+                    <form class="form-sing" action="/FarmaciaWeb/CtrProveedores?accion=actualizarpro" method="POST" >
 
                         <div class="form-row">
                             <div class="col-6">
                                 <label>Nombre</label> 
-                                <input type="hidden" class="form-control" name="txtid" id="txtid" value="${Productoe.getProCodigo()}"> 
-                                <input type="text" class="form-control" name="txtnombre" placeholder="nombre" required="" value="${Productoe.getProNombre()}">
+                                <input type="hidden" class="form-control" name="id" id="id" value="${Proveedorese.getId()}"> 
+                                <input type="text" class="form-control" name="nombre" placeholder="nombre" required="" value="${Proveedorese.getNombre()}">
                             </div>  
+                            
                             <div class="col-6">
-                                <label>Proovedores</label> 
-                                <select class="form-control" name="proovedores">
-                                    <c:forEach var="prod" items="${proveedores}">
-                                        <option value="${prod.getId()}">${prod.getNombre()}</option>
-                                    </c:forEach>
-                                </select>
-                                <input type="hidden" class="form-control" name="prov" id="prov" value="${Productoe.getTblProverdores()}"> 
+                                <label>direccion</label> 
+                                <input type="text" class="form-control" name="direccion" placeholder="direccion" required="" value="${Proveedorese.getDireccion()}">
                             </div>
                             <div class="col-6">
-                                <label>Precio</label> 
-                                <input type="number" class="form-control" name="txtprecio" placeholder="precio" required="" value="${Productoe.getProPrecio()}">
+                                <label>ciudad</label> 
+                                <input type="text" class="form-control" name="ciudad" placeholder="ciudad" required="" value="${Proveedorese.getCiudad()}">
                             </div>
                             <div class="col-6">
-                                <label>Descuento</label> 
-                                <input type="text" class="form-control" name="txtdescuento" placeholder="descuento" required="" value="${Productoe.getProDescuento()}">
+                                <label>correo</label> 
+                                <input type="email" class="form-control" name="correo" placeholder="correo" required="" value="${Proveedorese.getCorreo()}">
                             </div>
                             <div class="col-6">
-                                <label>Marca</label> 
-                                <input type="text" class="form-control" name="txtmarca" placeholder="marca" required="" value="${Productoe.getProMarca()}">
+                                <label>telefono</label> 
+                                <input type="number" class="form-control" name="telefono" placeholder="telefono" required="" value="${Proveedorese.getTelefono()}">
                             </div>
                             <div class="col-6">
-                                <label>Descripcion</label> 
-                                <input type="text" class="form-control" name="txtdescripcion" placeholder="descripcion" required="" value="${Productoe.getProDescripcion()}">
-                            </div>
-                            <div class="col-6">
-                                <label>Fecha vencimiento</label> 
-                                <input type="date" class="form-control" name="txtfechavencimiento" placeholder="fecha" required="" value="${Productoe.getProFechaVencimiento()}">
-                            </div>
-                            <div class="col-6">
-                                <label>Stock</label> 
-                                <input type="number" class="form-control" name="txtstock" placeholder="stock" required="" value="${Productoe.getProStok()}"> 
-                            </div>
-                            <div class="col-6">
-                                <label>Categoria</label> 
-                                <select class="form-control" name="categoria" id="categoriaSelect" onchange="actualizarInputsOcultos(this)" value="${Productoe.getTblCategoria()}">
-                                    <c:forEach var="cat" items="${categorias}">
-                                        <option value="${cat.getCatCodigo()}" data-nombre="${cat.getCatNombre()}">${cat.getCatNombre()}</option>
-                                    </c:forEach>
-                                </select>
-
-                                <!-- Campo oculto para el código de la categoría -->
-                                <input type="hidden" class="form-control" name="cat" id="cat" value="${Productoe.getTblCategoria()}"> 
-
-                                <!-- Campo oculto para el nombre de la categoría -->
-                                <input type="hidden" class="form-control" name="catNombre" id="catNombre">
-
-                                <script>
-                                    // Función para actualizar tanto el código como el nombre de la categoría
-                                    function actualizarInputsOcultos(selectElement) {
-                                        var selectedOption = selectElement.options[selectElement.selectedIndex];
-
-                                        // Actualizar el valor del código de la categoría
-                                        var inputOcultoCodigo = document.getElementById("cat");
-                                        inputOcultoCodigo.value = selectElement.value;
-
-                                        // Actualizar el valor del nombre de la categoría
-                                        var inputOcultoNombre = document.getElementById("catNombre");
-                                        inputOcultoNombre.value = selectedOption.getAttribute("data-nombre");
-                                    }
-
-                                    // Inicializar los valores cuando se cargue la página
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                        var selectElement = document.getElementById("categoriaSelect");
-                                        actualizarInputsOcultos(selectElement); // Actualiza con la categoría cargada
-                                    });
-                                </script>
-                            </div>
-                            <div class="col-6">
-                                <label>Imagen</label> 
-                                <input type="file" class="form-control" name="foto" id="foto" onchange="actualizarInputOculto2(this)">
-                                <input type="hidden" class="form-control" value="${Productoe.getProFoto()}" name="foto2" id="foto2">
-                                <script>
-                                    function actualizarInputOculto2(selectElement) {
-                                        var inputOculto = document.getElementById("foto2");
-                                        var filePath = selectElement.value;
-                                        var fileName = filePath.split('\\').pop().split('/').pop(); // Esto obtiene el nombre del archivo
-                                        inputOculto.value = "Imagenes/" + fileName;
-                                        //inputOculto.value = "Imagenes/" + selectElement.value;
-                                    }
-                                </script>
-                            </div>
+                                <label>contacto</label> 
+                                <input type="text" class="form-control" name="contacto" placeholder="contacto" required="" value="${Proveedorese.getContacto()}"> 
+                            </div>        
                         </div>    
 
                         <center>
                             <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">Agregar <i class="bi bi-floppy"></i></button>
-                            <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm">Regresar <i class="bi bi-box-arrow-left"></i></a>
+                            <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores">Regresar <i class="bi bi-box-arrow-left"></i></a>
                         </center>
 
                     </form>
