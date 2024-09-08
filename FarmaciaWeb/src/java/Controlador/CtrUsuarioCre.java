@@ -108,24 +108,29 @@ public class CtrUsuarioCre extends HttpServlet {
                 request.setAttribute("usuarios", list);
                 request.getRequestDispatcher("/Vistas/ListarUsuariosAdm.jsp").forward(request, response);
                 break;
-            case "eliminar":
-                id = request.getParameter("id");
-                System.out.println("identificacion: " + id);
-                dao.eliminar(id);
-                list = dao.listarT();
-                request.setAttribute("usuarios", list);
-                request.getRequestDispatcher("Vistas/ListarUsuariosAdm.jsp").forward(request, response);
+            case "eliminarUsu":
+                String ide = request.getParameter("idu");
+                System.out.println("eliminar: " + ide);
+                if (ide != null) {
+                    dao.eliminarUsu(ide);
+                    list = dao.listarT();
+                    request.setAttribute("usuarios", list);
+                    request.getRequestDispatcher("/Vistas/ListarUsuariosAdm.jsp").forward(request, response);
+                } else {
+                    System.out.println("El parámetro 'idu' es nulo");
+                }
                 break;
+
             case "tipoUsu":
-              idActu = request.getParameter("id");
-              System.out.println("Actualizar tipo Usuario " + idActu);
-              boolean nuevotp = dao.tipoUsu(idActu, "Administrador");
-              if(nuevotp){
-               list = dao.listarT();
-               request.setAttribute("usuarios", list);
-               request.getRequestDispatcher("CtrUsuarioCre?accion=Listar").forward(request, response);
-              }
-              break;
+                idActu = request.getParameter("id");
+                System.out.println("Actualizar tipo Usuario " + idActu);
+                boolean nuevotp = dao.tipoUsu(idActu, "Administrador");
+                if (nuevotp) {
+                    list = dao.listarT();
+                    request.setAttribute("usuarios", list);
+                    request.getRequestDispatcher("CtrUsuarioCre?accion=Listar").forward(request, response);
+                }
+                break;
         }
     }
 
