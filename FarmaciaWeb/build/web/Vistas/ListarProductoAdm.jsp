@@ -20,7 +20,7 @@
             response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
         }
     %>
-
+    
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -97,7 +97,7 @@
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <form class="form-inline my-2 my-lg-0 mr-auto" action="/FarmaciaWeb/CtrProductoLi?accion=buscarn" method="post">
+                                  <form class="form-inline my-2 my-lg-0 mr-auto" action="/FarmaciaWeb/CtrProductoLi?accion=buscarn" method="post">
                                         <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search" name="busqueda">
                                         <button class="btn-search my-2 my-sm-0" type="submit">
                                             <div class="original">BUSCAR</div>

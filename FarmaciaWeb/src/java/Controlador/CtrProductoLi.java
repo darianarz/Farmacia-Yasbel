@@ -150,7 +150,7 @@ public class CtrProductoLi extends HttpServlet {
                 System.out.println("nombre: " + nombre);
                 productos = pdao.buscarN(nombre);
                 request.setAttribute("categorias", categoria);
-                request.setAttribute("producto", productos);
+                request.setAttribute("productos", productos);
                 System.out.println("prodductos" + productos);
                 request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
                 /* if (sesion.getAttribute("tipo").equals("Administrador")) {
