@@ -44,7 +44,6 @@ public class CtrProveedores extends HttpServlet {
         String nombre, direccion, ciudad, correo, contacto;
         int telefono, id;
         int idpv;
-       
 
         String accion = request.getParameter("accion");
         System.out.println("Acción: " + accion);
@@ -103,9 +102,9 @@ public class CtrProveedores extends HttpServlet {
 
                 request.getRequestDispatcher("/Vistas/EditarProveedores.jsp").forward(request, response);
                 break;
-            /*case "actualizarpro":
+            case "actualizarpro":
+                // Recibir los parámetros desde el formulario
                 int idprodu = Integer.parseInt(request.getParameter("id"));
-                System.out.println("id: " + idprodu);
                 String nompro = request.getParameter("nombre");
                 String dire = request.getParameter("direccion");
                 String ciud = request.getParameter("ciudad");
@@ -113,6 +112,8 @@ public class CtrProveedores extends HttpServlet {
                 int tel = Integer.parseInt(request.getParameter("telefono"));
                 String cont = request.getParameter("contacto");
 
+                // Setear los valores en el objeto Proveedor
+                Proveedores p = new Proveedores();
                 p.setId(idprodu);
                 p.setNombre(nompro);
                 p.setDireccion(dire);
@@ -121,9 +122,12 @@ public class CtrProveedores extends HttpServlet {
                 p.setTelefono(tel);
                 p.setContacto(cont);
 
+                // Llamar al DAO para actualizar los datos
                 provdao.editar(p);
+
+                // Redirigir o mostrar el resultado
                 request.getRequestDispatcher("CtrProveedores?accion=listarProveedores").forward(request, response);
-                break;*/
+                break;
         }
     }
 
@@ -166,8 +170,8 @@ public class CtrProveedores extends HttpServlet {
                 response.sendRedirect("CtrProveedores?accion=listarProveedores");
                 break;
             case "actualizarpro":
+                // Recibir los parámetros desde el formulario
                 int idprodu = Integer.parseInt(request.getParameter("id"));
-                System.out.println("id: " + idprodu);
                 String nompro = request.getParameter("nombre");
                 String dire = request.getParameter("direccion");
                 String ciud = request.getParameter("ciudad");
@@ -175,6 +179,8 @@ public class CtrProveedores extends HttpServlet {
                 int tel = Integer.parseInt(request.getParameter("telefono"));
                 String cont = request.getParameter("contacto");
 
+                // Setear los valores en el objeto Proveedor
+                Proveedores p = new Proveedores();
                 p.setId(idprodu);
                 p.setNombre(nompro);
                 p.setDireccion(dire);
@@ -183,7 +189,10 @@ public class CtrProveedores extends HttpServlet {
                 p.setTelefono(tel);
                 p.setContacto(cont);
 
-                provdao.editar(p);
+                // Llamar al DAO para actualizar los datos
+                dao.editar(p);
+
+                // Redirigir o mostrar el resultado
                 request.getRequestDispatcher("CtrProveedores?accion=listarProveedores").forward(request, response);
                 break;
         }

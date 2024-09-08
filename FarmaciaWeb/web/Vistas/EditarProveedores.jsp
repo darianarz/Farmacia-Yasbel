@@ -85,15 +85,14 @@
                             </div>
                         </div>
                     </header>
-                    <form class="form-sing" action="/FarmaciaWeb/CtrProveedores?accion=actualizarpro" method="POST" >
-
+                                <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpror" method="post">
                         <div class="form-row">
                             <div class="col-6">
                                 <label>Nombre</label> 
                                 <input type="hidden" class="form-control" name="id" id="id" value="${Proveedorese.getId()}"> 
                                 <input type="text" class="form-control" name="nombre" placeholder="nombre" required="" value="${Proveedorese.getNombre()}">
                             </div>  
-                            
+
                             <div class="col-6">
                                 <label>direccion</label> 
                                 <input type="text" class="form-control" name="direccion" placeholder="direccion" required="" value="${Proveedorese.getDireccion()}">
@@ -117,7 +116,9 @@
                         </div>    
 
                         <center>
-                            <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">Agregar <i class="bi bi-floppy"></i></button>
+                            <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">
+                                Agregar <i class="bi bi-floppy"></i>
+                            </button>
                             <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores">Regresar <i class="bi bi-box-arrow-left"></i></a>
                         </center>
 

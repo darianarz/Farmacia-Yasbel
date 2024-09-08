@@ -269,6 +269,7 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("productos", productos);
                 request.getRequestDispatcher("Vistas/WelcomeAdmin.jsp").forward(request, response);
                 break;
+            
             case "Listaradm":
                 request.setAttribute("productos", productos);
                 request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
@@ -303,6 +304,7 @@ public class CtrProductoLi extends HttpServlet {
                 System.out.println("nomrbed e la caaaa : "  +categorinombre2);
                 String fotpro = "Imagenes/" + categorinombre2 + "/" + request.getParameter("foto");
                 System.out.println("direccion de la imagen:  " + fotpro);
+                
                 p.setProNombre(nompro);
                 p.setTblProverdores(pro);
                 p.setProPrecio(prepro);
@@ -314,6 +316,7 @@ public class CtrProductoLi extends HttpServlet {
                 p.setTblCategoria(catpro);
                 p.setProFoto(fotpro);
                 p.setProCodigo(idprodu);
+                
                 pdao.editar(p);
                 request.getRequestDispatcher("CtrProductoLi?accion=Listaradm").forward(request, response);
                 break;
@@ -355,6 +358,7 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("categorias", categoria);
                 request.getRequestDispatcher("Vistas/InventarioAdm.jsp").forward(request, response);
                 break;
+                
             case "ag":
                 productos = pdao.listarT();
                 proveedores = prodDao.listarT();
@@ -400,7 +404,7 @@ public class CtrProductoLi extends HttpServlet {
                     }
                 }
                 break;
-
+                
             case "pedido":
                 if (listacarrito.size() > 0) {
 
@@ -429,6 +433,7 @@ public class CtrProductoLi extends HttpServlet {
                     listacarrito.removeAll(listacarrito);
                     request.getRequestDispatcher("CtrProductoLi?accion=Carrito").forward(request, response);
                     break;
+                
 
                 }
 
