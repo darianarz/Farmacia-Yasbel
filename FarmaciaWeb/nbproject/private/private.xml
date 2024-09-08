@@ -3,25 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/WelcomeAdmin.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/Producto.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/Gestionpedido.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/LogginPage.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/CarritoCliente.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/AdminiatracionProductosAdm.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/Proveedores.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/CategoriaDAO.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/ListarUsuariosAdm.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/Categoria.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/UsuarioDAO.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/GestionPedidoAdm.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/ListarProductoAdm.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/ProductoDAO.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrPQR.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/PQRDAO.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrProductoLi.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/ProveedoresDAO.java</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrUsuarioCre.java</file>
+            <file>file:/C:/Users/HOME/Music/farm/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/ProveedoresDAO.java</file>
+            <file>file:/C:/Users/HOME/Music/farm/Farmacia-Yasbel/FarmaciaWeb/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/HOME/Music/farm/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrProductoLi.java</file>
+            <file>file:/C:/Users/HOME/Music/farm/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/ListarProveedoresAdm.jsp</file>
+            <file>file:/C:/Users/HOME/Music/farm/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/GestionPedidoAdm.jsp</file>
         </group>
     </open-files>
 </project-private>

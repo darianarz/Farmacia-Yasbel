@@ -206,4 +206,23 @@ public class UsuarioDAO {
         return true;
     }
     
+    public boolean tipoUsu(String id, String nuevoTipo){
+        try{
+         Conexcion = new Conectar();
+         con = Conexcion.crearconexion();
+         if(con != null){
+             System.out.println("Se ha es establecido una conexión con la base de datos");
+         }
+         pstm = con.prepareStatement("UPDATE tblusuarios SET UsuUsuarioTipo = ? WHERE UsuID = ?");
+         pstm.setString(1, nuevoTipo);
+         pstm.setString(2, id);
+         pstm.execute();
+         return true;
+        }catch(Exception e){
+            System.out.println("Error en cambiar el tipo" + e);
+            return false;
+        }
+    
+    }
+
 }
