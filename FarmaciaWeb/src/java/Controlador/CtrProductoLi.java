@@ -81,7 +81,7 @@ public class CtrProductoLi extends HttpServlet {
     int subtotal;
     int item;
     int totalpagar, idusu;
-    String nom, des, foto, fec, estado, idcliente, id, marca, descuent, fechaven;
+    String nom, des, foto, fec, estado, idcliente, id, marca, descuent, fechaven , esss;
 
     int pre, sto, cat, mon, idcli, provee;
     Date d = new Date();
@@ -434,15 +434,18 @@ public class CtrProductoLi extends HttpServlet {
                     System.out.println("usuario " + idusu);
                     fec = DateFormat.getDateInstance().format(d);
                     mon = Integer.parseInt(request.getParameter("totalp"));
-                    estado = "En Proceso";
+                    String tipo = request.getParameter("tipos");
+                    System.out.println("tipo : " + tipo);
+                    esss = "en proceso";
                     ped.setTblUsuarios(idusu);
                     ped.setPedFecha(fec);
                     ped.setPedTotal(mon);
-                    ped.setPedEstado(estado);
+                    ped.setPedFormaDePago(tipo);
+                    ped.setPedEstado(esss);
                     peddao.crear(ped);
                     int idpe = peddao.listarMx();
                     System.out.println("idpedido: " + idpe);
-                    for (int i = 0; i < listacarrito.size(); i++) {
+                    /*for (int i = 0; i < listacarrito.size(); i++) {
                         DetallePedido dped = new DetallePedido();
                         dped.setTblPedido(idpe);
                         dped.setTblProducto(listacarrito.get(i).getIdproducto());
@@ -450,10 +453,12 @@ public class CtrProductoLi extends HttpServlet {
                         dped.setDpdCantidad(listacarrito.get(i).getCantidad());
                         dped.setDpdPrecioTotal(listacarrito.get(i).getPreciocompra());
                         dpdao.crear(dped);
-                    }
+                    }*/
 
                     listacarrito.removeAll(listacarrito);
-                    request.getRequestDispatcher("Vistas/GestionPedido.jsp").forward(request, response);
+                    pedidos = peddao.listarT();
+                    request.setAttribute("pedido", pedidos);
+                    request.getRequestDispatcher("Vistas/HistorialPedido.jsp").forward(request, response);
                     break;
 
                 }

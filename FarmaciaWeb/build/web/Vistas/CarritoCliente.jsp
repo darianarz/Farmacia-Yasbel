@@ -21,10 +21,10 @@
         <link href="/FarmaciaWeb/CSS/carritocliente.css" rel="stylesheet" type="text/css"/>
     </head>
     <%
-        /*  if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
             response.sendRedirect("../Vistas/LogginPage.jsp");
         }
-         */
+
     %>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -105,20 +105,17 @@
                                 <td>${car.getSubtotal()}</td>
                                 <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
                                     <a class="btn btn-outline-danger" href="#" id="btndelete"><i class="bi bi-trash"></i></a>
-                                    
+
                                 </td>
                             </tr>
-                            </c:forEach>
+                        </c:forEach>
                     </tbody>
                 </table> 
             </div>
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Generar Compra</h3>
-                    </div>
-                    <div class="card-body">
+            <form action="/FarmaciaWeb/CtrProductoLi?accion=pedido" method="post">
+                <input type="hidden" name="idusu" value="${usuario.getUsuid()}">
+                <input type="hidden" name="totalp" value="${totalpagar}">
+                <div class="card-body">
                         <label>Subtotal:</label>
                         <input type="text" value="${totalpagar}"  readonly="" class="form-control">
                         <label>Descuento:</label>
@@ -126,13 +123,18 @@
                         <label>Total:</label>
                         <input type="text" value="${totalpagar}"  readonly="" class="form-control">
                     </div>
-                    <div class="card-footer">
-                        
-                        <a class="btn btn-danger btn-block" href="/FarmaciaWeb/CtrProductoLi?accion=pedido&idusu=${usuario.getUsuid()}&totalp=${totalpagar}" id="btngen" onclick="ejecutarTarea()">Generar Pedido</a>
+                <div class="formulario_grupo-input">
+                    <select class="form-control formulario_input" name="tipos" id="tipos">
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Tranferencia">Tranferencia</option>
+                    </select>
+                </div>
 
-                    </div>
-                </div> 
-            </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-danger btn-block" onclick="ejecutarTarea()">Generar Pedido</button>
+                </div>
+            </form>
+            
         </div>
 
 
