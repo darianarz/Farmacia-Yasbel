@@ -1,18 +1,19 @@
 <%-- 
-    Document   : IndexAdmin
-    Created on : 20/08/2024, 10:44:21 AM
-    Author     : SENA
+    Document   : EditarProveedores.jsp
+    Created on : 8/09/2024, 03:13:20 PM
+    Author     : HOME
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Index Admin</title>
+        <title>Yasbel Drugs - Administración de Productos</title>
+        <link href="/FarmaciaWeb/CSS/Gestion.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
-
     </head>
     <body>
         <div class="container-fluid">
@@ -45,7 +46,7 @@
                                 <path d="m9 18 6-6-6-6"/>
                                 </svg>
                             </button>
-                           <div class="collapsible-content">
+                            <div class="collapsible-content">
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                                 <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
@@ -75,7 +76,7 @@
                         </form>
                         <div class="user-menu">
                             <button class="user-btn btn btn-link">
-                                <img src="/placeholder.svg" width="32" height="32" alt="Avatar" class="avatar">
+                                <i class="bi bi-people-fill"></i>
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">
@@ -85,39 +86,52 @@
                             </div>
                         </div>
                     </header>
-                    <main class="main">
-                        <h1>Panel de Administración</h1>
-                        <div class="table-container">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Disponibilidad</th>
-                                        <th>Vendidos</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach var="prod" items="${productos}">
-                                        <tr>
-                                            <td>${prod.getProNombre()}</td>
-                                            <td>${prod.getProStok()}</td>
-                                            <td>12</td>
-                                            <td>En stock</td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
+                                <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpror" method="post">
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label>Nombre</label> 
+                                <input type="hidden" class="form-control" name="id" id="id" value="${Proveedorese.getId()}"> 
+                                <input type="text" class="form-control" name="nombre" placeholder="nombre" required="" value="${Proveedorese.getNombre()}">
+                            </div>  
 
-                            </table>
-                        </div>
-                    </main>
+                            <div class="col-6">
+                                <label>direccion</label> 
+                                <input type="text" class="form-control" name="direccion" placeholder="direccion" required="" value="${Proveedorese.getDireccion()}">
+                            </div>
+                            <div class="col-6">
+                                <label>ciudad</label> 
+                                <input type="text" class="form-control" name="ciudad" placeholder="ciudad" required="" value="${Proveedorese.getCiudad()}">
+                            </div>
+                            <div class="col-6">
+                                <label>correo</label> 
+                                <input type="email" class="form-control" name="correo" placeholder="correo" required="" value="${Proveedorese.getCorreo()}">
+                            </div>
+                            <div class="col-6">
+                                <label>telefono</label> 
+                                <input type="number" class="form-control" name="telefono" placeholder="telefono" required="" value="${Proveedorese.getTelefono()}">
+                            </div>
+                            <div class="col-6">
+                                <label>contacto</label> 
+                                <input type="text" class="form-control" name="contacto" placeholder="contacto" required="" value="${Proveedorese.getContacto()}"> 
+                            </div>        
+                        </div>    
+
+                        <center>
+                            <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">
+                                Agregar <i class="bi bi-floppy"></i>
+                            </button>
+                            <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores">Regresar <i class="bi bi-box-arrow-left"></i></a>
+                        </center>
+
+                    </form>
                 </div>
             </div>
         </div>
-        
+        <!-- Bootstrap JS, Popper.js, and jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
+
     </body>
 </html>

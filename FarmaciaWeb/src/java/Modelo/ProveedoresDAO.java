@@ -23,7 +23,7 @@ public class ProveedoresDAO {
     Connection con;
     PreparedStatement pstm;
     Conectar Conexion;
-
+    ResultSet resul;
    
     public void crearProveedor(Proveedores proveedor) {
         try {
@@ -39,7 +39,7 @@ public class ProveedoresDAO {
             pstm.setString(2, proveedor.getDireccion());
             pstm.setString(3, proveedor.getCiudad());
             pstm.setString(4, proveedor.getCorreo());
-            pstm.setInt(5, proveedor.getTelefono());
+            pstm.setString(5, proveedor.getTelefono());
             pstm.setString(6, proveedor.getContacto());
 
             pstm.executeUpdate();
@@ -67,15 +67,119 @@ public class ProveedoresDAO {
                 prov.setDireccion(resul.getString("Direccion"));
                 prov.setCiudad(resul.getString("Ciudad"));
                 prov.setCorreo(resul.getString("Correo"));
-                prov.setTelefono(resul.getInt("Telefono"));
+                prov.setTelefono(resul.getString("Telefono"));
                 prov.setContacto(resul.getString("Contacto"));
                 System.out.println("entro a proveedores");
                 proList.add(prov);
             }
         } catch (Exception e) {
-            System.out.println("Error al listar las PQR: " + e);
+            System.out.println("Error al listar los Proveedores: " + e);
         }
         return proList;
     }
+    
+    public boolean eliminar(String id) {
+        try {
+            Conexion = new Conectar();
+            con = Conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexcion con la base de datos");
+            }
+            pstm = con.prepareStatement("delete from tblproveedores where ProCodigo = ?");
+            pstm.setString(1, id);
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error al eliminar el proveedor" + e);
+        }
+        return true;
+    }
+    
+    public List listarN(String nombre) {
+        List<Proveedores> proveedores = new ArrayList();
+        nombre = "%" + nombre + "%";
+        try {
+            Conexion = new Conectar();
+            con = Conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexcion con la base de datos");
 
+            }
+            pstm = con.prepareStatement("select * from tblproveedores where Nombre like ?");
+            pstm.setString(1, nombre);
+            resul = pstm.executeQuery();
+            while (resul.next()) {
+                Proveedores prove = new Proveedores();
+                prove.setId(resul.getInt(1));
+                prove.setNombre(resul.getString(2));
+                prove.setDireccion(resul.getString(3));
+                prove.setCiudad(resul.getString(4));
+                prove.setCorreo(resul.getString(5));
+                prove.setTelefono(resul.getString(6));
+                prove.setContacto(resul.getString(7));
+                proveedores.add(prove);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al listarN los Proveedores " + e);
+        }
+        return proveedores;
+    }
+    
+    public Proveedores listaridp(int idp) {
+        Proveedores prod = new Proveedores();
+        try {
+            Conexion = new Conectar();
+            con = Conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexcion con la base de datos");
+
+            }
+            pstm = con.prepareStatement("select * from tblproveedores where  ID = ?");
+            pstm.setInt(1, idp);
+            resul = pstm.executeQuery();
+            while (resul.next()) {
+
+                prod.setId(resul.getInt(1));
+                prod.setNombre(resul.getString(2));
+                prod.setDireccion(resul.getString(3));
+                prod.setCiudad(resul.getString(4));
+                prod.setCorreo(resul.getString(5));
+                prod.setTelefono(resul.getString(6));
+                prod.setContacto(resul.getString(7));
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al listar con idp los Proveedores " + e);
+        }
+        return prod;
+    }
+    
+    
+    public void editar(Proveedores pro) {
+        Proveedores prod = new Proveedores();
+        try {
+            Conexion = new Conectar();
+            con = Conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexcion con la base de datos");
+
+            }
+            pstm = con.prepareStatement("update tblproveedores set Nombre = ? , Direccion = ? , Ciudad = ? , Correo = ? , Telefono = ? , Contacto = ?   where ID = ?");
+
+            pstm.setString(1, prod.getNombre());
+            pstm.setString(2, prod.getDireccion());
+            pstm.setString(3, prod.getCiudad());
+            pstm.setString(4, prod.getCorreo());
+            pstm.setString(5, prod.getTelefono());
+            pstm.setString(6, prod.getContacto());
+            pstm.setInt(7, prod.getId());
+           
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error al editar los Proveedores " + e);
+        }
+    }
+
+ 
 }
