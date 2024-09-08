@@ -110,11 +110,11 @@ public class CtrUsuarioCre extends HttpServlet {
                 break;
             case "eliminar":
                 id = request.getParameter("id");
-                System.out.println("identificacion: " + id);
+                System.out.println("Eliminar: " + id);
                 dao.eliminar(id);
                 list = dao.listarT();
                 request.setAttribute("usuarios", list);
-                request.getRequestDispatcher("Vistas/ListarUsuariosAdm.jsp").forward(request, response);
+                request.getRequestDispatcher("/Vistas/ListarUsuariosAdm.jsp").forward(request, response);
                 break;
             case "tipoUsu":
               idActu = request.getParameter("id");

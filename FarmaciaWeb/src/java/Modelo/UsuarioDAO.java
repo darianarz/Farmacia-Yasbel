@@ -197,13 +197,26 @@ public class UsuarioDAO {
             if (con != null) {
                 System.out.println("Se ha establecido una conexcion con la base de datos");
             }
-            pstm = con.prepareStatement("delete from tblusuarios where UsuId = ?");
+            pstm = con.prepareStatement("delete from tblusuarios where UsuID = ?");
             pstm.setString(1, id);
             pstm.executeUpdate();
+            return true;
         } catch (Exception e) {
-            System.out.println("Error al eliminar el usuarios " + e);
+            System.out.println("Error al eliminar el usuario " + e);
+            return false;
+        }finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error al cerrar los recursos: " + e);
+            }
         }
-        return true;
+        
     }
     
     public boolean tipoUsu(String id, String nuevoTipo){
