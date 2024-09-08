@@ -15,11 +15,7 @@
         <title>Listar Productos</title>
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
     </head>
-    <%
-        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
-            response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
-        }
-    %>
+
 
     <body>
         <div class="container-fluid">

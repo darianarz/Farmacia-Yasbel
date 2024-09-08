@@ -55,7 +55,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-text-white" href="CtrProductoLi?accion=Carrito">
+                        <a class="nav-link nav-text-white" href="CtrProductoLi?accion=carro">
                             <i class="bi bi-cart-check-fill"></i> Carrito
                             (<label style="color: darkorange">${contador}</label>)
                         </a>

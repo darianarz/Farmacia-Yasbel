@@ -53,18 +53,10 @@
                             <a class="dropdown-item text-center" href="#"><i class="bi bi-person"></i></a>
                             <a class="dropdown-item " >${usuario.getUsunombre()}</a>
                             <a class="dropdown-item " >${usuario.getUsutipo()}</a>
-                            <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
                             <a class="dropdown-item text-warnig" href="/FarmaciaWeb/CtrProductoLi?accion=admi">Gestion Administrador</a>
                             <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
 
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text-white" href="/FarmaciaWeb/CtrProductoLi?accion=Carrito">
-                            <i class="bi bi-cart-check-fill"></i> Carrito
-                            (<label style="color: darkorange">${contador}</label>)
-
-                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -178,8 +170,8 @@
                                     <p class="card-text">${prod.getProDescripcion()}</p>
 
                                     <div class="mt-auto">
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=comprar&id=${prod.getProCodigo()}" class="btn btn-secondary ml-2">Comprar</a>
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-primary">Agregar al carrito</a>
+                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="btn btn-secondary ml-2">Editar</a>
+                                        
                                     </div>
                                 </div>
                             </div>
