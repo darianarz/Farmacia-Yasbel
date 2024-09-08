@@ -21,7 +21,7 @@ class UserProvider with ChangeNotifier {
     required String address,
     required String passwordConfirmation,
   }) async {
-    final url = Uri.parse('https://8ad9-38-188-225-50.ngrok-free.app/users');
+    final url = Uri.parse('https://1b1b-38-188-225-50.ngrok-free.app/users');
 
     try {
       final response = await http.post(
@@ -58,7 +58,7 @@ class UserProvider with ChangeNotifier {
   }
 
   Future<void> login(String username, String password) async {
-    final url = Uri.parse('https://8ad9-38-188-225-50.ngrok-free.app/login');
+    final url = Uri.parse('https://1b1b-38-188-225-50.ngrok-free.app/login');
     try {
       final response = await http.post(
         url,
