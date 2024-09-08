@@ -1,8 +1,7 @@
-// carrito_page.dart
 import 'package:api_corte/carrito/carrito_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:api_corte/widgets/product_page.dart';
+import 'package:api_corte/widgets/detalle_producto.dart';
 
 class CarritoPage extends StatelessWidget {
   @override
@@ -10,7 +9,9 @@ class CarritoPage extends StatelessWidget {
     final carrito = Provider.of<CarritoModel>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Carrito de Compras')),
+      appBar: AppBar(
+        title: Text('Carrito de Compras'),
+      ),
       body: carrito.isEmpty()
           ? Center(
               child: Text('El carrito está vacío'),
@@ -27,7 +28,7 @@ class CarritoPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProductPage(product: product),
+                          builder: (context) => DetalleProducto(product: product),
                         ),
                       );
                     },
@@ -68,7 +69,7 @@ class CarritoPage extends StatelessWidget {
                         IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
                           onPressed: () {
-                            Provider.of<CarritoModel>(context, listen: false).removeProduct(product);
+                            carrito.removeProduct(product);
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text('${product.name} se ha eliminado del carrito'),
@@ -113,119 +114,3 @@ class CarritoPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-/*import 'package:flutter/material.dart';
-import 'package:api_corte/models/product.dart';
-
-class CarritoPage extends StatefulWidget {
-  final List<Product> initialProducts;
-  const CarritoPage({Key? key, required this.initialProducts}) : super(key: key);
-
-  @override
-  _CarritoPageState createState() => _CarritoPageState();
-}
-
-class _CarritoPageState extends State<CarritoPage> {
-  List<Product> products = []; // Lista de productos en el carrito
-  double total = 0; // Total inicial del carrito
-
-  @override
-  void initState() {
-    super.initState();
-    // Copia los productos iniciales a la lista del estado local
-    products.addAll(widget.initialProducts);
-    _calculateTotal();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Carrito de Compras')),
-      body: products.isEmpty
-          ? Center(
-              child: Text('El carrito está vacío'),
-            )
-          : ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                final product = products[index];
-                return Card(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          product.nombre,
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Precio: \$${product.precio}',
-                          style: TextStyle(fontSize: 16, color: Colors.blue[900]),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Descripción: ${product.descripcion}',
-                          style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              icon: Icon(Icons.delete, color: Colors.red),
-                              onPressed: () {
-                                setState(() {
-                                  products.removeAt(index);
-                                  _calculateTotal();
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-      bottomNavigationBar: products.isEmpty
-          ? null
-          : Container(
-              padding: EdgeInsets.all(10),
-              color: Colors.grey[200],
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Total: \$${total.toStringAsFixed(2)}',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Aquí podrías implementar la lógica para realizar la compra.
-                    },
-                    child: Text('Comprar'),
-                  ),
-                ],
-              ),
-            ),
-    );
-  }
-
-  // Método para calcular el total del carrito
-  void _calculateTotal() {
-    double newTotal = 0;
-    for (var product in products) {
-      newTotal += product.precio;
-    }
-    setState(() {
-      total = newTotal;
-    });
-  }
-}*/

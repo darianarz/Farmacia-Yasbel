@@ -1,4 +1,3 @@
-// carrito_model.dart
 import 'package:flutter/material.dart';
 import 'package:api_corte/models/product.dart';
 
@@ -64,4 +63,3 @@ class CarritoModel extends ChangeNotifier {
     notifyListeners();
   }
 }
-
