@@ -24,7 +24,8 @@ public class ProveedoresDAO {
     PreparedStatement pstm;
     Conectar Conexion;
 
-    public void crearPQR(PQR pqr) {
+   
+    public void crearProveedor(Proveedores proveedor) {
         try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
@@ -32,34 +33,22 @@ public class ProveedoresDAO {
                 System.out.println("Conexión establecida con la base de datos");
             }
 
-            pstm = con.prepareStatement("INSERT INTO tblpqr (tblUsuID, PQRFecha, PQRNombre, PQRCorreo, PQRtelefono, PQRTipo, PQRDescripcion, PQREstado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            pstm = con.prepareStatement("INSERT INTO tblproveedores (Nombre, Direccion, Ciudad, Correo, Telefono, Contacto) VALUES (?, ?, ?, ?, ?, ?)");
 
-            pstm.setString(1, pqr.getTblUsuID());
-            pstm.setTimestamp(2, new Timestamp(new Date().getTime()));
-            pstm.setString(3, pqr.getPqrNombre());
-            pstm.setString(4, pqr.getPqrCorreo());
-            pstm.setString(5, pqr.getPqrTelefono());
-            pstm.setString(6, pqr.getPqrTipo());
-            pstm.setString(7, pqr.getPqrDescripcion());
-            pstm.setString(8, "Pendiente");
+            pstm.setString(1, proveedor.getNombre());
+            pstm.setString(2, proveedor.getDireccion());
+            pstm.setString(3, proveedor.getCiudad());
+            pstm.setString(4, proveedor.getCorreo());
+            pstm.setInt(5, proveedor.getTelefono());
+            pstm.setString(6, proveedor.getContacto());
 
             pstm.executeUpdate();
+            System.out.println("Proveedor creado exitosamente");
         } catch (Exception e) {
-            System.out.println("Error al crear la PQR: " + e);
-        } finally {
-
-            try {
-                if (pstm != null) {
-                    pstm.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error al cerrar los recursos: " + e);
-            }
+            System.out.println("Error al crear el proveedor: " + e);
         }
     }
+
 
     public List<Proveedores> listarT() {
         List<Proveedores> proList = new ArrayList<>();
