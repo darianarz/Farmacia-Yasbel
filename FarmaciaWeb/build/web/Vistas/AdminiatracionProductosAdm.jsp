@@ -90,58 +90,73 @@
                             <div class="grid">
                                 <div class="form-section">
                                     <form  action="/FarmaciaWeb/CtrProductoLi?accion=Agregar" method="post">
-                                    <h2 class="subtitle">Agregar Nuevo Producto</h2>
-                                    <div class="form-group">
-                                        <label for="name">Nombre</label>
-                                        <input id="txtnombre" name="txtnombre" type="text" placeholder="Nombre del Producto">
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Categoria</label> 
-                                        <select class="form-control" name="categoria">
-                                            <c:forEach var="cat" items="${categorias}">
-                                                <option value="${cat.getCatCodigo()}">${cat.getCatNombre()}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="marca">Marca</label>
-                                        <input id="txtmarca" name="txtmarca" type="text" placeholder="marca del Proveedor">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description">Descripcion</label>
-                                        <textarea id="txtdescripcion" name="txtdescripcion" placeholder="Descripción del Producto"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fechavencimiento">Fecha vencimiento</label>
-                                        <input id="txtfechavencimiento" name="txtfechavencimiento" type="date" placeholder="Fecha vencimiento"></input>
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Proovedores</label> 
-                                        <select class="form-control" name="proovedores">
-                                            <c:forEach var="prod" items="${proveedores}">
-                                                <option value="${prod.getId()}">${prod.getNombre()}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="stock" style="padding-top: 10px;">Stock</label>
-                                        <input id="txtstock" name="txtstock" type="number" placeholder="Cantidad">
-                                    </div>      
-                                    <div class="form-group">
-                                        <label for="precio">Precio</label>
-                                        <input id="txtprecio" name="txtprecio" type="number" placeholder="Precio del Producto">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="descuento">Descuento</label>
-                                        <input id="txtdescuento" name="txtdescuento" type="number" placeholder="descuento del Producto">
-                                    </div>
+                                        <h2 class="subtitle">Agregar Nuevo Producto</h2>
+                                        <div class="form-group">
+                                            <label for="name">Nombre</label>
+                                            <input id="txtnombre" name="txtnombre" type="text" placeholder="Nombre del Producto">
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Categoria</label>
+                                            <select class="form-control" name="categoria" id="categoriaSelect" onchange="actualizarNombreCategoria()">
+                                                <c:forEach var="cat" items="${categorias}">
+                                                    <option value="${cat.getCatCodigo()}" data-nombre="${cat.getCatNombre()}">${cat.getCatNombre()}</option>
+                                                </c:forEach>
+                                            </select>
+                                            <input type="hidden" name="categoriaNombre" id="categoriaNombre">
+                                            <script>
+                                                function actualizarNombreCategoria() {
+                                                    var select = document.getElementById('categoriaSelect');
+                                                    var selectedOption = select.options[select.selectedIndex];
+                                                    var nombre = selectedOption.getAttribute('data-nombre');
+                                                    document.getElementById('categoriaNombre').value = nombre;
+                                                }
 
-                                    <div class="form-group">
-                                        <label for="imageUrl">URL de la Imagen</label>
-                                        <input id="foto" name="foto" type="file" placeholder="URL de la Imagen">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">Agregar <i class="bi bi-floppy"></i></button>
-                                    <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="#">Regrsar <i class="bi bi-box-arrow-left"></i></a>
+                                                // Inicializa el valor oculto cuando la página se carga
+                                                document.addEventListener('DOMContentLoaded', function () {
+                                                    actualizarNombreCategoria();
+                                                });
+                                            </script>
+                                        </div>
+                                        <input type="hidden" class="form-control" name="cat" id="cat" value="${Productos.getTblCategoria()}"> 
+                                        <div class="form-group">
+                                            <label for="marca">Marca</label>
+                                            <input id="txtmarca" name="txtmarca" type="text" placeholder="marca del Proveedor">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Descripcion</label>
+                                            <textarea id="txtdescripcion" name="txtdescripcion" placeholder="Descripción del Producto"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fechavencimiento">Fecha vencimiento</label>
+                                            <input id="txtfechavencimiento" name="txtfechavencimiento" type="date" placeholder="Fecha vencimiento"></input>
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Proovedores</label> 
+                                            <select class="form-control" name="proovedores">
+                                                <c:forEach var="prod" items="${proveedores}">
+                                                    <option value="${prod.getId()}">${prod.getNombre()}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="stock" style="padding-top: 10px;">Stock</label>
+                                            <input id="txtstock" name="txtstock" type="number" placeholder="Cantidad">
+                                        </div>      
+                                        <div class="form-group">
+                                            <label for="precio">Precio</label>
+                                            <input id="txtprecio" name="txtprecio" type="number" placeholder="Precio del Producto">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="descuento">Descuento</label>
+                                            <input id="txtdescuento" name="txtdescuento" type="number" placeholder="descuento del Producto">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="imageUrl">URL de la Imagen</label>
+                                            <input id="foto" name="foto" type="file" placeholder="URL de la Imagen">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">Agregar <i class="bi bi-floppy"></i></button>
+                                        <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="#">Regrsar <i class="bi bi-box-arrow-left"></i></a>
                                     </form>   
                                 </div>
 

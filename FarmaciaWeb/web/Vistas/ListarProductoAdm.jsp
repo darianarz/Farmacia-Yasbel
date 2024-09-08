@@ -130,7 +130,7 @@
                                             <td class="border">${prod.getProNombre()}</td>
                                             <td class="border"><img src="${prod.getProFoto()}" width="100" height="80"></td>
                                             <td class="border">${prod.getProDescripcion()}</td>
-                                            <td class="border">${prod.getProDescripcion()}</td>
+                                            <td class="border">${prod.getProPrecio()}</td>
                                             <td class="border">${prod.getProStok()}</td>
                                             <td class="border">${prod.getTblCategoria()}</td>
                                             <td scope="col" class ="text-center border">
