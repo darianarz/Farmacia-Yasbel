@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:api_corte/models/product.dart';
+import 'package:api_corte/widgets/datos_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:api_corte/widgets/carga_page.dart';
-import 'package:api_corte/widgets/datos_page.dart';
 import 'package:api_corte/widgets/error_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,17 +15,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder<List<Product>>(
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasError) {
-              return const ErrorPage();
-            } else if (snapshot.hasData) {
-              return DatosPage(products: snapshot.data!); 
-            }
-          }
-          return const CargaPage();
-        },
         future: getData(token),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CargaPage();
+          } else if (snapshot.hasError) {
+            return ErrorPage(errorMessage: snapshot.error.toString());
+          } else if (snapshot.hasData) {
+            return DatosPage(products: snapshot.data!);
+          } else {
+            return const ErrorPage();
+          }
+        },
       ),
     );
   }
@@ -43,7 +44,9 @@ class HomePage extends StatelessWidget {
       final List jsonData = jsonDecode(response.body);
       return jsonData.map((item) => Product.fromJson(item)).toList();
     } else {
-      throw 'Error en la petición: ${response.statusCode}';
+     throw Exception('Error en la petición: ${response.statusCode}');
     }
   }
+
 }
+
