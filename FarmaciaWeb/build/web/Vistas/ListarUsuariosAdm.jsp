@@ -130,7 +130,8 @@
                                             <td class="border">${usu.getUsucorreo()}</td>  
                                             <td class=" text-center border">
                                                 <input type="hidden" name="id" id="id" value="${usu.getUsuid()}">
-                                                <a class="btn btn-danger" id="btneliminar" href="#"><i class="bi bi-trash-fill"></i></i></a>
+                                                <a class="btn btn-danger" id="btneliminar" href="#"><i class="bi bi-trash-fill"></i></i></a> </br> </br>
+                                                <a class="btn " style="background-color: #74BD64" id="btnadmi" href="CtrUsuarioCre?accion=tipoUsu&id=${usu.usuid}"><i class="bi bi-gear-fill"></i></a>
                                             </td>
                                         </tr>
                                     </c:forEach>

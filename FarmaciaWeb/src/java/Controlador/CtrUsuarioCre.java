@@ -71,7 +71,7 @@ public class CtrUsuarioCre extends HttpServlet {
             throws ServletException, IOException {
         List<Usuario> list = dao.listarT();
 
-        String id, nom, ape, dir, tel, cor, usu, pas, tip;
+        String id, nom, ape, dir, tel, cor, usu, pas, tip, idActu;
         String accion = request.getParameter("accion");
         System.out.println("accion: " + accion);
         switch (accion) {
@@ -116,6 +116,16 @@ public class CtrUsuarioCre extends HttpServlet {
                 request.setAttribute("usuarios", list);
                 request.getRequestDispatcher("Vistas/ListarUsuariosAdm.jsp").forward(request, response);
                 break;
+            case "tipoUsu":
+              idActu = request.getParameter("id");
+              System.out.println("Actualizar tipo Usuario " + idActu);
+              boolean nuevotp = dao.tipoUsu(idActu, "Administrador");
+              if(nuevotp){
+               list = dao.listarT();
+               request.setAttribute("usuarios", list);
+               request.getRequestDispatcher("CtrUsuarioCre?accion=Listar").forward(request, response);
+              }
+              break;
         }
     }
 
