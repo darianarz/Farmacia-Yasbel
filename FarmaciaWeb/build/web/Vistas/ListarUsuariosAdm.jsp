@@ -75,11 +75,11 @@
                         </form>
                         <div class="user-menu">
                             <button class="user-btn btn btn-link">
-                                <img src="/placeholder.svg" width="32" height="32" alt="Avatar" class="avatar">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">
-                               <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                                <a class="dropdown-item " >${usuario.getUsunombre()}</a>
                                 <a class="dropdown-item " >${usuario.getUsutipo()}</a>
                                 <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
                             </div>
@@ -103,7 +103,7 @@
                                 <thead class="thead-light border">
                                     <tr table-success>
                                         <th scope="col" colspan="8" class="text-center border">USUARIOS DE LA FARMACIA</th>
-                                        
+
                                     </tr>
                                     <tr>
                                         <th scope="col" class="text-center border">Id</th>
@@ -129,9 +129,10 @@
                                             <td class="border">${usu.getUsutipo()}</td>
                                             <td class="border">${usu.getUsucorreo()}</td>  
                                             <td class=" text-center border">
-                                                <input type="hidden" class="id"  value="${usu.getUsuid()}">
-                                                 <a class="btn btn-danger btneliminar" href="#"><i class="bi bi-trash-fill"></i></a> </br> </br>
-                                                 <a class="btn " style="background-color: #74BD64" id="btnadmi" href="CtrUsuarioCre?accion=tipoUsu&id=${usu.getUsuid()}"><i class="bi bi-gear-fill"></i></a>
+                                                <input type="hidden" name="id" class="id" value="${usu.getUsuid()}">
+                                                <a class="btn btn-danger btneliminar" href="#"><i class="bi bi-trash-fill"></i></a>
+                                                </br> </br>
+                                                <a class="btn " style="background-color: #74BD64" id="btnadmi" href="CtrUsuarioCre?accion=tipoUsu&id=${usu.getUsuid()}"><i class="bi bi-gear-fill"></i></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -143,14 +144,13 @@
             </div>
         </div>
         <!-- Bootstrap JS, Popper.js, and jQuery -->
-         
-         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
         <script src="/FarmaciaWeb/JS/EliminarUsuario.js" type="text/javascript"></script>
+
 
     </body>
 </html>

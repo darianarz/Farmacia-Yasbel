@@ -190,34 +190,35 @@ public class UsuarioDAO {
         return true;
     }
 
-    public boolean eliminar(String id) {
-        try {
-            Conexcion = new Conectar();
-            Connection con = Conexcion.crearconexion();
-            if (con != null) {
-                System.out.println("Se ha establecido una conexcion con la base de datos");
-            }
-            pstm = con.prepareStatement("delete from tblusuarios where UsuID = ?");
-            pstm.setString(1, id);
-            pstm.executeUpdate();
-            return true;
-        } catch (Exception e) {
-            System.out.println("Error al eliminar el usuario " + e);
-            return false;
-        }finally {
-            try {
-                if (pstm != null) {
-                    pstm.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error al cerrar los recursos: " + e);
-            }
+public boolean eliminarUsu(String ide) {
+    try {
+        Conexcion = new Conectar();
+        Connection con = Conexcion.crearconexion();
+        if (con != null) {
+            System.out.println("Se ha establecido una conexion con la base de datos");
         }
-        
+        int idInt = Integer.parseInt(ide);
+        pstm = con.prepareStatement("DELETE FROM tblusuarios WHERE UsuID = ?");
+        pstm.setInt(1, idInt);  
+        pstm.executeUpdate();
+        return true;
+    } catch (Exception e) {
+        System.out.println("Error al eliminar el usuario: " + e);
+        return false;
+    } finally {
+        try {
+            if (pstm != null) {
+                pstm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cerrar los recursos: " + e);
+        }
     }
+}
+
     
     public boolean tipoUsu(String id, String nuevoTipo){
         try{
