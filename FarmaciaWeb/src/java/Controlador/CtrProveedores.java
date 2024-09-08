@@ -55,7 +55,7 @@ public class CtrProveedores extends HttpServlet {
                 request.getRequestDispatcher("/Vistas/ListarProveedoresAdm.jsp").forward(request, response);
                 System.out.println("Número de proveedores: " + listprov.size());
                 break;
-            case "Agregar":
+            /*case "Agregar":
                 nombre = request.getParameter("txtnombre");
                 direccion = request.getParameter("txtdireccion");
                 ciudad = request.getParameter("txtciudad");
@@ -72,9 +72,10 @@ public class CtrProveedores extends HttpServlet {
                 prov.setContacto(contacto);
 
                 provdao.crearProveedor(prov);
+                System.out.println("direcion" + direccion);
 
                 response.sendRedirect("CtrProveedores?accion=listarProveedores");
-                break;
+                break;*/
             case "eliminar":
                 String idp = request.getParameter("idp");
                 dao.eliminar(idp);
@@ -194,6 +195,27 @@ public class CtrProveedores extends HttpServlet {
 
                 // Redirigir o mostrar el resultado
                 request.getRequestDispatcher("CtrProveedores?accion=listarProveedores").forward(request, response);
+                break;
+            case "Agregar":
+        String nombre = request.getParameter("txtnombre");
+        String direccion = request.getParameter("txtdireccion");
+        String ciudad = request.getParameter("txtciudad");
+        String correo = request.getParameter("txtcorreo");
+        int telefono = Integer.parseInt(request.getParameter("txtelefono"));
+        String contacto = request.getParameter("txtcontacto");
+
+                Proveedores prov = new Proveedores();
+                prov.setNombre(nombre);
+                prov.setDireccion(direccion);
+                prov.setCiudad(ciudad);
+                prov.setCorreo(correo);
+                prov.setTelefono(telefono);
+                prov.setContacto(contacto);
+
+                provdao.crearProveedor(prov);
+                System.out.println("direcion" + direccion);
+
+                response.sendRedirect("CtrProveedores?accion=listarProveedores");
                 break;
         }
     }
