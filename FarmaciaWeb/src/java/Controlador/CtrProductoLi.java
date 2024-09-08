@@ -237,7 +237,7 @@ public class CtrProductoLi extends HttpServlet {
                 System.out.println("total pagar" + totalpagar);
                 System.out.println(sesion.getAttribute("tipo").equals("Usuario"));
 
-                request.getRequestDispatcher("Vistas/CarritoClienteUsu.jsp").forward(request, response);
+                request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
 
                 break;
             case "Comprar":
@@ -260,24 +260,29 @@ public class CtrProductoLi extends HttpServlet {
                     if (listacarrito.get(i).getIdproducto() == idp) {
                         producto = true;
                         con = i;
+                        System.out.println("entro al si");
                     }
                     totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
                 }
                 if (producto == false) {
                     listacarrito.add(car);
                     totalpagar = totalpagar + listacarrito.get(listacarrito.size() - 1).getSubtotal();
+                    System.out.println("entro al falso");
                 } else {
                     listacarrito.get(con).setCantidad(listacarrito.get(con).getCantidad() + 1);
                     listacarrito.get(con).setSubtotal(listacarrito.get(con).getPreciocompra() * listacarrito.get(con).getCantidad());
                     int can = listacarrito.get(con).getCantidad();
                     totalpagar = totalpagar + (listacarrito.get(con).getPreciocompra() * (can - 1));
+                    System.out.println("entro al sino");
                 }
+                request.setAttribute("totalpagar", totalpagar);
+                request.setAttribute("carrito", listacarrito);
                 request.setAttribute("contador", listacarrito.size());
                 request.setAttribute("totalpagar", totalpagar);
                 request.setAttribute("carrito", listacarrito);
                 System.out.println(sesion.getAttribute("tipo").equals("Usuario"));
 
-                request.getRequestDispatcher("Vistas/CarritoClienteUsu.jsp").forward(request, response);
+                request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
 
                 break;
             case "admi":
@@ -287,7 +292,7 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "Listaradm":
                 request.setAttribute("productos", productos);
-                
+
                 request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
                 break;
             case "EditarPro":
@@ -448,10 +453,15 @@ public class CtrProductoLi extends HttpServlet {
                     }
 
                     listacarrito.removeAll(listacarrito);
-                    request.getRequestDispatcher("CtrProductoLi?accion=Carrito").forward(request, response);
+                    request.getRequestDispatcher("Vistas/GestionPedido.jsp").forward(request, response);
                     break;
 
                 }
+            case "metodo":
+                
+                list = pdao.listarT();
+                request.setAttribute("prducto", list);
+                break;
 
         }
     }

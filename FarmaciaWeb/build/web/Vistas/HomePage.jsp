@@ -171,7 +171,7 @@
                                     <h5 class="card-title">${prod.getProNombre()}</h5>
                                     <p class="card-text">${prod.getProDescripcion()}</p>
                                     <div class="mt-auto">
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=comprar&id=${prod.getProCodigo()}" class="btn btn-secondary ml-2">Carrito</a>
+                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=${prod.getProCodigo()}" class="btn btn-secondary ml-2">Carrito</a>
                                         <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-primary">Agregar al carrito</a>
                                     </div>
                                 </div>
