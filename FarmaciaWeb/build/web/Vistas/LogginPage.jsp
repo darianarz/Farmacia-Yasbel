@@ -19,9 +19,7 @@ if (request.getParameter("fallo") != null) {
         Mensaje = "usuario y/o contraseña incorrecta";
     }
 }
-%>
-<%
-String Mensaje1 = "";
+
 if (request.getParameter("mensaje") != null) {
     int i = Integer.parseInt(request.getParameter("mensaje"));
     if (i == 0) {
@@ -46,7 +44,7 @@ if (request.getParameter("mensaje") != null) {
                         <span>¿Olvidó su contraseña?</span>
                     </div>
                     <input type="submit" name="accion" value="Ingresar" class="btn bkg">
-                    <p style="Color: green;"><%=Mensaje1%></p>
+                    <p style="Color: green;"><%=Mensaje%></p>
                 </form>
             </div>
 

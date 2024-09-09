@@ -63,10 +63,6 @@ if (request.getParameter("fallo") != null) {
     }
 }
 
-      out.write('\r');
-      out.write('\n');
-
-String Mensaje1 = "";
 if (request.getParameter("mensaje") != null) {
     int i = Integer.parseInt(request.getParameter("mensaje"));
     if (i == 0) {
@@ -93,7 +89,7 @@ if (request.getParameter("mensaje") != null) {
       out.write("                    </div>\r\n");
       out.write("                    <input type=\"submit\" name=\"accion\" value=\"Ingresar\" class=\"btn bkg\">\r\n");
       out.write("                    <p style=\"Color: green;\">");
-      out.print(Mensaje1);
+      out.print(Mensaje);
       out.write("</p>\r\n");
       out.write("                </form>\r\n");
       out.write("            </div>\r\n");

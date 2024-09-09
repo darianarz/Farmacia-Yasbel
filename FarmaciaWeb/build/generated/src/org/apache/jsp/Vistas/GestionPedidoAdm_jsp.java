@@ -53,7 +53,6 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
 
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
@@ -62,7 +61,6 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\r\n");
       out.write("        <link href=\"/FarmaciaWeb/CSS/IndexAdmin.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
       out.write("        <link href=\"/FarmaciaWeb/CSS/GestionPedidoAdm.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
-      out.write("\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
       out.write("        <div class=\"container-fluid\">\r\n");
@@ -94,7 +92,6 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                            </svg>\r\n");
       out.write("                        </button>\r\n");
       out.write("                        <div class=\"collapsible-content\">\r\n");
-      out.write("\r\n");
       out.write("                            <a href=\"/FarmaciaWeb/CtrProductoLi?accion=gestion\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\r\n");
       out.write("                            <a href=\"/FarmaciaWeb/CtrUsuarioCre?accion=Listar\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\r\n");
       out.write("                            <a href=\"/FarmaciaWeb/CtrProductoLi?accion=Listaradm\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
@@ -102,7 +99,6 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                            <a href=\"/FarmaciaWeb/CtrProveedores?accion=listarProveedores\" class=\"collapsible-link submenu-btn\">Proveedores</a>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
-      out.write("                    </nav>\r\n");
       out.write("                </div>\r\n");
       out.write("                <div class=\"col-md-9 main-content\">\r\n");
       out.write("                    <header class=\"header d-flex justify-content-between align-items-center mb-3\">\r\n");
@@ -115,8 +111,7 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                            <span class=\"sr-only\">Home</span>\r\n");
       out.write("                        </a>\r\n");
       out.write("                        <form class=\"search-form d-flex\">\r\n");
-      out.write("                            <input type=\"search\" class=\"form-control\" placeholder=\"Buscar productos...\">\r\n");
-      out.write("                            <svg class=\"icon search-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
+      out.write("                                                        <svg class=\"icon search-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
       out.write("                            <circle cx=\"11\" cy=\"11\" r=\"8\"/>\r\n");
       out.write("                            <path d=\"m21 21-4.3-4.3\"/>\r\n");
       out.write("                            </svg>\r\n");
@@ -155,7 +150,6 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write("\r\n");
       out.write("\r\n");
       out.write("                                    </tbody>\r\n");
       out.write("                                </table>\r\n");
@@ -208,7 +202,6 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
           out.write("                                                    <div class=\"font-medium\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ped.getTblUsuarios()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</div>\r\n");
-          out.write("\r\n");
           out.write("                                                </td>\r\n");
           out.write("                                                <td>\r\n");
           out.write("                                                    <!-- Esta sección debe ser dinámica según los productos en el pedido -->\r\n");
@@ -223,7 +216,7 @@ public final class GestionPedidoAdm_jsp extends org.apache.jasper.runtime.HttpJs
           out.write("                                                        <input type=\"hidden\" class=\"idpqr\" value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ped.getPedCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\r\n");
-          out.write("                                                        <a class=\"btn btn-danger btneliminarpqr\" href=\"#\"><i class=\"bi bi-trash-fill\"></i></a>\r\n");
+          out.write("                                                        <!-- Botón eliminado -->\r\n");
           out.write("                                                        <a class=\"btn\" style=\"background-color: #74BD64\" href=\"CtrProductoLi?accion=Epedidos&idp=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ped.getPedCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\r\n");
