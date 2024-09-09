@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  carousel_slider: ^4.0.0
   provider: ^6.0.0
 
 
@@ -56,6 +57,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
+    - lib/imagenes/
     - assets/productos.json
 
   # The following line ensures that the Material Icons font is

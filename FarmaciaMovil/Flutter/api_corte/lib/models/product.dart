@@ -1,4 +1,5 @@
 class Product {
+  final int id; // Agregado el atributo id
   final int supplierId;
   final double price;
   final double discount;
@@ -11,6 +12,7 @@ class Product {
   final int categoryId;
 
   Product({
+    required this.id, // Asegúrate de proporcionar un id en el constructor
     required this.supplierId,
     required this.price,
     required this.discount,
@@ -25,6 +27,7 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
+      id: json['id'], // Extraer el id del JSON
       supplierId: json['supplier_id'],
       price: (json['price'] is String) ? double.parse(json['price']) : json['price'].toDouble(),
       discount: (json['discount'] is String) ? double.parse(json['discount']) : json['discount'].toDouble(),
@@ -36,5 +39,21 @@ class Product {
       stock: json['stock'],
       categoryId: json['category_id'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id, // Agregar id al JSON
+      'supplier_id': supplierId,
+      'price': price,
+      'discount': discount,
+      'brand': brand,
+      'name': name,
+      'photo': photo,
+      'description': description,
+      'expiration_date': expirationDate,
+      'stock': stock,
+      'category_id': categoryId,
+    };
   }
 }
