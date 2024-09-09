@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form sign_up">
-                    <img src="../Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
+                    <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
                     <h3>Regístrate</h3>
                     <form action="/FarmaciaWeb/CtrUsuarioCre?accion=nuevo" id="form_input" class="form_input2" method="get">
                         <div class="grid-container">
@@ -107,14 +107,14 @@
 
             <div class="overlay">
                 <div class="page page_signIn">
-                    <img src="../Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
+                    <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
                     <h3>¡Bienvenido!</h3>
                     <p>Para continuar con nosotros, inicie sesión con sus datos personales.</p>
                     <button class="btn btnSign-in">Regístrate <i class="bi bi-arrow-right"></i></button>
                 </div>
 
                 <div class="page page_signUp">
-                    <img src="../Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
+                    <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" alt="Logo" class="logo"/>
                     <h3>¡Bienvenido!</h3>
                     <p>Ingresa tus datos personales</p>
                     <button class="btn btnSign-up"><i class="bi bi-arrow-left"></i> Iniciar sesión</button>
