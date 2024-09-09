@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           '/welcome': (context) => WelcomePage(),
           '/login': (context) => LoginPage(),
           '/registro': (context) => RegistroPage(),
-          '/home': (context) => HomePage(token: ''), // Asegúrate de que esto es correcto
+          '/home': (context) => HomePage(token: ''),
           '/cart': (context) => CarritoPage(),
         },
         onGenerateRoute: (settings) {
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
               builder: (context) => DetalleProducto(product: product),
             );
           }
-          return null; // Asegúrate de manejar otros casos de ruta aquí si es necesario
+          return null;
         },
       ),
     );

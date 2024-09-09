@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class RegistroTopBar extends StatelessWidget {
   @override
@@ -52,5 +52,5 @@ class RegistroTopBarPainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) {
     return false;
   }
-}
+}*/
  

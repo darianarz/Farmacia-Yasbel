@@ -6,6 +6,27 @@ class TopBar extends StatelessWidget {
     return CustomPaint(
       child: Container(
         height: 300.0,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: CustomPaint(
+                painter: CurvePainter(),
+              ),
+            ),
+            Positioned(
+              top: 20.0, 
+              left: MediaQuery.of(context).size.width * 0.4 - 32, 
+              child: Container(
+                width: 150.0, 
+                height: 150.0,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF74BD64), 
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       painter: CurvePainter(),
     );
@@ -18,7 +39,7 @@ class CurvePainter extends CustomPainter {
     Path path = Path();
     Paint paint = Paint();
 
-    // Primer fondo
+
     path.lineTo(0, size.height * 0.75);
     path.quadraticBezierTo(size.width * 0.10, size.height * 0.70, size.width * 0.17, size.height * 0.90);
     path.quadraticBezierTo(size.width * 0.20, size.height, size.width * 0.25, size.height * 0.90);
@@ -26,10 +47,9 @@ class CurvePainter extends CustomPainter {
     path.quadraticBezierTo(size.width * 0.60, size.height * 0.85, size.width * 0.65, size.height * 0.65);
     path.quadraticBezierTo(size.width * 0.70, size.height * 0.90, size.width, 0);
     path.close();
-    paint.color = Colors.teal[300]!;
+    paint.color = const Color(0xFFB4FD9F); 
     canvas.drawPath(path, paint);
 
-    // Segundo fondo
     path = Path();
     path.lineTo(0, size.height * 0.50);
     path.quadraticBezierTo(size.width * 0.10, size.height * 0.80, size.width * 0.15, size.height * 0.60);
@@ -39,10 +59,10 @@ class CurvePainter extends CustomPainter {
     path.quadraticBezierTo(size.width * 0.85, size.height * 0.93, size.width, size.height * 0.60);
     path.lineTo(size.width, 0);
     path.close();
-    paint.color = Colors.teal[400]!;
+    paint.color = const Color(0xFF94DD81); 
     canvas.drawPath(path, paint);
 
-    // Tercer fondo
+
     path = Path();
     path.lineTo(0, size.height * 0.75);
     path.quadraticBezierTo(size.width * 0.10, size.height * 0.55, size.width * 0.22, size.height * 0.70);
@@ -51,7 +71,7 @@ class CurvePainter extends CustomPainter {
     path.quadraticBezierTo(size.width * 0.75, size.height * 0.85, size.width, size.height * 0.60);
     path.lineTo(size.width, 0);
     path.close();
-    paint.color = Colors.teal[500]!;
+    paint.color = const Color(0xFF559D46); 
     canvas.drawPath(path, paint);
   }
 
