@@ -1,5 +1,5 @@
 html, body {
-    overflow: hidden;
+    overflow: hidden; /* Evita el desplazamiento general */
     margin: 0;
     padding: 0;
     width: 100%;
@@ -10,7 +10,7 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Previene el desplazamiento general */
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
@@ -20,39 +20,39 @@ body {
 
 .container-fluid {
     position: relative;
-    width: calc(100%);
+    width: calc(100%); /* Ajusta el ancho para dejar espacio para el menú lateral */
     height: 100%;
-    overflow: auto;
+    overflow: auto; /* Permite el desplazamiento interno si es necesario */
     padding: 0;
     box-sizing: border-box;
-    margin-left: 250px;
+    margin-left: 250px; /* Deja espacio para el menú lateral */
 }
 
 .sidebar {
-    background-color: #357c28;
+    background-color: #357c28; /* Verde oscuro */
     color: #fff;
-    width: 250px;
-    height: 100vh;
+    width: 250px; 
+    height: 100vh; 
     padding: 20px;
     overflow-y: auto;
-    overflow-x: hidden;
-    position: fixed;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    position: fixed; 
     top: 0;
     left: 0;
     box-sizing: border-box;
 }
 
 .sidebar::-webkit-scrollbar {
-    display: none;
+    display: none; 
 }
 
 .header {
-    border-bottom: 1px solid #2a5d1e;
+    border-bottom: 1px solid #2a5d1e; 
     padding: 10px;
     background-color: #357c28;
-    position: sticky;
+    position: sticky; 
     top: 0;
-    z-index: 1000;
+    z-index: 1000; 
     box-sizing: border-box;
 }
 
@@ -79,50 +79,51 @@ body {
 .search-form {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background-color: #fff;
-    border-radius: 5px;
+    gap: 10px; /* Espacio entre el campo de búsqueda y el botón */
+    background-color: #fff; /* Fondo blanco para el formulario */
+    border-radius: 5px; /* Bordes redondeados */
     padding: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para un efecto de elevación */
 }
 
 .form-control {
-    flex: 1;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 16px;
+    flex: 1; /* Ocupa todo el espacio disponible */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
 }
 
 .form-control:focus {
-    border-color: #357c28;
-    box-shadow: 0 0 5px rgba(53, 124, 40, 0.3);
-    outline: none;
+    border-color: #357c28; /* Cambio de color del borde al enfocarse */
+    box-shadow: 0 0 5px rgba(53, 124, 40, 0.3); /* Sombra al enfocarse */
+    outline: none; /* Eliminar el contorno predeterminado */
 }
 
 .btn {
     display: flex;
     align-items: center;
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #fff;
+    padding: 2px 15px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    color: #fff; /* Color del texto */
     border: none;
-    border-radius: 5px;
+    border-radius: 5px; /* Bordes redondeados */
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición para efectos de hover */
 }
 
 .btn-success {
-    background-color: #74BD64;
+    background-color: #74BD64; /* Color de fondo del botón */
 }
 
 .btn-success:hover {
-    background-color: #5a9a4e;
+    background-color: #5a9a4e; /* Color de fondo al pasar el mouse */
 }
 
 .btn-success i {
-    margin-right: 5px;
+    margin-right: 5px; /* Espacio entre el icono y el texto */
 }
+
 
 .search-icon {
     margin-left: -30px;
@@ -164,7 +165,7 @@ body {
 }
 
 .user-menu-item:hover {
-    background-color: #94dd81;
+    background-color: #94dd81; 
 }
 
 .user-menu-label {
@@ -183,7 +184,7 @@ body {
 .collapsible-trigger {
     color: #fff;
     text-decoration: none;
-    background-color: #357c28;
+    background-color: #357c28; 
     border: none;
     width: 100%;
     text-align: left;
@@ -195,8 +196,8 @@ body {
 .collapsible-content {
     display: none;
     margin-top: 10px;
-    overflow-y: auto;
-    max-height: 400px;
+    overflow-y: auto; 
+    max-height: 400px; 
 }
 
 .collapsible-link {
@@ -204,13 +205,13 @@ body {
     text-decoration: none;
     display: block;
     padding: 10px;
-    background-color: #559d46;
+    background-color: #559d46; 
     border-radius: 5px;
     margin-bottom: 5px;
 }
 
 .collapsible-link:hover {
-    background-color: #357c28;
+    background-color: #357c28; 
 }
 
 .submenu {
@@ -233,7 +234,7 @@ body {
 }
 
 .table th {
-    background-color: #357c28;
+    background-color: #357c28; 
     color: #fff;
 }
 
@@ -242,7 +243,7 @@ body {
 }
 
 .table tr:nth-child(even) td {
-    background-color: #e9f5ec;
+    background-color: #e9f5ec; 
 }
 
 .nav-link {
@@ -250,7 +251,7 @@ body {
 }
 
 .nav-link.active, .nav-link:hover {
-    background-color: #559d46;
+    background-color: #559d46; 
     text-decoration: none;
 }
 
@@ -271,11 +272,11 @@ body {
 }
 
 .main-content {
-    margin-left: 50px;
+    margin-left: 50px; /* Deja espacio para el menú lateral */
     padding: 20px;
     box-sizing: border-box;
-    overflow: auto;
-    height: 100vh;
+    overflow: auto; /* Permite el desplazamiento interno si es necesario */
+    height: 100vh; /* Asegura que el contenido se ajuste a la altura de la ventana */
 }
 
 .promo-banner {
@@ -297,12 +298,12 @@ body {
 }
 
 .carousel-item img {
-    max-height: 300px;
+    max-height: 300px; /* Ajuste para hacer el carrusel más pequeño */
     object-fit: cover;
 }
 
 .carousel-thumbnails img {
-    width: 100px;
+    width: 100px;  /* Ajuste para las miniaturas */
     height: auto;
     cursor: pointer;
     display: inline-block;
