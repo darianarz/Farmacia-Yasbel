@@ -204,4 +204,23 @@ public class PedidosDAO {
         }
         return id;
     }
+    
+    public boolean estadoPED(String id, String nuevoEstado) {
+        try {
+            Conexion = new Conectar();
+            con = Conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexión con la base de datos");
+            }
+            pstm = con.prepareStatement("UPDATE tblpedidos SET PedEstado = ? WHERE PedCodigo = ?");
+             pstm.setString(1, nuevoEstado); 
+             pstm.setString(2, id); 
+            pstm.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el estado de la PQR: " + e);
+            return false;
+        } 
+        
+    }
 }

@@ -129,9 +129,11 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
 
-                
+                if (sesion.getAttribute("tipo").equals("Usuario")) {
+                    request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
+                } else {
                     request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
-                
+                }
                 break;
             case "buscar":
                 String nombre = request.getParameter("busqueda");
@@ -401,7 +403,9 @@ public class CtrProductoLi extends HttpServlet {
                 request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
                 break;
             case "gestion":
-                request.setAttribute("pedidos", pedidos);
+                pedidos = peddao.listarT();
+                request.setAttribute("pedido", pedidos);
+                System.out.println("pedidos: " + pedidos);
                 request.getRequestDispatcher("Vistas/GestionPedidoAdm.jsp").forward(request, response);
                 break;
             case "ActualizarCantidad":
@@ -478,6 +482,17 @@ public class CtrProductoLi extends HttpServlet {
                 System.out.println("lista pedidos" + ped);
                 request.setAttribute("Detalle", ped);
                 request.getRequestDispatcher("Vistas/HistorialPedido.jsp").forward(request, response);
+                break;
+            case "Epedidos":
+                String idActu = request.getParameter("idp");
+                System.out.println("Actualizar estado de PQR: " + idActu);
+                boolean actualizado = peddao.estadoPED(idActu, "enviado");
+
+                if (actualizado) {
+                    pedidos = peddao.listarT();
+                    request.setAttribute("pedidos", ped);
+                    request.getRequestDispatcher("CtrProductoLi?accion=gestion").forward(request, response);
+                }
                 break;
         }
     }
