@@ -68,7 +68,7 @@ public class DetallePedidoDAO {
                 dep.setDpdPrecioTotal(rs.getInt(5));
                 dep.setDpdNombreProducto(rs.getString(6));
                 dep.setDpdPrecioUnitario(rs.getInt(7));
-                dep.setDpdFecha(rs.getString(8));
+                dep.setDpdFecha(rs.getDate(8));
                 detped.add(dep);
             }
         } catch (Exception e) {

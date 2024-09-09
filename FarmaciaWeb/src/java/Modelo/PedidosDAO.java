@@ -53,57 +53,56 @@ public class PedidosDAO {
         return pqrList;
     }
 
-    
-    public void crear (Pedidos ped){
+    public void crear(Pedidos ped) {
         try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
-            if (con != null){
+            if (con != null) {
                 System.out.println("Se establecio una conexcion con la base de datos pedido");
             }
             pstm = con.prepareStatement("insert into tblpedidos (tblUsuarios, PedFormaDePago, PedFecha, PedTotal, PedEstado) values (?, ?, ?, ?, ?)");
             pstm.setInt(1, ped.getTblUsuarios());
             pstm.setString(2, ped.getPedFormaDePago());
-            pstm.setTimestamp(3, new Timestamp(new Date().getTime())); 
+            pstm.setTimestamp(3, new Timestamp(new Date().getTime()));
             pstm.setDouble(4, ped.getPedTotal());
-            pstm.setString(5, ped.getPedEstado()); 
+            pstm.setString(5, ped.getPedEstado());
             pstm.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Error al crear pedidos en la base de datos "+e.getMessage());
+            System.out.println("Error al crear pedidos en la base de datos " + e.getMessage());
         }
     }
-    
-    public int listarMx(){
+
+    public int listarMx() {
         int idp = 0;
         try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
-            if (con != null){
+            if (con != null) {
                 System.out.println("Se establecio una conexcion con la base de datos pedido");
             }
             pstm = con.prepareStatement("select MAX(PedCodigo) from tblpedidos");
             rs = pstm.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 idp = rs.getInt(1);
             }
         } catch (Exception e) {
-            System.out.println("Error al listar IdPedido maximo en la base de datos "+e.getMessage());
+            System.out.println("Error al listar IdPedido maximo en la base de datos " + e.getMessage());
         }
         return idp;
     }
-    
-    public Pedidos listarIdp(int idp){
+
+    public Pedidos listarIdp(int idp) {
         Pedidos p = new Pedidos();
         try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
-            if (con != null){
+            if (con != null) {
                 System.out.println("Se establecio una conexcion con la base de datos pedido");
             }
             pstm = con.prepareStatement("select * from tblpedidos where PedCodigo = ?");
             pstm.setInt(1, idp);
             rs = pstm.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 p.setPedCodigo(rs.getInt(1));
                 p.setTblUsuarios(rs.getInt(2));
                 p.setPedFormaDePago(rs.getString(3));
@@ -112,23 +111,23 @@ public class PedidosDAO {
                 p.setPedEstado(rs.getString(6));
             }
         } catch (Exception e) {
-            System.out.println("Error al listar Idp Pedido en la base de datos "+e.getMessage());
+            System.out.println("Error al listar Idp Pedido en la base de datos " + e.getMessage());
         }
         return p;
     }
-    
-    public List listarUsu(String idcliente){
+
+    public List listarUsu(String idcliente) {
         List<Pedidos> pedido = new ArrayList();
         try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
-            if (con != null){
+            if (con != null) {
                 System.out.println("Se establecio una conexcion con la base de datos pedido");
             }
             pstm = con.prepareStatement("select * from tblpedidos where tblUsuarios = ?");
             pstm.setString(1, idcliente);
-            rs=pstm.executeQuery();
-            while (rs.next()){
+            rs = pstm.executeQuery();
+            while (rs.next()) {
                 Pedidos p = new Pedidos();
                 p.setPedCodigo(rs.getInt(1));
                 p.setTblUsuarios(rs.getInt(2));
@@ -139,41 +138,40 @@ public class PedidosDAO {
                 pedido.add(p);
             }
         } catch (Exception e) {
-            System.out.println("Error al listar Idusu Pedido en la base de datos "+e.getMessage());
+            System.out.println("Error al listar Idusu Pedido en la base de datos " + e.getMessage());
         }
         return pedido;
     }
-    
-    
-    public void actualizar (String es, int idped){
-        try{
+
+    public void actualizar(String es, int idped) {
+        try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
-            if (con != null){
+            if (con != null) {
                 System.out.println("Se establecio una conexcion con la base de datos pedido");
             }
             pstm = con.prepareStatement("Update tblpedidos set PedEstado = ? where PedCodigo = ?");
             pstm.setString(1, es);
             pstm.setInt(2, idped);
             pstm.executeUpdate();
-        }catch(Exception e){
-            System.out.println("Error al actualizar el estado del pedido en la base de datos "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el estado del pedido en la base de datos " + e.getMessage());
         }
     }
-    
-    public List buscarEst(String est){
-      List<Pedidos> pedido = new ArrayList();
+
+    public List buscarEst(String est) {
+        List<Pedidos> pedido = new ArrayList();
         try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
-            if (con != null){
+            if (con != null) {
                 System.out.println("Se establecio una conexcion con la base de datos pedido");
             }
             pstm = con.prepareStatement("select * from tblpedidos where PedEstado = ?");
             pstm.setString(1, est);
-            rs=pstm.executeQuery();
-            while (rs.next()){
-                Pedidos p = new Pedidos ();
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                Pedidos p = new Pedidos();
                 p.setPedCodigo(rs.getInt(1));
                 p.setTblUsuarios(rs.getInt(2));
                 p.setPedFormaDePago(rs.getString(3));
@@ -183,9 +181,27 @@ public class PedidosDAO {
                 pedido.add(p);
             }
         } catch (Exception e) {
-            System.out.println("Error al listar Buscar por estado en la base de datos "+e.getMessage());
+            System.out.println("Error al listar Buscar por estado en la base de datos " + e.getMessage());
         }
-        return pedido;  
+        return pedido;
     }
-   
+
+    public int listarU() {
+        int id = 0;
+        try {
+            Conexion = new Conectar();
+            con = Conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se establecio una conexcion con la base de datos pedido");
+            }
+            pstm = con.prepareStatement("SELECT * FROM tblpedidos ORDER BY PedCodigo DESC LIMIT 1");
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar IdPedido maximo en la base de datos " + e.getMessage());
+        }
+        return id;
+    }
 }
