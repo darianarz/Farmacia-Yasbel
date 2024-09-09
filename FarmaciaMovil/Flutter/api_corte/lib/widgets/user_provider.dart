@@ -11,6 +11,9 @@ class UserProvider with ChangeNotifier {
   String? get token => _token;
   String? get errorMessage => _errorMessage;
 
+  // Agregamos un getter para obtener el token si es necesario
+  String? get authToken => _token;
+
   Future<void> register({
     required String username,
     required String firstName,
@@ -28,7 +31,7 @@ class UserProvider with ChangeNotifier {
         url,
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
-          'user': {  // Asegúrate de que esta clave coincida con lo que espera tu API
+          'user': {
             'username': username,
             'first_name': firstName,
             'last_name': lastName,
@@ -70,7 +73,6 @@ class UserProvider with ChangeNotifier {
           }
         }),
       );
-
 
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);

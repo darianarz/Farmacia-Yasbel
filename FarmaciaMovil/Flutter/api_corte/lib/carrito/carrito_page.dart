@@ -56,20 +56,20 @@ class CarritoPage extends StatelessWidget {
                         IconButton(
                           icon: Icon(Icons.remove, color: Colors.red),
                           onPressed: () {
-                            carrito.decrementProduct(product, context);
+                            carrito.decrementProduct(product); // Ajustado para sólo pasar el producto
                           },
                         ),
                         Text('$quantity', style: TextStyle(fontSize: 16)),
                         IconButton(
                           icon: Icon(Icons.add, color: Colors.green),
                           onPressed: () {
-                            carrito.incrementProduct(product);
+                            carrito.incrementProduct(product); // Ajustado para sólo pasar el producto
                           },
                         ),
                         IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
                           onPressed: () {
-                            carrito.removeProduct(product);
+                            carrito.removeProduct(product); // Ajustado para sólo pasar el producto
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text('${product.name} se ha eliminado del carrito'),
@@ -103,10 +103,10 @@ class CarritoPage extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      // Aquí podrías implementar la lógica para realizar la compra.
+                    onPressed: () async {
+                      await carrito.generarPedido(context); // Verifica si generarPedido requiere el contexto
                     },
-                    child: Text('Comprar'),
+                    child: Text('Generar Pedido'),
                   ),
                 ],
               ),

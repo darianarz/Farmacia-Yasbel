@@ -1,14 +1,14 @@
 import 'package:api_corte/carrito/carrito_page.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:api_corte/models/product.dart';
 import 'package:api_corte/widgets/detalle_producto.dart';
-import 'package:flutter/material.dart';
 import 'package:api_corte/widgets/registro_page.dart';
 import 'package:api_corte/widgets/login_page.dart';
 import 'package:api_corte/widgets/welcome_page.dart';
 import 'package:api_corte/home_page.dart';
-import 'package:api_corte/carrito/carrito_model.dart';
-import 'package:provider/provider.dart';
 import 'package:api_corte/widgets/user_provider.dart';
+import 'package:api_corte/carrito/carrito_model.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           '/welcome': (context) => WelcomePage(),
           '/login': (context) => LoginPage(),
           '/registro': (context) => RegistroPage(),
-          '/home': (context) => HomePage(token: ''),
+          '/home': (context) => HomePage(token: ''), // Asegúrate de que esto es correcto
           '/cart': (context) => CarritoPage(),
         },
         onGenerateRoute: (settings) {
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
               builder: (context) => DetalleProducto(product: product),
             );
           }
-          return null; 
+          return null; // Asegúrate de manejar otros casos de ruta aquí si es necesario
         },
       ),
     );

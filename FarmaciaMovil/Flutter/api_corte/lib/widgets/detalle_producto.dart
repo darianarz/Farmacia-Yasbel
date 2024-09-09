@@ -1,7 +1,7 @@
-import 'package:api_corte/carrito/carrito_model.dart';
 import 'package:flutter/material.dart';
-import 'package:api_corte/models/product.dart';
 import 'package:provider/provider.dart';
+import 'package:api_corte/models/product.dart';
+import 'package:api_corte/carrito/carrito_model.dart';
 
 class DetalleProducto extends StatelessWidget {
   final Product product;
@@ -19,52 +19,27 @@ class DetalleProducto extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Image.network(
-                'https://localhost:3000/Imagenes/${product.categoryId}/${product.photo}',
-                fit: BoxFit.cover,
-                height: 250.0,
-                width: double.infinity,
-                errorBuilder: (context, error, stackTrace) {
-                  return Center(child: Icon(Icons.error, color: Colors.red));
-                },
-              ),
-            ),
-            SizedBox(height: 16.0),
             Text(
               product.name,
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.headline5,
             ),
-            SizedBox(height: 8.0),
+            SizedBox(height: 8),
             Text(
-              'Precio: \$${product.price}',
-              style: TextStyle(fontSize: 18.0, color: Colors.green),
+              'Price: \$${product.price}',
+              style: Theme.of(context).textTheme.subtitle1,
             ),
-            SizedBox(height: 16.0),
-            Text(
-              product.description,
-              style: TextStyle(fontSize: 16.0),
-            ),
-            Spacer(),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Add to cart logic
-                final carrito = Provider.of<CarritoModel>(context, listen: false);
-                carrito.addProduct(product);
+                final carritoModel = Provider.of<CarritoModel>(context, listen: false);
+                carritoModel.addProduct(product, 1); // Asigna una cantidad aquí
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('${product.name} añadido al carrito'),
-                    duration: Duration(seconds: 2),
-                    backgroundColor: Colors.green,
-                    behavior: SnackBarBehavior.floating,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    content: Text('Added ${product.name} to cart'),
                   ),
                 );
               },
-              child: Text('Añadir al Carrito'),
+              child: Text('Add to Cart'),
             ),
           ],
         ),
