@@ -157,7 +157,7 @@ public class ProveedoresDAO {
     
     
     public void editar(Proveedores pro) {
-        Proveedores prod = new Proveedores();
+        
         try {
             Conexion = new Conectar();
             con = Conexion.crearconexion();
@@ -165,17 +165,18 @@ public class ProveedoresDAO {
                 System.out.println("Se ha establecido una conexcion con la base de datos");
 
             }
-            pstm = con.prepareStatement("update tblproveedores set Nombre = ? , Direccion = ? , Ciudad = ? , Correo = ? , Telefono = ? , Contacto = ?   where ID = ?");
-
-            pstm.setString(1, prod.getNombre());
-            pstm.setString(2, prod.getDireccion());
-            pstm.setString(3, prod.getCiudad());
-            pstm.setString(4, prod.getCorreo());
-            pstm.setString(5, prod.getTelefono());
-            pstm.setString(6, prod.getContacto());
-            pstm.setInt(7, prod.getId());
            
-            pstm.executeUpdate();
+                pstm = con.prepareStatement("UPDATE tblproveedores SET Nombre = ?, Direccion = ?, Ciudad = ?, Correo = ?, Telefono = ?, Contacto = ? WHERE ID = ?");
+                
+                pstm.setString(1, pro.getNombre());     
+                pstm.setString(2, pro.getDireccion());
+                pstm.setString(3, pro.getCiudad());
+                pstm.setString(4, pro.getCorreo());
+                pstm.setString(5, pro.getTelefono());
+                pstm.setString(6, pro.getContacto());
+                pstm.setInt(7, pro.getId());
+           
+              pstm.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al editar los Proveedores " + e);
         }

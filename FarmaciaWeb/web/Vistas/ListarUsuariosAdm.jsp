@@ -46,7 +46,7 @@
                                 <path d="m9 18 6-6-6-6"/>
                                 </svg>
                             </button>
-                             <div class="collapsible-content">
+                            <div class="collapsible-content">
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                                 <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
@@ -92,12 +92,16 @@
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <form class="form-inline mt-4" action="">
+                                    <form class="form-inline mt-4" action="CtrUsuarioCre" method="GET">
                                         <div class="form-group mx-sm-2 mb-2">
-                                            <input type="text" class="form-control" name="txtbuscar" placeholder="digite nombre">
+                                            <input type="text" class="form-control" name="nombre" placeholder="Digite nombre">
                                         </div>
-                                        <button type="submit" class="btn btn-success mb-2" name="accion" value="buscar"  style="background: #74BD64"><i class="bi bi-search"></i> Buscar</button>
+                                        <button type="submit" class="btn btn-success mb-2" name="accion" value="buscarn" style="background: #74BD64">
+                                            <i class="bi bi-search"></i> Buscar
+                                        </button>
                                     </form>
+
+
                                 </div>
                             </div>
                             <table class="table table-bordered">

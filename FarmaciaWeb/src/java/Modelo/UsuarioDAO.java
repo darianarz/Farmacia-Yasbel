@@ -166,29 +166,7 @@ public class UsuarioDAO {
         return usu;
     }
 
-    public boolean editar(Usuario us) {
-        try {
-            Conexcion = new Conectar();
-            Connection con = Conexcion.crearconexion();
-            if (con != null) {
-                System.out.println("Se ha establecido una conexcion con la base de datos");
-            }
-            pstm = con.prepareStatement("update tblusuarios set UsuUsuarioTipo = ?, Usuusuario = ?, UsuNombre = ?, UsuApellid = ?, UsuCorreo = ?, UsuContrasena = ?, UsuTelefono = ?, UsuDireccion = ? where UsuId = ?");
-            pstm.setString(1, us.getUsutipo());
-            pstm.setString(2, us.getUsuusuario());
-            pstm.setString(3, us.getUsunombre());
-            pstm.setString(4, us.getUsuapellido());
-            pstm.setString(5, us.getUsucorreo());
-            pstm.setString(6, us.getUsucontrasena());
-            pstm.setString(7, us.getUsutelefono());
-            pstm.setString(8, us.getUsudireccion());
-            pstm.setString(9, us.getUsuid());
-            pstm.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Error al editar el usuarios " + e);
-        }
-        return true;
-    }
+    
 
 public boolean eliminarUsu(String ide) {
     try {

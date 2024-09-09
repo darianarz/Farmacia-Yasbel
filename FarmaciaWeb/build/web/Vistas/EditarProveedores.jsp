@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link href="/FarmaciaWeb/CSS/Gestion.css" rel="stylesheet" type="text/css"/>
+        <link href="/FarmaciaWeb/CSS/Gestion.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -72,7 +72,7 @@
                             </svg>
                         </form>
                         <div class="user-menu">
-                             <button class="user-btn btn btn-link">
+                            <button class="user-btn btn btn-link">
                                 <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
@@ -83,7 +83,8 @@
                             </div>
                         </div>
                     </header>
-                                <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpror" method="post">
+                    <form class="form-sing" action="/FarmaciaWeb/CtrProveedores?accion=actualizarpro" method="POST">
+
                         <div class="form-row">
                             <div class="col-6">
                                 <label>Nombre</label> 
@@ -114,9 +115,10 @@
                         </div>    
 
                         <center>
-                            <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">
-                                Agregar <i class="bi bi-floppy"></i>
+                            <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnactualizar" value="Actualizar">
+                                Actualizar <i class="bi bi-floppy"></i>
                             </button>
+
                             <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores">Regresar <i class="bi bi-box-arrow-left"></i></a>
                         </center>
 
