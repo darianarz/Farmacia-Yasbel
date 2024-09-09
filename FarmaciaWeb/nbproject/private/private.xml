@@ -3,9 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/LogginPage.jsp</file>
-            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrProductoLi.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/WelcomeAdmin.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/Producto.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/InventarioAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/CarritoCliente.jsp</file>
             <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/ListarUsuariosAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/GestionPedidoAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/Carrito.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/HistorialPedido.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/DetallePedido.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/DetallePedido.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/HomePage.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/HomePageAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/JS/EliminarPQR.js</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrUsuarioCre.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/LogginPage.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/PedidosDAO.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/DetallePedidoDAO.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/AdminiatracionProductosAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/PqrAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/CategoriaDAO.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/ListarProductoAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrValidarInfo.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/EditarProductoAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/ProductoDAO.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrProveedores.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/ListarProveedoresAdm.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Modelo/Pedidos.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/src/java/Controlador/CtrProductoLi.java</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/EditarProveedores.jsp</file>
+            <file>file:/home/samuel/Documents/GitHub/Farmacia-Yasbel/FarmaciaWeb/web/Vistas/RecuperarContrs.jsp</file>
         </group>
     </open-files>
 </project-private>

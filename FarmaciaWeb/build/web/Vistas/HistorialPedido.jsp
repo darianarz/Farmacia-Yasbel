@@ -87,8 +87,8 @@
                                 <td>${ped.getPedTotal()}</td>
                                 <td>${ped.getPedFecha()}</td>
                                 <td>
-                                    <a class="btn btn-outline-primary btn-sm" href="/FarmaciaWeb/CtrProductoLi?accion=EditarDet&idpro=${ped.getPedCodigo()}" data-bs-toggle="modal" data-bs-target="#orderModal">
-                                        Ver detalles
+                                    <a type="button" class="btn btn-primary" href="/FarmaciaWeb/CtrProductoLi?accion=EditarDet&idDetalle=${ped.getPedCodigo()}">
+                                        Ver Detalle del Pedido
                                     </a>
                                 </td>
                             </tr>
@@ -96,61 +96,28 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="orderModalLabel">Detalles del Pedido</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label>Nombre del producto</label>
-                                    <input type="text" class="form-control" name="txtnombre" placeholder="Nombre" value="${detalles.getDpdNombreProducto()}" readonly>
-                                </div>
-                                <div class="col-6">
-                                    <label>Precio unitario</label>
-                                    <input type="number" class="form-control" name="txtprecio" placeholder="Precio" value="${detalles.getDpdPrecioUnitario()}" readonly>
-                                </div>
-                                <div class="col-6">
-                                    <label>Cantidad</label>
-                                    <input type="text" class="form-control" name="txtcantidad" placeholder="Cantidad" value="${detalles.getDpdCantidad()}" readonly>
-                                </div>
-                                <div class="col-6">
-                                    <label>Fecha</label>
-                                    <input type="text" class="form-control" name="txtfecha" placeholder="Fecha" value="${detalles.getDpdFecha()}" readonly>
-                                </div>
-                                <div class="col-6">
-                                    <label>Precio total</label>
-                                    <input type="text" class="form-control" name="txttotal" placeholder="Total" value="${detalles.getDpdPrecioTotal()}" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a class="btn btn-outline-primary btn-sm" href="/FarmaciaWeb/CtrProductoLi?accion=home">
+                regresar
+            </a>
+             <!-- Modal -->
+        
         </div>
-
     </div>
+    </div>
+    
 
-    <!-- Incluye Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <!-- Bootstrap JS (y dependencias de Popper.js) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/IndexAdmin.js" type="text/javascript"></script>
 
-    <script>
-        function setModalDetails(orderId) {
-            document.getElementById('orderDetails').innerText = 'Detalles del pedido: ' + orderId;
-        }
-    </script>
+    
 </body>
 </html>

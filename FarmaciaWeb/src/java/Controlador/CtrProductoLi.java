@@ -451,7 +451,7 @@ public class CtrProductoLi extends HttpServlet {
                         dped.setTblProducto(listacarrito.get(i).getIdproducto());
                         dped.setTblPedido(idpe);
                         dped.setDpdCantidad(listacarrito.get(i).getCantidad());
-                        dped.setDpdPrecioTotal(listacarrito.get(i).getPreciocompra());
+                        dped.setDpdPrecioTotal(mon);
                         dped.setDpdNombreProducto(listacarrito.get(i).getNombre());
                         dped.setDpdPrecioUnitario(listacarrito.get(i).getPreciocompra());
                         dped.setDpdFecha(listacarrito.get(i).getFecha());
@@ -468,16 +468,21 @@ public class CtrProductoLi extends HttpServlet {
             case "historial":
                 pedidos = peddao.listarT();
                 request.setAttribute("pedido", pedidos);
-                request.setAttribute("detalle", pedidos);
                 request.getRequestDispatcher("Vistas/HistorialPedido.jsp").forward(request, response);
                 break;
             case "EditarDet":
-                int idpd = Integer.parseInt(request.getParameter("idpro"));
-                System.out.println("id del producto " + idpd);
-                ped = peddao.listarIdp(idpd);
-                System.out.println("lista pedidos" + ped);
-                request.setAttribute("Detalle", ped);
-                request.getRequestDispatcher("Vistas/HistorialPedido.jsp").forward(request, response);
+                int idDetalle = Integer.parseInt(request.getParameter("idDetalle"));
+                System.out.println("id detalle : " + idDetalle);
+                // Usar la nueva función para buscar el detalle
+                DetallePedido detallePedido = dpdao.buscarPorId(idDetalle);
+                listadetped = dpdao.Listar(idDetalle);
+                // Pasar el detalle al JSP
+                request.setAttribute("detalle", listadetped);
+                System.out.println("detalle pedido: " + detallePedido);
+                System.out.println("lista pedido : " +  listadetped.size());
+
+                // Redirigir a la vista JSP
+                request.getRequestDispatcher("Vistas/DetallePedido.jsp").forward(request, response);
                 break;
         }
     }

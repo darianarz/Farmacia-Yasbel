@@ -100,7 +100,7 @@
                                 <td>${car.getDescripcion()}</td>
                                 <td>${car.getPreciocompra()}</td>
                                 <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
-                                    <input type="number" id="cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1">
+                                    <input type="number" id="cantidad" name="cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1">
                                 </td>
                                 <td>${car.getSubtotal()}</td>
                                 <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
@@ -115,14 +115,15 @@
             <form action="/FarmaciaWeb/CtrProductoLi?accion=pedido" method="post">
                 <input type="hidden" name="idusu" value="${usuario.getUsuid()}">
                 <input type="hidden" name="totalp" value="${totalpagar}">
+                
                 <div class="card-body">
-                        <label>Subtotal:</label>
-                        <input type="text" value="${totalpagar}"  readonly="" class="form-control">
-                        <label>Descuento:</label>
-                        <input type="text" value="$0.00" readonly="" class="form-control">
-                        <label>Total:</label>
-                        <input type="text" value="${totalpagar}"  readonly="" class="form-control">
-                    </div>
+                    <label>Subtotal:</label>
+                    <input type="text" value="${totalpagar}"  readonly="" class="form-control">
+                    <label>Descuento:</label>
+                    <input type="text" value="$0.00" readonly="" class="form-control">
+                    <label>Total:</label>
+                    <input type="text" value="${totalpagar}"  readonly="" class="form-control">
+                </div>
                 <div class="formulario_grupo-input">
                     <select class="form-control formulario_input" name="tipos" id="tipos">
                         <option value="Efectivo">Efectivo</option>
@@ -134,7 +135,8 @@
                     <button type="submit" class="btn btn-danger btn-block" onclick="ejecutarTarea()">Generar Pedido</button>
                 </div>
             </form>
-            
+                <a type="button" href="/FarmaciaWeb/CtrProductoLi?accion=home"  > regresar</i></a>
+
         </div>
 
 
@@ -192,10 +194,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-                            function ejecutarTarea() {
-                                document.getElementById("MensajeEspera").style.display = "block";
-                                $('#reloj').modal('show');
-                            }
+                        function ejecutarTarea() {
+                            document.getElementById("MensajeEspera").style.display = "block";
+                            $('#reloj').modal('show');
+                        }
     </script>
 </body>
 </html>
