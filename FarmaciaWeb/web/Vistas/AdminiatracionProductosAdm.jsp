@@ -121,7 +121,7 @@
                                         <input type="hidden" class="form-control" name="cat" id="cat" value="${Productos.getTblCategoria()}"> 
                                         <div class="form-group">
                                             <label for="marca">Marca</label>
-                                            <input id="txtmarca" name="txtmarca" type="text" placeholder="marca del Proveedor">
+                                            <input id="txtmarca" name="txtmarca" type="text" placeholder="marca del Producto">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descripcion</label>
