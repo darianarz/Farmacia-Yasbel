@@ -134,27 +134,28 @@
         <br>
         <br>
         <div class="offer-banner">
-            <p class="offer-text">Ofertas de <span class="discount">30%</span> en la Farmacia Yasbel</p>
+            <p class="offer-text">Explora nuestras <span class="discount">categorías</span> en la Farmacia Yasbel</p>
             <div class="offer-cards">
                 <div class="offer-card">
+                    <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Medicamentos" class="card-image">
+
                     <p class="card-title">Medicamentos</p>
-                    <p class="card-items"> ítems</p>
-                    <a href="#">Ver Todo</a>
+
                 </div>
                 <div class="offer-card">
+                    <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Suplementos" class="card-image">
                     <p class="card-title">Suplementos</p>
-                    <p class="card-items">ítems</p>
-                    <a href="#">Ver Todo</a>
+
                 </div>
                 <div class="offer-card">
+                    <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Cuidado Personal" class="card-image">
                     <p class="card-title">Cuidado Personal</p>
-                    <p class="card-items">ítems</p>
-                    <a href="#">Ver Todo</a>
+
                 </div>
                 <div class="offer-card">
-                    <p class="card-title">Productos para Bebes</p>
-                    <p class="card-items"> ítems</p>
-                    <a href="#">Ver Todo</a>
+                    <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Productos para Bebés" class="card-image">
+                    <p class="card-title">Productos para Bebés</p>
+
                 </div>
             </div>
             <div class="rotating-light"></div>
@@ -165,14 +166,14 @@
             <div class="container">
                 <div class="row">
                     <c:forEach var="prod" items="${productos}">
-                        <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="col-md-3 col-sm-6 mb-4"> 
                             <div class="card h-100">
                                 <img src="${prod.getProFoto()}" class="card-img-top" alt="${prod.getProNombre()}">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">${prod.getProNombre()}</h5>
                                     <p class="card-text">${prod.getProDescripcion()}</p>
                                     <div class="mt-auto">
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=${prod.getProCodigo()}" class="btn btn-secondary ml-2">Carrito</a>
+                                        
                                         <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-primary">Agregar al carrito</a>
                                     </div>
                                 </div>
