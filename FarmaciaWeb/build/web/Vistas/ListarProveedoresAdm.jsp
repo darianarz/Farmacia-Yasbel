@@ -20,7 +20,7 @@
 
     </head>
     <body>
-        <div class="container-fluid">
+       <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 sidebar">
                     <div class="header d-flex justify-content-between align-items-center mb-3">
@@ -60,7 +60,7 @@
                                 <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
                                 <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
-                                <a href="/FarmaciaWeb/CtrProveedor?accion=listarProveedores" class="collapsible-link submenu-btn">Gestion Proveedor</a>
+                                <a href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores" class="collapsible-link submenu-btn">Proveedores</a>
                             </div>
                         </div>
                     </nav>
@@ -84,7 +84,7 @@
                         </form>
                         <div class="user-menu">
                             <button class="user-btn btn btn-link">
-                                <img src="/placeholder.svg" width="32" height="32" alt="Avatar" class="avatar">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">
@@ -103,7 +103,7 @@
                                 <div class="col-sm-4">
                                     <form class="form-inline mt-4" action=" ">
                                         <div class="form-group mx-sm-3 mb-2">
-                                            <input type="text" class="form-control" name="txtbuscar" placeholder="digite nombre">
+                                            <input type="text" class="form-control" name="busqueda" placeholder="digite nombre">
                                         </div>
                                         <button type="submit" class="btn btn-success mb-2" name="accion" value="buscarn"><i class="bi bi-search"></i> Buscar</button>
                                     </form>
@@ -113,7 +113,9 @@
                                 <thead class="thead-light border">
                                     <tr table-success>
                                         <th scope="col" class="text-center border" width="110">
-                                            <a class="btn btn-success ml-2" data-toggle="modal" data-target="#agregarProveedorModal"style="background: #74BD64"><i class="bi bi-database-fill-add"></i></a></th>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarProveedorModal">
+                                                Agregar Proveedor
+                                            </button>
                                         <th scope="col" colspan="7" class="text-center border">Proveedores </th>
                                     </tr>
                                     <tr>
@@ -137,13 +139,13 @@
                                             <td class="border">${prov.getCorreo()}</td>
                                             <td class="border">${prov.getTelefono()}</td>
                                             <td class="border">${prov.getContacto()}</td>
-                                            <td class="border"></td>
                                             <td scope="col" class ="text-center border">
-                                                <input type="hidden" name="idp" id="idp" value="${prov.getId()}">
-                                                <a class="btn btn-warning" href="" data-bs-toggle="modal" data-bs-target="#editarproducto">
+                                                <input type="hidden" name="idprov" class="idprov" id="idprov" value="${prov.getId()}">
+                                                <a class="btn btn-warning" href="/FarmaciaWeb/CtrProveedores?accion=editarvedore&idprov=${prov.getId()}">
                                                     <i class="bi bi-pencil-fill"></i>
-                                                </a>
-                                                <a class="btn btn-danger" id="btndelete" href="#"><i class="bi bi-trash-fill"></i></a>
+                                                </a> </br> </br>
+                                                <a class="btn btn-danger btndelete" id="btndelete" href="#"><i class="bi bi-trash-fill"></i></a>
+
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -154,8 +156,8 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal para agregar un nuevo proveedor -->
+        
+                                  <!-- Modal para agregar un nuevo proveedor -->
         <div class="modal fade" id="agregarProveedorModal" tabindex="-1" role="dialog" aria-labelledby="agregarProveedorModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -166,31 +168,30 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/FarmaciaWeb/CtrProveedor?accion=agregar" method="post">
+                        <form action="/FarmaciaWeb/CtrProveedores?accion=Agregar" method="post">
                             <div class="form-group">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                <label for="txtnombre">Nombre</label>
+                                <input type="text" class="form-control" id="txtnombre" name="txtnombre" required>
                             </div>
                             <div class="form-group">
-                                <label for="direccion">Dirección</label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="ciudad">Ciudad</label>
-                                <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+                                <label for="txtdireccion">Dirección</label>
+                                <input type="text" class="form-control" id="txtdireccion" name="txtdireccion" required>
                             </div>
                             <div class="form-group">
-                                <label for="correo">Correo</label>
-                                <input type="email" class="form-control" id="correo" name="correo" required>
+                                <label for="txtciudad">Ciudad</label>
+                                <input type="text" class="form-control" id="txtciudad" name="txtciudad" required>
                             </div>
                             <div class="form-group">
-                                <label for="telefono">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                                <label for="txtcorreo">Correo</label>
+                                <input type="email" class="form-control" id="txtcorreo" name="txtcorreo" required>
                             </div>
                             <div class="form-group">
-                                <label for="contacto">Contacto</label>
-                                <input type="text" class="form-control" id="contacto" name="contacto" required>
+                                <label for="txtelefono">Teléfono</label>
+                                <input type="number" class="form-control" id="txtelefono" name="txtelefono" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtcontacto">Contacto</label>
+                                <input type="text" class="form-control" id="txtcontacto" name="txtcontacto" required>
                             </div>
                             <button type="submit" class="btn btn-success">Agregar Proveedor</button>
                         </form>
@@ -202,11 +203,14 @@
             </div>
         </div>
 
-        <!-- Bootstrap JS, Popper.js, and jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="/FarmaciaWeb/JS/EliminarProveedor.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>                        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>  
         <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
-        <script src="/FarmaciaWeb/JS/Gestion.js"></script>
     </body>
 </html>

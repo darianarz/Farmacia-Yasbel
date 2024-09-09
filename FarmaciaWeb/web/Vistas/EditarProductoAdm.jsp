@@ -45,12 +45,13 @@
                                 <path d="m9 18 6-6-6-6"/>
                                 </svg>
                             </button>
-                            <div class="collapsible-content">
+                             <div class="collapsible-content">
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                                 <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
                                 <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
+                                <a href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores" class="collapsible-link submenu-btn">Proveedores</a>
                             </div>
                         </div>
                     </nav>
@@ -73,8 +74,8 @@
                             </svg>
                         </form>
                         <div class="user-menu">
-                            <button class="user-btn btn btn-link">
-                                <i class="bi bi-people-fill"></i>
+                             <button class="user-btn btn btn-link">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">

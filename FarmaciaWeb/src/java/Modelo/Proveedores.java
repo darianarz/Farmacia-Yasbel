@@ -15,13 +15,13 @@ public class Proveedores {
     private String direccion;
     private String ciudad;
     private String correo;
-    private int telefono;
+    private String telefono;
     private String contacto;
 
     public Proveedores() {
     }
 
-    public Proveedores(int id, String nombre, String direccion, String ciudad, String correo, int telefono, String contacto) {
+    public Proveedores(int id, String nombre, String direccion, String ciudad, String correo, String telefono, String contacto) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -71,11 +71,11 @@ public class Proveedores {
         this.correo = correo;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
