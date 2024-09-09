@@ -129,9 +129,9 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
 
-                if (sesion.getAttribute("tipo").equals("Administrador")) {
-                    request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
-                }
+                
+                    request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                
                 break;
             case "buscar":
                 String nombre = request.getParameter("busqueda");
@@ -451,7 +451,7 @@ public class CtrProductoLi extends HttpServlet {
                         dped.setTblProducto(listacarrito.get(i).getIdproducto());
                         dped.setTblPedido(idpe);
                         dped.setDpdCantidad(listacarrito.get(i).getCantidad());
-                        dped.setDpdPrecioTotal(listacarrito.get(i).getPreciocompra());
+                        dped.setDpdPrecioTotal(mon);
                         dped.setDpdNombreProducto(listacarrito.get(i).getNombre());
                         dped.setDpdPrecioUnitario(listacarrito.get(i).getPreciocompra());
                         dped.setDpdFecha(listacarrito.get(i).getFecha());
