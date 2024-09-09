@@ -104,7 +104,7 @@
                                 </td>
                                 <td>${car.getSubtotal()}</td>
                                 <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
-                                    <a class="btn btn-outline-danger" href="#" id="btndelete"><i class="bi bi-trash"></i></a>
+                                    <a class="btn btn-outline-danger" href="#" id="btndeletecar"><i class="bi bi-trash"></i></a>
 
                                 </td>
                             </tr>
@@ -184,13 +184,15 @@
             </div>
         </div>
     </body>
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    <script src="/FarmaciaWeb/JS/EliminarProducto.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>                       
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/FarmaciaWeb/JS/EliminarCarrito.js" type="text/javascript"></script>
     <script>
                             function ejecutarTarea() {
                                 document.getElementById("MensajeEspera").style.display = "block";
