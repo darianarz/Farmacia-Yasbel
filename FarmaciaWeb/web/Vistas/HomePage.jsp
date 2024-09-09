@@ -91,7 +91,7 @@
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="promo-banner">
-                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                            <span>HEY! <strong>2x1</strong> En medicamentos!</span>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="promo-banner">
-                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                            <span>HEY! <strong>2x1</strong> En medicamentos!</span>
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="promo-banner">
-                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>
+                            <span>HEY! <strong>2x1</strong> En medicamentos!</span>
                         </div>
                     </div>
                 </div>
@@ -137,9 +137,8 @@
             <p class="offer-text">Explora nuestras <span class="discount">categorías</span> en la Farmacia Yasbel</p>
             <div class="offer-cards">
                 <div class="offer-card">
-                    <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Medicamentos" class="card-image">
-
-                    <p class="card-title">Medicamentos</p>
+                    <img src="/FarmaciaWeb/Imagenes/antibioticoscutaneos/dermaskin.png" alt="Medicamentos" class="card-image">
+                    <p class="card-title">antibioticos</p>
 
                 </div>
                 <div class="offer-card">
@@ -173,7 +172,7 @@
                                     <h5 class="card-title">${prod.getProNombre()}</h5>
                                     <p class="card-text">${prod.getProDescripcion()}</p>
                                     <div class="mt-auto">
-                                        
+
                                         <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-primary">Agregar al carrito</a>
                                     </div>
                                 </div>
@@ -196,8 +195,6 @@
                     <div class="col-md-4">
                         <h5 class="footer-heading">Métodos de Pago</h5>
                         <div class="payment-methods">
-                            <a href="#"><img src="../img/mastercard.png" alt="MasterCard" class="payment-icon"></a>
-                            <a href="#"><img src="../img/visa.png" alt="Visa" class="payment-icon"></a>
                             <a href="#"><img src="../img/nequi.png" alt="Nequi" class="payment-icon"></a>
                         </div>
                     </div>
@@ -230,19 +227,19 @@
                     <div class="modal-body">
                         <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR" method="POST">
                             <div class="form-group">
-                                <label for="name"> Nombre</label>
+                                <label for="name">Nombre</label>
                                 <input id="name" name="nombre" class="nombre" type="text" placeholder="Ingrese su nombre">
                             </div>
                             <div class="form-group">
-                                <label for="email"> Correo electrónico</label>
-                                <input id="email" name="correo" type="email"  class="email" placeholder="Ingrese su correo">
+                                <label for="email">Correo electrónico</label>
+                                <input id="email" name="correo" type="email" class="email" placeholder="Ingrese su correo">
                             </div>
                             <div class="form-group">
-                                <label for="phone"> Teléfono</label>
+                                <label for="phone">Teléfono</label>
                                 <input id="telefono" class="telefono" name="telefono" type="text" placeholder="Ingrese su teléfono">
                             </div>
                             <div class="form-group">
-                                <label for="type"> Tipo de solicitud</label>
+                                <label for="type">Tipo de solicitud</label>
                                 <select id="type" name="tipo" class="tipo">
                                     <option value="" disabled selected>Seleccione una opción</option>
                                     <option value="peticion">Petición</option>
@@ -252,18 +249,19 @@
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="id" id="id" value="${usuario.getUsuid()}">
-                                <label for="description"> Descripción de la solicitud</label>
+                                <label for="description">Descripción de la solicitud</label>
                                 <textarea id="descripcion" class="descripcion" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
                             </div>
-                            <button type="submit" name="accion" value="CrearPQR" class="button"> Enviar</button>
+                            <button type="submit" name="accion" value="CrearPQR" class="button">Enviar</button>
                         </form>
                     </div>
                     <div class="modal-footer" id="modal">
-                        <p>Si el problema persiste, llame a la linea +123-456-789</p>
+                        <p>Si el problema persiste, llame a la línea +123-456-789</p>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
