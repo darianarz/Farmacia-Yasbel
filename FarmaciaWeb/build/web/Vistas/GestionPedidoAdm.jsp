@@ -1,8 +1,3 @@
-<%-- 
-    Document   : GestionPedidoEmp
-    Created on : 20/08/2024, 10:41:53 AM
-    Author     : SENA
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +8,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/GestionPedidoAdm.css" rel="stylesheet" type="text/css"/>
-
     </head>
     <body>
         <div class="container-fluid">
@@ -45,7 +39,6 @@
                             </svg>
                         </button>
                         <div class="collapsible-content">
-
                             <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                             <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                             <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
@@ -53,7 +46,6 @@
                             <a href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores" class="collapsible-link submenu-btn">Proveedores</a>
                         </div>
                     </div>
-                    </nav>
                 </div>
                 <div class="col-md-9 main-content">
                     <header class="header d-flex justify-content-between align-items-center mb-3">
@@ -104,7 +96,6 @@
                                                 <td><span class="badge pending">${ped.getPedEstado()}</span></td>
                                                 <td>
                                                     <div class="font-medium">${ped.getTblUsuarios()}</div>
-
                                                 </td>
                                                 <td>
                                                     <!-- Esta sección debe ser dinámica según los productos en el pedido -->
@@ -115,7 +106,7 @@
                                                 <td>
                                                     <div class="actions">
                                                         <input type="hidden" class="idpqr" value="${ped.getPedCodigo()}">
-                                                        <a class="btn btn-danger btneliminarpqr" href="#"><i class="bi bi-trash-fill"></i></a>
+                                                        <!-- Botón eliminado -->
                                                         <a class="btn" style="background-color: #74BD64" href="CtrProductoLi?accion=Epedidos&idp=${ped.getPedCodigo()}">
                                                             <i class="bi bi-envelope-check"></i>
                                                         </a>
@@ -123,7 +114,6 @@
                                                 </td>
                                             </tr>
                                         </c:forEach>
-
                                     </tbody>
                                 </table>
                             </div>

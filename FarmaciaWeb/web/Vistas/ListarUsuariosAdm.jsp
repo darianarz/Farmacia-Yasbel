@@ -47,7 +47,7 @@
                                 </svg>
                             </button>
                             <div class="collapsible-content">
-                                
+
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                                 <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
@@ -92,14 +92,13 @@
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <form class="form-inline mt-4" action="CtrUsuarioCre" method="GET">
-                                        <div class="form-group mx-sm-2 mb-2">
-                                            <input type="text" class="form-control" name="nombre" placeholder="Digite nombre">
-                                        </div>
-                                        <button type="submit" class="btn btn-success mb-2" name="accion" value="buscarn" style="background: #74BD64">
+                                    <form class="search-form d-flex">
+                                        <input type="search" class="form-control" placeholder="Digite nombre">
+                                        <button type="submit" class="btn btn-success" name="accion" value="buscarn" style="background: #74BD64">
                                             <i class="bi bi-search"></i> Buscar
                                         </button>
                                     </form>
+
 
 
                                 </div>
