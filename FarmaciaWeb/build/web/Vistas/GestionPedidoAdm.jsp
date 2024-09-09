@@ -44,14 +44,14 @@
                             <path d="m9 18 6-6-6-6"/>
                             </svg>
                         </button>
-                         <div class="collapsible-content">
-                                <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
-                                <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
-                                <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
-                                <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
-                                <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
-                                <a href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores" class="collapsible-link submenu-btn">Proveedores</a>
-                         </div>
+                        <div class="collapsible-content">
+
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
+                            <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
+                            <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
+                            <a href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores" class="collapsible-link submenu-btn">Proveedores</a>
+                        </div>
                     </div>
                     </nav>
                 </div>
@@ -73,7 +73,7 @@
                             </svg>
                         </form>
                         <div class="user-menu">
-                             <button class="user-btn btn btn-link">
+                            <button class="user-btn btn btn-link">
                                 <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
@@ -99,41 +99,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="ped" items="${pedidos}">
+                                        <c:forEach var="ped" items="${pedido}">
                                             <tr>
                                                 <td><span class="badge pending">${ped.getPedEstado()}</span></td>
                                                 <td>
                                                     <div class="font-medium">${ped.getTblUsuarios()}</div>
-                                                    <div class="text-muted">${ped.getPedDireccion()}</div>
 
                                                 </td>
                                                 <td>
+                                                    <!-- Esta sección debe ser dinámica según los productos en el pedido -->
                                                     <div>Paracetamol x 2</div>
                                                     <div>Ibuprofeno x 1</div>
                                                 </td>
-                                                <td>${ped.getPedTotal()}</td>
+                                                <td>${ped.pedTotal}</td>
                                                 <td>
                                                     <div class="actions">
-                                                        <button class="button icon success">
-                                                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path d="M20 6 9 17l-5-5"></path>
-                                                            </svg>
-                                                            <span class="sr-only">Marcar como Pagado</span>
-                                                        </button>
-                                                        <button class="button icon info">
-                                                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
-                                                            <path d="M15 18H9"></path>
-                                                            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
-                                                            <circle cx="17" cy="18" r="2"></circle>
-                                                            <circle cx="7" cy="18" r="2"></circle>
-                                                            </svg>
-                                                            <span class="sr-only">Marcar como Listo para Enviar</span>
-                                                        </button>
+                                                        <input type="hidden" class="idpqr" value="${ped.getPedCodigo()}">
+                                                        <a class="btn btn-danger btneliminarpqr" href="#"><i class="bi bi-trash-fill"></i></a>
+                                                        <a class="btn" style="background-color: #74BD64" href="CtrProductoLi?accion=Epedidos&idp=${ped.getPedCodigo()}">
+                                                            <i class="bi bi-envelope-check"></i>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                         </c:forEach>
+
                                     </tbody>
                                 </table>
                             </div>
