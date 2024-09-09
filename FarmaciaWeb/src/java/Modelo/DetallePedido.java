@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author samuel
@@ -18,12 +20,12 @@ public class DetallePedido {
     private int dpdPrecioTotal;
     private String dpdNombreProducto;
     private int dpdPrecioUnitario;
-    private String dpdFecha;
+    private Date dpdFecha;
 
     public DetallePedido() {
     }
 
-    public DetallePedido(int dpdCodigo, int tblProducto, int tblPedido, int dpdCantidad, int dpdPrecioTotal, String dpdNombreProducto, int dpdPrecioUnitario, String dpdFecha) {
+    public DetallePedido(int dpdCodigo, int tblProducto, int tblPedido, int dpdCantidad, int dpdPrecioTotal, String dpdNombreProducto, int dpdPrecioUnitario, Date dpdFecha) {
         this.dpdCodigo = dpdCodigo;
         this.tblProducto = tblProducto;
         this.tblPedido = tblPedido;
@@ -90,13 +92,14 @@ public class DetallePedido {
         this.dpdPrecioUnitario = dpdPrecioUnitario;
     }
 
-    public String getDpdFecha() {
+    public Date getDpdFecha() {
         return dpdFecha;
     }
 
-    public void setDpdFecha(String dpdFecha) {
+    public void setDpdFecha(Date dpdFecha) {
         this.dpdFecha = dpdFecha;
     }
-    
+
+   
     
 }

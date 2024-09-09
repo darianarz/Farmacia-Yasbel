@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author HOME
@@ -16,19 +18,23 @@ public class Carrito {
     private String descripcion;
     private String foto;
     private int preciocompra;
+    private int preciounitario;
+    private Date fecha;
     private int cantidad;
     private int subtotal;
 
     public Carrito() {
     }
 
-    public Carrito(int item, int idproducto, String nombre, String descripcion, String foto, int preciocompra, int cantidad, int subtotal) {
+    public Carrito(int item, int idproducto, String nombre, String descripcion, String foto, int preciocompra, int preciounitario, Date fecha, int cantidad, int subtotal) {
         this.item = item;
         this.idproducto = idproducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.foto = foto;
         this.preciocompra = preciocompra;
+        this.preciounitario = preciounitario;
+        this.fecha = fecha;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
     }
@@ -81,6 +87,22 @@ public class Carrito {
         this.preciocompra = preciocompra;
     }
 
+    public int getPreciounitario() {
+        return preciounitario;
+    }
+
+    public void setPreciounitario(int preciounitario) {
+        this.preciounitario = preciounitario;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -96,6 +118,7 @@ public class Carrito {
     public void setSubtotal(int subtotal) {
         this.subtotal = subtotal;
     }
+
     
     
 }

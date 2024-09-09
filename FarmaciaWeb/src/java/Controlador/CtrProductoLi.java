@@ -74,6 +74,7 @@ public class CtrProductoLi extends HttpServlet {
     SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
     List<Categoria> listaCategorias = new ArrayList();
     Categoria categ = new Categoria();
+    DetallePedido ddd = new DetallePedido();
 
     int cantidad;
     Date fechavencimiento;
@@ -81,7 +82,7 @@ public class CtrProductoLi extends HttpServlet {
     int subtotal;
     int item;
     int totalpagar, idusu;
-    String nom, des, foto, fec, estado, idcliente, id, marca, descuent, fechaven , esss;
+    String nom, des, foto, fec, estado, idcliente, id, marca, descuent, fechaven, esss;
 
     int pre, sto, cat, mon, idcli, provee;
     Date d = new Date();
@@ -443,17 +444,19 @@ public class CtrProductoLi extends HttpServlet {
                     ped.setPedFormaDePago(tipo);
                     ped.setPedEstado(esss);
                     peddao.crear(ped);
-                    int idpe = peddao.listarMx();
+                    int idpe = peddao.listarU();
                     System.out.println("idpedido: " + idpe);
-                    /*for (int i = 0; i < listacarrito.size(); i++) {
+                    for (int i = 0; i < listacarrito.size(); i++) {
                         DetallePedido dped = new DetallePedido();
-                        dped.setTblPedido(idpe);
                         dped.setTblProducto(listacarrito.get(i).getIdproducto());
-                        dped.setDpdNombreProducto(listacarrito.get(i).getNombre());
+                        dped.setTblPedido(idpe);
                         dped.setDpdCantidad(listacarrito.get(i).getCantidad());
                         dped.setDpdPrecioTotal(listacarrito.get(i).getPreciocompra());
+                        dped.setDpdNombreProducto(listacarrito.get(i).getNombre());
+                        dped.setDpdPrecioUnitario(listacarrito.get(i).getPreciocompra());
+                        dped.setDpdFecha(listacarrito.get(i).getFecha());
                         dpdao.crear(dped);
-                    }*/
+                    }
 
                     listacarrito.removeAll(listacarrito);
                     pedidos = peddao.listarT();
@@ -462,12 +465,20 @@ public class CtrProductoLi extends HttpServlet {
                     break;
 
                 }
-            case "metodo":
-                
-                list = pdao.listarT();
-                request.setAttribute("prducto", list);
+            case "historial":
+                pedidos = peddao.listarT();
+                request.setAttribute("pedido", pedidos);
+                request.setAttribute("detalle", pedidos);
+                request.getRequestDispatcher("Vistas/HistorialPedido.jsp").forward(request, response);
                 break;
-
+            case "EditarDet":
+                int idpd = Integer.parseInt(request.getParameter("idpro"));
+                System.out.println("id del producto " + idpd);
+                ped = peddao.listarIdp(idpd);
+                System.out.println("lista pedidos" + ped);
+                request.setAttribute("Detalle", ped);
+                request.getRequestDispatcher("Vistas/HistorialPedido.jsp").forward(request, response);
+                break;
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

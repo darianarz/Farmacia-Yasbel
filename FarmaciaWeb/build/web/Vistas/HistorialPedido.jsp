@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Historial de pedidos</title>
         <!-- Bootstrap CSS -->
-         <title>Farma-online</title>
+        <title>Farma-online</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
@@ -18,10 +18,10 @@
         <link href="/FarmaciaWeb/CSS/GestionPedidoAdm.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/Gestion.css" rel="stylesheet" type="text/css"/>
     </head>
-   
+
     <body>
 
-         <!-- Navbar -->
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <a class="navbar-brand" href="/FarmaciaWeb/CtrProductoLi?accion=home">
                 <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" class="icon" width="60" height="60" alt="Farmacia Yasbel"/>
@@ -48,29 +48,12 @@
                             <a class="dropdown-item text-center" href="#"><i class="bi bi-person"></i></a>
                             <a class="dropdown-item " >${usuario.getUsunombre()}</a>
                             <a class="dropdown-item " >${usuario.getUsutipo()}</a>
-                            <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
+                            <a class="dropdown-item text-warnig" href="/FarmaciaWeb/CtrProductoLi?accion=admi">Gestion Administrador</a>
                             <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
 
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text-white" href="CtrProductoLi?accion=carro">
-                            <i class="bi bi-cart-check-fill"></i> Carrito
-                            (<label style="color: darkorange">${contador}</label>)
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-bookmark"></i> Comprar por categorías
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <c:forEach var="c" items="${categorias}">
-                                <a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${c.getCatCodigo()}">
-                                    <i class="bi bi-bookmarks"></i> ${c.getCatNombre()}
-                                </a>
-                            </c:forEach>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -98,13 +81,17 @@
                     </thead>
                     <tbody>
                         <c:forEach var="ped" items="${pedido}">
-                        <tr>
-                            <td>${ped.getPedCodigo()}</td>
-                            <td><span class="badge bg-warning text-dark">${ped.getPedEstado()}</span></td>
-                            <td>${ped.getPedTotal()}</td>
-                            <td>${ped.getPedFecha()}</td>
-                            <td><button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#orderModal" onclick="setModalDetails('ORD001')">Ver detalles</button></td>
-                        </tr>
+                            <tr>
+                                <td>${ped.getPedCodigo()}</td>
+                                <td><span class="badge bg-warning text-dark">${ped.getPedEstado()}</span></td>
+                                <td>${ped.getPedTotal()}</td>
+                                <td>${ped.getPedFecha()}</td>
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" href="/FarmaciaWeb/CtrProductoLi?accion=EditarDet&idpro=${ped.getPedCodigo()}" data-bs-toggle="modal" data-bs-target="#orderModal">
+                                        Ver detalles
+                                    </a>
+                                </td>
+                            </tr>
                         </c:forEach>
                     </tbody>
                 </table>
@@ -112,14 +99,35 @@
 
             <!-- Modal -->
             <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="orderModalLabel">Detalles del pedido</h5>
+                            <h5 class="modal-title" id="orderModalLabel">Detalles del Pedido</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p id="orderDetails">Detalles del pedido...</p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Nombre del producto</label>
+                                    <input type="text" class="form-control" name="txtnombre" placeholder="Nombre" value="${detalles.getDpdNombreProducto()}" readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label>Precio unitario</label>
+                                    <input type="number" class="form-control" name="txtprecio" placeholder="Precio" value="${detalles.getDpdPrecioUnitario()}" readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label>Cantidad</label>
+                                    <input type="text" class="form-control" name="txtcantidad" placeholder="Cantidad" value="${detalles.getDpdCantidad()}" readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label>Fecha</label>
+                                    <input type="text" class="form-control" name="txtfecha" placeholder="Fecha" value="${detalles.getDpdFecha()}" readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label>Precio total</label>
+                                    <input type="text" class="form-control" name="txttotal" placeholder="Total" value="${detalles.getDpdPrecioTotal()}" readonly>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -127,16 +135,22 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- Bootstrap JS (y dependencias de Popper.js) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
 
-        <script>
-                                function setModalDetails(orderId) {
-                                    document.getElementById('orderDetails').innerText = 'Detalles del pedido: ' + orderId;
-                                }
-        </script>
-    </body>
+    <!-- Incluye Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Bootstrap JS (y dependencias de Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/IndexAdmin.js" type="text/javascript"></script>
+
+    <script>
+        function setModalDetails(orderId) {
+            document.getElementById('orderDetails').innerText = 'Detalles del pedido: ' + orderId;
+        }
+    </script>
+</body>
 </html>
