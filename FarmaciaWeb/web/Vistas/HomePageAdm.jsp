@@ -132,31 +132,33 @@
         <br>
         <br>
         <div class="offer-banner">
-            <p class="offer-text">Ofertas de <span class="discount">30%</span> en la Farmacia Yasbel</p>
-            <div class="offer-cards">
-                <div class="offer-card">
-                    <p class="card-title">Medicamentos</p>
-                    <p class="card-items"> ítems</p>
-                    <a href="#">Ver Todo</a>
-                </div>
-                <div class="offer-card">
-                    <p class="card-title">Suplementos</p>
-                    <p class="card-items">ítems</p>
-                    <a href="#">Ver Todo</a>
-                </div>
-                <div class="offer-card">
-                    <p class="card-title">Cuidado Personal</p>
-                    <p class="card-items">ítems</p>
-                    <a href="#">Ver Todo</a>
-                </div>
-                <div class="offer-card">
-                    <p class="card-title">Productos para Bebes</p>
-                    <p class="card-items"> ítems</p>
-                    <a href="#">Ver Todo</a>
-                </div>
-            </div>
-            <div class="rotating-light"></div>
+    <p class="offer-text">Explora nuestras <span class="discount">categorías</span> en la Farmacia Yasbel</p>
+    <div class="offer-cards">
+        <div class="offer-card">
+            <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Medicamentos" class="card-image">
+           
+            <p class="card-title">Medicamentos</p>
+           
         </div>
+        <div class="offer-card">
+            <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Suplementos" class="card-image">
+            <p class="card-title">Suplementos</p>
+           
+        </div>
+        <div class="offer-card">
+            <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Cuidado Personal" class="card-image">
+            <p class="card-title">Cuidado Personal</p>
+           
+        </div>
+        <div class="offer-card">
+            <img src="/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png" alt="Productos para Bebés" class="card-image">
+            <p class="card-title">Productos para Bebés</p>
+            
+        </div>
+    </div>
+    <div class="rotating-light"></div>
+</div>
+
         <br>
         <section id="productos" class="product-container">
             <div class="container">
@@ -171,7 +173,7 @@
 
                                     <div class="mt-auto">
                                         <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="btn btn-secondary ml-2">Editar</a>
-                                        
+
                                     </div>
                                 </div>
                             </div>

@@ -322,6 +322,7 @@ svg {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    flex-wrap: wrap; /* Permite el ajuste automático de las tarjetas */
 }
 
 .offer-card {
@@ -333,10 +334,19 @@ svg {
     width: 23%; /* Para mostrar cuatro tarjetas de forma equitativa */
     text-align: center;
     transition: transform 0.3s ease;
+    margin: 10px 0; /* Añadido margen para separación vertical */
 }
 
 .offer-card:hover {
     transform: translateY(-5px);
+}
+
+.card-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-bottom: 2px solid #2874a6; /* Azul característico de Yasbel */
+    margin-bottom: 10px;
 }
 
 .card-title {
@@ -395,6 +405,7 @@ svg {
     transform: scale(1.05);
     transition: transform 0.4s ease;
 }
+
 
 /* Estilos del footer */
 #footer {
