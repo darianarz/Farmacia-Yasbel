@@ -170,7 +170,7 @@
                                     <p class="card-text">${prod.getProDescripcion()}</p>
 
                                     <div class="mt-auto">
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="btn btn-secondary ml-2">Editar</a>
+                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=EditarPro&idpro=${prod.getProCodigo()}" class="btn btn-secondary ml-2">Editar</a>
                                         
                                     </div>
                                 </div>
