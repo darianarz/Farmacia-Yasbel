@@ -1,19 +1,16 @@
 <%-- 
-    Document   : GestionPedidoEmp
-    Created on : 20/08/2024, 10:41:53 AM
-    Author     : SENA
+    Document   : EditarProveedores
+    Created on : 8/09/2024, 07:43:25 PM
+    Author     : HOME
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gestión de Pedidos</title>
+         <link href="/FarmaciaWeb/CSS/Gestion.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
-        <link href="/FarmaciaWeb/CSS/GestionPedidoAdm.css" rel="stylesheet" type="text/css"/>
-
     </head>
     <body>
         <div class="container-fluid">
@@ -36,23 +33,25 @@
                             <span class="sr-only">Toggle notifications</span>
                         </button>
                     </div>
+                    <nav class="nav">
 
-                    <div class="collapsible">
-                        <button class="collapsible-trigger">
-                            Gestión de Productos
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m9 18 6-6-6-6"/>
-                            </svg>
-                        </button>
-                         <div class="collapsible-content">
+                        <!-- Collapsible Section -->
+                        <div class="collapsible">
+                            <button class="collapsible-trigger">
+                                Gestión de Productos
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m9 18 6-6-6-6"/>
+                                </svg>
+                            </button>
+                            <div class="collapsible-content">
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                                 <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
                                 <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
                                 <a href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores" class="collapsible-link submenu-btn">Proveedores</a>
-                         </div>
-                    </div>
+                            </div>
+                        </div>
                     </nav>
                 </div>
                 <div class="col-md-9 main-content">
@@ -84,64 +83,48 @@
                             </div>
                         </div>
                     </header>
-                    <main class="main">
-                        <h1>Panel de Administración</h1>
-                        <div class="container">
-                            <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Estado</th>
-                                            <th>Cliente</th>
-                                            <th>Productos</th>
-                                            <th>Total</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach var="ped" items="${pedidos}">
-                                            <tr>
-                                                <td><span class="badge pending">${ped.getPedEstado()}</span></td>
-                                                <td>
-                                                    <div class="font-medium">${ped.getTblUsuarios()}</div>
-                                                    <div class="text-muted">${ped.getPedDireccion()}</div>
+                                <form class="form-sing" action="/FarmaciaWeb/CtrProductoLi?accion=actualizarpror" method="post">
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label>Nombre</label> 
+                                <input type="hidden" class="form-control" name="id" id="id" value="${Proveedorese.getId()}"> 
+                                <input type="text" class="form-control" name="nombre" placeholder="nombre" required="" value="${Proveedorese.getNombre()}">
+                            </div>  
 
-                                                </td>
-                                                <td>
-                                                    <div>Paracetamol x 2</div>
-                                                    <div>Ibuprofeno x 1</div>
-                                                </td>
-                                                <td>${ped.getPedTotal()}</td>
-                                                <td>
-                                                    <div class="actions">
-                                                        <button class="button icon success">
-                                                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path d="M20 6 9 17l-5-5"></path>
-                                                            </svg>
-                                                            <span class="sr-only">Marcar como Pagado</span>
-                                                        </button>
-                                                        <button class="button icon info">
-                                                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
-                                                            <path d="M15 18H9"></path>
-                                                            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
-                                                            <circle cx="17" cy="18" r="2"></circle>
-                                                            <circle cx="7" cy="18" r="2"></circle>
-                                                            </svg>
-                                                            <span class="sr-only">Marcar como Listo para Enviar</span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
+                            <div class="col-6">
+                                <label>direccion</label> 
+                                <input type="text" class="form-control" name="direccion" placeholder="direccion" required="" value="${Proveedorese.getDireccion()}">
                             </div>
-                        </div>
-                    </main>
+                            <div class="col-6">
+                                <label>ciudad</label> 
+                                <input type="text" class="form-control" name="ciudad" placeholder="ciudad" required="" value="${Proveedorese.getCiudad()}">
+                            </div>
+                            <div class="col-6">
+                                <label>correo</label> 
+                                <input type="email" class="form-control" name="correo" placeholder="correo" required="" value="${Proveedorese.getCorreo()}">
+                            </div>
+                            <div class="col-6">
+                                <label>telefono</label> 
+                                <input type="number" class="form-control" name="telefono" placeholder="telefono" required="" value="${Proveedorese.getTelefono()}">
+                            </div>
+                            <div class="col-6">
+                                <label>contacto</label> 
+                                <input type="text" class="form-control" name="contacto" placeholder="contacto" required="" value="${Proveedorese.getContacto()}"> 
+                            </div>        
+                        </div>    
+
+                        <center>
+                            <button type="submit" class="btn btn-primary mt-4 mb-2 formulario_btn" name="btnagregar" value="Agregar">
+                                Agregar <i class="bi bi-floppy"></i>
+                            </button>
+                            <a class="btn btn-danger formulario_btn mt-4 mb-2" name="regresar" href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores">Regresar <i class="bi bi-box-arrow-left"></i></a>
+                        </center>
+
+                    </form>
                 </div>
             </div>
         </div>
+        <!-- Bootstrap JS, Popper.js, and jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
