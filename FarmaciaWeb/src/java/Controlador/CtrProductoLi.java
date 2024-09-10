@@ -80,6 +80,7 @@ public class CtrProductoLi extends HttpServlet {
     List<Categoria> listaCategorias = new ArrayList();
     Categoria categ = new Categoria();
     DetallePedido ddd = new DetallePedido();
+    List<Producto> proDescuento = new ArrayList();
 
     int cantidad;
     Date fechavencimiento;
@@ -111,6 +112,8 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("categorias", categoria);
                 System.out.println("categoria " + categoria.size());
                 request.setAttribute("productos", productos);
+                proDescuento = pdao.listarDesc();
+                request.setAttribute("descuento", proDescuento);
                 System.out.println("producto " + productos.size());
                 System.out.println("tipo " + sesion.getAttribute("tipo"));
                 if (sesion.getAttribute("tipo") != null) {

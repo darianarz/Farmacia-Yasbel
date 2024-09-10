@@ -152,7 +152,7 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"carousel-caption d-none d-md-block\">\r\n");
       out.write("                        <div class=\"promo-banner\">\r\n");
-      out.write("                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>\r\n");
+      out.write("                            <span>HEY! <strong>2x1</strong> En medicamentos!</span>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
@@ -165,7 +165,7 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"carousel-caption d-none d-md-block\">\r\n");
       out.write("                        <div class=\"promo-banner\">\r\n");
-      out.write("                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>\r\n");
+      out.write("                            \r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
@@ -178,7 +178,7 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"carousel-caption d-none d-md-block\">\r\n");
       out.write("                        <div class=\"promo-banner\">\r\n");
-      out.write("                            <span>HEY! <strong>1 + 1</strong> En medicamentos!</span>\r\n");
+      out.write("                            <span>HEY! <strong>2x1</strong> En medicamentos!</span>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
@@ -198,9 +198,8 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <p class=\"offer-text\">Explora nuestras <span class=\"discount\">categorías</span> en la Farmacia Yasbel</p>\r\n");
       out.write("            <div class=\"offer-cards\">\r\n");
       out.write("                <div class=\"offer-card\">\r\n");
-      out.write("                    <img src=\"/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png\" alt=\"Medicamentos\" class=\"card-image\">\r\n");
-      out.write("\r\n");
-      out.write("                    <p class=\"card-title\">Medicamentos</p>\r\n");
+      out.write("                    <img src=\"/FarmaciaWeb/Imagenes/antibioticoscutaneos/dermaskin.png\" alt=\"Medicamentos\" class=\"card-image\">\r\n");
+      out.write("                    <p class=\"card-title\">antibioticos</p>\r\n");
       out.write("\r\n");
       out.write("                </div>\r\n");
       out.write("                <div class=\"offer-card\">\r\n");
@@ -246,8 +245,6 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"col-md-4\">\r\n");
       out.write("                        <h5 class=\"footer-heading\">Métodos de Pago</h5>\r\n");
       out.write("                        <div class=\"payment-methods\">\r\n");
-      out.write("                            <a href=\"#\"><img src=\"../img/mastercard.png\" alt=\"MasterCard\" class=\"payment-icon\"></a>\r\n");
-      out.write("                            <a href=\"#\"><img src=\"../img/visa.png\" alt=\"Visa\" class=\"payment-icon\"></a>\r\n");
       out.write("                            <a href=\"#\"><img src=\"../img/nequi.png\" alt=\"Nequi\" class=\"payment-icon\"></a>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
@@ -280,19 +277,19 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"modal-body\">\r\n");
       out.write("                        <form action=\"/FarmaciaWeb/CtrPQR?accion=CrearPQR\" method=\"POST\">\r\n");
       out.write("                            <div class=\"form-group\">\r\n");
-      out.write("                                <label for=\"name\"> Nombre</label>\r\n");
+      out.write("                                <label for=\"name\">Nombre</label>\r\n");
       out.write("                                <input id=\"name\" name=\"nombre\" class=\"nombre\" type=\"text\" placeholder=\"Ingrese su nombre\">\r\n");
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"form-group\">\r\n");
-      out.write("                                <label for=\"email\"> Correo electrónico</label>\r\n");
-      out.write("                                <input id=\"email\" name=\"correo\" type=\"email\"  class=\"email\" placeholder=\"Ingrese su correo\">\r\n");
+      out.write("                                <label for=\"email\">Correo electrónico</label>\r\n");
+      out.write("                                <input id=\"email\" name=\"correo\" type=\"email\" class=\"email\" placeholder=\"Ingrese su correo\">\r\n");
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"form-group\">\r\n");
-      out.write("                                <label for=\"phone\"> Teléfono</label>\r\n");
+      out.write("                                <label for=\"phone\">Teléfono</label>\r\n");
       out.write("                                <input id=\"telefono\" class=\"telefono\" name=\"telefono\" type=\"text\" placeholder=\"Ingrese su teléfono\">\r\n");
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"form-group\">\r\n");
-      out.write("                                <label for=\"type\"> Tipo de solicitud</label>\r\n");
+      out.write("                                <label for=\"type\">Tipo de solicitud</label>\r\n");
       out.write("                                <select id=\"type\" name=\"tipo\" class=\"tipo\">\r\n");
       out.write("                                    <option value=\"\" disabled selected>Seleccione una opción</option>\r\n");
       out.write("                                    <option value=\"peticion\">Petición</option>\r\n");
@@ -304,18 +301,19 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <input type=\"hidden\" name=\"id\" id=\"id\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getUsuid()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\">\r\n");
-      out.write("                                <label for=\"description\"> Descripción de la solicitud</label>\r\n");
+      out.write("                                <label for=\"description\">Descripción de la solicitud</label>\r\n");
       out.write("                                <textarea id=\"descripcion\" class=\"descripcion\" name=\"descripcion\" placeholder=\"Ingrese los detalles de su solicitud\"></textarea>\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <button type=\"submit\" name=\"accion\" value=\"CrearPQR\" class=\"button\"> Enviar</button>\r\n");
+      out.write("                            <button type=\"submit\" name=\"accion\" value=\"CrearPQR\" class=\"button\">Enviar</button>\r\n");
       out.write("                        </form>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"modal-footer\" id=\"modal\">\r\n");
-      out.write("                        <p>Si el problema persiste, llame a la linea +123-456-789</p>\r\n");
+      out.write("                        <p>Si el problema persiste, llame a la línea +123-456-789</p>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
+      out.write("\r\n");
       out.write("        <!-- Scripts -->\r\n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>\r\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js\"></script>\r\n");
@@ -397,7 +395,7 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                        <div class=\"col-md-4 col-sm-6 mb-4\">\r\n");
+          out.write("                        <div class=\"col-md-3 col-sm-6 mb-4\"> \r\n");
           out.write("                            <div class=\"card h-100\">\r\n");
           out.write("                                <img src=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProFoto()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -414,7 +412,7 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                                    <div class=\"mt-auto\">\r\n");
           out.write("                                        <a href=\"/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\" class=\"btn btn-secondary ml-2\">Carrito</a>\r\n");
+          out.write("\"  class=\"btn btn-primary\">Comprar</a>\r\n");
           out.write("                                        <a href=\"/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\" class=\"btn btn-primary\">Agregar al carrito</a>\r\n");

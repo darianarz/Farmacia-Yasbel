@@ -261,7 +261,7 @@ public class ProductoDAO {
                 prod.setProStok(resul.getInt(10));
                 prod.setProVendido(resul.getInt(11));
                 prod.setTblCategoria(resul.getInt(12));
-                
+
                 productos.add(prod);
             }
 
@@ -344,4 +344,39 @@ public class ProductoDAO {
         }
         return true;
     }
+
+    public List listarDesc() {
+        List<Producto> producto = new ArrayList();
+        try {
+            Conexcion = new Conectar();
+            Connection con = Conexcion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexcion con la base de datos");
+
+            }
+            pstm = con.prepareStatement("select * from tblproductos where ProStock > 0 and ProDescuento > 0");
+            resul = pstm.executeQuery();
+            while (resul.next()) {
+                Producto prod = new Producto();
+                prod.setProCodigo(resul.getInt(1));
+                prod.setTblProverdores(resul.getInt(2));
+                prod.setProPrecio(resul.getInt(3));
+                prod.setProDescuento(resul.getString(4));
+                prod.setProMarca(resul.getString(5));
+                prod.setProNombre(resul.getString(6));
+                prod.setProFoto(resul.getString(7));
+                prod.setProDescripcion(resul.getString(8));
+                prod.setProFechaVencimiento(resul.getDate(9));
+                prod.setProStok(resul.getInt(10));
+                prod.setProVendido(resul.getInt(11));
+                prod.setTblCategoria(resul.getInt(12));
+                producto.add(prod);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al listar los productos por stock" + e);
+        }
+        return producto;
+    }
+
 }

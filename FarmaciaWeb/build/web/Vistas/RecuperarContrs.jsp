@@ -22,7 +22,7 @@
             <h1>¿Olvidó su contraseña?</h1>
             <p>Por favor, escribe tu usuario</p>
             <input type="text" placeholder="Usuario" class="input-usuario" />
-            <button type="submit">ENVIAR</button>
+            <a href="/FarmaciaWeb/CtrProductoLi?accion=RecuperarCont" type="submit">ENVIAR</a>
         </div>
         <button class="barra-button">
             <a class="barra-text" href="/FarmaciaWeb/CtrProductoLi?accion=login">Volver al login</a>
