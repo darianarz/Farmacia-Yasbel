@@ -113,7 +113,6 @@
                                                 <td>${pqr.getPqrEstado()}</td>
                                                 <td class="text-center border">
                                                     <input type="hidden" class="idpqr" value="${pqr.getPqrCodigo()}">
-                                                    <a class="btn btn-danger btneliminarpqr" href="#"><i class="bi bi-trash-fill"></i></a>
                                                     <a class="btn" style="background-color: #74BD64" href="CtrPQR?accion=Estado&idp=${pqr.pqrCodigo}">
                                                         <i class="bi bi-envelope-check"></i>
                                                     </a>

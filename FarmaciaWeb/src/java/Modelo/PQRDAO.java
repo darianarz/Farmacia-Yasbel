@@ -89,34 +89,7 @@ public class PQRDAO {
         }
         return pqrList;
     }
-
-    public boolean eliminarPQR(String id) {
-        try {
-            Conexion = new Conectar();
-            con = Conexion.crearconexion();
-            if (con != null) {
-                System.out.println("Se ha establecido una conexión con la base de datos");
-            }
-            pstm = con.prepareStatement("DELETE FROM tblpqr WHERE PQRCodigo = ?");
-            pstm.setString(1, id);
-            pstm.executeUpdate();
-            return true; 
-        } catch (Exception e) {
-            System.out.println("Error al eliminar la PQR: " + e);
-            return false; 
-        } finally {
-            try {
-                if (pstm != null) {
-                    pstm.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error al cerrar los recursos: " + e);
-            }
-        }
-    }
+    
     
     public boolean estadoPQR(String id, String nuevoEstado) {
         try {
