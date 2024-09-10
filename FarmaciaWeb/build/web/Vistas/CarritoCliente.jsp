@@ -19,6 +19,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/scripts.js" type="text/javascript"></script>
         <link href="/FarmaciaWeb/CSS/carritocliente.css" rel="stylesheet" type="text/css"/>
+        <script src="/FarmaciaWeb/JS/EliminarCarrito.js" type="text/javascript"></script>
     </head>
     <%
         if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
