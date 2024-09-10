@@ -31,6 +31,11 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -461,6 +466,37 @@ public class CtrProductoLi extends HttpServlet {
                         dped.setDpdFecha(listacarrito.get(i).getFecha());
                         dpdao.crear(dped);
                     }
+                   Properties propiedad = new Properties();
+                   propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+                   propiedad.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+                   propiedad.setProperty("mail.smtp.starttls.enable", "true");
+                   propiedad.setProperty("mail.smtp.port", "587");
+                   propiedad.setProperty("mail.smtp.auth", "true");
+                   
+                   Session session1 = Session.getDefaultInstance(propiedad);
+                   String correoenvio= "farmaciayasbel@gmail.com";
+                   String contrasena = "xybdpcjtapwenajq";
+                   String destinatario = sesion.getAttribute("correo").toString();
+                    System.out.println("correo del usuario : "  + sesion.getAttribute("correo").toString());
+                   String Asunto = "Pedido Generado";
+                   String Mensaje = "Estimado cliente "+ sesion.getAttribute("User").toString() + "\n\n Su pedido ha sido gerenerado satisfactoriamente," + "\n\n Datos de su pedido: " + "\n\nNumero Pedido: "+idpe+"\nFecha: "+fec+"\nValor: "+mon+"\nEstado: "+estado;
+                   
+                   MimeMessage mail = new MimeMessage(session1);
+                   
+                   try{
+                       mail.setFrom(new InternetAddress(correoenvio));
+                       mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+                       mail.setSubject(Asunto);
+                       mail.setText(Mensaje);
+                       //mail.setContent(Mensaje, "text/html");
+                       
+                       Transport transporte = session1.getTransport("smtp");
+                       transporte.connect(correoenvio, contrasena);
+                       transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                       transporte.close();
+                   }catch(Exception e){
+                       System.out.println("Error al enviar el correo: "+e);
+                   }
 
                     listacarrito.removeAll(listacarrito);
                     pedidos = peddao.listarT();
@@ -493,6 +529,47 @@ public class CtrProductoLi extends HttpServlet {
                     request.setAttribute("pedidos", ped);
                     request.getRequestDispatcher("CtrProductoLi?accion=gestion").forward(request, response);
                 }
+                break;
+            case"olvido":
+                
+                request.getRequestDispatcher("Vistas/RecuperarContrs.jsp").forward(request, response);
+                break;
+            case"login":
+                request.getRequestDispatcher("Vistas/LogginPage.jsp").forward(request, response);
+                break;
+            case"RecuperarCont":
+                 Properties propiedad = new Properties();
+                   propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+                   propiedad.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+                   propiedad.setProperty("mail.smtp.starttls.enable", "true");
+                   propiedad.setProperty("mail.smtp.port", "587");
+                   propiedad.setProperty("mail.smtp.auth", "true");
+                   
+                   Session session1 = Session.getDefaultInstance(propiedad);
+                   String correoenvio= "farmaciayasbel@gmail.com";
+                   String contrasena = "xybdpcjtapwenajq";
+                   String destinatario = sesion.getAttribute("correo").toString();
+                    System.out.println("correo del usuario : "  + sesion.getAttribute("correo").toString());
+                   String Asunto = "Pedido Generado";
+                   String Mensaje = "Estimado cliente "+ sesion.getAttribute("User").toString() + "";
+                   
+                   MimeMessage mail = new MimeMessage(session1);
+                   
+                   try{
+                       mail.setFrom(new InternetAddress(correoenvio));
+                       mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+                       mail.setSubject(Asunto);
+                       mail.setText(Mensaje);
+                       //mail.setContent(Mensaje, "text/html");
+                       
+                       Transport transporte = session1.getTransport("smtp");
+                       transporte.connect(correoenvio, contrasena);
+                       transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                       transporte.close();
+                   }catch(Exception e){
+                       System.out.println("Error al enviar el correo: "+e);
+                   }
+
                 break;
         }
     }

@@ -46,7 +46,7 @@
                                 </svg>
                             </button>
                             <div class="collapsible-content">
-                                
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                                 <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
@@ -94,7 +94,8 @@
                                         <th>Producto</th>
                                         <th>Disponibilidad</th>
                                         <th>Vendidos</th>
-                                        <th>Estado</th>
+                                        
+                                        <th>fecha de vencimiento</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -102,8 +103,8 @@
                                         <tr>
                                             <td>${prod.getProNombre()}</td>
                                             <td>${prod.getProStok()}</td>
-                                            <td>12</td>
-                                            <td>En stock</td>
+                                            <td>${prod.getProVendido()}</td>
+                                            <td>${prod.getProFechaVencimiento()}</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

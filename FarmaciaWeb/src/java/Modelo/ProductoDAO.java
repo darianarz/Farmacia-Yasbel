@@ -47,7 +47,8 @@ public class ProductoDAO {
                 prod.setProDescripcion(resul.getString(8));
                 prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
-                prod.setTblCategoria(resul.getInt(11));
+                prod.setProVendido(resul.getInt(11));
+                prod.setTblCategoria(resul.getInt(12));
                 producto.add(prod);
             }
 
@@ -80,7 +81,8 @@ public class ProductoDAO {
                 prod.setProDescripcion(resul.getString(8));
                 prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
-                prod.setTblCategoria(resul.getInt(11));
+                prod.setProVendido(resul.getInt(11));
+                prod.setTblCategoria(resul.getInt(12));
                 producto.add(prod);
             }
 
@@ -115,7 +117,8 @@ public class ProductoDAO {
                 prod.setProDescripcion(resul.getString(8));
                 prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
-                prod.setTblCategoria(resul.getInt(11));
+                prod.setProVendido(resul.getInt(11));
+                prod.setTblCategoria(resul.getInt(12));
                 producto.add(prod);
             }
 
@@ -149,7 +152,8 @@ public class ProductoDAO {
                 prod.setProDescripcion(resul.getString(8));
                 prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
-                prod.setTblCategoria(resul.getInt(11));
+                prod.setProVendido(resul.getInt(11));
+                prod.setTblCategoria(resul.getInt(12));
             }
 
         } catch (Exception e) {
@@ -182,7 +186,8 @@ public class ProductoDAO {
                 prod.setProDescripcion(resul.getString(8));
                 prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
-                prod.setTblCategoria(resul.getInt(11));
+                prod.setProVendido(resul.getInt(11));
+                prod.setTblCategoria(resul.getInt(12));
 
             }
 
@@ -216,7 +221,8 @@ public class ProductoDAO {
                 prod.setProDescripcion(resul.getString(8));
                 prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
-                prod.setTblCategoria(resul.getInt(11));
+                prod.setProVendido(resul.getInt(11));
+                prod.setTblCategoria(resul.getInt(12));
                 producto.add(prod);
             }
 
@@ -253,7 +259,9 @@ public class ProductoDAO {
                 prod.setProDescripcion(resul.getString(8));
                 prod.setProFechaVencimiento(resul.getDate(9));
                 prod.setProStok(resul.getInt(10));
-                prod.setTblCategoria(resul.getInt(11));
+                prod.setProVendido(resul.getInt(11));
+                prod.setTblCategoria(resul.getInt(12));
+                
                 productos.add(prod);
             }
 

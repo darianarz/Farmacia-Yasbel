@@ -25,7 +25,7 @@
             <button type="submit">ENVIAR</button>
         </div>
         <button class="barra-button">
-            <span class="barra-text">Volver al login</span>
+            <a class="barra-text" href="/FarmaciaWeb/CtrProductoLi?accion=login">Volver al login</a>
             <span class="barra-icon">&#9664;</span>
         </button>
     </body>
