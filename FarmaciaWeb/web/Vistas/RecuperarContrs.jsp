@@ -19,10 +19,12 @@
             </div>
         </div>
         <div class="container">
+            <form action="/FarmaciaWeb/CtrProductoLi?accion=RecuperarCont" method="post">
             <h1>¿Olvidó su contraseña?</h1>
             <p>Por favor, escribe tu usuario</p>
-            <input type="text" placeholder="Usuario" class="input-usuario" />
-            <a href="/FarmaciaWeb/CtrProductoLi?accion=RecuperarCont" type="submit">ENVIAR</a>
+            <input type="text" placeholder="identificacion"  id="id" name="id" class="input-usuario" />
+            <button  type="submit">ENVIAR</button>
+            </form>
         </div>
         <button class="barra-button">
             <a class="barra-text" href="/FarmaciaWeb/CtrProductoLi?accion=login">Volver al login</a>
