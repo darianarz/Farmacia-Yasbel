@@ -66,5 +66,21 @@ $(document).ready(function () {
             }
         });
     }
+    
+    $("tr #cantidad").click(function (){
+        //alert ("Entro en Cantidad!");
+        var idp = $(this).parent().find("#idpro").val();
+        var Cantidad = $(this).parent().find("#cantidad").val();
+        var url = "CtrProductoLi?accion=ActualizarCantidad";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: "idp=" + idp +"&Cantidad=" + Cantidad,
+            success: function (data, textStatus, jqXHR){
+                //alert ("Entro en Cantidad!");
+                location.href="CtrProductoLi?accion=Carrito";
+            }
+        });
+    });
 });
 
