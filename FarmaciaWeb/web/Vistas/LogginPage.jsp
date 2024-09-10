@@ -41,7 +41,7 @@ if (request.getParameter("mensaje") != null) {
                         <input type="password" placeholder="Contraseña" id="password" name="txtpass" required>
                     </div>
                     <div class="forgot">
-                        <span>¿Olvidó su contraseña?</span>
+                        <a href="/FarmaciaWeb/CtrProductoLi?accion=olvido">¿Olvidó su contraseña?</a>
                     </div>
                     <input type="submit" name="accion" value="Ingresar" class="btn bkg">
                     <p style="Color: green;"><%=Mensaje%></p>

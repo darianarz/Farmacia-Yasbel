@@ -42,7 +42,7 @@
 
                             </button>
                             <div class="collapsible-content">
-                                
+                                <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                                 <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                                 <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
@@ -113,7 +113,6 @@
                                                 <td>${pqr.getPqrEstado()}</td>
                                                 <td class="text-center border">
                                                     <input type="hidden" class="idpqr" value="${pqr.getPqrCodigo()}">
-                                                    <a class="btn btn-danger btneliminarpqr" href="#"><i class="bi bi-trash-fill"></i></a>
                                                     <a class="btn" style="background-color: #74BD64" href="CtrPQR?accion=Estado&idp=${pqr.pqrCodigo}">
                                                         <i class="bi bi-envelope-check"></i>
                                                     </a>

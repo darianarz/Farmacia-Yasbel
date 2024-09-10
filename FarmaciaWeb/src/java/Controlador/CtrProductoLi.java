@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import static Controlador.CtrUsuarioCre.encriptarcontrasena;
 import Modelo.Carrito;
 import Modelo.Categoria;
 import Modelo.CategoriaDAO;
@@ -31,6 +32,11 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -75,6 +81,7 @@ public class CtrProductoLi extends HttpServlet {
     List<Categoria> listaCategorias = new ArrayList();
     Categoria categ = new Categoria();
     DetallePedido ddd = new DetallePedido();
+    List<Producto> proDescuento = new ArrayList();
 
     int cantidad;
     Date fechavencimiento;
@@ -106,6 +113,8 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("categorias", categoria);
                 System.out.println("categoria " + categoria.size());
                 request.setAttribute("productos", productos);
+                proDescuento = pdao.listarDesc();
+                request.setAttribute("descuento", proDescuento);
                 System.out.println("producto " + productos.size());
                 System.out.println("tipo " + sesion.getAttribute("tipo"));
                 if (sesion.getAttribute("tipo") != null) {
@@ -461,6 +470,37 @@ public class CtrProductoLi extends HttpServlet {
                         dped.setDpdFecha(listacarrito.get(i).getFecha());
                         dpdao.crear(dped);
                     }
+                    Properties propiedad = new Properties();
+                    propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+                    propiedad.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+                    propiedad.setProperty("mail.smtp.starttls.enable", "true");
+                    propiedad.setProperty("mail.smtp.port", "587");
+                    propiedad.setProperty("mail.smtp.auth", "true");
+
+                    Session session1 = Session.getDefaultInstance(propiedad);
+                    String correoenvio = "farmaciayasbel@gmail.com";
+                    String contrasena = "xybdpcjtapwenajq";
+                    String destinatario = sesion.getAttribute("correo").toString();
+                    System.out.println("correo del usuario : " + sesion.getAttribute("correo").toString());
+                    String Asunto = "Pedido Generado";
+                    String Mensaje = "Estimado cliente " + sesion.getAttribute("User").toString() + "\n\n Su pedido ha sido gerenerado satisfactoriamente," + "\n\n detalle de su pedido: " + "\n\nNumero Pedido: " + idpe + "\nFecha: " + fec + "\nValor: " + mon + "\nEstado: " + estado;
+
+                    MimeMessage mail = new MimeMessage(session1);
+
+                    try {
+                        mail.setFrom(new InternetAddress(correoenvio));
+                        mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+                        mail.setSubject(Asunto);
+                        mail.setText(Mensaje);
+                        //mail.setContent(Mensaje, "text/html");
+
+                        Transport transporte = session1.getTransport("smtp");
+                        transporte.connect(correoenvio, contrasena);
+                        transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                        transporte.close();
+                    } catch (Exception e) {
+                        System.out.println("Error al enviar el correo: " + e);
+                    }
 
                     listacarrito.removeAll(listacarrito);
                     pedidos = peddao.listarT();
@@ -493,6 +533,71 @@ public class CtrProductoLi extends HttpServlet {
                     request.setAttribute("pedidos", ped);
                     request.getRequestDispatcher("CtrProductoLi?accion=gestion").forward(request, response);
                 }
+                break;
+            case "olvido":
+
+                request.getRequestDispatcher("Vistas/RecuperarContrs.jsp").forward(request, response);
+                break;
+            case "nuevacont":
+                System.out.println("entro en nuevacont");
+                int idc = Integer.parseInt(request.getParameter("id"));
+                request.setAttribute("id", idc);
+                request.getRequestDispatcher("Vistas/NewContrase.jsp").forward(request, response);
+                break;
+            case "login":
+                request.getRequestDispatcher("Vistas/LogginPage.jsp").forward(request, response);
+                break;
+            case "RecuperarCont":
+                System.out.println("identificacion: " + request.getParameter("id"));
+                int idus = Integer.parseInt(request.getParameter("id"));
+                us = usudao.listarU(idus);
+                System.out.println(" usuario :" + us.getUsuid());
+                if (us.getUsuid() != null) {
+                    Properties propiedad = new Properties();
+                    propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+                    propiedad.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+                    propiedad.setProperty("mail.smtp.starttls.enable", "true");
+                    propiedad.setProperty("mail.smtp.port", "587");
+                    propiedad.setProperty("mail.smtp.auth", "true");
+
+                    Session session1 = Session.getDefaultInstance(propiedad);
+                    String correoenvio = "farmaciayasbel@gmail.com";
+                    String contrasena = "xybdpcjtapwenajq";
+                    String destinatario = us.getUsucorreo();
+
+                    String Asunto = "Pedido Generado";
+                    String Mensaje = "Estimado cliente " + us.getUsunombre() + " por favor si quiere cambiar la contraseña ingrese al siguiente link \n" + "http://localhost:8080/FarmaciaWeb/CtrProductoLi?accion=nuevacont&id=" + us.getUsuid();
+
+                    MimeMessage mail = new MimeMessage(session1);
+
+                    try {
+                        mail.setFrom(new InternetAddress(correoenvio));
+                        mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+                        mail.setSubject(Asunto);
+                        mail.setText(Mensaje);
+                        //mail.setContent(Mensaje, "text/html");
+
+                        Transport transporte = session1.getTransport("smtp");
+                        transporte.connect(correoenvio, contrasena);
+                        transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                        transporte.close();
+                    } catch (Exception e) {
+                        System.out.println("Error al enviar el correo: " + e);
+                    }
+                    request.getRequestDispatcher("Vistas/LogginPage.jsp").forward(request, response);
+                } else {
+
+                }
+
+                break;
+            case "ActualizarCont":
+                String contrase = request.getParameter("contra");
+                System.out.println("id  del uauario : " + request.getParameter("id"));
+                int idcu = Integer.parseInt(request.getParameter("id"));
+
+                String contrasenaencriptada = encriptarcontrasena(contrase);
+                boolean cont = usudao.ActualizarCon(idcu, contrasenaencriptada);
+                request.getRequestDispatcher("Vistas/LogginPage.jsp").forward(request, response);
                 break;
         }
     }

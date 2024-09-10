@@ -85,7 +85,7 @@ if (request.getParameter("mensaje") != null) {
       out.write("                        <input type=\"password\" placeholder=\"Contraseña\" id=\"password\" name=\"txtpass\" required>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"forgot\">\r\n");
-      out.write("                        <span>¿Olvidó su contraseña?</span>\r\n");
+      out.write("                        <a href=\"/FarmaciaWeb/CtrProductoLi?accion=olvido\">¿Olvidó su contraseña?</a>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <input type=\"submit\" name=\"accion\" value=\"Ingresar\" class=\"btn bkg\">\r\n");
       out.write("                    <p style=\"Color: green;\">");

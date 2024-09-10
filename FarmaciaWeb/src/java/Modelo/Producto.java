@@ -24,11 +24,12 @@ public class Producto {
     private Date proFechaVencimiento;
     private int proStok;
     private int tblCategoria;
+    private int proVendido;
 
     public Producto() {
     }
 
-    public Producto(int proCodigo, int tblProverdores, int proPrecio, String proDescuento, String proMarca, String proNombre, String proFoto, String proDescripcion, Date proFechaVencimiento, int proStok, int tblCategoria) {
+    public Producto(int proCodigo, int tblProverdores, int proPrecio, String proDescuento, String proMarca, String proNombre, String proFoto, String proDescripcion, Date proFechaVencimiento, int proStok, int tblCategoria, int proVendido) {
         this.proCodigo = proCodigo;
         this.tblProverdores = tblProverdores;
         this.proPrecio = proPrecio;
@@ -40,6 +41,7 @@ public class Producto {
         this.proFechaVencimiento = proFechaVencimiento;
         this.proStok = proStok;
         this.tblCategoria = tblCategoria;
+        this.proVendido = proVendido;
     }
 
     public int getProCodigo() {
@@ -130,4 +132,13 @@ public class Producto {
         this.tblCategoria = tblCategoria;
     }
 
+    public int getProVendido() {
+        return proVendido;
+    }
+
+    public void setProVendido(int proVendido) {
+        this.proVendido = proVendido;
+    }
+    
+    
 }
