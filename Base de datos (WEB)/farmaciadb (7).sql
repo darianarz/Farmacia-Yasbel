@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2024 a las 16:01:40
+-- Tiempo de generación: 10-09-2024 a las 16:59:09
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -189,55 +189,56 @@ CREATE TABLE `tblproductos` (
 --
 
 INSERT INTO `tblproductos` (`ProCodigo`, `tblProveedores`, `ProPrecio`, `ProDescuento`, `ProMarca`, `ProNombre`, `ProFoto`, `ProDescripcion`, `ProFechaVencimiento`, `ProStock`, `ProVendido`, `tblcategorias`) VALUES
-(1, 1, 6500, '15%', 'AxonPharma', 'Floratil', 'Imagenes/antidiarreica/floratil.png', 'Floratil es un medicamento antidiarreico natural recomendado para el tratamiento de diarreas agudas y cronicas, restaurando la flora intestinal.', '2030-12-31', 6, 2, 6),
-(2, 1, 2500, '15%', 'MedicBrand', 'Krodex F Compuesto', 'Imagenes/antidiarreica/krodexfcompuesto.png', 'Krodex F Compuesto es una formula de comprimidos utilizada para tratar trastornos digestivos y restaurar el equilibrio de la flora intestinal.', '2030-12-31', 12, 3, 6),
-(3, 1, 6500, '15%', 'IPSEN', 'Smecta', 'Imagenes/antidiarreica/smecta.png', 'Smecta es un tratamiento eficaz para la diarrea aguda y cronica, aliviando sintomas como dolor y malestar estomacal.', '2030-12-31', 20, 0, 6),
-(4, 2, 8000, '15%', 'Ecar', 'Metronidazol', 'Imagenes/antidiarreica/metronidazol.png', 'Metronidazol es un antibiotico utilizado para tratar infecciones bacterianas y parasitarias, especialmente en el tracto gastrointestinal.', '2030-12-31', 30, 0, 6),
-(5, 2, 600, '15%', 'Laproff', 'Loperamida', 'Imagenes/antidiarreica/loperamida.png', 'Loperamida es un medicamento proyectado para la reduccion de la diarrea y el malestar estomacal asociado, regulando el transito intestinal.', '2030-12-31', 50, 0, 6),
-(6, 2, 4500, '15%', 'Laproff', 'Acetaminofen Jarabe', 'Imagenes/antipirectico/acetaminofen.png', 'Acetaminofen en jarabe es un medicamento utilizado para aliviar fiebre y dolor en infantes, proporcionando un alivio rapido y seguro.', '2030-12-31', 40, 0, 7),
-(7, 3, 18000, '15%', 'NovaMed', 'Chiquident', 'Imagenes/antipirectico/Chiquident1.png', 'Chiquident es un gel dental especialmente formulado para el cuidado oral de los infantes, protegiendo contra caries y promoviendo una buena higiene bucal.', '2030-12-31', 25, 0, 7),
-(8, 3, 18000, '15%', 'Dolex', 'Dolex kids', 'Imagenes/antipirectico/dolexkid.png', 'Dolex kids es un medicamento infantil para el alivio de fiebre y dolor, ofreciendo un tratamiento efectivo y seguro para nuestros hijos.', '2030-12-31', 15, 0, 7),
-(9, 2, 8000, '15%', 'SiegFried', 'Noxpirin', 'Imagenes/antipirectico/noxpirin.png', 'Noxpirin es un antigripal utilizado para aliviar sintomas de resfriado y gripe, incluyendo fiebre, dolor y congestion.', '2030-12-31', 30, 0, 7),
-(10, 2, 5000, '15%', 'Procaps S.A.', 'Dolofen', 'Imagenes/antipirectico/dolofenkid.png', 'Dolofen es un medicamento antipiretico y analgesico utilizado para el tratamiento de fiebre y dolor en infantes.', '2030-12-31', 50, 0, 7),
-(11, 1, 3000, '15%', 'Genfar', 'Naproxeno', 'Imagenes/desinflamatorio/naproxeno1.png', 'Naproxeno es un antiinflamatorio utilizado para aliviar dolor y reducir inflamacion en una variedad de condiciones, incluyendo dolores articulares y musculares.', '2030-12-31', 100, 0, 8),
-(12, 2, 2000, '15%', 'Bayer', 'Apronax', 'Imagenes/desinflamatorio/apronaxgel1.png', 'Apronax es un medicamento que contiene naproxeno, usado para el alivio de dolor y la reduccion de inflamacion en condiciones musculoesqueleticas.', '2030-12-31', 75, 0, 8),
-(13, 1, 2000, '15%', 'Abbott', 'Lumbal', 'Imagenes/desinflamatorio/lumbalforte1.png', 'Lumbal es un antiinflamatorio utilizado para tratar el dolor lumbar y otros problemas musculoesqueleticos.', '2030-12-31', 60, 0, 8),
-(14, 1, 1500, '15%', 'Laproff', 'Dicoflenaco', 'Imagenes/desinflamatorio/diclofenaco1.png', 'Diclofenaco es un antiinflamatorio utilizado para aliviar el dolor y reducir la inflamacion en una variedad de trastornos musculoesqueleticos.', '2030-12-31', 85, 0, 8),
-(15, 2, 1500, '15%', 'Genfar', 'Ibuprofeno', 'Imagenes/desinflamatorio/ibuprofenogenfar1.png', 'Ibuprofeno es un medicamento antiinflamatorio y analgesico utilizado para aliviar dolor y fiebre, eficaz en una amplia gama de condiciones.', '2030-12-31', 100, 0, 8),
-(16, 2, 8000, '15%', 'Electrolit', 'Electrolit', 'Imagenes/salesderehidratacion/electrolit.png', 'Electrolit es una solucion de rehidratacion oral que ayuda a reponer liquidos y electrolitos perdidos durante la deshidratacion.', '2030-12-31', 200, 0, 9),
-(17, 2, 10000, '15%', 'Tecnofar', 'Hidraplus', 'Imagenes/salesderehidratacion/hidraplus.png', 'Hidraplus es una bebida para rehidratacion oral que ayuda a recuperar liquidos y sales perdidos en casos de deshidratacion.', '2030-12-31', 150, 0, 9),
-(18, 3, 20000, '15%', 'Quibi', 'Venovit', 'Imagenes/salesderehidratacion/venovit.png', 'Venovit es una solucion de rehidratacion oral creada para restaurar liquidos y electrolitos en el cuerpo.', '2030-12-31', 75, 0, 9),
-(19, 3, 1500, '15%', 'Quibi', 'PediaSol', 'Imagenes/salesderehidratacion/pediasol.png', 'PediaSol es una solucion de rehidratacion oral para infantes que ayuda a recuperar liquidos y electrolitos perdidos debido a diarrea o vomitos.', '2030-12-31', 100, 0, 9),
-(20, 1, 1700, '15%', 'Sanfer', 'SolHidrex', 'Imagenes/salesderehidratacion/solhidrex.png', 'SolHidrex es una bebida de rehidratacion oral que ayuda a recuperar liquidos y electrolitos perdidos en situaciones de deshidratacion.', '2030-12-31', 120, 0, 9),
-(21, 3, 2000, '15%', 'EuroFarma', 'Ditopax', 'Imagenes/sistemadigestivoymetabolico/ditopax.png', 'Ditopax es un suplemento utilizado para apoyar la salud del sistema digestivo y metabolico, aliviando diversos trastornos digestivos.', '2030-12-31', 80, 0, 10),
-(22, 2, 1500, '15%', 'Abbott', 'Finigax', 'Imagenes/sistemadigestivoymetabolico/finigax.png', 'Finigax es un suplemento para el sistema digestivo que ayuda a aliviar malestares y mejorar la funcion digestiva.', '2030-12-31', 70, 0, 10),
-(23, 1, 1500, '15%', 'Grunenthal', 'Zaldiar', 'Imagenes/sistemadigestivoymetabolico/zaldiar.png', 'Zaldiar es un medicamento que combina un analgesico con un opioide para el tratamiento de dolor moderado a severo.', '2030-12-31', 90, 0, 10),
-(24, 1, 1500, '15%', 'Sanofi', 'Pepsamar', 'Imagenes/sistemadigestivoymetabolico/pepsamar.png', 'Pepsamar es un medicamento utilizado para tratar la acidez estomacal y la indigestion, aliviando sintomas de malestar gastrico.', '2030-12-31', 60, 0, 10),
-(25, 3, 2000, '15%', 'NovaMed', 'Dimoflax', 'Imagenes/sistemadigestivoymetabolico/dimoflax.png', 'Dimoflax es un suplemento para la salud digestiva y metabolica, diseñado para promover el bienestar digestivo y mejorar la funcion intestinal.', '2030-12-31', 100, 0, 10),
-(26, 1, 1500, '15%', 'MK', 'Alcohol', 'Imagenes/antiaseptico/alcohol.png', 'Alcohol es un antiseptico utilizado para desinfectar heridas y limpiar la piel antes de procedimientos medicos, ayudando a prevenir infecciones.', '2030-12-31', 150, 0, 1),
-(27, 1, 3000, '15%', 'MK', 'Vita_C', 'Imagenes/vitaminas/vitac.png', 'Vita_C es un suplemento de vitamina C que fortalece el sistema inmunologico y mejora la salud general, promoviendo una piel sana y energia.', '2030-12-31', 120, 0, 5),
-(28, 2, 1500, '15%', 'JGB', 'Dioxogen', 'Imagenes/antiaseptico/dioxogen.png', 'Dioxogen es un antiseptico utilizado para desinfectar heridas y prevenir infecciones, adecuado para el uso en la piel y pequeñas lesiones.', '2030-12-31', 200, 0, 1),
-(29, 2, 1500, '15%', 'Laproff', 'Acido_Fusidico', 'Imagenes/antibioticoscutaneos/acidofusidico.png', 'Acido Fusidico es un antibiotico topico utilizado para tratar infecciones bacterianas de la piel, como impetigo y eccema.', '2030-12-31', 130, 0, 2),
-(30, 2, 1500, '15%', 'Sanfer', 'Isodine', 'Imagenes/antiaseptico/isodine.png', 'Isodine es un antiseptico que se utiliza para desinfectar heridas y prevenir infecciones en la piel.', '2030-12-31', 170, 0, 1),
-(31, 3, 1000, '15%', 'Biupen', 'Menticol', 'Imagenes/antiaseptico/menticol.png', 'Menticol es un antiseptico utilizado para tratar infecciones menores y desinfectar la piel.', '2030-12-31', 100, 0, 1),
-(32, 1, 1000, '15%', 'FuesFarma', 'Activa_21', 'Imagenes/anticonceptivos/activa21.png', 'Activa_21 es un anticonceptivo oral utilizado para prevenir el embarazo, regulando el ciclo menstrual.', '2030-12-31', 50, 0, 3),
-(33, 1, 1500, '15%', 'Abbott', 'Bellaface', 'Imagenes/anticonceptivos/bellaface.png', 'Bellace es un anticonceptivo oral creado para prevenir el embarazo y regular el ciclo menstrual femenino.', '2030-12-31', 75, 0, 3),
-(34, 2, 1500, '15%', 'TecnoFarma', 'Microgynon', 'Imagenes/anticonceptivos/microgynon.png', 'Microgynon es un anticonceptivo oral utilizado para la prevencion del embarazo y la regulacion del ciclo menstrual.', '2030-12-31', 50, 0, 3),
-(35, 2, 1500, '15%', 'La Franco SAS', 'Nofertyl', 'Imagenes/anticonceptivos/nofertyl.png', 'Anticonceptivo oral para el control de la natalidad, eficaz en la prevencion de embarazo. Ideal para el uso diario segun indicaciones medicas.', '2030-12-31', 40, 0, 3),
-(36, 1, 1500, '15%', 'Abbott', 'Sinovul', 'Imagenes/anticonceptivos/sinovul.png', 'Sinovul es un anticonceptivo oral que previene el embarazo y ayuda a regular el ciclo menstrual.', '2030-12-31', 60, 0, 3),
-(37, 1, 1000, '15%', 'MedicBrand', 'Dermaskin', 'Imagenes/antibioticoscutaneos/dermaskin.png', 'Dermaskin es un antibiotico topico utilizado para tratar infecciones bacterianas en la piel.', '2030-12-31', 120, 0, 2),
-(38, 2, 1500, '15%', 'Freshly', 'Mieltertos', 'Imagenes/antigripales/mieltertos.png', 'Mieltertos es un medicamento utilizado para aliviar sintomas de resfriados y gripes, como tos y congestion nasal.', '2030-12-31', 80, 0, 4),
-(39, 1, 1500, '15%', 'AngloPharma', 'MucoTrop', 'Imagenes/antigripales/mucotrop.png', 'MucoTrop es un medicamento antigripal que ayuda a aliviar sintomas como tos, congestion y malestar general.', '2030-12-31', 50, 0, 4),
-(40, 2, 1500, '15%', 'Freshly', 'Paratos', 'Imagenes/antigripales/paratos.png', 'Paratos es un medicamento utilizado para tratar sintomas de resfriados y gripe, incluyendo tos y congestion.', '2030-12-31', 90, 0, 4),
-(41, 3, 1500, '15%', 'PF Consumer HealthCuere', 'Robitussin', 'Imagenes/antigripales/robitussin.png', 'Robitussin es un medicamento utilizado para aliviar tos y otros sintomas asociados con resfriados y gripes.', '2030-12-31', 40, 0, 4),
-(42, 3, 1500, '15%', 'CoasPharma', 'Tukol-D', 'Imagenes/antigripales/tukold.png', 'Tukol-D es un medicamento utilizado para el alivio de tos y sintomas asociados con resfriados y gripes.', '2030-12-31', 120, 0, 4),
-(43, 1, 1500, '15%', 'Memphis', 'Idrocortisona', 'Imagenes/antibioticoscutaneos/idrocortisona.png', 'Idrocortisona es un medicamento topico utilizado para tratar inflamaciones y reacciones alergicas en la piel.', '2030-12-31', 70, 0, 2),
-(44, 1, 1500, '15%', 'Genfar', 'Sulfadiazina de plata', 'Imagenes/antibioticoscutaneos/sulfatodeplata.png', 'Sulfadiazina de plata es un antibiotico topico utilizado para el tratamiento de infecciones en quemaduras y heridas.', '2030-12-31', 50, 0, 2),
-(45, 2, 1500, '15%', 'Profma', 'Timicort', 'Imagenes/antibioticoscutaneos/timicort.png', 'Timicort es un antibiotico topico utilizado para el tratamiento de infecciones cutaneas y heridas.', '2030-12-31', 60, 0, 2),
-(46, 1, 1500, '15%', 'HumaPharmaseutica', 'Bedoyecta', 'Imagenes/vitaminas/bedoyecta.png', 'Bedoyecta es un complejo vitaminico que incluye vitaminas B1, B6 y B12, utilizado para mejorar la salud general y apoyar el sistema nervioso.', '2030-12-31', 30, 0, 5),
-(47, 2, 1500, '15%', 'Incobra', 'Fosforovitam', 'Imagenes/vitaminas/fosforovitam.png', 'Fosforovitam es un suplemento vitaminico que ayuda a mantener la salud general y aporta nutrientes esenciales.', '2030-12-31', 100, 0, 5),
-(48, 2, 1500, '15%', 'Laboratorios Lebrios SAS', 'Orocal', 'Imagenes/vitaminas/orocal.png', 'Orocal es un suplemento de calcio utilizado para fortalecer los huesos y mantener la salud osea.', '2030-12-31', 80, 0, 5),
-(49, 3, 1500, '15%', 'Laproff', 'Sulfato Ferroso', 'Imagenes/vitaminas/sulfatoferroso.png', 'Sulfato Ferroso es un suplemento de hierro utilizado para tratar y prevenir la anemia por deficiencia de hierro.', '2030-12-31', 90, 0, 5);
+(1, 1, 6500, '15%', 'AxonPharma', 'Floratil', 'Imagenes/antidiarreica/floratil.png', 'Tratamiento antidiarreico natural.', '2030-12-31', 6, 2, 6),
+(2, 1, 2500, '15%', 'MedicBrand', 'Krodex F Compuesto', 'Imagenes/antidiarreica/krodexfcompuesto.png', 'Comprimidos para digestion.', '2030-12-31', 12, 3, 6),
+(3, 1, 6500, '15%', 'IPSEN', 'Smecta', 'Imagenes/antidiarreica/smecta.png', 'Alivio de diarrea y malestar.', '2030-12-31', 20, 0, 6),
+(4, 2, 8000, '15%', 'Ecar', 'Metronidazol', 'Imagenes/antidiarreica/metronidazol.png', 'Antibiotico para infecciones digestivas.', '2030-12-31', 30, 0, 6),
+(5, 2, 600, '15%', 'Laproff', 'Loperamida', 'Imagenes/antidiarreica/loperamida.png', 'Regula transito intestinal.', '2030-12-31', 50, 0, 6),
+(6, 2, 4500, '', 'Laproff', 'Acetaminofen Jarabe', 'Imagenes/antipirectico/acetaminofen.png', 'Jarabe para fiebre infantil.', '2030-12-31', 40, 0, 7),
+(7, 3, 18000, '', 'NovaMed', 'Chiquident', 'Imagenes/antipirectico/Chiquident1.png', 'Gel dental para niños.', '2030-12-31', 25, 0, 7),
+(8, 3, 18000, '', 'Dolex', 'Dolex kids', 'Imagenes/antipirectico/dolexkid.png', 'Alivio de fiebre y dolor infantil.', '2030-12-31', 15, 0, 7),
+(9, 2, 8000, '', 'SiegFried', 'Noxpirin', 'Imagenes/antipirectico/noxpirin.png', 'Alivia sintomas de gripe.', '2030-12-31', 30, 0, 7),
+(10, 2, 5000, '', 'Procaps S.A.', 'Dolofen', 'Imagenes/antipirectico/dolofenkid.png', 'Alivio de fiebre y dolor.', '2030-12-31', 50, 0, 7),
+(11, 1, 3000, '', 'Genfar', 'Naproxeno', 'Imagenes/desinflamatorio/naproxeno1.png', 'Anti-inflamatorio para dolor articular.', '2030-12-31', 100, 0, 8),
+(12, 2, 2000, '', 'Bayer', 'Apronax', 'Imagenes/desinflamatorio/apronaxgel1.png', 'Naproxeno para dolor e inflamacion.', '2030-12-31', 75, 0, 8),
+(13, 1, 2000, '', 'Abbott', 'Lumbal', 'Imagenes/desinflamatorio/lumbalforte1.png', 'Anti-inflamatorio para dolor lumbar.', '2030-12-31', 60, 0, 8),
+(14, 1, 1500, '', 'Laproff', 'Dicoflenaco', 'Imagenes/desinflamatorio/diclofenaco1.png', 'Anti-inflamatorio para inflamacion.', '2030-12-31', 85, 0, 8),
+(15, 2, 1500, '', 'Genfar', 'Ibuprofeno', 'Imagenes/desinflamatorio/ibuprofenogenfar1.png', 'Analgesico y anti-inflamatorio general.', '2030-12-31', 100, 0, 8),
+(16, 2, 8000, '', 'Electrolit', 'Electrolit', 'Imagenes/salesderehidratacion/electrolit.png', 'Solucion para rehidratacion oral.', '2030-12-31', 200, 0, 9),
+(17, 2, 10000, '', 'Tecnofar', 'Hidraplus', 'Imagenes/salesderehidratacion/hidraplus.png', 'Bebida rehidratante.', '2030-12-31', 150, 0, 9),
+(18, 3, 20000, '', 'Quibi', 'Venovit', 'Imagenes/salesderehidratacion/venovit.png', 'Rehidratacion oral de electrolitos.', '2030-12-31', 75, 0, 9),
+(19, 3, 1500, '', 'Quibi', 'PediaSol', 'Imagenes/salesderehidratacion/pediasol.png', 'Rehidratante para infantes.', '2030-12-31', 100, 0, 9),
+(20, 1, 1700, '', 'Sanfer', 'SolHidrex', 'Imagenes/salesderehidratacion/solhidrex.png', 'Solucion para rehidratar.', '2030-12-31', 120, 0, 9),
+(21, 3, 2000, '', 'EuroFarma', 'Ditopax', 'Imagenes/sistemadigestivoymetabolico/ditopax.png', 'Suplemento digestivo y metabolico.', '2030-12-31', 80, 0, 10),
+(22, 2, 1500, '', 'Abbott', 'Finigax', 'Imagenes/sistemadigestivoymetabolico/finigax.png', 'Suplemento para digestion.', '2030-12-31', 70, 0, 10),
+(23, 1, 1500, '', 'Grunenthal', 'Zaldiar', 'Imagenes/sistemadigestivoymetabolico/zaldiar.png', 'Analgesico combinado para dolor.', '2030-12-31', 90, 0, 10),
+(24, 1, 1500, '', 'Sanofi', 'Pepsamar', 'Imagenes/sistemadigestivoymetabolico/pepsamar.png', 'Alivia acidez estomacal.', '2030-12-31', 60, 0, 10),
+(25, 3, 2000, '', 'NovaMed', 'Dimoflax', 'Imagenes/sistemadigestivoymetabolico/dimoflax.png', 'Suplemento digestivo y metabolico.', '2030-12-31', 100, 0, 10),
+(26, 1, 1500, '', 'MK', 'Alcohol', 'Imagenes/antiaseptico/alcohol.png', 'Antiseptico para heridas.', '2030-12-31', 150, 0, 1),
+(27, 1, 3000, '', 'MK', 'Vita_C', 'Imagenes/vitaminas/vitac.png', 'Vitamina C para salud general.', '2030-12-31', 120, 0, 5),
+(28, 2, 1500, '', 'JGB', 'Dioxogen', 'Imagenes/antiaseptico/dioxogen.png', 'Desinfecta heridas y piel.', '2030-12-31', 200, 0, 1),
+(29, 2, 1500, '', 'Laproff', 'Acido_Fusidico', 'Imagenes/antibioticoscutaneos/acidofusidico.png', 'Antibotico topico para piel.', '2030-12-31', 130, 0, 2),
+(30, 2, 1500, '', 'Sanfer', 'Isodine', 'Imagenes/antiaseptico/isodine.png', 'Antiseptico para heridas.', '2030-12-31', 170, 0, 1),
+(31, 3, 1000, '', 'Biupen', 'Menticol', 'Imagenes/antiaseptico/menticol.png', 'Desinfecta piel y heridas.', '2030-12-31', 100, 0, 1),
+(32, 1, 1000, '', 'FuesFarma', 'Activa_21', 'Imagenes/anticonceptivos/activa21.png', 'Anticonceptivo oral.', '2030-12-31', 50, 0, 3),
+(33, 1, 1500, '', 'Abbott', 'Bellaface', 'Imagenes/anticonceptivos/bellaface.png', 'Anticonceptivo para regular ciclo.', '2030-12-31', 75, 0, 3),
+(34, 2, 1500, '', 'TecnoFarma', 'Microgynon', 'Imagenes/anticonceptivos/microgynon.png', 'Prevencion de embarazo.', '2030-12-31', 50, 0, 3),
+(35, 2, 1500, '', 'La Franco SAS', 'Nofertyl', 'Imagenes/anticonceptivos/nofertyl.png', 'Anticonceptivo oral diario.', '2030-12-31', 40, 0, 3),
+(36, 1, 1500, '', 'Abbott', 'Sinovul', 'Imagenes/anticonceptivos/sinovul.png', 'Anticonceptivo para ciclo menstrual.', '2030-12-31', 60, 0, 3),
+(37, 1, 1000, '', 'MedicBrand', 'Dermaskin', 'Imagenes/antibioticoscutaneos/dermaskin.png', 'Antibiotico para infecciones cutaneas.', '2030-12-31', 120, 0, 2),
+(38, 2, 1500, '', 'Freshly', 'Mieltertos', 'Imagenes/antigripales/mieltertos.png', 'Antibiotico topico para piel.', '2030-12-31', 80, 0, 4),
+(39, 1, 1500, '', 'AngloPharma', 'MucoTrop', 'Imagenes/antigripales/mucotrop.png', 'Alivia tos y sintomas gripales.', '2030-12-31', 50, 0, 4),
+(40, 2, 1500, '', 'Freshly', 'Paratos', 'Imagenes/antigripales/paratos.png', 'Alivia resfriado y gripe.', '2030-12-31', 90, 0, 4),
+(41, 3, 1500, '', 'PF Consumer HealthCuere', 'Robitussin', 'Imagenes/antigripales/robitussin.png', 'Medicamento para tos.', '2030-12-31', 40, 0, 4),
+(42, 3, 1500, '', 'CoasPharma', 'Tukol-D', 'Imagenes/antigripales/tukold.png', 'Alivio de tos y resfriado.', '2030-12-31', 120, 0, 4),
+(43, 1, 1500, '', 'Memphis', 'Idrocortisona', 'Imagenes/antibioticoscutaneos/idrocortisona.png', 'Anti-inflamatorio para piel.', '2030-12-31', 70, 0, 2),
+(44, 1, 1500, '', 'Genfar', 'Sulfadiazina de plata', 'Imagenes/antibioticoscutaneos/sulfatodeplata.png', 'Antibiotico para quemaduras.', '2030-12-31', 50, 0, 2),
+(45, 2, 1500, '', 'Profma', 'Timicort', 'Imagenes/antibioticoscutaneos/timicort.png', 'Antibiotico para piel.', '2030-12-31', 60, 0, 2),
+(46, 1, 1500, '', 'HumaPharmaseutica', 'Bedoyecta', 'Imagenes/vitaminas/bedoyecta.png', 'Vitamina B para salud nerviosa.', '2030-12-31', 30, 0, 5),
+(47, 2, 1500, '', 'Incobra', 'Fosforovitam', 'Imagenes/vitaminas/fosforovitam.png', 'Suplemento vitaminico general.', '2030-12-31', 100, 0, 5),
+(48, 2, 1500, '', 'Laboratorios Lebrios SAS', 'Orocal', 'Imagenes/vitaminas/orocal.png', 'Suplemento de calcio.', '2030-12-31', 80, 0, 5),
+(49, 3, 1500, '', 'Laproff', 'Sulfato Ferroso', 'Imagenes/vitaminas/sulfatoferroso.png', 'Suplemento de hierro.', '2030-12-31', 90, 0, 5),
+(50, 1, 1700, '', 'Sanfer', 'SolHidrex', 'Imagenes/salesderehidratacion/solhidrex.png', 'Solucion para rehidratar.', '2030-12-31', 120, 0, 9);
 
 -- --------------------------------------------------------
 
@@ -379,7 +380,7 @@ ALTER TABLE `tblpqr`
 -- AUTO_INCREMENT de la tabla `tblproductos`
 --
 ALTER TABLE `tblproductos`
-  MODIFY `ProCodigo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ProCodigo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `tblproveedores`
