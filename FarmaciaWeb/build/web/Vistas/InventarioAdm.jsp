@@ -57,7 +57,7 @@
                     </nav>
                 </div>
                 <div class="col-md-9 main-content">
-                    <header class="header d-flex justify-content-between align-items-center mb-3">
+                     <header class="header d-flex justify-content-between align-items-center mb-3">
                         <a href="#" class="menu-toggle btn btn-link">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
@@ -66,16 +66,10 @@
                             </svg>
                             <span class="sr-only">Home</span>
                         </a>
-                        <form class="search-form d-flex">
-                            <input type="search" class="form-control" placeholder="Buscar productos...">
-                            <svg class="icon search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="m21 21-4.3-4.3"/>
-                            </svg>
-                        </form>
-                        <div class="user-menu">
+                       
+                         <div class="user-menu">
                             <button class="user-btn btn btn-link">
-                                <img src="/placeholder.svg" width="32" height="32" alt="Avatar" class="avatar">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">
