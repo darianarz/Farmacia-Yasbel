@@ -86,7 +86,7 @@ public class CtrUsuarioCre extends HttpServlet {
                 cor = request.getParameter("email");
                 usu = request.getParameter("usuario");
                 pas = request.getParameter("contrasena");
-                tip = request.getParameter("tipo");
+                tip = "Usuario";
 
                 us.setUsuid(id);
                 us.setUsutipo(tip);
