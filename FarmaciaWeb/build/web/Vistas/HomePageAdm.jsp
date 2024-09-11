@@ -131,27 +131,29 @@
         </div>
         <br>
         <br>
-        <div class="offer-banner">
-            <p class="offer-text">Explora nuestras <span class="discount">categorías</span> en la Farmacia Yasbel</p>
+        <div class="offer-banner"> 
+            <p class="offer-text">Explora nuestros <span class="discount">15% de Descuento</span> en la Farmacia Yasbel</p>
             <div class="offer-cards">
                 <c:forEach var="prod" items="${descuento}">
-                    <div class="col-md-3 col-sm-6 mb-4"> <!-- Cambiado col-md-4 a col-md-3 para 4 por fila -->
-                        <div class="card h-100">
-                            <img src="${prod.getProFoto()}" class="card-img-top" alt="${prod.getProNombre()}">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">${prod.getProNombre()}</h5>
-                                <p class="card-text">${prod.getProDescripcion()}</p>
-                                <p class="card-text">${prod.getProDescuento()}</p>
-
-                                <div class="mt-auto">
-                                    <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="btn btn-secondary ml-2">Editar</a>
-                                </div>
-                            </div>
+                    <div class="offer-card">
+                        <div class="card-header">
+                            <img src="${prod.getProFoto()}" class="card-image" alt="${prod.getProNombre()}">
+                            <div class="discount-badge">${prod.getProDescuento()}%</div>
+                        </div>
+                        <h5 class="card-title">${prod.getProNombre()}</h5>
+                        <p class="card-text">${prod.getProDescripcion()}</p>
+                        <p class="card-price">$${prod.getProPrecio()}</p>
+                        <div class="mt-auto">
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="btn btn-secondary ml-2">Editar</a>
                         </div>
                     </div>
                 </c:forEach>
             </div>
             <div class="rotating-light"></div>
+            <div class="carousel-controls">
+                <button class="carousel-prev">&lt;</button>
+                <button class="carousel-next">&gt;</button>
+            </div>
         </div>
 
         <br>
@@ -262,5 +264,6 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 crossorigin="anonymous"></script>
 <script src="/FarmaciaWeb/JS/carrucel_home.js" type="text/javascript"></script>
+<script src="/FarmaciaWeb/JS/Ofertas_home.js" type="text/javascript"></script>
 </body>
 </html>
