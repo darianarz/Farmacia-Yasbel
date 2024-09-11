@@ -319,51 +319,138 @@ svg {
 
 .offer-cards {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    flex-wrap: wrap; /* Permite el ajuste automático de las tarjetas */
+    overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+    gap: 30px; /* Espacio entre tarjetas */
+    padding-top: 20px;
+    position: relative; /* Para posicionar los botones laterales */
 }
 
 .offer-card {
     background-color: #fff;
     color: #333;
-    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 23%; /* Para mostrar cuatro tarjetas de forma equitativa */
+    width: 350px; /* Aumenta el ancho de la tarjeta */
+    height: 400px; /* Ajusta la altura de la tarjeta */
     text-align: center;
-    transition: transform 0.3s ease;
-    margin: 10px 0; /* Añadido margen para separación vertical */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
 }
 
 .offer-card:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05); /* Zoom cuando la tarjeta es activa */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    position: relative;
 }
 
 .card-image {
     width: 100%;
-    height: 120px;
+    height: 125px; /* Ajusta la altura de la imagen */
     object-fit: cover;
-    border-bottom: 2px solid #2874a6; /* Azul característico de Yasbel */
-    margin-bottom: 10px;
+    border-bottom: 3px solid #2874a6; /* Azul característico de Yasbel */
+    margin-bottom: 15px;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff5733; 
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    z-index: 1;
 }
 
 .card-title {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-.card-items {
-    font-size: 1rem;
-    color: #2874a6; /* Azul característico de Yasbel */
+.card-text {
+    font-size: 1.1rem;
+    color: #2874a6; 
     margin-bottom: 10px;
 }
 
-.offer-card a {
+.card-price {
+    font-size: 1.4rem;
+    color: #2874a6; 
+    margin-bottom: 15px;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 10px;
+}
+
+.card-buttons .btn {
     text-decoration: none;
-    color: #2874a6; /* Azul Yasbel */
+    color: #fff;
     font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 47%; /* Botones más grandes y mejor distribuidos */
+    text-align: center;
+}
+
+.card-buttons .btn-primary {
+    background-color: #2874a6;
+}
+
+.card-buttons .btn-primary:hover {
+    background-color: #1f5a8c;
+    transform: scale(1.05); 
+}
+
+.card-buttons .btn-secondary {
+    background-color: #ff5733;
+}
+
+.card-buttons .btn-secondary:hover {
+    background-color: #d44e2d;
+    transform: scale(1.05); 
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+.carousel-prev, .carousel-next {
+    background-color: #2874a6;
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: #ff5733;
 }
 
 .rotating-light {
@@ -398,11 +485,6 @@ svg {
     0% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
     50% { box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
     100% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
-}
-
-.offer-banner:hover {
-    transform: scale(1.05);
-    transition: transform 0.4s ease;
 }
 
 

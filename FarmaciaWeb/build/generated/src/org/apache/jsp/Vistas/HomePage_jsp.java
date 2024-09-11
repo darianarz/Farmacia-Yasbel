@@ -165,7 +165,7 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"carousel-caption d-none d-md-block\">\r\n");
       out.write("                        <div class=\"promo-banner\">\r\n");
-      out.write("                            \r\n");
+      out.write("\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
@@ -194,39 +194,29 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\r\n");
       out.write("        <br>\r\n");
       out.write("        <br>\r\n");
-      out.write("        <div class=\"offer-banner\">\r\n");
-      out.write("            <p class=\"offer-text\">Explora nuestras <span class=\"discount\">categorías</span> en la Farmacia Yasbel</p>\r\n");
-      out.write("            <div class=\"offer-cards\">\r\n");
-      out.write("                <div class=\"offer-card\">\r\n");
-      out.write("                    <img src=\"/FarmaciaWeb/Imagenes/antibioticoscutaneos/dermaskin.png\" alt=\"Medicamentos\" class=\"card-image\">\r\n");
-      out.write("                    <p class=\"card-title\">antibioticos</p>\r\n");
+      out.write("       <div class=\"offer-banner\"> \r\n");
+      out.write("    <p class=\"offer-text\">Explora nuestros <span class=\"discount\">15% de Descuento</span> en la Farmacia Yasbel</p>\r\n");
+      out.write("    <div class=\"offer-cards\">\r\n");
+      out.write("        ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
       out.write("\r\n");
-      out.write("                </div>\r\n");
-      out.write("                <div class=\"offer-card\">\r\n");
-      out.write("                    <img src=\"/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png\" alt=\"Suplementos\" class=\"card-image\">\r\n");
-      out.write("                    <p class=\"card-title\">Suplementos</p>\r\n");
+      out.write("    </div>\r\n");
+      out.write("    <div class=\"rotating-light\"></div>\r\n");
+      out.write("    <div class=\"carousel-controls\">\r\n");
+      out.write("        <button class=\"carousel-prev\">&lt;</button>\r\n");
+      out.write("        <button class=\"carousel-next\">&gt;</button>\r\n");
+      out.write("    </div>\r\n");
+      out.write("</div>\r\n");
       out.write("\r\n");
-      out.write("                </div>\r\n");
-      out.write("                <div class=\"offer-card\">\r\n");
-      out.write("                    <img src=\"/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png\" alt=\"Cuidado Personal\" class=\"card-image\">\r\n");
-      out.write("                    <p class=\"card-title\">Cuidado Personal</p>\r\n");
       out.write("\r\n");
-      out.write("                </div>\r\n");
-      out.write("                <div class=\"offer-card\">\r\n");
-      out.write("                    <img src=\"/FarmaciaWeb/Imagenes/antiaseptico/dioxogen.png\" alt=\"Productos para Bebés\" class=\"card-image\">\r\n");
-      out.write("                    <p class=\"card-title\">Productos para Bebés</p>\r\n");
-      out.write("\r\n");
-      out.write("                </div>\r\n");
-      out.write("            </div>\r\n");
-      out.write("            <div class=\"rotating-light\"></div>\r\n");
-      out.write("        </div>\r\n");
       out.write("        <br>            \r\n");
       out.write("        <!-- Products Section -->\r\n");
       out.write("        <section id=\"productos\" class=\"product-container\">\r\n");
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row\">\r\n");
       out.write("                    ");
-      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+      if (_jspx_meth_c_forEach_2(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("                </div>\r\n");
@@ -321,6 +311,7 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\"\r\n");
       out.write("                integrity=\"sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz\"\r\n");
       out.write("        crossorigin=\"anonymous\"></script>\r\n");
+      out.write("        <script src=\"/FarmaciaWeb/JS/Ofertas_home.js\" type=\"text/javascript\"></script>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
@@ -388,11 +379,76 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_1.setParent(null);
     _jspx_th_c_forEach_1.setVar("prod");
-    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${descuento}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
       if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("            <div class=\"offer-card\">\r\n");
+          out.write("                <div class=\"card-header\">\r\n");
+          out.write("                    <img src=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProFoto()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" class=\"card-image\" alt=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">\r\n");
+          out.write("                    <div class=\"discount-badge\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProDescuento()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("%</div>\r\n");
+          out.write("                </div>\r\n");
+          out.write("                <h5 class=\"card-title\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</h5>\r\n");
+          out.write("                <p class=\"card-text\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProDescripcion()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p>\r\n");
+          out.write("                <p class=\"card-price\">$");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProPrecio()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p>\r\n");
+          out.write("                <div class=\"card-buttons\">\r\n");
+          out.write("                    <a href=\"/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" class=\"btn btn-primary\">Comprar</a>\r\n");
+          out.write("                    <a href=\"/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" class=\"btn btn-secondary\">Agregar al carrito</a>\r\n");
+          out.write("                </div>\r\n");
+          out.write("            </div>\r\n");
+          out.write("        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_2.setParent(null);
+    _jspx_th_c_forEach_2.setVar("prod");
+    _jspx_th_c_forEach_2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_2 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_2 = _jspx_th_c_forEach_2.doStartTag();
+      if (_jspx_eval_c_forEach_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
           out.write("                        <div class=\"col-md-3 col-sm-6 mb-4\"> \r\n");
@@ -409,6 +465,9 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                                    <p class=\"card-text\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProDescripcion()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</p>\r\n");
+          out.write("                                    <p class=\"card-text\">$");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProPrecio()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p>\r\n");
           out.write("                                    <div class=\"mt-auto\">\r\n");
           out.write("                                        <a href=\"/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -421,21 +480,21 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                            </div>\r\n");
           out.write("                        </div>\r\n");
           out.write("                    ");
-          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          int evalDoAfterBody = _jspx_th_c_forEach_2.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
         } while (true);
       }
-      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      if (_jspx_th_c_forEach_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
         return true;
       }
     } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+      while (_jspx_push_body_count_c_forEach_2[0]-- > 0)
         out = _jspx_page_context.popBody();
-      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+      _jspx_th_c_forEach_2.doCatch(_jspx_exception);
     } finally {
-      _jspx_th_c_forEach_1.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+      _jspx_th_c_forEach_2.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_2);
     }
     return false;
   }
