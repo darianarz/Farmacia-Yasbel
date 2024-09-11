@@ -55,18 +55,14 @@
                 <div class="col-md-9 main-content">
                     <header class="header d-flex justify-content-between align-items-center mb-3">
                         <a href="#" class="menu-toggle btn btn-link">
-                            <!-- Usando el icono de Bootstrap -->
-                            <i class="bi bi-house" style="font-size: 24px; color: white;"></i>
-
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
+                            <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
+                            <path d="M12 3v6"/>
+                            </svg>
                             <span class="sr-only">Home</span>
                         </a>
-                        <form class="search-form d-flex">
-                            <input type="search" class="form-control" placeholder="Buscar productos...">
-                            <svg class="icon search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="m21 21-4.3-4.3"/>
-                            </svg>
-                        </form>
+                      
                         <div class="user-menu">
                             <button class="user-btn btn btn-link">
                                 <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
@@ -80,26 +76,25 @@
                         </div>
                     </header>
                     <main class="main">
-                        <div class="container mt-5">
+                        <div class="container mt-5 border" style="border-radius: 15px">
                             <h1 class="mb-4">PQR Realizadas</h1>
-                            <div class="table-container">
-                                <table class="table table-striped">
+                            <div class="table-responsive"> <!-- Añadido para habilitar el desplazamiento horizontal -->
+                                <table class="table table-striped table-sm"> <!-- Añadida clase table-sm para hacer la tabla más compacta -->
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>ID de Usuario</th>
-                                            <th>Fecha</th>
-                                            <th>Nombre</th>
-                                            <th>Correo</th>
-                                            <th>Teléfono</th>
-                                            <th>Tipo</th>
-                                            <th>Descripción</th>
-                                            <th>Estado</th>
-                                            <th>Acciones</th>
+                                            <th style="width: 10%;">Código</th>
+                                            <th style="width: 10%;">ID de Usuario</th>
+                                            <th style="width: 10%;">Fecha</th>
+                                            <th style="width: 15%;">Nombre</th>
+                                            <th style="width: 15%;">Correo</th>
+                                            <th style="width: 10%;">Teléfono</th>
+                                            <th style="width: 10%;">Tipo</th>
+                                            <th style="width: 20%;">Descripción</th>
+                                            <th style="width: 10%;">Estado</th>
+                                            <th style="width: 10%;">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         <c:forEach var="pqr" items="${pqr}">
                                             <tr>
                                                 <td>${pqr.getPqrCodigo()}</td>
@@ -119,12 +114,12 @@
                                                 </td>
                                             </tr>
                                         </c:forEach>
-
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </main>
+
                 </div>
             </div>
         </div>
