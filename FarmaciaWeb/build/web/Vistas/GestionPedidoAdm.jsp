@@ -41,13 +41,13 @@
                             </svg>
                         </button>
                         <div class="collapsible-content">
-                                <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
-                                <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
-                                <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
-                                <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
-                                <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
-                                <a href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores" class="collapsible-link submenu-btn">Proveedores</a>
-                            </div>
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=inventario" class="collapsible-link submenu-btn">Inventario</a>
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=gestion" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
+                            <a href="/FarmaciaWeb/CtrUsuarioCre?accion=Listar" class="collapsible-link submenu-btn">Gestión de Clientes</a>
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
+                            <a href="/FarmaciaWeb/CtrPQR?accion=listarPQR" class="collapsible-link submenu-btn">PQR</a>
+                            <a href="/FarmaciaWeb/CtrProveedores?accion=listarProveedores" class="collapsible-link submenu-btn">Proveedores</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-9 main-content">
@@ -60,7 +60,7 @@
                             </svg>
                             <span class="sr-only">Home</span>
                         </a>
-                        
+
                         <div class="user-menu">
                             <button class="user-btn btn btn-link">
                                 <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
@@ -82,7 +82,8 @@
                                         <tr>
                                             <th>Estado</th>
                                             <th>Cliente</th>
-                                            <th>Productos</th>
+                                            <th>Forma de pago</th>
+                                            <th>Fecha de pedido</th>
                                             <th>Total</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -95,10 +96,9 @@
                                                     <div class="font-medium">${ped.getTblUsuarios()}</div>
                                                 </td>
                                                 <td>
-                                                    <!-- Esta sección debe ser dinámica según los productos en el pedido -->
-                                                    <div>Paracetamol x 2</div>
-                                                    <div>Ibuprofeno x 1</div>
+                                                    <div>${ped.getPedFormaDePago()}</div>
                                                 </td>
+                                                <td>${ped.getPedFecha()}</td>
                                                 <td>${ped.pedTotal}</td>
                                                 <td>
                                                     <div class="actions">
