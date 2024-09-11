@@ -132,6 +132,7 @@
                 </div>
 
                 <div class="card-footer">
+                    <a href="/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=${prod.getProCodigo()}" class="btn btn-primary">Comprar</a>
                     <button type="submit" class="btn btn-danger btn-block" onclick="ejecutarTarea()">Generar Pedido</button>
                 </div>
             </form>

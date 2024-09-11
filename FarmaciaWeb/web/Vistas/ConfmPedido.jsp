@@ -1,28 +1,26 @@
+<%-- 
+    Document   : ConfmPedido
+    Created on : 10/09/2024, 10:48:32 PM
+    Author     : HOME
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Farma-online</title>
+        <title>Confirmacion de pedido</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
         <link href="/FarmaciaWeb/CSS/PQR.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/style.css" rel="stylesheet" type="text/css"/>
+
     </head>
+
     <body>
 
-        <%-- Session check --%>
-        <%
-            if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
-                response.sendRedirect("../Vistas/LogginPage.jsp");
-            }
-        %>
 
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <a class="navbar-brand" href="/FarmaciaWeb/CtrProductoLi?accion=home">
                 <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" class="icon" width="60" height="60" alt="Farmacia Yasbel"/>
@@ -80,113 +78,47 @@
         <br>
         <br>
         <br>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="carousel-content">
-                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/farmacia-la-botica.jpg" alt="First slide">
-                        <div class="mini-images">
-                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/farmacia-la-botica.jpg" alt="Mini First slide">
-                        </div>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <div class="promo-banner">
-                            <span>HEY! <strong>2x1</strong> En medicamentos!</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-content">
-                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Second slide">
-                        <div class="mini-images">
-                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Mini Second slide">
-                        </div>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <div class="promo-banner">
 
-                        </div>
+        <main class="container my-5">
+            <h2 class="text-center mb-4" style="color: #559D46;">Confirmación de Pedido</h2>
+            
+            <form action="/FarmaciaWeb/CtrProductoLi?accion=pedido" method="post">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="nombre" class="form-label" style="color: #559D46;">Nombre de la persona que recibe</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="${usuario.getUsunombre()}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="telefono" class="form-label" style="color: #559D46;">${usuario.getUsutelefono()}</label>
+                        <input type="text" class="form-control" id="telefono" placeholder="Número de contacto" required>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="carousel-content">
-                        <img class="d-block w-100 large-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Third slide">
-                        <div class="mini-images">
-                            <img class="mini-image" src="/FarmaciaWeb/Imagenes/regencia.jpg" alt="Mini Third slide">
-                        </div>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <div class="promo-banner">
-                            <span>HEY! <strong>2x1</strong> En medicamentos!</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <br>
-        <br>
-       <div class="offer-banner"> 
-    <p class="offer-text">Explora nuestros <span class="discount">15% de Descuento</span> en la Farmacia Yasbel</p>
-    <div class="offer-cards">
-        <c:forEach var="prod" items="${descuento}">
-            <div class="offer-card">
-                <div class="card-header">
-                    <img src="${prod.getProFoto()}" class="card-image" alt="${prod.getProNombre()}">
-                    <div class="discount-badge">${prod.getProDescuento()}%</div>
-                </div>
-                <h5 class="card-title">${prod.getProNombre()}</h5>
-                <p class="card-text">${prod.getProDescripcion()}</p>
-                <p class="card-price">$${prod.getProPrecio()}</p>
-                <div class="card-buttons">
-                    <a href="/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=${prod.getProCodigo()}" class="btn btn-primary">Comprar</a>
-                    <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-secondary">Agregar al carrito</a>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-                <div class="rotating-light"></div>
-                <div class="carousel-controls">
-                    <button class="carousel-prev">&lt;</button>
-                    <button class="carousel-next">&gt;</button>
-                </div>
-            </div>
 
+                <div class="mb-3">
+                    <label for="direccion" class="form-label" style="color: #559D46;">${usuario.getUsudireccion()}</label>
+                    <input type="text" class="form-control" id="direccion" placeholder="Dirección completa" required>
+                </div>
 
-        <br>            
-        <!-- Products Section -->
-        <section id="productos" class="product-container">
-            <div class="container">
-                <div class="row">
-                    <c:forEach var="prod" items="${productos}">
-                        <div class="col-md-3 col-sm-6 mb-4"> 
-                            <div class="card h-100">
-                                <img src="${prod.getProFoto()}" class="card-img-top" alt="${prod.getProNombre()}">
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">${prod.getProNombre()}</h5>
-                                    <p class="card-text">${prod.getProDescripcion()}</p>
-                                    <p class="card-text">$${prod.getProPrecio()}</p>
-                                    <div class="mt-auto">
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=${prod.getProCodigo()}"  class="btn btn-primary">Comprar</a>
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-primary">Agregar al carrito</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                
+                <h4 class="mt-4" style="color: #559D46;">Productos Seleccionados</h4>
+                <ul class="list-group mb-3">
+                    <c:forEach var="car" items="${carrito}">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${car.getNombre()}
+                        <span class="badge bg-success rounded-pill">${car.getPreciocompra()}</span>
+                    </li>
                     </c:forEach>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="text-muted">Total:</h5>
+                    <h5 class="fw-bold" style="color: #559D46;">${totalpagar}</h5>
                 </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="py-5 bg-dark text-white" id="footer">
+                <div class="text-center">
+                    <button type="submit" class="btn" style="background-color: #559D46; color: white;" onclick="ejecutarTarea()">Confirmar Pedido</button>
+                </div>
+            </form>
+        </main>
+                <footer class="py-5 bg-dark text-white" id="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -264,13 +196,17 @@
             </div>
         </div>
 
-        <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-        <script src="/FarmaciaWeb/JS/Ofertas_home.js" type="text/javascript"></script>
+         <script>
+                            function ejecutarTarea() {
+                                document.getElementById("MensajeEspera").style.display = "block";
+                                $('#reloj').modal('show');
+                            }
+    </script>
     </body>
 </html>

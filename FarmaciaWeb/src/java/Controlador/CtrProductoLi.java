@@ -441,7 +441,7 @@ public class CtrProductoLi extends HttpServlet {
                 }
                 break;
 
-            case "pedido":
+             case "pedido":
                 if (listacarrito.size() > 0) {
 
                     idusu = Integer.parseInt(request.getParameter("idusu"));
@@ -525,7 +525,7 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "Epedidos":
                 String idActu = request.getParameter("idp");
-                System.out.println("Actualizar estado de PQR: " + idActu);
+                System.out.println("Actualizar estado de pedido: " + idActu);
                 boolean actualizado = peddao.estadoPED(idActu, "enviado");
 
                 if (actualizado) {
@@ -533,7 +533,7 @@ public class CtrProductoLi extends HttpServlet {
                     request.setAttribute("pedidos", ped);
                     request.getRequestDispatcher("CtrProductoLi?accion=gestion").forward(request, response);
                 }
-                break;
+                break; 
             case "olvido":
 
                 request.getRequestDispatcher("Vistas/RecuperarContrs.jsp").forward(request, response);

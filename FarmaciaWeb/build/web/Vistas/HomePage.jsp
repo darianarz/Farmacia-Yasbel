@@ -5,7 +5,7 @@
 <html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Farma-online</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -152,12 +152,12 @@
             </div>
         </c:forEach>
     </div>
-    <div class="rotating-light"></div>
-    <div class="carousel-controls">
-        <button class="carousel-prev">&lt;</button>
-        <button class="carousel-next">&gt;</button>
-    </div>
-</div>
+                <div class="rotating-light"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-prev">&lt;</button>
+                    <button class="carousel-next">&gt;</button>
+                </div>
+            </div>
 
 
         <br>            
