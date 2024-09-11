@@ -16,7 +16,7 @@ public class Producto {
     private int proCodigo;
     private int tblProverdores;
     private int proPrecio;
-    private String proDescuento;
+    private int proDescuento;
     private String proMarca;
     private String proNombre;
     private String proFoto;
@@ -29,7 +29,7 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int proCodigo, int tblProverdores, int proPrecio, String proDescuento, String proMarca, String proNombre, String proFoto, String proDescripcion, Date proFechaVencimiento, int proStok, int tblCategoria, int proVendido) {
+    public Producto(int proCodigo, int tblProverdores, int proPrecio, int proDescuento, String proMarca, String proNombre, String proFoto, String proDescripcion, Date proFechaVencimiento, int proStok, int tblCategoria, int proVendido) {
         this.proCodigo = proCodigo;
         this.tblProverdores = tblProverdores;
         this.proPrecio = proPrecio;
@@ -68,11 +68,11 @@ public class Producto {
         this.proPrecio = proPrecio;
     }
 
-    public String getProDescuento() {
+    public int getProDescuento() {
         return proDescuento;
     }
 
-    public void setProDescuento(String proDescuento) {
+    public void setProDescuento(int proDescuento) {
         this.proDescuento = proDescuento;
     }
 

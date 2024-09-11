@@ -100,6 +100,7 @@
                                 <td>${car.getNombre()}<img src="${car.getFoto()}" width="100" height="100"></td>
                                 <td>${car.getDescripcion()}</td>
                                 <td>${car.getPreciocompra()}</td>
+                                <td>${producto.getDescuento()}</td>
                                 <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
                                     <input type="number" id="cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1">
                                 </td>
@@ -120,9 +121,9 @@
                         <label>Subtotal:</label>
                         <input type="text" value="${totalpagar}"  readonly="" class="form-control">
                         <label>Descuento:</label>
-                        <input type="text" value="$0.00" readonly="" class="form-control">
+                        <input type="text" value="${descuento}" readonly="" class="form-control">
                         <label>Total:</label>
-                        <input type="text" value="${totalpagar}"  readonly="" class="form-control">
+                        <input type="text" value="${total}"  readonly="" class="form-control">
                     </div>
                 <div class="formulario_grupo-input">
                     <select class="form-control formulario_input" name="tipos" id="tipos">

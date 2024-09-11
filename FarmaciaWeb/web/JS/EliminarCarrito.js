@@ -78,7 +78,7 @@ $(document).ready(function () {
             data: "idp=" + idp +"&Cantidad=" + Cantidad,
             success: function (data, textStatus, jqXHR){
                 //alert ("Entro en Cantidad!");
-                location.href="CtrProductoLi?accion=Carrito";
+                location.href="CtrProductoLi?accion=carro";
             }
         });
     });

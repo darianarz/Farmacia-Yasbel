@@ -40,7 +40,7 @@ public class ProductoDAO {
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
-                prod.setProDescuento(resul.getString(4));
+                prod.setProDescuento(resul.getInt(4));
                 prod.setProMarca(resul.getString(5));
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
@@ -74,7 +74,7 @@ public class ProductoDAO {
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
-                prod.setProDescuento(resul.getString(4));
+                prod.setProDescuento(resul.getInt(4));
                 prod.setProMarca(resul.getString(5));
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
@@ -110,7 +110,7 @@ public class ProductoDAO {
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
-                prod.setProDescuento(resul.getString(4));
+                prod.setProDescuento(resul.getInt(4));
                 prod.setProMarca(resul.getString(5));
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
@@ -145,7 +145,7 @@ public class ProductoDAO {
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
-                prod.setProDescuento(resul.getString(4));
+                prod.setProDescuento(resul.getInt(4));
                 prod.setProMarca(resul.getString(5));
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
@@ -179,7 +179,7 @@ public class ProductoDAO {
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
-                prod.setProDescuento(resul.getString(4));
+                prod.setProDescuento(resul.getInt(4));
                 prod.setProMarca(resul.getString(5));
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
@@ -214,7 +214,7 @@ public class ProductoDAO {
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
-                prod.setProDescuento(resul.getString(4));
+                prod.setProDescuento(resul.getInt(4));
                 prod.setProMarca(resul.getString(5));
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
@@ -252,7 +252,7 @@ public class ProductoDAO {
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
-                prod.setProDescuento(resul.getString(4));
+                prod.setProDescuento(resul.getInt(4));
                 prod.setProMarca(resul.getString(5));
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
@@ -286,7 +286,7 @@ public class ProductoDAO {
             }
             pstm = con.prepareStatement("insert into tblproductos (ProPrecio, ProDescuento, ProMarca, ProNombre, ProFoto, ProDescripcion, ProFechaVencimiento, ProStock, tblcategorias , tblProveedores) Value(?,?,?,?,?,?,?,?,? , ?)");
             pstm.setInt(1, pro.getProPrecio());
-            pstm.setString(2, pro.getProDescuento());
+            pstm.setInt(2, pro.getProDescuento());
             pstm.setString(3, pro.getProMarca());
             pstm.setString(4, pro.getProNombre());
             pstm.setString(5, pro.getProFoto());
@@ -312,7 +312,7 @@ public class ProductoDAO {
             pstm = con.prepareStatement("update tblproductos set ProPrecio = ? , ProDescuento = ? , ProMarca = ? , ProNombre = ? , ProFoto = ? , ProDescripcion = ? , ProFechaVencimiento = ? , ProStock = ? , tblcategorias = ? , tblProveedores = ?   where ProCodigo = ?");
 
             pstm.setInt(1, pro.getProPrecio());
-            pstm.setString(2, pro.getProDescuento());
+            pstm.setInt(2, pro.getProDescuento());
             pstm.setString(3, pro.getProMarca());
             pstm.setString(4, pro.getProNombre());
             pstm.setString(5, pro.getProFoto());
@@ -361,7 +361,7 @@ public class ProductoDAO {
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
-                prod.setProDescuento(resul.getString(4));
+                prod.setProDescuento(resul.getInt(4));
                 prod.setProMarca(resul.getString(5));
                 prod.setProNombre(resul.getString(6));
                 prod.setProFoto(resul.getString(7));
