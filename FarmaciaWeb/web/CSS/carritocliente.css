@@ -1,3 +1,4 @@
+/* Reset básico para todos los elementos */
 body, h1, h2, h3, p, a, button {
     margin: 0;
     padding: 0;
@@ -5,133 +6,117 @@ body, h1, h2, h3, p, a, button {
     box-sizing: border-box;
 }
 
+/* Estilos del contenedor principal */
 .container {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    padding: 1rem;
+    background-color: #f8f9fa;
 }
 
-.header {
-    background-color: #007bff;
+/* Estilos del título principal */
+.main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #357c28;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Estilos de la tabla del carrito */
+.table {
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Celdas de la tabla */
+.table td {
+    vertical-align: middle;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón de eliminar */
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
     color: #ffffff;
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border-color: #dc3545;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    color: inherit;
+/* Estilos del formulario de resumen */
+.card-body {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
 }
 
-.logo-img {
-    aspect-ratio: 1;
-    object-fit: cover;
+.card-body label {
+    color: #357c28;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
-.logo-text {
-    font-size: 1.25rem;
-    font-weight: 600;
+.card-body input.form-control {
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    text-align: center;
 }
 
-.nav {
-    display: flex;
-    gap: 1.5rem;
+/* Botón de generar pedido */
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 }
 
-.nav-link {
-    text-decoration: none;
-    color: #ffffff;
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Estilo para el select */
+.formulario_input {
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem;
+    margin-bottom: 1rem;
     font-size: 1rem;
 }
 
-.nav-link:hover {
-    text-decoration: underline;
-}
-
-.nav-link-active {
-    font-weight: 500;
-}
-
-.main {
-    flex: 1;
-    background-color: #f8f9fa;
-    padding: 2rem;
-}
-
-.main-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.main-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-
-.product-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.product-card {
-    background-color: #ffffff;
-    width: 300px;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-}
-
-.product-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.product-img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-img {
-    transform: scale(1.1);
-}
-
-.product-name {
-    font-size: 0.875rem;
-    margin-bottom: 10px;
-}
-
-.product-price {
-    color: #28a745;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.product-description {
-    color: #6c757d;
-    font-size: 0.75rem;
-    margin-bottom: 15px;
-}
-
-.product-quantity {
-    font-size: 0.75rem;
-}
-
+/* Botones de cantidad y eliminar */
 .quantity-controls {
     display: flex;
     align-items: center;
@@ -141,7 +126,7 @@ body, h1, h2, h3, p, a, button {
 .quantity-btn, .remove-btn {
     border: 1px solid #007bff;
     background-color: #ffffff;
-    padding: 5px 10px;
+    padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -152,70 +137,96 @@ body, h1, h2, h3, p, a, button {
     transform: scale(1.05);
 }
 
-.summary-card {
+/* Contenedor de productos */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+/* Tarjeta de producto */
+.product-card {
     background-color: #ffffff;
+    width: 350px; /* Tamaño de la tarjeta */
+    height: 450px; /* Altura fija para contenedor cuadrado */
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
     padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen del producto */
+.product-img {
+    width: 100%;
+    height: 250px; /* Altura fija para cuadrado */
+    object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
-.summary-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+.product-card:hover .product-img {
+    transform: scale(1.1);
 }
 
-.summary-title {
+/* Nombre del producto */
+.product-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #357c28;
+}
+
+/* Precio del producto */
+.product-price {
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 10px;
     font-size: 1.25rem;
-    font-weight: 700;
 }
 
-.summary-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+/* Descripción del producto */
+.product-description {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 150px;
+}
+
+/* Contenedor de botones de acción */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
 }
 
-.summary-item {
-    display: flex;
-    justify-content: space-between;
-}
-
-.summary-total {
-    font-weight: 700;
-}
-
-.summary-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.continue-shopping-btn, .checkout-btn {
-    border-radius: 0.25rem;
+/* Botones de acción */
+.action-btn {
+    border: 1px solid #007bff;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.continue-shopping-btn:hover, .checkout-btn:hover {
+.action-btn:hover {
+    background-color: #e9ecef;
     transform: scale(1.05);
 }
 
-.continue-shopping-btn {
-    border: 1px solid #007bff;
-    background-color: #ffffff;
-    padding: 0.5rem 1rem;
-}
-
-.checkout-btn {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-}
-
+/* Estilos del pie de página */
 .footer {
     background-color: #6c757d;
     color: #ffffff;
@@ -242,22 +253,24 @@ body, h1, h2, h3, p, a, button {
     text-decoration: underline;
 }
 
+/* Formulario en línea */
 .form-inline {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
+/* Botón de búsqueda */
 .btn-search {
     background-color: black;
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .btn-search:hover {
-    background-color: black;
+    background-color: #333333;
 }
