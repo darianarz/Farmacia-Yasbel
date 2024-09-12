@@ -103,6 +103,7 @@
                                                 <td>
                                                     <div class="actions">
                                                         <input type="hidden" class="idpqr" value="${ped.getPedCodigo()}">
+                                                        <input type="hidden" class="id" id="idUsu" name="idUsu" value="${ped.getTblUsuarios()}">
                                                         <a class="btn btn-success" href="CtrProductoLi?accion=Epedidos&idp=${ped.getPedCodigo()}"><i class="bi bi-envelope-check"></i> </a>
                                                     </div>
                                                 </td>
