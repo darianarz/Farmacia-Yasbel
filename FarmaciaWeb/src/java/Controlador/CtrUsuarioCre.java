@@ -9,6 +9,7 @@ import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +23,10 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author SENA
  */
 public class CtrUsuarioCre extends HttpServlet {
-
+    
     UsuarioDAO dao = new UsuarioDAO();
     Usuario us = new Usuario();
+     List<Usuario> usuario = new ArrayList();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,7 +72,7 @@ public class CtrUsuarioCre extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Usuario> list = dao.listarT();
-
+        int idusu;
         String id, nom, ape, dir, tel, cor, usu, pas, tip, idActu;
         String accion = request.getParameter("accion");
         System.out.println("accion: " + accion);
@@ -105,7 +107,8 @@ public class CtrUsuarioCre extends HttpServlet {
                 request.getRequestDispatcher("Vistas/LogginPage.jsp?mensaje=0").forward(request, response);
                 break;
             case "Listar":
-                request.setAttribute("usuarios", list);
+                usuario = dao.listarT();
+                request.setAttribute("usuario", usuario);
                 request.getRequestDispatcher("/Vistas/ListarUsuariosAdm.jsp").forward(request, response);
                 break;
             case "eliminarUsu":
@@ -122,7 +125,7 @@ public class CtrUsuarioCre extends HttpServlet {
                 break;
 
             case "tipoUsu":
-                idActu = request.getParameter("id");
+                    idActu = request.getParameter("id");
                 System.out.println("Actualizar tipo Usuario " + idActu);
                 boolean nuevotp = dao.tipoUsu(idActu, "Administrador");
                 if (nuevotp) {
@@ -132,10 +135,33 @@ public class CtrUsuarioCre extends HttpServlet {
                 }
                 break;
             case "buscarn":
-                 String nombreBusqueda = request.getParameter("nombre");
-                 List<Usuario> listaFiltrada = dao.listarN(nombreBusqueda);
-                 request.setAttribute("usuarios", listaFiltrada);
-                 request.getRequestDispatcher("/Vistas/ListarUsuariosAdm.jsp").forward(request, response);
+                String nombreBusqueda = request.getParameter("nombre");
+                List<Usuario> listaFiltrada = dao.listarN(nombreBusqueda);
+                request.setAttribute("usuarios", listaFiltrada);
+                request.getRequestDispatcher("/Vistas/ListarUsuariosAdm.jsp").forward(request, response);
+                break;
+            case "editarusuario":
+                int idp =Integer.parseInt(request.getParameter("idss"));
+                us = dao.listarU(idp);
+                request.setAttribute("usuarios", us);
+                request.setAttribute("editarUsuario", true);
+                usuario = dao.listarT();
+                request.setAttribute("usuario", usuario);
+                request.getRequestDispatcher("/Vistas/ListarUsuarioAdm.jsp").forward(request, response);
+                break;
+            case "actualizarusu":
+                String idusuario = request.getParameter("txtid");
+                String nombre = request.getParameter("txtnombre");
+                String correo = request.getParameter("txtcorreo");
+                String direccion = request.getParameter("txtdireccion");
+                String telefono = request.getParameter("txttelefono");
+                us.setUsuid(idusuario);
+                us.setUsunombre(nombre);
+                us.setUsucorreo(correo);
+                us.setUsudireccion(direccion);
+                us.setUsutelefono(telefono);
+                dao.editar(us);
+                request.getRequestDispatcher("CtrUsuarioCre?accion=Listar").forward(request, response);
                 break;
         }
     }

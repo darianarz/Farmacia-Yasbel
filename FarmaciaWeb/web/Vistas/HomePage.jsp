@@ -47,7 +47,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="#"><i class="bi bi-person"></i></a>
-                            <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                            <a class="dropdown-item " href="/FarmaciaWeb/Vistas/EditarUsuario.jsp">${usuario.getUsunombre()}</a>
                             <a class="dropdown-item " >${usuario.getUsutipo()}</a>
                             <a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=historial">Historial Pedido</a>
                             <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
@@ -133,31 +133,31 @@
         </div>
         <br>
         <br>
-       <div class="offer-banner"> 
-    <p class="offer-text">Explora nuestros <span class="discount">15% de Descuento</span> en la Farmacia Yasbel</p>
-    <div class="offer-cards">
-        <c:forEach var="prod" items="${descuento}">
-            <div class="offer-card">
-                <div class="card-header">
-                    <img src="${prod.getProFoto()}" class="card-image" alt="${prod.getProNombre()}">
-                    <div class="discount-badge">${prod.getProDescuento()}%</div>
-                </div>
-                <h5 class="card-title">${prod.getProNombre()}</h5>
-                <p class="card-text">${prod.getProDescripcion()}</p>
-                <p class="card-price">$${prod.getProPrecio()}</p>
-                <div class="card-buttons">
-                    <a href="/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=${prod.getProCodigo()}" class="btn btn-primary">Comprar</a>
-                    <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-secondary">Agregar al carrito</a>
-                </div>
+        <div class="offer-banner"> 
+            <p class="offer-text">Explora nuestros <span class="discount">15% de Descuento</span> en la Farmacia Yasbel</p>
+            <div class="offer-cards">
+                <c:forEach var="prod" items="${descuento}">
+                    <div class="offer-card">
+                        <div class="card-header">
+                            <img src="${prod.getProFoto()}" class="card-image" alt="${prod.getProNombre()}">
+                            <div class="discount-badge">${prod.getProDescuento()}%</div>
+                        </div>
+                        <h5 class="card-title">${prod.getProNombre()}</h5>
+                        <p class="card-text">${prod.getProDescripcion()}</p>
+                        <p class="card-price">$${prod.getProPrecio()}</p>
+                        <div class="card-buttons">
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=Comprar&id=${prod.getProCodigo()}" class="btn btn-primary">Comprar</a>
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-secondary">Agregar al carrito</a>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
-        </c:forEach>
-    </div>
-    <div class="rotating-light"></div>
-    <div class="carousel-controls">
-        <button class="carousel-prev">&lt;</button>
-        <button class="carousel-next">&gt;</button>
-    </div>
-</div>
+            <div class="rotating-light"></div>
+            <div class="carousel-controls">
+                <button class="carousel-prev">&lt;</button>
+                <button class="carousel-next">&gt;</button>
+            </div>
+        </div>
 
 
         <br>            
@@ -262,7 +262,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
 
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
