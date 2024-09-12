@@ -123,10 +123,10 @@
                                                     <td class="border">${usu.getUsutipo()}</td>
                                                     <td class="border" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${usu.getUsucorreo()}</td> <!-- Estilo añadido para texto largo en el campo de correo -->
                                                     <td class="text-center border" style="white-space: nowrap;"> <!-- Evita que los botones se separen demasiado -->
-                                                        <input type="hidden" name="id" class="id" value="${usu.getUsuid()}">
+                                                        <input type="hidden" name="id" class="id" id="id" value="${usu.getUsuid()}">
                                                         <a class="btn btn-danger btneliminar" href="#" ><i class="bi bi-trash-fill"></i></a>
                                                         <br>
-                                                        <a class="btn" style="background-color: #74BD64;" id="btnadmi" href="CtrUsuarioCre?accion=tipoUsu&id=${usu.getUsuid()}"><i class="bi bi-gear-fill"></i></a>
+                                                        <a class="btn" style="background-color: #74BD64;" id="btnadmi" href="CtrUsuarioCre?accion=editarusuario&id=${usu.getUsuid()}"><i class="bi bi-gear-fill"></i></a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>

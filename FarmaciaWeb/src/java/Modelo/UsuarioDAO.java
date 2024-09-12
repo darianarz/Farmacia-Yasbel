@@ -266,5 +266,27 @@ public boolean eliminarUsu(String ide) {
     
     }
   
+    public void editar(Usuario usu) {
+        
+        try {
+            Conexcion = new Conectar();
+            con = Conexcion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexcion con la base de datos");
+
+            }
+           
+                pstm = con.prepareStatement("UPDATE tblusuarios SET UsuCorreo= ?, UsuDireccion = ?, UsuTelefono = ? WHERE UsuID = ?");
+                
+                pstm.setString(1, usu.getUsucorreo());
+                pstm.setString(2, usu.getUsudireccion());
+                pstm.setString(3, usu.getUsutelefono());
+           
+              pstm.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error al editar el editar "+ e);
+        }
+        
+    }
 
 }
