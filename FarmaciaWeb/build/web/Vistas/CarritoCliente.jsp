@@ -15,11 +15,10 @@
         <link href="/FarmaciaWeb/CSS/PQR.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/style.css" rel="stylesheet" type="text/css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/scripts.js" type="text/javascript"></script>
         <link href="/FarmaciaWeb/CSS/carritocliente.css" rel="stylesheet" type="text/css"/>
-        <script src="/FarmaciaWeb/JS/EliminarCarrito.js" type="text/javascript"></script>
+       
     </head>
     <%
         if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
@@ -67,20 +66,6 @@
 
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-bookmark"></i> Comprar por categorías
-                        </a>
-
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <c:forEach var="c" items="${categorias}">
-                                <input type="hidden" value="${c.getCatCodigo()}" name="catid" id="catid">
-                                <li><a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${c.getCatCodigo()}" ><i class="bi bi-bookmarks"></i> ${c.getCatNombre()}</a></li>
-
-                            </c:forEach>
-                        </ul>
-
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -88,55 +73,80 @@
         <br>
         <br>
         <br>
-        <div class="container mt-5">
-            <h1 class="main-title text-center">Tu Carrito</h1>
-            <div class="product-container d-flex flex-wrap justify-content-start">
-                <table class="table table-hover">
+<div class="container mt-5">
+    <h1 class="main-title text-center">Tu Carrito</h1>
+    <div class="product-container d-flex flex-wrap justify-content-start">
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Item</th>
+                    <th>Producto</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Descuento</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="car" items="${carrito}">
+                    <tr>
+                        <td>${car.getItem()}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="${car.getFoto()}" width="80" height="80" class="img-thumbnail mr-2">
+                                <span class="product-name">${car.getNombre()}</span>
+                            </div>
+                        </td>
+                        <td>${car.getDescripcion()}</td>
+                        <td>${car.getPreciocompra()}</td>
+                        <td>${producto.getDescuento()}</td>
+                        <td>
+                            <input type="hidden" id="idp" value="${car.getIdproducto()}">
+                            <input type="number" id="cantidad" value="${car.getCantidad()}" class="form-control text-center"  max="${car.getStock()}">
+                        </td>
+                        <td>${car.getSubtotal()}</td>
+                        <td>
+                            <input type="hidden" id="idpro" class="idpro" value="${car.getIdproducto()}">
+                            <a class="btn btn-outline-danger btn-round btndeletecar" href="#" id="btndeletecar">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table> 
+    </div>
 
-                    <tbody>
-                        <c:forEach var="car" items="${carrito}">
-                            <tr>
-                                <td>${car.getItem()}</td>
-                                <td>${car.getNombre()}<img src="${car.getFoto()}" width="100" height="100"></td>
-                                <td>${car.getDescripcion()}</td>
-                                <td>${car.getPreciocompra()}</td>
-                                <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
-                                    <input type="number" id="cantidad" value="${car.getCantidad()}" class="form-control text-center" min="1">
-                                </td>
-                                <td>${car.getSubtotal()}</td>
-                                <td><input type="hidden" id="idpro" value="${car.getIdproducto()}">
-                                    <a class="btn btn-outline-danger" href="#" id="btndeletecar"><i class="bi bi-trash"></i></a>
-
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table> 
-            </div>
-            <form action="/FarmaciaWeb/CtrProductoLi?accion=pedido" method="post">
-                <input type="hidden" name="idusu" value="${usuario.getUsuid()}">
-                <input type="hidden" name="totalp" value="${totalpagar}">
-                <div class="card-body">
-                        <label>Subtotal:</label>
-                        <input type="text" value="${totalpagar}"  readonly="" class="form-control">
-                        <label>Descuento:</label>
-                        <input type="text" value="$0.00" readonly="" class="form-control">
-                        <label>Total:</label>
-                        <input type="text" value="${totalpagar}"  readonly="" class="form-control">
-                    </div>
-                <div class="formulario_grupo-input">
-                    <select class="form-control formulario_input" name="tipos" id="tipos">
-                        <option value="Efectivo">Efectivo</option>
-                        <option value="Tranferencia">Tranferencia</option>
-                    </select>
-                </div>
-
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-danger btn-block" onclick="ejecutarTarea()">Generar Pedido</button>
-                </div>
-            </form>
-            
+    <!-- Información de pago -->
+    <form action="/FarmaciaWeb/CtrProductoLi?accion=pedido" method="post">
+        <input type="hidden" name="idusu" value="${usuario.getUsuid()}">
+        <input type="hidden" name="stock" value="${usuario.getUsuid()}">
+        <input type="hidden" name="totalp" value="${totalpagar}">
+        <div class="card-body">
+            <label>Subtotal:</label>
+            <input type="text" value="${totalpagar}" readonly="" class="form-control mb-2">
+            <label>Descuento:</label>
+            <input type="text" value="${descuento}" readonly="" class="form-control mb-2">
+            <label>Total:</label>
+            <input type="text" value="${total}" readonly="" class="form-control mb-2">
         </div>
+
+        
+        <div class="formulario_grupo-input mb-3">
+            <select class="form-control formulario_input" name="tipos" id="tipos">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tranferencia">Tranferencia</option>
+            </select>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success btn-block" onclick="ejecutarTarea()">Generar Pedido</button>
+        </div>
+    </form>
+</div>
+
 
 
         <!-- Modal -->
@@ -185,8 +195,11 @@
             </div>
         </div>
     </body>
+    
+   
    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

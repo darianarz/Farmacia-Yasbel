@@ -22,11 +22,13 @@ public class Carrito {
     private Date fecha;
     private int cantidad;
     private int subtotal;
+    private int descuento;
+    private int stock;
 
     public Carrito() {
     }
 
-    public Carrito(int item, int idproducto, String nombre, String descripcion, String foto, int preciocompra, int preciounitario, Date fecha, int cantidad, int subtotal) {
+    public Carrito(int item, int idproducto, String nombre, String descripcion, String foto, int preciocompra, int preciounitario, Date fecha, int cantidad, int subtotal, int descuento, int stock) {
         this.item = item;
         this.idproducto = idproducto;
         this.nombre = nombre;
@@ -37,6 +39,8 @@ public class Carrito {
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
+        this.descuento = descuento;
+        this.stock = stock;
     }
 
     public int getItem() {
@@ -119,6 +123,24 @@ public class Carrito {
         this.subtotal = subtotal;
     }
 
+    public int getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(int descuento) {
+        this.descuento = descuento;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+   
+    
     
     
 }

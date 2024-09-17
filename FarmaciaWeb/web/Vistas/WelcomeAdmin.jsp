@@ -14,6 +14,12 @@
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
 
     </head>
+    <%-- Session check --%>
+        <%
+            if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+                response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
+            }
+        %>
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -27,7 +33,17 @@
                             </svg>
                             Farmacia Yasbel
                         </a>
-                       
+                        <div class="user-menu">
+                             <button class="user-btn btn btn-link">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
+                                <span class="sr-only">Toggle user menu</span>
+                            </button>
+                            <div class="user-menu-content">
+                                <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                                <a class="dropdown-item " >${usuario.getUsutipo()}</a>
+                                <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+                            </div>
+                        </div>
                     </div>
                     <nav class="nav">
 
@@ -60,16 +76,15 @@
                             </svg>
                             <span class="sr-only">Home</span>
                         </a>
-                      
-                         <div class="user-menu">
-                             <button class="user-btn btn btn-link">
-                                <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
+                        <div class="user-menu">
+                            <button class="user-btn btn btn-link">
+                                
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
                             <div class="user-menu-content">
-                                <a class="dropdown-item " >${usuario.getUsunombre()}</a>
-                                <a class="dropdown-item " >${usuario.getUsutipo()}</a>
-                                <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+                                <div class="user-menu-label">Mi Cuenta</div>
+                                <div class="user-menu-separator"></div>
+                                <a href="#" class="user-menu-item">Cerrar sesión</a>
                             </div>
                         </div>
                     </header>

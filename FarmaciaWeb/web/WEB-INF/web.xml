@@ -12,6 +12,10 @@
         <servlet-name>CtrProductoLi</servlet-name>
         <servlet-class>Controlador.CtrProductoLi</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrDetalPedido</servlet-name>
+        <servlet-class>Controlador.CtrDetalPedido</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrValidarInfo</servlet-name>
         <url-pattern>/CtrValidarInfo</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>CtrProductoLi</servlet-name>
         <url-pattern>/CtrProductoLi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrDetalPedido</servlet-name>
+        <url-pattern>/CtrDetalPedido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
