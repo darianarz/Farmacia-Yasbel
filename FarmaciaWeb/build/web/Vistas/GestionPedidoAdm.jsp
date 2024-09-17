@@ -10,7 +10,15 @@
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
         <link href="/FarmaciaWeb/CSS/GestionPedidoAdm.css" rel="stylesheet" type="text/css"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+
     </head>
+    <%-- Session check --%>
+    <%
+        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+            response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
+        }
+    %>
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -82,6 +90,10 @@
                                         <tr>
                                             <th>Estado</th>
                                             <th>Cliente</th>
+                                            <th>Nombre</th>
+                                            <th>Detalle</th>
+                                            <th>Direccion</th>
+                                            <th>Telefono</th>
                                             <th>Forma de pago</th>
                                             <th>Fecha de pedido</th>
                                             <th>Total</th>
@@ -93,8 +105,15 @@
                                             <tr>
                                                 <td><span class="badge pending">${ped.getPedEstado()}</span></td>
                                                 <td>
-                                                    <div class="font-medium">${ped.getTblUsuarios()}</div>
+                                                    <div class="font-medium" href="CtrProductoLi?accion=Epedidos&idUsu=${ped.getTblUsuarios()}">${ped.getTblUsuarios()}</div>
                                                 </td>
+                                                <td>${ped.getUsuNombre()}</td>
+                                                <td> <input type="hidden" class="idpedi" value="${ped.getPedCodigo()}">
+                                                   <a class="btn btn-success" href="CtrDetalPedido?accion=Listar&idpe=${ped.getPedCodigo()}"><i class="bi bi-eye"></i></a>
+
+                                                </td>
+                                                <td>${ped.getUsuDireccion()}</td>
+                                                <td>${ped.getUsuTelefono()}</td>
                                                 <td>
                                                     <div>${ped.getPedFormaDePago()}</div>
                                                 </td>
@@ -103,8 +122,10 @@
                                                 <td>
                                                     <div class="actions">
                                                         <input type="hidden" class="idpqr" value="${ped.getPedCodigo()}">
-                                                        <input type="hidden" class="idUsu" id="idUsu" name="idUsu" value="${ped.getTblUsuarios()}">
-                                                        <a class="btn btn-success" href="CtrProductoLi?accion=Epedidos&idp=${ped.getPedCodigo()}"><i class="bi bi-envelope-check"></i> </a>
+                                                        <input type="hidden" class="id" id="idUsu" name="idUsu" value="${ped.getTblUsuarios()}">
+                                                        <a class="btn btn-success" href="CtrProductoLi?accion=Epedidos&idUsu=${ped.getTblUsuarios()}"><i class="bi bi-truck"></i> </a>
+                                                        <a class="btn btn-success" href="CtrProductoLi?accion=Entregado&idUsu=${ped.getTblUsuarios()}"><i class="bi bi-box-seam"></i></i> </a>
+                                                        <a class="btn btn-danger" href="CtrProductoLi?accion=Cancelado&idUsu=${ped.getTblUsuarios()}"><i class="bi bi-x-lg"></i> </a>
                                                     </div>
                                                 </td>
                                             </tr>

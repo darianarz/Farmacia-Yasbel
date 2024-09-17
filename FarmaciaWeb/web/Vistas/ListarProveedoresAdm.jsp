@@ -19,6 +19,12 @@
 
 
     </head>
+      <%-- Session check --%>
+        <%
+            if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+                response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
+            }
+        %>
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -32,9 +38,21 @@
                             </svg>
                             Farmacia Yasbel
                         </a>
-                        
+                        <div class="user-menu">
+                            <button class="user-btn btn btn-link">
+                                <img src="/placeholder.svg" width="32" height="32" alt="Avatar" class="avatar">
+                                <span class="sr-only">Toggle user menu</span>
+                            </button>
+                            <div class="user-menu-content">
+                                <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                                <a class="dropdown-item " >${usuario.getUsutipo()}</a>
+                                <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+                            </div>
+                        </div>
                     </div>
                     <nav class="nav">
+
+                        <!-- Collapsible Section -->
                         <div class="collapsible">
                             <button class="collapsible-trigger">
                                 Gestión de Productos
@@ -68,10 +86,10 @@
                                 <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
-                             <div class="user-menu-content">
-                                <a class="dropdown-item " >${usuario.getUsunombre()}</a>
-                                <a class="dropdown-item " >${usuario.getUsutipo()}</a>
-                                <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+                            <div class="user-menu-content">
+                                <div class="user-menu-label">Mi Cuenta</div>
+                                <div class="user-menu-separator"></div>
+                                <a href="#" class="user-menu-item">Cerrar sesión</a>
                             </div>
                         </div>
                     </header>
@@ -82,67 +100,62 @@
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <form class="form-inline mt-4" action=" ">
-                                        <div class="form-group  mb-2">
+                                    <!-- Formulario de búsqueda -->
+                                    <form class="form-inline mt-4" action="/FarmaciaWeb/CtrProveedores?accion=buscarn">
+                                        <div class="input-group">
                                             <input type="text" class="form-control" name="busqueda" placeholder="Digite nombre">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-success" name="accion" value="buscarn"><i class="bi bi-search"></i> Buscar </button>
+                                            </div>
                                         </div>
-                                        <button type="submit" class="btn btn-success mb-2" name="accion" value="buscarn">
-                                            <i class="bi bi-search"></i> Buscar
-                                        </button>
                                     </form>
+                                    
                                 </div>
                             </div>
-                            <div class="table-responsive"> 
-                                <table class="table table-bordered table-sm"> 
-                                    <thead class="thead-light border">
-                                        <tr class="table-success">
-                                            <th scope="col" class="text-center border" style="width: 120px;">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarProveedorModal">
-                                                    Agregar Proveedor
-                                                </button>
-                                            </th>
-                                            <th scope="col" colspan="7" class="text-center border">Proveedores</th>
-                                        </tr>
+                            <table class="table table-bordered">
+                                <thead class="thead-light border">
+                                    <tr table-success>
+                                        <th scope="col" class="text-center border" width="110">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarProveedorModal">
+                                                Agregar Proveedor
+                                            </button>
+                                        <th scope="col" colspan="7" class="text-center border">Proveedores </th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" class="text-center border">Id</th>
+                                        <th scope="col" class="text-center border">Nombre</th>
+                                        <th scope="col" class="text-center border">Direccion</th>
+                                        <th scope="col" class="text-center border">Ciudad</th>
+                                        <th scope="col" class="text-center border">Correo</th>
+                                        <th scope="col" class="text-center border">Telefono</th>
+                                        <th scope="col" class="text-center border">Contacto</th>
+                                        <th scope="col" class="text-center border">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="prov" items="${proveedores}">
                                         <tr>
-                                            <th scope="col" class="text-center border" >Id</th> 
-                                            <th scope="col" class="text-center border" >Nombre</th>
-                                            <th scope="col" class="text-center border" >Direccion</th>
-                                            <th scope="col" class="text-center border" >Ciudad</th>
-                                            <th scope="col" class="text-center border" >Correo</th>
-                                            <th scope="col" class="text-center border" >Telefono</th>
-                                            <th scope="col" class="text-center border" >Contacto</th>
-                                            <th scope="col" class="text-center border" >Acciones</th>
+                                            <th scope="row" class="border">${prov.getId()}</th>
+                                            <td class="border">${prov.getNombre()}</td>
+                                            <td class="border">${prov.getDireccion()}</td>
+                                            <td class="border">${prov.getCiudad()}</td>
+                                            <td class="border">${prov.getCorreo()}</td>
+                                            <td class="border">${prov.getTelefono()}</td>
+                                            <td class="border">${prov.getContacto()}</td>
+                                            <td scope="col" class ="text-center border">
+                                                <input type="hidden" name="idprov" class="idprov" id="idprov" value="${prov.getId()}">
+                                                <a class="btn btn-warning" href="/FarmaciaWeb/CtrProveedores?accion=editarvedore&idprov=${prov.getId()}">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </a> </br> </br>
+                                                <a class="btn btn-danger btndelete" id="btndelete" href="#"><i class="bi bi-trash-fill"></i></a>
+
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach var="prov" items="${proveedores}">
-                                            <tr>
-                                                <th scope="row" class="border" >${prov.getId()}</th> 
-                                                <td class="border">${prov.getNombre()}</td>
-                                                <td class="border">${prov.getDireccion()}</td>
-                                                <td class="border">${prov.getCiudad()}</td>
-                                                <td class="border">${prov.getCorreo()}</td>
-                                                <td class="border">${prov.getTelefono()}</td>
-                                                <td class="border">${prov.getContacto()}</td>
-                                                <td class="text-center border" style="white-space: nowrap;"> 
-                                                    <input type="hidden" name="idprov" class="idprov" id="idprov" value="${prov.getId()}">
-                                                    <a class="btn btn-warning btn-sm" href="/FarmaciaWeb/CtrProveedores?accion=editarvedore&idprov=${prov.getId()}">
-                                                        <i class="bi bi-pencil-fill"></i>
-                                                    </a>
-                                                    <br>
-                                                    <a class="btn btn-danger btn-sm btndelete" id="btndelete" href="#">
-                                                        <i class="bi bi-trash-fill"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </main>
-
-
                 </div>
             </div>
         </div>

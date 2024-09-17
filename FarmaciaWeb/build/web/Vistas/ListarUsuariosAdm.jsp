@@ -14,7 +14,13 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <title>Listar Usuarios</title>
         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
-    </head>'+¿ 
+    </head>
+    <%-- Session check --%>
+        <%
+            if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+                response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
+            }
+        %>
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -38,6 +44,7 @@
                     </div>
                     <nav class="nav">
 
+                        <!-- Collapsible Section -->
                         <div class="collapsible">
                             <button class="collapsible-trigger">
                                 Gestión de Productos
@@ -72,7 +79,7 @@
                                 <img src="https://www.w3schools.com/w3images/avatar2.png" width="32" height="32" alt="Avatar" class="avatar">
                                 <span class="sr-only">Toggle user menu</span>
                             </button>
-                             <div class="user-menu-content">
+                            <div class="user-menu-content">
                                 <a class="dropdown-item " >${usuario.getUsunombre()}</a>
                                 <a class="dropdown-item " >${usuario.getUsutipo()}</a>
                                 <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
@@ -80,64 +87,65 @@
                         </div>
                     </header>
                     <main class="main">
-                        <div class="container mt-5 border" style="border-radius: 15px; padding: 0;">
+                        <div class="container mt-5 border" style="border-radius: 15px">
                             <div class="row">
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                    <form class="search-form  d-flex mb-4">
-                                        <input type="search" class="form-control" placeholder="Digite nombre">
-                                        <button type="submit" class="btn btn-success" name="accion" value="buscarn" style="background: #74BD64">
-                                            <i class="bi bi-search"></i> Buscar
-                                        </button>
+                                    <!-- Formulario de búsqueda -->
+                                    <form class="form-inline mt-4" action="/FarmaciaWeb/CtrUsuarioCre?accion=buscar">
+                                        <div class="form-group mx-sm-3 mb-2">
+                                            <input type="text" class="form-control" name="txtbuscar" placeholder="digite nombre">
+                                        </div>
+                                        <button type="submit" class="btn btn-success mb-2" name="accion" value="buscar"><i class="bi bi-search"></i> Buscar</button>
                                     </form>
-                                </div>
-                                
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-sm">
-                                        <thead class="thead-light border">
-                                            <tr class="table-success">
-                                                <th scope="col" colspan="9" class="text-center border">USUARIOS DE LA FARMACIA</th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col" class="text-center border" style="width: 5%;">Id</th>
-                                                <th scope="col" class="text-center border" style="width: 15%;">Nombre</th>
-                                                <th scope="col" class="text-center border" style="width: 15%;">Apellido</th>
-                                                <th scope="col" class="text-center border" style="width: 20%;">Direccion</th>
-                                                <th scope="col" class="text-center border" style="width: 10%;">Telefono</th>
-                                                <th scope="col" class="text-center border" style="width: 15%;">Usuario</th>
-                                                <th scope="col" class="text-center border" style="width: 10%;">Tipo</th>
-                                                <th scope="col" class="text-center border" style="width: 10%;">Correo</th> <!-- Reducido el ancho del campo de correo -->
-                                                <th scope="col" class="text-center border" style="width: 10%;">Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <c:forEach var="usu" items="${usuarios}">  
-                                                <tr>
-                                                    <th scope="row" class="border">${usu.getUsuid()}</th>
-                                                    <td class="border">${usu.getUsunombre()}</td>
-                                                    <td class="border">${usu.getUsuapellido()}</td>
-                                                    <td class="border">${usu.getUsudireccion()}</td>
-                                                    <td class="border">${usu.getUsutelefono()}</td>
-                                                    <td class="border">${usu.getUsuusuario()}</td>
-                                                    <td class="border">${usu.getUsutipo()}</td>
-                                                    <td class="border" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${usu.getUsucorreo()}</td> <!-- Estilo añadido para texto largo en el campo de correo -->
-                                                    <td class="text-center border" style="white-space: nowrap;"> <!-- Evita que los botones se separen demasiado -->
-                                                        <input type="hidden" name="id" class="id" id="id" value="${usu.getUsuid()}">
-                                                        <a class="btn btn-danger btneliminar" href="#" ><i class="bi bi-trash-fill"></i></a>
-                                                        <br>
-                                                        <a class="btn" style="background-color: #74BD64;" id="btnadmi" href="CtrUsuarioCre?accion=editarusuario&id=${usu.getUsuid()}"><i class="bi bi-gear-fill"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
+
+
                                 </div>
                             </div>
+                            <table class="table table-bordered">
+                                <thead class="thead-light border">
+                                    <tr table-success>
+                                        <th scope="col" colspan="8" class="text-center border">USUARIOS DE LA FARMACIA</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" class="text-center border">Id</th>
+                                        <th scope="col" class="text-center border">Nombre</th>
+                                        <th scope="col" class="text-center border">Apellido</th>
+                                        <th scope="col" class="text-center border">Direccion</th>
+                                        <th scope="col" class="text-center border">Telefono</th>
+                                        <th scope="col" class="text-center border">Usuario</th>
+                                        <th scope="col" class="text-center border">Tipo</th>
+                                        <th scope="col" class="text-center border">Correo</th>
+                                        <th scope="col" class="text-center border">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="usu" items="${usuarios}">  
+                                        <tr>
+                                            <th scope="row" class="border">${usu.getUsuid()}</th>
+                                            <td class="border">${usu.getUsunombre()}</td>
+                                            <td class="border">${usu.getUsuapellido()}</td>
+                                            <td class="border">${usu.getUsudireccion()}</td>
+                                            <td class="border">${usu.getUsutelefono()}</td>
+                                            <td class="border">${usu.getUsuusuario()}</td>
+                                            <td class="border">${usu.getUsutipo()}</td>
+                                            <td class="border">${usu.getUsucorreo()}</td>  
+                                            <td class=" text-center border">
+                                                <input type="hidden" name="id" class="id" value="${usu.getUsuid()}">
+                                                <a class="btn btn-danger btneliminar" href="#"><i class="bi bi-trash-fill"></i></a>
+                                                </br> 
+                                                <a class="btn " style="background-color: #74BD64" id="btnadmi" href="CtrUsuarioCre?accion=tipoUsu&id=${usu.getUsuid()}"><i class="bi bi-gear-fill"></i></a>
+                                                </br>
+                                                <a class="btn " style="background-color: #FFD700" id="btnusu" href="CtrUsuarioCre?accion=cambUsu&id=${usu.getUsuid()}"><i class="bi bi-person"></i></a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </main>
-
-
                 </div>
             </div>
         </div>
